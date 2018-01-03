@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>球员页面</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/personal_data.css">
+</head>
+<body>
+
+    <!-- 页面头部 -->
+    <div class="header">
+        <div class="bx">
+            <div class="sdap-info clearfix">
+                <img class="logo f-l" src="images/logo.png" alt="logo" width="50px">
+                <p class="sdap-version f-l">
+                    创冰足球大师数据分析系统 SDAP
+                    <span class="version-num">&nbsp; v3.0.0.1</span>
+                </p>
+                <!-- 头部右侧 -->
+                <div class="header-right f-r clearfix">
+                    <ul class="clearfix">
+                        <li class="use-quit f-r">
+                            <a href="#">
+                                <span>登出</span> 
+                                <i></i>
+                            </a>
+                        </li>
+                        <li class="use-set f-r">
+                            <a href="#">
+                                <span>设置</span> 
+                                <i></i>
+                            </a>
+                        </li>
+                        </li>
+                        <li class="use-guide f-r">
+                            <a href="#">
+                                <span>说明</span> 
+                                <i></i>
+                            </a>
+                        </li>
+                        </li>
+                    </ul>
+                </div>
+            </div>           
+        </div>
+    </div>
+
+    <!-- 页面导航条 -->
+    <div class="nav-bar">
+        <div class="bx">
+            <ul class="clearfix">
+                <li class="f-l">
+                    <a class="select" href="javascript:;" name="index">首页</a>
+                </li>
+                <li class="f-l">
+                    <a href="javascript:;" name="video">视频分析</a>
+                </li>
+                <li class="f-l">
+                    <a href="javascript:;" name="data">数据报告</a>
+                </li>
+            </ul>
+        </div>     
+    </div> 
+    <!-- 个人简介栏 -->
+    <div class="personal-resume-bar">
+        <div class="bx">
+            <div class="pesonal-resume-wrapper">
+                <div class="personal-avatar">
+
+                </div>
+                
+                <div class="team-avatar">
+                    <div class="team-logo"></div>
+                    <p class="team-name">广州恒大淘宝</p>
+                </div>
+                <div class="resume-info">
+                    <div class="personal-name">
+                        <span class="name">里奥·梅西</span>
+                        <span>——</span> 
+                        <span class="season">2017赛季</span>
+                    </div>
+                    <ul class="info-list clearfix">
+                        <li>
+                            <p class="li-t">年龄</p>
+                            <p class="li-b">24</p>
+                        </li>
+                        <li>
+                            <p class="li-t">国籍</p>
+                            <p class="li-b">阿根廷</p>
+                        </li>
+                        <li>
+                            <p class="li-t">身高</p>
+                            <p class="li-b">193cm</p>
+                        </li>
+                        <li>
+                            <p class="li-t">体重</p>
+                            <p class="li-b">86kg</p>
+                        </li>
+                        <li>
+                            <p class="li-t">位置</p>
+                            <!-- <p class="li-b" id="player-position">守门员</p> -->
+                            <p class="li-b" id="player-position"></p>
+                        </li>
+                        <li>
+                            <p class="li-t">赛季评分</p>
+                            <p class="li-b">98.2</p>
+                        </li>
+                        
+                      
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 个人数据板主体 -->
+    <div class="personal-data-main">
+        <div class="bx clearfix">
+            <!-- 个人数据列表 -->
+            <div class="personal-data-wrapper f-l">
+                <div class="tab-bar">
+                    <ul class="clearfix">
+                        <li class="f-l tab-selected">基本</li>
+                        <li class="f-l">进攻</li>
+                        <li class="f-l">防守</li>
+                        <li class="f-l">控球</li>
+                    </ul>
+                </div>
+                <div class="personal-data-body">
+                    <div class="table-box">
+                        <table class="personal-data-table">
+                            <thead>
+                                <tr>
+                                    <th><a href="javascript:;" data-value="1" name="num">赛事</a></th>
+                                    <th><a href="javascript:;" data-value="2" name="matchCount">出场次数</a></th>
+                                    <th><a href="javascript:;" data-value="3" name="matchTime">出场时间</a></th>
+                                    <th><a href="javascript:;" data-value="4" name="xG">xG</a></th>
+                                    <th><a href="javascript:;" data-value="5" name="assist">助攻</a></th>
+                                    <th><a href="javascript:;" data-value="6" name="keyPass">关键传球</a></th>
+                                    <th><a href="javascript:;" data-value="7" name="pass">传球</a></th>
+                                    <th><a href="javascript:;" data-value="8" name="passSuccessRate">传球成功率</a></th>
+                                    <th><a href="javascript:;" data-value="9" name="averageScore">平均评分</a></th>
+                                    <th><a href="javascript:;" data-value="10" name="nearestFiveTimeAvScore">近5场评分</a></th>
+                                </tr>                  
+                            </thead>
+                            <tbody>
+                                <tr data-value="1">
+                                    <td><a href="javascript:;" data-value="1">中超</a></td>
+                                    <td><a href="javascript:;" data-value="2">1</a></td>
+                                    <td><a href="javascript:;" data-value="3">1</a></td>
+                                    <td><a href="javascript:;" data-value="4">1</a></td>
+                                    <td><a href="javascript:;" data-value="5">1</a></td>
+                                    <td><a href="javascript:;" data-value="6">1</a></td>
+                                    <td><a href="javascript:;" data-value="7">1</a></td>
+                                    <td><a href="javascript:;" data-value="8">1</a></td>
+                                    <td><a href="javascript:;" data-value="9">1</a></td>
+                                    <td><a href="javascript:;" data-value="10">1</a></td>
+                                </tr>  
+                                <tr data-value="2">
+                                    <td><a href="javascript:;" data-value="1">足协杯</a></td>
+                                    <td><a href="javascript:;" data-value="2">1</a></td>
+                                    <td><a href="javascript:;" data-value="3">1</a></td>
+                                    <td><a href="javascript:;" data-value="4">1</a></td>
+                                    <td><a href="javascript:;" data-value="5">1</a></td>
+                                    <td><a href="javascript:;" data-value="6">1</a></td>
+                                    <td><a href="javascript:;" data-value="7">1</a></td>
+                                    <td><a href="javascript:;" data-value="8">1</a></td>
+                                    <td><a href="javascript:;" data-value="9">1</a></td>
+                                    <td><a href="javascript:;" data-value="10">1</a></td>
+                                </tr>  
+                                <tr data-value="3">
+                                    <td><a href="javascript:;" data-value="1">亚冠</a></td>
+                                    <td><a href="javascript:;" data-value="2">1</a></td>
+                                    <td><a href="javascript:;" data-value="3">1</a></td>
+                                    <td><a href="javascript:;" data-value="4">1</a></td>
+                                    <td><a href="javascript:;" data-value="5">1</a></td>
+                                    <td><a href="javascript:;" data-value="6">1</a></td>
+                                    <td><a href="javascript:;" data-value="7">1</a></td>
+                                    <td><a href="javascript:;" data-value="8">1</a></td>
+                                    <td><a href="javascript:;" data-value="9">1</a></td>
+                                    <td><a href="javascript:;" data-value="10">1</a></td>
+                                </tr>  
+                            </tbody>
+                            <tfoot>
+                                <tr data-value="sum">
+                                    <td><a href="javascript:;" data-value="1">总计/平均</a></td>
+                                    <td><a href="javascript:;" data-value="2">1</a></td>
+                                    <td><a href="javascript:;" data-value="3">1</a></td>
+                                    <td><a href="javascript:;" data-value="4">1</a></td>
+                                    <td><a href="javascript:;" data-value="5">1</a></td>
+                                    <td><a href="javascript:;" data-value="6">1</a></td>
+                                    <td><a href="javascript:;" data-value="7">1</a></td>
+                                    <td><a href="javascript:;" data-value="8">1</a></td>
+                                    <td><a href="javascript:;" data-value="9">1</a></td>
+                                    <td><a href="javascript:;" data-value="10">1</a></td>
+                                </tr>  
+                            </tfoot>
+                        </table>
+                    </div>
+
+
+
+                </div>
+            </div>
+            <!-- 当前赛季队友 -->
+            <div class="players-score f-r">
+                <div class="players-score-header clearfix">
+                    <p>当前赛季队友</p> 
+                </div>
+                <div class="players-list">
+                    <ul>
+                        <li><a href="personal_data.html">马丁内斯<span>12.5</span></a></li>
+                        <li><a href="personal_data.html">埃尔克森<span>12</span></a></li>
+                        <li><a href="personal_data.html">武磊<span>9.6</span></a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="personal_data.html">马丁内斯<span>12.5</span></a></li>
+                        <li><a href="personal_data.html">埃尔克森<span>12</span></a></li>
+                        <li><a href="personal_data.html">武磊<span>9.6</span></a></li>
+                        <li><a href="personal_data.html">马丁内斯<span>12.5</span></a></li>
+                        <li><a href="personal_data.html">埃尔克森<span>12</span></a></li>
+                        <li><a href="personal_data.html">武磊<span>9.6</span></a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="personal_data.html">马丁内斯<span>12.5</span></a></li>
+                        <li><a href="personal_data.html">埃尔克森<span>12</span></a></li>
+                        <li><a href="personal_data.html">武磊<span>9.6</span></a></li>
+                        <li><a href="personal_data.html">马丁内斯<span>12.5</span></a></li>
+                        <li><a href="personal_data.html">埃尔克森<span>12</span></a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="personal_data.html">马丁内斯<span>12.5</span></a></li>
+                        <li><a href="personal_data.html">埃尔克森<span>12</span></a></li>
+                        <li><a href="personal_data.html">武磊<span>9.6</span></a></li>
+                        <li><a href="personal_data.html">马丁内斯<span>12.5</span></a></li>
+                        <li><a href="personal_data.html">埃尔克森<span>12</span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 联赛赛季评分 -->
+            <div class="season-scoring f-l">
+                <div class="filter-condition">
+                    <div id="match-filter" class="filter-c-row clearfix">
+                        <span class="f-l">赛事：</span>
+                        <a class="f-l active all" href="javascript:;">所有</a>
+                        <ul class="f-l clearfix">
+                            <li class="f-l"><a href="javascript:;">中超</a></li>
+                            <li class="f-l"><a href="javascript:;">足协杯</a></li>
+                            <li class="f-l"><a href="javascript:;">亚冠</a></li>
+                        </ul>
+                    </div>
+                    <div id="home-and-away-filter" class="filter-c-row clearfix">
+                        <span class="f-l">主客场：</span>
+                        <a class="f-l active all" href="javascript:;">所有</a>
+                        <ul class="f-l clearfix">
+                            <li class="f-l"><a href="javascript:;">主场</a></li>
+                            <li class="f-l"><a href="javascript:;">客场</a></li>
+                        </ul>
+                    </div>
+                    <div class="round-filter">
+                        <span class="">轮次：</span>
+                        <div class="filter-slider-box">
+                            <span class="handle-left handle"></span>
+                            <div class="slider-bg">
+                                <ul class="slider-bar">
+                                    <i class="slider-handler-left slider-handler"></i>
+                                    <i class="slider-handler-right slider-handler"></i>
+                                    <span class="slider-range">
+                                        
+                                    </span>
+
+                                    <li class="lose">
+                                        <a></a>
+                                        <i>
+                                            <b class="box-top clearfix">
+                                                <b class="t-l win f-l">胜</b>  
+                                                <b class="t-r f-r">
+                                                    <p class="clearfix">
+                                                        <span class="team f-l">广州恒大淘宝</span>    
+                                                        <span class="score f-r">2</span>    
+                                                    </p>    
+                                                    <p class="clearfix">
+                                                        <span class="team f-l">广州恒大</span>    
+                                                        <span class="score f-r">20</span>    
+                                                    </p>    
+                                                </b>  
+                                            </b>    
+                                            <b class="box-bottom clearfix">
+                                                <span class="scoring f-l">评分：98.5</span>
+                                                <input type="button" class="check f-r" value="查看比赛">
+                                            </b>
+                                            <em></em>    
+                                        </i> 
+                                    </li>
+                                    <li class="lose">
+                                        <a></a>
+                                        <i>
+                                            <b class="box-top clearfix">
+                                                <b class="t-l win f-l">胜</b>  
+                                                <b class="t-r f-r">
+                                                    <p class="clearfix">
+                                                        <span class="team f-l">广州恒大淘宝</span>    
+                                                        <span class="score f-r">2</span>    
+                                                    </p>    
+                                                    <p class="clearfix">
+                                                        <span class="team f-l">广州恒大</span>    
+                                                        <span class="score f-r">20</span>    
+                                                    </p>    
+                                                </b>  
+                                            </b>    
+                                            <b class="box-bottom clearfix">
+                                                <span class="scoring f-l">评分：98.5</span>
+                                                <input type="button" class="check f-r" value="查看比赛">
+                                            </b>
+                                            <em></em>    
+                                        </i> 
+                                    </li>
+                                    <li class="lose">
+                                        <a></a>
+                                        <i>
+                                            <b class="box-top clearfix">
+                                                <b class="t-l win f-l">胜</b>  
+                                                <b class="t-r f-r">
+                                                    <p class="clearfix">
+                                                        <span class="team f-l">广州恒大淘宝</span>    
+                                                        <span class="score f-r">2</span>    
+                                                    </p>    
+                                                    <p class="clearfix">
+                                                        <span class="team f-l">广州恒大</span>    
+                                                        <span class="score f-r">20</span>    
+                                                    </p>    
+                                                </b>  
+                                            </b>    
+                                            <b class="box-bottom clearfix">
+                                                <span class="scoring f-l">评分：98.5</span>
+                                                <input type="button" class="check f-r" value="查看比赛">
+                                            </b>
+                                            <em></em>    
+                                        </i> 
+                                    </li>
+                                    <li class="lose">
+                                        <a></a>
+                                        <i>
+                                            <b class="box-top clearfix">
+                                                <b class="t-l win f-l">胜</b>  
+                                                <b class="t-r f-r">
+                                                    <p class="clearfix">
+                                                        <span class="team f-l">广州恒大淘宝</span>    
+                                                        <span class="score f-r">2</span>    
+                                                    </p>    
+                                                    <p class="clearfix">
+                                                        <span class="team f-l">广州恒大</span>    
+                                                        <span class="score f-r">20</span>    
+                                                    </p>    
+                                                </b>  
+                                            </b>    
+                                            <b class="box-bottom clearfix">
+                                                <span class="scoring f-l">评分：98.5</span>
+                                                <input type="button" class="check f-r" value="查看比赛">
+                                            </b>
+                                            <em></em>    
+                                        </i> 
+                                    </li>
+                                    <li class="lose">
+                                        <a></a>
+                                        <i>
+                                            <b class="box-top clearfix">
+                                                <b class="t-l win f-l">胜</b>  
+                                                <b class="t-r f-r">
+                                                    <p class="clearfix">
+                                                        <span class="team f-l">广州恒大淘宝</span>    
+                                                        <span class="score f-r">2</span>    
+                                                    </p>    
+                                                    <p class="clearfix">
+                                                        <span class="team f-l">广州恒大</span>    
+                                                        <span class="score f-r">20</span>    
+                                                    </p>    
+                                                </b>  
+                                            </b>    
+                                            <b class="box-bottom clearfix">
+                                                <span class="scoring f-l">评分：98.5</span>
+                                                <input type="button" class="check f-r" value="查看比赛">
+                                            </b>
+                                            <em></em>    
+                                        </i> 
+                                    </li>
+                                    <li class="win">
+                                        <a></a>
+                                        <i>
+                                            <b class="box-top clearfix">
+                                                <b class="t-l win f-l">胜</b>  
+                                                <b class="t-r f-r">
+                                                    <p class="clearfix">
+                                                        <span class="team f-l">广州恒大淘宝</span>    
+                                                        <span class="score f-r">2</span>    
+                                                    </p>    
+                                                    <p class="clearfix">
+                                                        <span class="team f-l">广州恒大</span>    
+                                                        <span class="score f-r">20</span>    
+                                                    </p>    
+                                                </b>  
+                                            </b>    
+                                            <b class="box-bottom clearfix">
+                                                <span class="scoring f-l">评分：98.5</span>
+                                                <input type="button" class="check f-r" value="查看比赛">
+                                            </b>
+                                            <em></em>    
+                                        </i> 
+                                    </li>
+                                    <li class="win">
+                                        <a></a>
+                                        <i>
+                                            <b class="box-top clearfix">
+                                                <b class="t-l win f-l">胜</b>  
+                                                <b class="t-r f-r">
+                                                    <p class="clearfix">
+                                                        <span class="team f-l">广州恒大淘宝</span>    
+                                                        <span class="score f-r">2</span>    
+                                                    </p>    
+                                                    <p class="clearfix">
+                                                        <span class="team f-l">广州恒大</span>    
+                                                        <span class="score f-r">20</span>    
+                                                    </p>    
+                                                </b>  
+                                            </b>    
+                                            <b class="box-bottom clearfix">
+                                                <span class="scoring f-l">评分：98.5</span>
+                                                <input type="button" class="check f-r" value="查看比赛">
+                                            </b>
+                                            <em></em>    
+                                        </i> 
+                                    </li>
+                                    <li class="win">
+                                        <a></a>
+                                        <i>
+                                            <b class="box-top clearfix">
+                                                <b class="t-l win f-l">胜</b>  
+                                                <b class="t-r f-r">
+                                                    <p class="clearfix">
+                                                        <span class="team f-l">广州恒大淘宝</span>    
+                                                        <span class="score f-r">2</span>    
+                                                    </p>    
+                                                    <p class="clearfix">
+                                                        <span class="team f-l">广州恒大</span>    
+                                                        <span class="score f-r">20</span>    
+                                                    </p>    
+                                                </b>  
+                                            </b>    
+                                            <b class="box-bottom clearfix">
+                                                <span class="scoring f-l">评分：98.5</span>
+                                                <input type="button" class="check f-r" value="查看比赛">
+                                            </b>
+                                            <em></em>    
+                                        </i> 
+                                    </li>
+                                    <li class="lose undeed">
+                                        <a></a>
+                                        <i>
+                                            <b class="box-top clearfix">
+                                                <b class="t-l win f-l">胜</b>  
+                                                <b class="t-r f-r">
+                                                    <p class="clearfix">
+                                                        <span class="team f-l">广州恒大淘宝</span>    
+                                                        <span class="score f-r">2</span>    
+                                                    </p>    
+                                                    <p class="clearfix">
+                                                        <span class="team f-l">广州恒大</span>    
+                                                        <span class="score f-r">20</span>    
+                                                    </p>    
+                                                </b>  
+                                            </b>    
+                                            <b class="box-bottom clearfix">
+                                                <span class="scoring f-l">评分：98.5</span>
+                                                <input type="button" class="check f-r" value="查看比赛">
+                                            </b>
+                                            <em></em>    
+                                        </i> 
+                                    </li>
+                                    <li class="win undeed">
+                                        <a></a>
+                                        <i>
+                                            <b class="box-top clearfix">
+                                                <b class="t-l win f-l">胜</b>  
+                                                <b class="t-r f-r">
+                                                    <p class="clearfix">
+                                                        <span class="team f-l">广州恒大淘宝</span>    
+                                                        <span class="score f-r">2</span>    
+                                                    </p>    
+                                                    <p class="clearfix">
+                                                        <span class="team f-l">广州恒大</span>    
+                                                        <span class="score f-r">20</span>    
+                                                    </p>    
+                                                </b>  
+                                            </b>    
+                                            <b class="box-bottom clearfix">
+                                                <span class="scoring f-l">评分：98.5</span>
+                                                <input type="button" class="check f-r" value="查看比赛">
+                                            </b>
+                                            <em></em>    
+                                        </i> 
+                                    </li>
+                                    <li class="draw">
+                                        <a></a>
+                                        <i>
+                                            <b class="box-top clearfix">
+                                                <b class="t-l win f-l">胜</b>  
+                                                <b class="t-r f-r">
+                                                    <p class="clearfix">
+                                                        <span class="team f-l">广州恒大淘宝</span>    
+                                                        <span class="score f-r">2</span>    
+                                                    </p>    
+                                                    <p class="clearfix">
+                                                        <span class="team f-l">广州恒大</span>    
+                                                        <span class="score f-r">20</span>    
+                                                    </p>    
+                                                </b>  
+                                            </b>    
+                                            <b class="box-bottom clearfix">
+                                                <span class="scoring f-l">评分：98.5</span>
+                                                <input type="button" class="check f-r" value="查看比赛">
+                                            </b>
+                                            <em></em>    
+                                        </i> 
+                                    </li>
+                                    <li class="draw undeed">
+                                        <a></a>
+                                        <i>
+                                            <b class="box-top clearfix">
+                                                <b class="t-l win f-l">胜</b>  
+                                                <b class="t-r f-r">
+                                                    <p class="clearfix">
+                                                        <span class="team f-l">广州恒大淘宝</span>    
+                                                        <span class="score f-r">2</span>    
+                                                    </p>    
+                                                    <p class="clearfix">
+                                                        <span class="team f-l">广州恒大</span>    
+                                                        <span class="score f-r">20</span>    
+                                                    </p>    
+                                                </b>  
+                                            </b>    
+                                            <b class="box-bottom clearfix">
+                                                <span class="scoring f-l">评分：98.5</span>
+                                                <input type="button" class="check f-r" value="查看比赛">
+                                            </b>
+                                            <em></em>    
+                                        </i> 
+                                    </li>
+                                    <li class="draw">
+                                        <a></a>
+                                        <i>
+                                            <b class="box-top clearfix">
+                                                <b class="t-l win f-l">胜</b>  
+                                                <b class="t-r f-r">
+                                                    <p class="clearfix">
+                                                        <span class="team f-l">广州恒大淘宝</span>    
+                                                        <span class="score f-r">2</span>    
+                                                    </p>    
+                                                    <p class="clearfix">
+                                                        <span class="team f-l">广州恒大</span>    
+                                                        <span class="score f-r">20</span>    
+                                                    </p>    
+                                                </b>  
+                                            </b>    
+                                            <b class="box-bottom clearfix">
+                                                <span class="scoring f-l">评分：98.5</span>
+                                                <input type="button" class="check f-r" value="查看比赛">
+                                            </b>
+                                            <em></em>    
+                                        </i> 
+                                    </li>
+                                    <li class="draw">
+                                        <a></a>
+                                        <i>
+                                            <b class="box-top clearfix">
+                                                <b class="t-l win f-l">胜</b>  
+                                                <b class="t-r f-r">
+                                                    <p class="clearfix">
+                                                        <span class="team f-l">广州恒大淘宝</span>    
+                                                        <span class="score f-r">2</span>    
+                                                    </p>    
+                                                    <p class="clearfix">
+                                                        <span class="team f-l">广州恒大</span>    
+                                                        <span class="score f-r">20</span>    
+                                                    </p>    
+                                                </b>  
+                                            </b>    
+                                            <b class="box-bottom clearfix">
+                                                <span class="scoring f-l">评分：98.5</span>
+                                                <input type="button" class="check f-r" value="查看比赛">
+                                            </b>
+                                            <em></em>    
+                                        </i> 
+                                    </li>
+                                    <li class="draw">
+                                        <a></a>
+                                        <i>
+                                            <b class="box-top clearfix">
+                                                <b class="t-l win f-l">胜</b>  
+                                                <b class="t-r f-r">
+                                                    <p class="clearfix">
+                                                        <span class="team f-l">广州恒大淘宝</span>    
+                                                        <span class="score f-r">2</span>    
+                                                    </p>    
+                                                    <p class="clearfix">
+                                                        <span class="team f-l">广州恒大</span>    
+                                                        <span class="score f-r">20</span>    
+                                                    </p>    
+                                                </b>  
+                                            </b>    
+                                            <b class="box-bottom clearfix">
+                                                <span class="scoring f-l">评分：98.5</span>
+                                                <input type="button" class="check f-r" value="查看比赛">
+                                            </b>
+                                            <em></em>    
+                                        </i> 
+                                    </li>
+                                </ul>
+                            </div>
+                            <span class="handle-right handle"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-result clearfix">
+                    <ul class="res-l clearfix f-l" id="filter-selecter">
+                        <li class="select" data-name="champdas-socring">
+                            <p class="item-name">创冰评分</p>
+                            <p class="item-data">93.34</p>
+                        </li>
+                        <li data-name="goals">
+                            <p class="item-name">进球</p>
+                            <p class="item-data">59</p>
+                        </li>
+                        <li data-name="goals-accuracy">
+                            <p class="item-name">射门准确率</p>
+                            <p class="item-data">100</p>
+                        </li>
+                        <!--  -->
+                        <li data-name="create-opportunities">
+                            <p class="item-name">创造机会</p>
+                            <p class="item-data">20</p>
+                        </li>
+                        <li data-name="passing-front-accuracy">
+                            <p class="item-name">向前传球占比</p>
+                            <p class="item-data">20%</p>
+                        </li>   
+                        <li data-name="passing-success-rate">
+                            <p class="item-name">传球成功率</p>
+                            <p class="item-data">93</p>
+                        </li>                   
+                                             
+                        <li data-name="win-balls">
+                            <p class="item-name">赢得球权</p>
+                            <p class="item-data">29</p>
+                        </li>                      
+                        <li data-name="win-compete">
+                            <p class="item-name">赢得对抗</p>
+                            <p class="item-data">28</p>
+                        </li>      
+                        <li data-name="single-game-fouls">
+                            <p class="item-name">单场犯规次数</p>
+                            <p class="item-data">92</p>
+                        </li>                 
+                    </ul>
+                    <div class="res-r f-r">
+                        <div id="champdas-socring-chart"  data-name="champdas-socring" class="chart champdas-socring"></div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- 当前赛季已参与的比赛 -->
+            <div class="match-in-season f-l">
+                <h3>当前赛季已参与的比赛</h3>
+                <div class="details-list">
+                    <div class="detail-header">
+                        <span class="score f-r">评分</span>
+                        <span class="in-time f-r">上场时间</span>
+                    </div>
+
+                    <ul class="detail-main">
+                        <li>
+                            <ul class="detail-row clearfix">
+                                <li class="league-name f-l">中超联赛</li>
+                                <li class="match-time f-l">2017-07-30</li>
+                                <li class="home-team-name f-l">广州恒大淘宝</li>
+                                <li class="match-result f-l"><a class="win" href="match.html">11:10</a></li>
+                                <li class="away-team-name f-l">广州恒大淘宝</li>
+                                <li class="match-deed f-l">
+                                    <ul class="deed-list clearfix">
+                                        <li class="goal f-l">
+                                            <ul class="deed-time-list">
+                                                <li>进球-20'20''</li>
+                                                <li>进球-34'11''</li>
+                                                <li>进球-54'26''</li>
+                                            </ul>
+                                            <em></em>
+                                        </li>
+                                        <li class="assist f-l">
+                                            <ul class="deed-time-list">
+                                                <li>助攻-20'20''</li>
+                                                <li>助攻-34'11''</li>
+                                                <li>助攻-54'26''</li>
+                                            </ul>
+                                            <em></em>
+                                        </li>
+                                        <li class="yellow-card f-l">
+                                            <ul class="deed-time-list">
+                                                <li>黄牌-20'20''</li>
+                                                <li>黄牌-34'11''</li>
+                                                <li>黄牌-54'26''</li>
+                                            </ul>
+                                            <em></em>
+                                        </li>
+                                        <li class="red-card f-l">
+                                            <ul class="deed-time-list">
+                                                <li>红牌-20'20''</li>
+                                                
+                                            </ul>
+                                            <em></em>
+                                        </li>
+                                        <li class="yellow-to-red f-l">
+                                            <ul class="deed-time-list">
+                                                <li>红牌-20'20''</li>
+                                                
+                                            </ul>
+                                            <em></em>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="in-match-time f-l">90</li>
+                                <li class="match-score f-l">92.22</li>
+                                <li class="more-details f-l"></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="detail-row clearfix">
+                                <li class="league-name f-l">中超联赛</li>
+                                <li class="match-time f-l">2017-07-30</li>
+                                <li class="home-team-name f-l">广州恒大淘宝</li>
+                                <li class="match-result f-l"><a class="draw" href="match.html">1:1</a></li>
+                                <li class="away-team-name f-l">广州恒大淘宝</li>
+                                <li class="match-deed f-l">
+                                    <ul class="deed-list clearfix">
+                                        <li class="f-l"></li>
+                                        <li class="assist f-l"></li>
+                                        <li class="f-l"></li>
+                                        <li class="red-card f-l"></li>
+                                        <li class="yellow-to-red f-l"></li>
+                                    </ul>
+                                </li>
+                                <li class="in-match-time f-l">90</li>
+                                <li class="match-score f-l">92.22</li>
+                                <li class="more-details f-l"></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="detail-row clearfix">
+                                <li class="league-name f-l">中超联赛联赛</li>
+                                <li class="match-time f-l">2017-07-30</li>
+                                <li class="home-team-name f-l">广州恒大淘宝淘宝</li>
+                                <li class="match-result f-l"><a class="lose" href="match.html">0:1</a></li>
+                                <li class="away-team-name f-l">广州恒大淘宝淘宝</li>
+                                <li class="match-deed f-l">
+                                    <ul class="deed-list clearfix">
+                                        <li class="goal f-l"></li>
+                                        <li class="f-l"></li>
+                                        <li class="yellow-card f-l"></li>
+                                        <li class="red-card f-l"></li>
+                                        <li class="f-l"></li>
+                                    </ul>
+                                </li>
+                                <li class="in-match-time f-l">90</li>
+                                <li class="match-score f-l">92.22</li>
+                                <li class="more-details f-l"></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="detail-row clearfix">
+                                <li class="league-name f-l">中超联赛联赛</li>
+                                <li class="match-time f-l">2017-07-30</li>
+                                <li class="home-team-name f-l">广州恒大淘宝淘宝</li>
+                                <li class="match-result f-l"><a class="lose" href="match.html">0:1</a></li>
+                                <li class="away-team-name f-l">广州恒大淘宝淘宝</li>
+                                <li class="match-deed f-l">
+                                    <ul class="deed-list clearfix">
+                                        <li class="goal f-l"></li>
+                                        <li class="f-l"></li>
+                                        <li class="yellow-card f-l"></li>
+                                        <li class="red-card f-l"></li>
+                                        <li class="f-l"></li>
+                                    </ul>
+                                </li>
+                                <li class="in-match-time f-l">90</li>
+                                <li class="match-score f-l">92.22</li>
+                                <li class="more-details f-l"></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="detail-row clearfix">
+                                <li class="league-name f-l">中超联赛联赛</li>
+                                <li class="match-time f-l">2017-07-30</li>
+                                <li class="home-team-name f-l">广州恒大淘宝淘宝</li>
+                                <li class="match-result f-l"><a class="lose" href="match.html">0:1</a></li>
+                                <li class="away-team-name f-l">广州恒大淘宝淘宝</li>
+                                <li class="match-deed f-l">
+                                    <ul class="deed-list clearfix">
+                                        <li class="goal f-l"></li>
+                                        <li class="f-l"></li>
+                                        <li class="yellow-card f-l"></li>
+                                        <li class="red-card f-l"></li>
+                                        <li class="f-l"></li>
+                                    </ul>
+                                </li>
+                                <li class="in-match-time f-l">90</li>
+                                <li class="match-score f-l">92.22</li>
+                                <li class="more-details f-l"></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="detail-row clearfix">
+                                <li class="league-name f-l">中超联赛联赛</li>
+                                <li class="match-time f-l">2017-07-30</li>
+                                <li class="home-team-name f-l">广州恒大淘宝淘宝</li>
+                                <li class="match-result f-l"><a class="lose" href="match.html">0:1</a></li>
+                                <li class="away-team-name f-l">广州恒大淘宝淘宝</li>
+                                <li class="match-deed f-l">
+                                    <ul class="deed-list clearfix">
+                                        <li class="goal f-l"></li>
+                                        <li class="f-l"></li>
+                                        <li class="yellow-card f-l"></li>
+                                        <li class="red-card f-l"></li>
+                                        <li class="f-l"></li>
+                                    </ul>
+                                </li>
+                                <li class="in-match-time f-l">90</li>
+                                <li class="match-score f-l">92.22</li>
+                                <li class="more-details f-l"></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="detail-row clearfix">
+                                <li class="league-name f-l">中超联赛联赛</li>
+                                <li class="match-time f-l">2017-07-30</li>
+                                <li class="home-team-name f-l">广州恒大淘宝淘宝</li>
+                                <li class="match-result f-l"><a class="lose" href="match.html">0:1</a></li>
+                                <li class="away-team-name f-l">广州恒大淘宝淘宝</li>
+                                <li class="match-deed f-l">
+                                    <ul class="deed-list clearfix">
+                                        <li class="goal f-l"></li>
+                                        <li class="f-l"></li>
+                                        <li class="yellow-card f-l"></li>
+                                        <li class="red-card f-l"></li>
+                                        <li class="f-l"></li>
+                                    </ul>
+                                </li>
+                                <li class="in-match-time f-l">90</li>
+                                <li class="match-score f-l">92.22</li>
+                                <li class="more-details f-l"></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="detail-row clearfix">
+                                <li class="league-name f-l">中超联赛联赛</li>
+                                <li class="match-time f-l">2017-07-30</li>
+                                <li class="home-team-name f-l">广州恒大淘宝淘宝</li>
+                                <li class="match-result f-l"><a class="lose" href="match.html">0:1</a></li>
+                                <li class="away-team-name f-l">广州恒大淘宝淘宝</li>
+                                <li class="match-deed f-l">
+                                    <ul class="deed-list clearfix">
+                                        <li class="goal f-l"></li>
+                                        <li class="f-l"></li>
+                                        <li class="yellow-card f-l"></li>
+                                        <li class="red-card f-l"></li>
+                                        <li class="f-l"></li>
+                                    </ul>
+                                </li>
+                                <li class="in-match-time f-l">90</li>
+                                <li class="match-score f-l">92.22</li>
+                                <li class="more-details f-l"></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <div class="filter-pagination">
+                        <button class="prev-page"><</button>
+                        <ul class="pagination-bar clearfix">
+                            
+                            <li class="page-item f-l select">1</li>
+                            <li class="page-item f-l">2</li>
+                            <li class="page-item f-l">3</li>
+                            <li class="page-item f-l">4</li>
+                            <li class="page-item f-l">5</li>
+                            <li class="page-item f-l">6</li>
+                            <li class="page-item f-l">...</li>
+                            <li class="page-item f-l">31</li>
+                                                
+                        </ul>
+                        <button class="next-page">></button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+    <!-- 页面底部 -->
+    <div class="footer">
+        <p class="copyright">©2015 上海创冰信息科技有限公司  , All Rights Reserved  (沪ICP备14033075号-1)</p>
+    </div>
+
+
+<script src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/snap.svg-min.js"></script>
+<script src="highchat/highcharts.js"></script>
+<script src="highchat/highcharts-more.js"></script>
+<script src="js/exporting.js"></script>
+<script src="js/highcharts-zh_CN.js"></script>
+<!-- <script src="highchat/data.js"></script> -->
+<script src="js/common.js"></script>
+<script src="js/personal_data.js"></script>
+</body>
+</html>

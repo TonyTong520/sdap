@@ -1,0 +1,699 @@
+.index-main .bx {
+    padding-bottom:30px;
+    .game-info {/*比赛数据*/
+        width: 930px;
+        height: 687px;
+        margin-right: 17px;
+        margin-bottom: 14px;
+        .league-tab {
+            height: 40px;
+            >ul {
+                >li {
+                    width: 117px;
+                    line-height: 32px;
+                    border-top:4px solid transparent;
+                    border-bottom:4px solid transparent;
+                    font-size: 14px;
+                    text-align: center;
+                    cursor: pointer;
+                    font-weight: 600;
+                }
+            }
+        }
+        .game-info-body {
+            height:647px;
+            background-color: #fff;
+            padding-left:14px;
+            .chart-title {
+                font-size:12px;
+                color:#97979a;
+                line-height: 49px;
+            }
+            .chart-l {
+                width: 325px;
+                height: 647px;
+                margin-right: 20px;
+                .chart-l-t {
+                    height: 310px;
+                    margin-bottom:4px;
+
+                    .chart-body {
+                        position: relative;
+                        >p {
+                            font-size: 12px;
+                            line-height: 26px;
+                            background-color: #c3e6f7;
+                            text-align: center;
+                            color:#35aae6;
+                        }
+                        >p:last-child {
+                            background-color: #efefef;
+                            color:#9aa9aa;
+                        }
+                        .bar-wrapper {
+                            height: 181px;
+                            border-top:1px solid #35aae6;
+                            border-bottom:1px solid #c9c9c9;
+                            position: relative;
+                            .bar {
+                                width: 20px;
+                                height: 179px;
+                                background-color: #c9c9c9;
+                                position: absolute;
+                                top:0;
+                                .average-num {
+                                    width: 28px;
+                                    height:2px;
+                                    background-color: #979797;
+                                    position: absolute;
+                                    left:-4px;
+                                    // bottom: 120px;  /*平均值动态改变*/
+                                }
+                                .team-num {
+                                    width: 20px;
+                                    // height: 150px;  /*本队表现值动态改变*/
+                                    background-color: #35aae6;
+                                    position: absolute;
+                                    left: 0;
+                                    bottom:0;
+                                }
+                                .hover-area {
+                                    width: 40px;
+                                    height: 179px;
+                                    position: absolute;
+                                    left:-10px;
+                                    top:0;
+                                    cursor: pointer;
+                                    .triangle {
+                                        display: block;
+                                        width: 0;
+                                        height: 0;
+                                        border-width: 11px 10px;
+                                        border-style: solid;
+                                        border-bottom-color: transparent;
+                                        border-top-color: #fff;
+                                        border-left-color: transparent;
+                                        border-right-color: transparent;
+                                        position: absolute;
+                                        left: 10px;
+                                        top: -15px;
+                                    }
+                                }
+                                
+
+                            } 
+                            .bar1 {
+                                left:15px;
+                                .average-num {
+                                    bottom: 120px;  /*平均值动态改变*/
+                                }
+                                .team-num {
+                                    height: 150px;  /*本队表现值动态改变*/
+                                }
+                            }
+                            .bar2 {
+                                left:70px;
+                                .average-num {
+                                    bottom: 130px;  /*平均值动态改变*/
+                                }
+                                .team-num {
+                                    height: 130px;  /*本队表现值动态改变*/
+                                }                               
+                            }
+                            .bar3 {
+                                left:125px;
+                                .average-num {
+                                    bottom: 110px;  /*平均值动态改变*/
+                                }
+                                .team-num {
+                                    height: 90px;  /*本队表现值动态改变*/
+                                }
+                            }
+                            .bar4 {
+                                left:180px;
+                                .average-num {
+                                    bottom: 120px;  /*平均值动态改变*/
+                                }
+                                .team-num {
+                                    height: 130px;  /*本队表现值动态改变*/
+                                }
+                            }
+                            .bar5 {
+                                left:235px;
+                                .average-num {
+                                    bottom: 150px;  /*平均值动态改变*/
+                                }
+                                .team-num {
+                                    height: 145px;  /*本队表现值动态改变*/
+                                }
+                            }
+                            .bar6 {
+                                left:290px;
+                                .average-num {
+                                    bottom: 120px;  /*平均值动态改变*/
+                                }
+                                .team-num {
+                                    height: 150px;  /*本队表现值动态改变*/
+                                }
+                            }
+                        }
+
+                        .hover-tips {
+                            width: 280px;
+                            height: 150px;
+                            background-color: #fff;
+                            position: absolute;
+                            left: 0;
+                            top: -138px;
+                            border-radius: 6px;
+                            box-shadow: 0 -2px 4px #999999;
+                            z-index: 999;
+                            >p {
+                                font-size: 14px;
+                                color:#35aae6;
+                                width: 180px;
+                                margin-left: 10px;
+                                margin-top:15px;
+                                line-height: 1;
+                            }
+                            >span {
+                                font-size: 12px;
+                                margin-right: 10px;
+                                margin-top:15px;
+                                line-height: 1;
+                            }
+                            .tip-box-m {
+                                margin-left:10px;
+                                margin-top:11px;
+                                >p {
+                                    font-weight: 600;
+                                }
+                                .ranking {
+                                    font-size: 12px;
+                                    font-weight: 400;
+                                    margin-top:8px;
+                                    >span {
+                                        margin-left: 5px;
+                                    }
+                                }
+                            }
+                            .wrapper {
+                                width:100%;
+                                .tip-box-b {
+                                    border-top: 1px solid #ccc;
+                                    margin: 13px 5px 0;
+                                    padding: 8px 5px 0;
+                                    font-size: 12px;
+                                    >div {
+                                        width: 50%;
+                                        >p {
+                                            font-weight: 600;
+                                        }
+                                    }
+                                }
+                            }                        
+                        }
+                    }
+                    .x-categories {
+                        >li {
+                            width: 54px;
+                            line-height: 28px;
+                            float:left;
+                            text-align: center;
+                            font-size:12px;
+                            color:#4e5569;
+                        }
+                    }
+                }
+                .chart-l-m {
+                    height: 104px;
+                    margin-bottom:4px;
+                    .chart2 {
+                        line-height: 39px;
+                    }
+                    ul {
+                        margin-bottom: 6px;
+                        li {
+                            float:left;
+                            width: 38px;
+                            height:17px;
+                            line-height: 17px;
+                            font-size:12px;
+                            font-weight: 600;
+                            text-align: center;
+                            margin-right: 3px;
+                        }
+                        li:last-child {
+                            margin-right: 0;
+                        }
+                    }
+                    .goal-num {
+                        li:nth-child(1) {
+                            background-color: rgba(53, 170, 230, 0.2);
+                        }
+                        li:nth-child(2) {
+                            background-color: rgba(53, 170, 230, 0.3);
+                        }
+                        li:nth-child(3) {
+                            background-color: rgba(53, 170, 230, 0.4);
+                        }
+                        li:nth-child(4) {
+                            background-color: rgba(53, 170, 230, 0.5);
+                        }
+                        li:nth-child(5) {
+                            background-color: rgba(53, 170, 230, 0.6);
+                        }
+                        li:nth-child(6) {
+                            background-color: rgba(53, 170, 230, 0.7);
+                        }
+                        li:nth-child(7) {
+                            background-color: rgba(53, 170, 230, 0.8);
+                        }
+                        li:nth-child(8) {
+                            background-color: rgba(53, 170, 230, 1);
+                        }
+                    }
+                    .fumble-num {
+                        li:nth-child(1) {
+                            background-color: rgba(179,178,178, 0.2);
+                        }
+                        li:nth-child(2) {
+                            background-color: rgba(179,178,178, 0.3);
+                        }
+                        li:nth-child(3) {
+                            background-color: rgba(179,178,178, 0.4);
+                        }
+                        li:nth-child(4) {
+                            background-color: rgba(179,178,178, 0.5);
+                        }
+                        li:nth-child(5) {
+                            background-color: rgba(179,178,178, 0.6);
+                        }
+                        li:nth-child(6) {
+                            background-color: rgba(179,178,178, 0.7);
+                        }
+                        li:nth-child(7) {
+                            background-color: rgba(179,178,178, 0.8);
+                        }
+                        li:nth-child(8) {
+                            background-color: rgba(179,178,178, 1);
+                        }
+                    }
+                    .time-section {
+                        li {
+                            font-weight: 400;
+                        }    
+                    }
+                }
+                .chart-l-b {
+                    height: 225px;
+                    position: relative;
+                    .chart3 {
+                        line-height: 37px;
+                    }
+                    .legend {
+                        position: absolute;
+                        left:20px;
+                        top:50px;
+                        >li {
+                            font-size: 12px;    
+                            margin-bottom: 10px;
+                            >i {
+                                display: inline-block;
+                                border-radius: 2px;
+                                width: 12px;
+                                height: 12px;
+                                background-color: #008cd6;
+                                vertical-align: middle;
+                                margin-right: 10px;
+                            }
+                            >span {
+                                height: 12px;
+                                line-height: 12px;
+                                vertical-align: middle;
+                            }
+                        }
+                        >li:nth-child(2){
+                            >i {
+                                background-color: #35aae6;
+                            }
+                        }
+                        >li:nth-child(3){
+                            >i {
+                                background-color: #80d4ff;
+                            }
+                        }
+                    }
+                }
+            }
+            .chart-m {
+                width: 266px;
+                height:647px;
+                margin-right: 19px;
+                .chart-m-t {                 
+                    .img-wrapper {
+                        margin-bottom:19px;
+                        height: 400px;
+                        position: relative;
+                        .football-field {
+                            margin-top:-3px;
+                        }
+                        .line-box {
+                            width: 264px;
+                            height: 100px;
+                            border-bottom:2px solid #d0021b;
+                            position: absolute;
+                            left:1px;
+                            top:0px;
+                            >p {
+                                height: 25px;
+                                line-height: 25px;
+                                font-size:12px;
+                                margin-left:-52px;
+                                position: absolute;
+                                left:50%;
+                                bottom: 0;
+                            }
+                        }
+                        .attack-line {
+                            height: 100px;
+                            border-bottom:2px solid #d0021b;
+                            span {
+                                color:#d0021b;
+                            }
+                        }
+                        .defense-line {
+                            height: 300px;
+                            border-bottom:2px solid #35aae6;
+                            span {
+                                color:#35aae6;
+                            }
+                        }
+                    }
+                    
+                }
+                .chart-m-b {
+                    .img-wrapper {
+                        position: relative;
+                        .half-field {
+                            margin-top:-3px;    
+                        }
+                        .shoot-times {
+                            width: 249px;
+                            height: 20px;
+                            line-height: 20px;
+                            padding-left: 12px;
+                            position: absolute;
+                            left:6px;
+                            font-size: 12px;
+                            span {
+                                margin-right:8px;
+                                font-weight: 600;
+                            }
+                        } 
+                        .penalty-area-in {
+                            bottom:35px;
+                        }
+                        .penalty-area-out {
+                            bottom:10px;
+                        }
+                        .penalty-area-num {
+                            position: absolute;
+                            left:50%;
+                            bottom:64px;
+                            margin-left:-20px;
+                            font-size: 12px;
+                            width:40px;
+                            text-align: center;
+                            font-weight: 600;
+                        }
+                        .penalty-in-wrapper {
+                            width: 141px;
+                            height: 56px;
+                            font-size: 12px;
+                            text-align: center;
+                            font-weight: 600;
+                            position: absolute;
+                            left:63px;
+                            top:1px;;
+                            .penalty-in-area1,.penalty-in-area2 {
+                                width: 39px;
+                                height: 56px;
+                                line-height: 56px;
+                            }
+                            .penalty-in-area3 {
+                                width: 63px;
+                                height: 56px;
+                                line-height: 56px;
+                                .penalty-in-area3-1 {
+                                    width: 63px;
+                                    height: 15px;
+                                    line-height: 15px;
+                                }
+                                .penalty-in-area3-2,.penalty-in-area3-3 {
+                                    width: 31px;
+                                    height: 40px;
+                                    line-height: 40px;
+                                }
+                            }
+                            
+                        }
+                    }
+                    
+                }
+            }
+            .chart-r {
+                width: 266px;
+                height:647px;
+                .chart-r-t {
+                    
+                    .img-wrapper {
+                        position: relative;
+                        margin-bottom:19px;
+                        .football-field2 {
+                            margin-top:-3px;                            
+                        }
+                        .ball-ctrl-per {
+                            width: 112px;
+                            height: 80px;
+                            position: absolute;
+                            left:139px;
+                            p {
+                                height:26px;
+                                line-height: 26px;
+                                padding:0 8px;
+                                font-size:12px;
+                                span {
+                                    font-weight: 600;
+                                }
+                            }
+                            p:first-child {
+                                color:#3bade7;
+                            }
+                        }
+                        .frontfield {
+                            top:23px;
+                            
+                        }
+                        .midfield {
+                            top:156px;
+                        }
+                        .backfield {
+                            top:290px;
+                        }
+                    }
+
+                }
+                .chart-r-b {
+                    .img-wrapper {
+                        position: relative;
+                        .half-field2 {
+                            margin-top:-3px;
+                        }
+                        .ball-ctrl-per-x {
+                            width: 70px;
+                            height: 80px;
+                            position: absolute;
+                            top:63px;
+                            p {
+                                height:26px;
+                                line-height: 26px;
+                                padding:0 5px;
+                                font-size:12px;
+                                span {
+                                    font-weight: 600;
+                                }
+                            }
+                            p:first-child {
+                                color:#3bade7;
+                            }
+                        }
+                        .leftfield {
+                            left:10px;
+                            
+                        }
+                        .centerfield {
+                            left:98px;
+                        }
+                        .rightfield {
+                            left:187px;
+                        }
+                    }
+                   
+                }
+            }
+        }
+    }
+    
+    .players-score {/*球员评分*/
+        width: 253px;
+        background-color: #fff;
+        .players-score-header {
+            height: 40px;
+            background-color: #4b5266;
+            line-height: 40px;
+            >p {
+                font-size:15px;
+                font-weight: 600;
+                color: #fff;
+                display: inline-block;
+                margin-left:19px;
+            }
+            >a {
+                width: 40px;
+                height: 16px;
+                line-height: 16px;
+                text-align: center;
+                background-color: #35aae6;
+                border-radius: 2px;
+                margin: 12px 15px 0 0;
+                color: #fff;
+                font-size:12px;
+            }
+        }
+        .players-list {
+            padding: 3px 15px 3px;
+            ul {
+                border-bottom:1px solid #4b5266;
+                li {
+                    >a {
+                        display: block;
+                        height: 40px;
+                        border-bottom:1px solid #e8e8e8;
+                        line-height: 40px;
+                        padding:0 9px 0 7px;
+                        font-size:14px;
+                        span {
+                            float:right;
+                            font-weight:700;
+                        }
+                    }
+                    
+                }
+                li:last-child {
+                    border-bottom: none;
+                }
+                li:hover {
+                    background-color: #ecf0f1;
+                }
+            }
+            ul:last-child {
+                border-bottom: none;
+            }
+        }
+    }
+    
+    .data-info-filter {/*比赛数据筛选*/
+        width: 930px;
+        .filter-condition {
+            background-color: #fff;
+            padding:0 50px 0 20px;
+            margin-bottom: 12px;
+            >.filter-c-row {
+                
+                line-height: 46px;
+                border-bottom:1px dashed #d8d8d8;
+                padding: 0 2px 0;
+                span {
+                    font-size:14px;
+                    font-weight: 600;
+                    display: inline-block;
+                    width: 102px;
+                }
+                a {
+                    margin-right:46px;
+                    font-size:13px;
+                }
+                a:hover {text-decoration:underline;} 
+                > ul {
+                    width: 680px;
+                    display: inline-block;
+                    >li {
+                        height: 46px;
+                    }
+                }
+                
+            }
+            >.filter-c-row:last-child {
+                border-bottom:none;
+            }
+            
+        }
+        .filter-result {
+            margin-bottom: 31px;    
+            .result-item {
+                .result-list {
+                    height: 68px;
+                    line-height: 68px;
+                    background-color: #fff;
+                    margin-bottom: 10px;
+                    .match-info {
+                        width: 538px;
+                        .match-round {
+                            font-size:14px;
+                            font-weight: 500;
+                            line-height: 14px;
+                            margin-left: 18px;
+                        }
+                        .match-name {
+                            font-size:18px;
+                            font-weight: 500;
+                            line-height: 18px;
+                            margin:12px 0 11px 18px;
+                        }
+                    }
+                    .match-data {
+                        margin-right:25px;
+                        >ul {
+                            >li {
+                                line-height: 40px;
+                                height: 40px;
+                                width: 96px;
+                                border-radius: 2px;
+                                margin-left:33px;
+                                margin-top: 14px;
+                                text-align: center;
+                                cursor: pointer;
+                                >img {                               
+                                    margin:8px 0 0 8px;
+                                }
+                                >span {
+                                    font-size:12px;
+                                    margin:15px 0 0 9px;
+                                    line-height: 12px;
+                                }
+                            }
+                            >li:hover {
+                                background-color: #ecf0f1;
+                            }
+                            >li:first-child {
+                                margin-left:0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+

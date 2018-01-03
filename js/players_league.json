@@ -1,0 +1,50 @@
+[
+    {
+        "num": 1,
+        "name": "一二三四五六七八九十一二",
+        "position": "前峰",
+        "matchCount": 2,
+        "matchTime": 90,
+        "goal": 1,
+        "xG": 2,
+        "assist": 3,
+        "keyPass": 3,
+        "pass": 4,
+        "passSuccessRate": 0.1,
+        "averageScore": 7,
+        "nearestFiveTimeAvScore": 8,
+        "league":"中超"
+    },
+    {
+        "num": 2,
+        "name": "一二三四五六七八九十一二",
+        "position": "前峰",
+        "matchCount": 3,
+        "matchTime": 100,
+        "goal": 1,
+        "xG": 3,
+        "assist": 5,
+        "keyPass": 7,
+        "pass": 9,
+        "passSuccessRate": 0.2,
+        "averageScore": 7.5,
+        "nearestFiveTimeAvScore": 6.6,
+        "league":"足协杯"
+    },
+    {
+        "num": 3,
+        "name": "一二三四五六七八九十一二",
+        "position": "前峰",
+        "matchCount": 5,
+        "matchTime": 80,
+        "goal": 3,
+        "xG": 5,
+        "assist": 8,
+        "keyPass": 4,
+        "pass": 7,
+        "passSuccessRate": 0.5,
+        "averageScore": 9,
+        "nearestFiveTimeAvScore": 7.8,
+        "league":"亚冠"
+    }
+]

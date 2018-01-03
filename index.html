@@ -1,0 +1,1700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>创冰首页</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/video.css">
+   
+</head>
+<body onselectstart="return false">
+    <!-- 页面头部 -->
+    <div class="header">
+        <div class="bx">
+            <div class="sdap-info clearfix">
+                <img class="logo f-l" src="images/logo.png" alt="logo" width="50px">
+                <p class="sdap-version f-l">
+                    创冰足球大师数据分析系统 SDAP
+                    <span class="version-num">&nbsp; v3.0.0.1</span>
+                </p>
+                <!-- 头部右侧 -->
+                <div class="header-right f-r clearfix">
+                    <ul class="clearfix">
+                        <li class="use-quit f-r">
+                            <a href="#">
+                                <span>登出</span> 
+                                <i></i>
+                            </a>
+                        </li>
+                        <li class="use-set f-r">
+                            <a href="#">
+                                <span>设置</span> 
+                                <i></i>
+                            </a>
+                        </li>
+                        </li>
+                        <li class="use-guide f-r">
+                            <a href="#">
+                                <span>说明</span> 
+                                <i></i>
+                            </a>
+                        </li>
+                        </li>
+                    </ul>
+                </div>
+            </div>           
+        </div>
+    </div>
+    <!-- 页面导航条 -->
+    <div class="nav-bar">
+        <div class="bx">
+            <ul class="clearfix">
+                <li class="f-l">
+                    <a class="select" href="javascript:;" name="index">首页</a>
+                </li>
+                <li class="f-l">
+                    <a href="javascript:;" name="video">视频分析</a>
+                </li>
+                <li class="f-l">
+                    <a href="javascript:;" name="data">数据报告</a>
+                </li>
+            </ul>
+        </div>
+       
+    </div> 
+    <!-- 公共球队导航样式 -->
+    <div class="team-nav">
+        <div class="bx clearfix">
+            <div class="team-row clearfix">
+                <div class="ourteam team-info f-l">
+                    <div class="team-wrapper">
+                        <p>本队</p>
+                        <div class="team-logo select">
+                            <img src="images/gzhd.png" alt=""   >
+                            <p>广州恒大淘宝</p>
+                        </div>
+                    </div>   
+                </div>
+                <div class="opponent team-info f-l">
+                    <div class="team-wrapper">
+                        <p>下轮对手</p>
+                        <div class="team-logo">
+                            <img src="images/gzhd.png" alt=""   >
+                            <p>广州恒大淘宝</p>
+                        </div>
+                    </div>   
+                </div>
+                <div class="other-team f-l">
+                    <div class="other-teams-wrapper">
+                        <p>联赛其他球队</p>
+                        <div class="select-bar clearfix">
+                            <div class="prev select-box f-l">
+                                <img class="prev-team" src="images/prevbtn.png" alt="" width="22">
+                            </div>
+                            <div class="scroll-box f-l clearfix" id="scrollbox">
+                                <div class="f-l clearfix" id="scroller">
+                                    <ul class="f-l clearfix">
+                                        <li class="f-l team-logo select">
+                                            <img src="images/gzhd.png" alt=""   >
+                                            <p>广州恒大淘宝</p>
+                                        </li>
+                                        <li class="f-l team-logo">
+                                            <img src="images/gzhd.png" alt=""   >
+                                            <p>广州恒大淘宝1</p>
+                                        </li>
+                                        <li class="f-l team-logo">
+                                            <img src="images/gzhd.png" alt=""   >
+                                            <p>广州恒大淘宝2</p>
+                                        </li>
+                                        <li class="f-l team-logo">
+                                            <img src="images/gzhd.png" alt=""   >
+                                            <p>广州恒大淘宝3</p>
+                                        </li>
+                                        <li class="f-l team-logo">
+                                            <img src="images/gzhd.png" alt=""   >
+                                            <p>广州恒大淘宝4</p>
+                                        </li>
+                                        <li class="f-l team-logo">
+                                            <img src="images/gzhd.png" alt=""   >
+                                            <p>广州恒大淘宝5</p>
+                                        </li>
+                                        <li class="f-l team-logo">
+                                            <img src="images/gzhd.png" alt=""   >
+                                            <p>广州恒大淘宝6</p>
+                                        </li>
+                                        <li class="f-l team-logo">
+                                            <img src="images/gzhd.png" alt=""   >
+                                            <p>广州恒大淘宝7</p>
+                                        </li>
+                                        <!-- <li class="f-l team-logo">
+                                            <img src="images/gzhd.png" alt=""   >
+                                            <p>广州恒大淘宝8</p>
+                                        </li>
+                                        -->
+                                    </ul>
+                                </div>  
+                            </div>
+
+                            <div class="next select-box f-r">
+                                <img class="next-team" src="images/nextbtn.png" alt="" width="22">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 分割线 以上为公共部分 -->
+        </div>         
+    </div>   
+
+    <div class="index-main main">
+        <div class="bx clearfix">
+            <div class="game-info f-l">
+                <div class="league-tab">
+                    <ul class="clearfix">
+                        <li class="f-l tab-selected">所有比赛</li>
+                        <li class="f-l">中超联赛</li>
+                        <li class="f-l">中超联赛</li>
+                        <li class="f-l">中超联赛</li>
+                    </ul>
+                </div>
+                <div class="game-info-body clearfix">
+                    <div class="chart-l f-l">
+                        <div class="chart-l-t">
+                            <p class="chart-title">表现分析</p>
+                            <div class="chart-body">
+                                <p class="best">在<span>中超联赛</span>中最佳</p>  
+                                <div class="bar-wrapper">
+                                    <div class="bar1 bar">                                      
+                                        <div class="team-num"></div>
+                                        <div class="average-num"></div>
+                                        <div class="hover-area" name="创造机会能力（xG）">
+                                            <span class="triangle hide"></span>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="bar2 bar">
+                                        <div class="team-num"></div>
+                                        <div class="average-num"></div>
+                                        <div class="hover-area" name="得分能力（xG-进球）">
+                                            <span class="triangle hide"></span>
+                                        </div>
+                                    </div>
+                                    <div class="bar3 bar">
+                                        <div class="team-num"></div>
+                                        <div class="average-num"></div>
+                                        <div class="hover-area" name="防守表现">
+                                            <span class="triangle hide"></span>
+                                        </div>
+                                    </div>
+                                    <div class="bar4 bar">
+                                        <div class="team-num"></div>
+                                        <div class="average-num"></div>
+                                        <div class="hover-area right" name="防守效果">
+                                            <span class="triangle hide"></span>
+                                        </div>
+                                    </div>
+                                    <div class="bar5 bar">
+                                        <div class="team-num"></div>
+                                        <div class="average-num"></div>
+                                        <div class="hover-area right" name="攻守转换表现">
+                                            <span class="triangle hide"></span>
+                                        </div>
+                                    </div>
+                                    <div class="bar6 bar">
+                                        <div class="team-num"></div>
+                                        <div class="average-num"></div>
+                                        <div class="hover-area right" name="个人表现">
+                                            <span class="triangle hide"></span>
+                                        </div>
+                                    </div>
+                                </div> 
+                                <p class="worst">在<span>中超联赛</span>中最差</p> 
+                                <div class="hover-tips clearfix hide">
+                                    <p class="category-name f-l">创造机会能力</p> 
+                                    <span class="f-r">--联赛平均</span>   
+                                    <div class="tip-box-m f-l">
+                                        <p>高于平均水平</p>
+                                        <p class="ranking">中超联赛<span>第4名</span></p>
+                                    </div>
+                                    <div class="wrapper clearfix f-l">
+                                        <div class="tip-box-b clearfix">
+                                                <div class="best-team f-l">
+                                                    <span>最佳</span>
+                                                    <p>广州恒大淘宝</p>
+                                                </div>
+                                                <div class="worst-team f-r">
+                                                    <span>最差</span>
+                                                    <p>贵州恒丰至诚</p>
+                                                </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>  
+                            </div> 
+                            <ul class="x-categories clearfix">
+                                <li>xG</li>
+                                <li>xG-进球</li>
+                                <li>防守表现</li>
+                                <li>防守效果</li>
+                                <li>攻守转换</li>
+                                <li>个人表现</li>
+                            </ul>                              
+
+                        </div>    
+                        <div class="chart-l-m">
+                            <p class="chart-title chart2">进失球时间段</p>
+                            <ul class="goal-num clearfix">
+                                <li>1</li>
+                                <li>10</li>
+                                <li>30</li>
+                                <li>15</li>
+                                <li>8</li>
+                                <li>11</li>
+                                <li>12</li>
+                                <li>10</li>
+                            </ul>
+                            <ul class="fumble-num clearfix">
+                                <li>1</li>
+                                <li>10</li>
+                                <li>30</li>
+                                <li>15</li>
+                                <li>8</li>
+                                <li>11</li>
+                                <li>12</li>
+                                <li>10</li>
+                            </ul>
+                            <ul class="time-section clearfix">
+                                <li>1-15</li>
+                                <li>16-30</li>
+                                <li>31-45</li>
+                                <li>45+</li>
+                                <li>46-60</li>
+                                <li>61-75</li>
+                                <li>76-90</li>
+                                <li>90+</li>
+                            </ul>
+                        </div>    
+                        <div class="chart-l-b">
+                            <p class="chart-title chart3">传球数据</p>
+                            <div id="chart-of-passball" class="chart-body clearfix" style="width: 325px;height:188px;"></div>
+                            <ul class="legend">
+                                <li>
+                                    <i></i><span>长传</span> 
+                                </li>
+                                <li>
+                                    <i></i><span>中传</span> 
+                                </li>
+                                <li>
+                                    <i></i><span>短传</span> 
+                                </li>
+                            </ul>
+                        </div>    
+                    </div>   
+                    <div class="chart-m f-l">
+                        <div class="chart-m-t">
+                            <p class="chart-title">防守与进攻</p>
+                            <div class="img-wrapper">
+                                <img src="images/football-field.png" alt="" width="266" class="football-field">
+                                <div class="attack-line line-box">
+                                    <p>进攻平均线=<span>39.1</span>米</p>
+                                </div>
+                                <div class="defense-line line-box">
+                                    <p>防守平均线=<span>39.1</span>米</p>
+                                </div>
+                            </div>                          
+                        </div>
+                        <div class="chart-m-b">
+                            <div class="img-wrapper">
+                                <img class="half-field" src="images/half-field.png" width="266" alt="" >
+                                <div class="penalty-in-wrapper clearfix">
+                                    <div class="penalty-in-area1 f-l">1</div>
+                                    <div class="penalty-in-area3 f-l clearfix">
+                                        <div class="penalty-in-area3-1 f-l">1</div>
+                                        <div class="penalty-in-area3-2 f-l">19</div>
+                                        <div class="penalty-in-area3-3 f-r">19</div>
+                                    </div>
+                                    <div class="penalty-in-area2 f-r">1</div>
+                                </div>
+                                <p class="penalty-area-num">20</p>     
+                                <p class="penalty-area-in shoot-times clearfix">禁区内射门<span class="f-r">41</span></p>
+                                <p class="penalty-area-out shoot-times clearfix">禁区外射门<span class="f-r">20</span></p>
+                            </div>
+                        </div>
+                    </div>   
+                    <div class="chart-r f-l">
+                        <div class="chart-r-t">
+                            <p class="chart-title clearfix">控球<span class="f-r">*统计联赛平均值</span></p>
+                            <div class="img-wrapper">
+                                <img src="images/football-field2.png" alt="" width="266" class="football-field2"> 
+                                <div class="ball-ctrl-per frontfield">
+                                    <p>前场控球比</p>    
+                                    <p>本队<span class="f-r">89%</span></p>    
+                                    <p>平均<span class="f-r">76%</span></p>    
+                                </div>                                   
+                                <div class="ball-ctrl-per midfield">
+                                    <p>中场场控球比</p>    
+                                    <p>本队<span class="f-r">89%</span></p>    
+                                    <p>平均<span class="f-r">76%</span></p>       
+                                </div>                                   
+                                <div class="ball-ctrl-per backfield">
+                                    <p>后场控球比</p>    
+                                    <p>本队<span class="f-r">89%</span></p>    
+                                    <p>平均<span class="f-r">76%</span></p>       
+                                </div>                                   
+                            </div>
+                           
+                        </div>
+                        <div class="chart-r-b">
+                            <div class="img-wrapper">
+                                <img class="half-field2" src="images/half-field2.png" width="266" alt="" >
+                                <div class="ball-ctrl-per-x leftfield">
+                                    <p>左路控球比</p>    
+                                    <p>本队<span class="f-r">89%</span></p>    
+                                    <p>平均<span class="f-r">76%</span></p>    
+                                </div>
+                                <div class="ball-ctrl-per-x centerfield">
+                                    <p>中路控球比</p>    
+                                    <p>本队<span class="f-r">89%</span></p>    
+                                    <p>平均<span class="f-r">76%</span></p>    
+                                </div>
+                                <div class="ball-ctrl-per-x rightfield">
+                                    <p>右路控球比</p>    
+                                    <p>本队<span class="f-r">89%</span></p>    
+                                    <p>平均<span class="f-r">76%</span></p>    
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>   
+                </div>
+            </div>
+
+            <div class="players-score f-r">
+                <div class="players-score-header clearfix">
+                    <p>球员评分</p>
+                    <a class="detail-score f-r" href="javascript:;" id="players-detial">详细</a>
+                </div>
+                <div class="players-list">
+                    <ul>
+                        <li><a href="personal_data.html">马丁内斯<span>12.5</span></a></li>
+                        <li><a href="personal_data.html">埃尔克森<span>12</span></a></li>
+                        <li><a href="personal_data.html">武磊<span>9.6</span></a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="personal_data.html">马丁内斯<span>12.5</span></a></li>
+                        <li><a href="personal_data.html">埃尔克森<span>12</span></a></li>
+                        <li><a href="personal_data.html">武磊<span>9.6</span></a></li>
+                        <li><a href="personal_data.html">马丁内斯<span>12.5</span></a></li>
+                        <li><a href="personal_data.html">埃尔克森<span>12</span></a></li>
+                        <li><a href="personal_data.html">武磊<span>9.6</span></a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="personal_data.html">马丁内斯<span>12.5</span></a></li>
+                        <li><a href="personal_data.html">埃尔克森<span>12</span></a></li>
+                        <li><a href="personal_data.html">武磊<span>9.6</span></a></li>
+                        <li><a href="personal_data.html">马丁内斯<span>12.5</span></a></li>
+                        <li><a href="personal_data.html">埃尔克森<span>12</span></a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="personal_data.html">马丁内斯<span>12.5</span></a></li>
+                        <li><a href="personal_data.html">埃尔克森<span>12</span></a></li>
+                        <li><a href="personal_data.html">武磊<span>9.6</span></a></li>
+                        <li><a href="personal_data.html">马丁内斯<span>12.5</span></a></li>
+                        <li><a href="personal_data.html">埃尔克森<span>12</span></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="data-info-filter f-l">
+                <div class="filter-condition">
+
+                        <div id="season-filter" class="filter-c-row clearfix">
+                            <span class="f-l">赛季：</span>
+                            <a class="f-l active all" href="javascript:;">所有</a>
+                            <ul class="f-l clearfix">
+                                <li class="f-l"><a href="javascript:;">2017-2018</a></li>
+                                <li class="f-l"><a href="javascript:;">2017-2018</a></li>
+                                <li class="f-l"><a href="javascript:;">2017-2018</a></li>
+                                <li class="f-l"><a href="javascript:;">2017-2018</a></li>
+                                <li class="f-l"><a href="javascript:;">2017-2018</a></li>
+                                <li class="f-l"><a href="javascript:;">2017-2018</a></li>
+                                <li class="f-l"><a href="javascript:;">2017-2018</a></li>
+                                <li class="f-l"><a href="javascript:;">2017-2018</a></li>
+                                <li class="f-l"><a href="javascript:;">2017-2018</a></li>
+                            </ul>
+                        </div>
+                        <div id="match-filter" class="filter-c-row clearfix">
+                            <span class="f-l">赛事：</span>
+                            <a class="f-l active all" href="javascript:;">所有</a>
+                            <ul class="f-l clearfix">
+                                <li class="f-l"><a href="javascript:;">英超联赛</a></li>
+                                <li class="f-l"><a href="javascript:;">欧冠联赛</a></li>
+                                <li class="f-l"><a href="javascript:;">足总杯</a></li>
+                                <li class="f-l"><a href="javascript:;">联赛杯</a></li>
+              
+                            </ul>
+                        </div>
+                        <div id="home-and-away-filter" class="filter-c-row clearfix">
+                            <span class="f-l">主客场：</span>
+                            <a class="f-l active all" href="javascript:;">所有</a>
+                            <ul class="f-l clearfix">
+                                <li class="f-l"><a href="javascript:;">主场</a></li>
+                                <li class="f-l"><a href="javascript:;">客场</a></li>
+        
+                            </ul>
+                        </div>
+                        <div id="record-filter" class="filter-c-row clearfix">
+                            <span class="f-l">战绩：</span>
+                            <a class="f-l active all" href="javascript:;">所有</a>
+                            <ul class="f-l clearfix">
+                                <li class="f-l"><a href="javascript:;">胜</a></li>
+                                <li class="f-l"><a href="javascript:;">平</a></li>
+                                <li class="f-l"><a href="javascript:;">负</a></li>
+                                
+                            </ul>
+                        </div>
+                    
+                </div>
+
+                <div class="filter-result">
+                    <ul class="result-item">
+                        <li class="result-list clearfix">
+                            <div class="match-info f-l">
+                                <p class="match-name">切尔西6-1曼彻斯特联队</p>
+                                <p class="match-round">2017-06-12 英超联赛第32轮</p>
+                            </div>
+                            <div class="match-data f-r">
+                                <ul class="clearfix">
+                                    <li class="f-l report clearfix">
+                                        <img class="f-l" src="images/report.png" alt="" width="24">
+                                        <span class="f-l">下载报告</span>
+                                    </li>
+                                    <li class="f-l details clearfix">
+                                        <img class="f-l" src="images/details.png" alt="" width="24">
+                                        <span class="f-l">比赛详情</span>
+                                    </li>
+                                    <li class="f-l all-goals clearfix">
+                                        <img class="f-l" src="images/all-goals.png" alt="" width="24">
+                                        <span class="f-l">所有进球</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="result-list clearfix">
+                            <div class="match-info f-l">
+                                <p class="match-name">切尔西6-1曼彻斯特联队</p>
+                                <p class="match-round">2017-06-12 英超联赛第32轮</p>
+                            </div>
+                            <div class="match-data f-r">
+                                <ul class="clearfix">
+                                    <li class="f-l report clearfix">
+                                        <img class="f-l" src="images/report.png" alt="" width="24">
+                                        <span class="f-l">下载报告</span>
+                                    </li>
+                                        <li class="f-l details clearfix">
+                                        <img class="f-l" src="images/details.png" alt="" width="24">
+                                        <span class="f-l">比赛详情</span>
+                                    </li>
+                                    <li class="f-l all-goals clearfix">
+                                        <img class="f-l" src="images/all-goals.png" alt="" width="24">
+                                        <span class="f-l">所有进球</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="result-list clearfix">
+                            <div class="match-info f-l">
+                                <p class="match-name">切尔西6-1曼彻斯特联队</p>
+                                <p class="match-round">2017-06-12 英超联赛第32轮</p>
+                            </div>
+                            <div class="match-data f-r">
+                                <ul class="clearfix">
+                                    <li class="f-l report clearfix">
+                                        <img class="f-l" src="images/report.png" alt="" width="24">
+                                        <span class="f-l">下载报告</span>
+                                    </li>
+                                    <li class="f-l details clearfix">
+                                        <img class="f-l" src="images/details.png" alt="" width="24">
+                                        <span class="f-l">比赛详情</span>
+                                    </li>
+                                    <li class="f-l all-goals clearfix">
+                                        <img class="f-l" src="images/all-goals.png" alt="" width="24">
+                                        <span class="f-l">所有进球</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="result-list clearfix">
+                            <div class="match-info f-l">
+                                <p class="match-name">切尔西6-1曼彻斯特联队</p>
+                                <p class="match-round">2017-06-12 英超联赛第32轮</p>
+                            </div>
+                            <div class="match-data f-r">
+                                <ul class="clearfix">
+                                    <li class="f-l report clearfix">
+                                        <img class="f-l" src="images/report.png" alt="" width="24">
+                                        <span class="f-l">下载报告</span>
+                                    </li>
+                                    <li class="f-l details clearfix">
+                                        <img class="f-l" src="images/details.png" alt="" width="24">
+                                        <span class="f-l">比赛详情</span>
+                                    </li>
+                                    <li class="f-l all-goals clearfix">
+                                        <img class="f-l" src="images/all-goals.png" alt="" width="24">
+                                        <span class="f-l">所有进球</span>
+                                    </li>
+                                </ul>
+                            </div>  
+                        </li>
+                        <li class="result-list clearfix">
+                            <div class="match-info f-l">
+                                <p class="match-name">切尔西6-1曼彻斯特联队</p>
+                                <p class="match-round">2017-06-12 英超联赛第32轮</p>
+                            </div>
+                            <div class="match-data f-r">
+                                <ul class="clearfix">
+                                    <li class="f-l report clearfix">
+                                        <img class="f-l" src="images/report.png" alt="" width="24">
+                                        <span class="f-l">下载报告</span>
+                                    </li>
+                                    <li class="f-l details clearfix">
+                                        <img class="f-l" src="images/details.png" alt="" width="24">
+                                        <span class="f-l">比赛详情</span>
+                                    </li>
+                                    <li class="f-l all-goals clearfix">
+                                        <img class="f-l" src="images/all-goals.png" alt="" width="24">
+                                        <span class="f-l">所有进球</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="filter-pagination">
+                    <button class="prev-page"><</button>
+                    <ul class="pagination-bar clearfix">
+                     
+                        <li class="page-item f-l select">1</li>
+                        <li class="page-item f-l">2</li>
+                        <li class="page-item f-l">3</li>
+                        <li class="page-item f-l">4</li>
+                        <li class="page-item f-l">5</li>
+                        <li class="page-item f-l">6</li>
+                        <li class="page-item f-l">...</li>
+                        <li class="page-item f-l">31</li>
+                                           
+                    </ul>
+                    <button class="next-page">></button>
+                </div>
+
+
+            </div>
+
+        </div>  
+    </div>
+
+    <div class="video-main main hide">
+        <div class="bx clearfix">
+            <div class="video-analyze">
+                <div class="video-tab">
+                    <ul class="clearfix">
+                        <li class="f-l tab-selected" name="match-analyze">比赛分析</li>
+                        <li class="f-l" name="event-analyze">事件分析</li>
+                        <li class="f-l" name="players-analyze">球员分析</li>
+                    </ul>
+                </div>
+        
+                <!-- 比赛分析模块 -->
+                <div class="match-analyze video-info-body clearfix">
+                    <div class="video-info-left f-l">
+                        <div class="game-module">
+                            <div class="module-title clearfix">比赛
+                                <div class="filter-btn">筛选
+                                    <ul class="filter-btn-selectbox hide">
+                                        <li class="f-l select">所有比赛</li>
+                                        <li class="f-l">有视频</li>
+                                        <li class="f-l">无视频</li>
+                                    </ul>
+                                </div>
+                                <div class="filter-search f-r clearfix">
+                                    <img src="images/search2.png" alt="" width="14">
+                                    <div class="search-box f-r">
+                                        <input type="text">
+                                        <img class="cancel-search" src="images/cancel1.png" width="12" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container">
+                                <ul class="match-video-list clearfix">
+                                    <li class="item f-l">
+                                        <i class="camera f-l"><img src="images/all-goals.png" alt="" width="24"></i>
+                                        <div>
+                                            <p class="match-name">切尔西6-1曼彻斯特联队</p>
+                                            <p class="match-round">2017赛季-英超联赛第32轮</p>
+                                        </div>
+                                        <i class="detail f-r"><img src="images/video-detail.png" width="15" alt=""></i>
+                                        <i class="download-pdf f-r"><img src="images/video-pdf.png" width="17" alt=""></i>
+                                    </li>
+                                    <li class="item f-l">
+                                        <i class="camera f-l"><img src="images/all-goals.png" alt="" width="24"></i>
+                                        <div>
+                                            <p class="match-name">切尔西6-1曼彻斯特联队</p>
+                                            <p class="match-round">2017赛季-英超联赛第32轮</p>
+                                        </div>
+                                        <i class="detail f-r"><img src="images/video-detail.png" width="15" alt=""></i>
+                                        <i class="download-pdf f-r"><img src="images/video-pdf.png" width="17" alt=""></i>
+                                    </li>
+                                    <li class="item f-l">
+                                        <i class="camera f-l"><img src="images/all-goals.png" alt="" width="24"></i>
+                                        <div>
+                                            <p class="match-name">切尔西6-1曼彻斯特联队</p>
+                                            <p class="match-round">2017赛季-英超联赛第32轮</p>
+                                        </div>
+                                        <i class="detail f-r"><img src="images/video-detail.png" width="15" alt=""></i>
+                                        <i class="download-pdf f-r"><img src="images/video-pdf.png" width="17" alt=""></i>
+                                    </li>
+                                    <li class="item f-l">
+                                        <i class="camera f-l"><img src="images/all-goals.png" alt="" width="24"></i>
+                                        <div>
+                                            <p class="match-name">切尔西6-1曼彻斯特联队</p>
+                                            <p class="match-round">2017赛季-英超联赛第32轮</p>
+                                        </div>
+                                        <i class="detail f-r"><img src="images/video-detail.png" width="15" alt=""></i>
+                                        <i class="download-pdf f-r"><img src="images/video-pdf.png" width="17" alt=""></i>
+                                    </li>
+                                    <li class="item f-l">
+                                        <i class="camera f-l"><img src="images/all-goals.png" alt="" width="24"></i>
+                                        <div>
+                                            <p class="match-name">切尔西6-1曼彻斯特联队</p>
+                                            <p class="match-round">2017赛季-英超联赛第32轮</p>
+                                        </div>
+                                        <i class="detail f-r"><img src="images/video-detail.png" width="15" alt=""></i>
+                                        <i class="download-pdf f-r"><img src="images/video-pdf.png" width="17" alt=""></i>
+                                    </li>
+                                    <li class="item f-l">
+                                        <i class="camera f-l"><img src="images/all-goals.png" alt="" width="24"></i>
+                                        <div>
+                                            <p class="match-name">切尔西6-1曼彻斯特联队</p>
+                                            <p class="match-round">2017赛季-英超联赛第32轮</p>
+                                        </div>
+                                        <i class="detail f-r"><img src="images/video-detail.png" width="15" alt=""></i>
+                                        <i class="download-pdf f-r"><img src="images/video-pdf.png" width="17" alt=""></i>
+                                    </li>
+                                    
+                                </ul>
+                                <div class="pagination">
+                                    <button class="prev-btn"><img src="images/prev-page.png"  width="14" alt=""></button>
+                                    <p><span>0</span>/<span>0</span></p>
+                                    <button class="next-btn"><img src="images/next-page.png"  width="14" alt=""></button>
+                                </div>
+                            </div>
+                            <hr />
+                        </div>    
+                        <div class="events-module">
+                            <p class="module-title">事件</p>
+                            <ul class="event-list clearfix">
+                                <li class="event-item f-l">
+                                    <i class="f-l"><img src="images/all-goals.png" height="25" alt=""></i>
+                                    <p class="f-l">对手危险传球</p>
+                                </li>
+                                <li class="event-item f-l">
+                                    <i class="f-l"><img src="images/all-goals.png" height="25" alt=""></i>
+                                    <p class="f-l">对手危险传球</p>
+                                </li>
+                                <li class="event-item f-l">
+                                    <i class="f-l"><img src="images/all-goals.png" height="25" alt=""></i>
+                                    <p class="f-l">对手危险传球</p>
+                                </li>
+                                <li class="event-item f-l">
+                                    <i class="f-l"><img src="images/all-goals.png" height="25" alt=""></i>
+                                    <p class="f-l">对手危险传球</p>
+                                </li>
+                                <li class="event-item f-l">
+                                    <i class="f-l"><img src="images/all-goals.png" height="25" alt=""></i>
+                                    <p class="f-l">对手危险传球</p>
+                                </li>
+                                <li class="event-item f-l">
+                                    <i class="f-l"><img src="images/all-goals.png" height="25" alt=""></i>
+                                    <p class="f-l">对手危险传球</p>
+                                </li>
+                                <li class="event-item f-l">
+                                    <i class="f-l"><img src="images/all-goals.png" height="25" alt=""></i>
+                                    <p class="f-l">对手危险传球</p>
+                                </li>
+                                <li class="event-item f-l">
+                                    <i class="f-l"><img src="images/all-goals.png" height="25" alt=""></i>
+                                    <p class="f-l">对手危险传球</p>
+                                </li>
+                                <li class="event-item f-l">
+                                    <i class="f-l"><img src="images/all-goals.png" height="25" alt=""></i>
+                                    <p class="f-l">对手危险传球</p>
+                                </li>
+                                <li class="event-item f-l">
+                                    <i class="f-l"><img src="images/all-goals.png" height="25" alt=""></i>
+                                    <p class="f-l">对手危险传球</p>
+                                </li>
+                                <li class="event-item f-l">
+                                    <i class="f-l"><img src="images/all-goals.png" height="25" alt=""></i>
+                                    <p class="f-l">对手危险传球</p>
+                                </li>
+                                <li class="event-item f-l">
+                                    <i class="f-l"><img src="images/all-goals.png" height="25" alt=""></i>
+                                    <p class="f-l">对手危险传球</p>
+                                </li>
+                                
+                            </ul>
+                        </div>                    
+                    </div>
+                    <div class="video-info-center f-l">
+                        <div class="playback-module">
+                            <p class="module-title clearfix">广州恒大淘宝
+                                <span class="screenshot f-r">截图</span>
+                            </p>
+                            <div class="container">
+                                <div class="video-box">
+                                    <!-- <video src="">比赛视频</video> -->
+                                    <img src="images/video.png" alt="">
+                                </div>
+                                <div class="time-quantum">
+                                    <ul class="clearfix">
+                                        <li class="time-list f-l">
+                                            <b>1</b>
+                                            <p>比洛-进球-27：58</p>
+                                            <input type="checkbox" class="checkbox f-r">
+                                            <i class="f-r"><img src="images/video-download.png" width="7" alt=""></i>
+                                        </li>
+                                        <li class="time-list f-l">
+                                            <b>1</b>
+                                            <p>比洛-进球-27：58</p>
+                                            <input type="checkbox" class="checkbox f-r">
+                                            <i class="f-r"><img src="images/video-download.png" width="7" alt=""></i>
+                                        </li>
+                                        <li class="time-list f-l">
+                                            <b>1</b>
+                                            <p>比洛-进球-27：58</p>
+                                            <input type="checkbox" class="checkbox f-r">
+                                            <i class="f-r"><img src="images/video-download.png" width="7" alt=""></i>
+                                        </li>
+                                        <li class="time-list f-l">
+                                            <b>1</b>
+                                            <p>比洛-进球-27：58</p>
+                                            <input type="checkbox" class="checkbox f-r">
+                                            <i class="f-r"><img src="images/video-download.png" width="7" alt=""></i>
+                                        </li>
+                                        <li class="time-list f-l">
+                                            <b>1</b>
+                                            <p>比洛-进球-27：58</p>
+                                            <input type="checkbox" class="checkbox f-r">
+                                            <i class="f-r"><img src="images/video-download.png" width="7" alt=""></i>
+                                        </li>
+                                        
+                                    </ul>
+                                    <div class="pagination clearfix">
+                                        <button class="prev-btn"><img src="images/prev-page.png"  width="14" alt=""></button>
+                                        <p><span>0</span>/<span>0</span></p>
+                                        <button class="next-btn"><img src="images/next-page.png"  width="14" alt=""></button>
+                                        <span class="download-selected f-r">下载</span>
+                                        <span class="select-all f-r">全选</span>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video-info-right f-l">
+                        <div class="match-result">
+                            <p class="module-title clearfix">
+                                <a href="match.html" class="linkto-details f-r">查看详情</a>
+                            </p>
+                            <div class="container">
+                                <div class="information-details">
+                                    <div class="against-teams clearfix">
+                                        <div class="team-profile f-l">
+                                            <div class="team-logo">
+                                                <img src="images/gzhd.png" alt="">
+                                            </div>
+                                            <h5 class="team-name">广州恒大淘宝</h5>
+                                        </div>
+                                        <div class="against-time f-l">
+                                            <div>
+                                                <p>2017-09-02</p>
+                                                <p>19:30</p>
+                                                <p>2017赛季中超联赛</p>
+                                                <p>第20轮</p>
+                                            </div>
+                                        </div>
+                                        <div class="team-profile f-r">
+                                            <div class="team-logo">
+                                                <img src="images/gzhd.png" alt="">
+                                            </div>
+                                            <h5 class="team-name">广州恒大淘宝</h5>
+                                        </div>
+                                    </div>
+                                    <p class="against-score">
+                                        <b class="home-score f-l">4<span>(6)</span></b>
+                                        <span class="finish-or-not f-l">已完赛</span>
+                                        <b class="away-score f-r"><span>(7)</span>3</b>
+                                    </p>
+
+                                    <div class="data-type-tab">
+                                        <ul class="clearfix">
+                                            <li class="f-l type-selected">
+                                                <a href="javascript:;">基本</a>
+                                                <b class="triangle"></b>
+                                            </li>
+                                            <li class="f-l">
+                                                <a href="javascript:;">进攻</a>
+                                                <b class="triangle"></b>
+                                            </li>
+                                            <li class="f-l">
+                                                <a href="javascript:;">防守</a>
+                                                <b class="triangle"></b>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="data-details">
+                                        <p class="data-title">控球率</p>
+                                        <div class="data-bar clearfix">
+                                            <span class="data-text f-l">51%</span>
+                                            <div class="bar">
+                                                <div class="bar-per" style="width:51%;"></div>
+                                            </div>
+                                            <span class="data-text f-r">49%</span>
+                                        </div>
+                                        <p class="data-title">射门</p>
+                                        <div class="data-bar clearfix">
+                                            <span class="data-text f-l">60</span>
+                                            <div class="bar">
+                                                <div class="bar-per" style="width:60%;"></div>
+                                            </div>
+                                            <span class="data-text f-r">40</span>
+                                        </div>
+                                        <p class="data-title">射正</p>
+                                        <div class="data-bar clearfix">
+                                            <span class="data-text f-l">35</span>
+                                            <div class="bar">
+                                                <div class="bar-per" style="width:70%;"></div>
+                                            </div>
+                                            <span class="data-text f-r">15</span>
+                                        </div>
+                                        <p class="data-title">红黄牌</p>
+                                        <div class="data-bar clearfix">
+                                            <span class="data-text f-l">10</span>
+                                            <div class="bar">
+                                                <div class="bar-per" style="width:40%;"></div>
+                                            </div>
+                                            <span class="data-text f-r">15</span>
+                                        </div>
+                                        <p class="data-title">犯规</p>
+                                        <div class="data-bar clearfix">
+                                            <span class="data-text f-l">7</span>
+                                            <div class="bar">
+                                                <div class="bar-per" style="width:70%;"></div>
+                                            </div>
+                                            <span class="data-text f-r">3</span>
+                                        </div>
+                                        <p class="data-title">射门成功率</p>
+                                        <div class="data-bar clearfix">
+                                            <span class="data-text f-l">60%</span>
+                                            <div class="bar">
+                                                <div class="bar-per" style="width:60%;"></div>
+                                            </div>
+                                            <span class="data-text f-r">40%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    
+        
+
+                <!-- 事件分析模块 -->
+                <div class="event-analyze video-info-body clearfix hide">
+                    <div class="video-info-left f-l">
+                        <div class="events-module">
+                            <p class="module-title">事件</p>
+                            <ul class="event-list clearfix">
+                                <li class="event-item f-l">
+                                    <i class="f-l"><img src="images/all-goals.png" height="25" alt=""></i>
+                                    <p class="f-l">对手危险传球</p>
+                                </li>
+                                <li class="event-item f-l">
+                                    <i class="f-l"><img src="images/all-goals.png" height="25" alt=""></i>
+                                    <p class="f-l">对手危险传球</p>
+                                </li>
+                                <li class="event-item f-l">
+                                    <i class="f-l"><img src="images/all-goals.png" height="25" alt=""></i>
+                                    <p class="f-l">对手危险传球</p>
+                                </li>
+                                <li class="event-item f-l">
+                                    <i class="f-l"><img src="images/all-goals.png" height="25" alt=""></i>
+                                    <p class="f-l">对手危险传球</p>
+                                </li>
+                                <li class="event-item f-l">
+                                    <i class="f-l"><img src="images/all-goals.png" height="25" alt=""></i>
+                                    <p class="f-l">对手危险传球</p>
+                                </li>
+                                <li class="event-item f-l">
+                                    <i class="f-l"><img src="images/all-goals.png" height="25" alt=""></i>
+                                    <p class="f-l">对手危险传球</p>
+                                </li>
+                                <li class="event-item f-l">
+                                    <i class="f-l"><img src="images/all-goals.png" height="25" alt=""></i>
+                                    <p class="f-l">对手危险传球</p>
+                                </li>
+                                <li class="event-item f-l">
+                                    <i class="f-l"><img src="images/all-goals.png" height="25" alt=""></i>
+                                    <p class="f-l">对手危险传球</p>
+                                </li>
+                                <li class="event-item f-l">
+                                    <i class="f-l"><img src="images/all-goals.png" height="25" alt=""></i>
+                                    <p class="f-l">对手危险传球</p>
+                                </li>
+                                <li class="event-item f-l">
+                                    <i class="f-l"><img src="images/all-goals.png" height="25" alt=""></i>
+                                    <p class="f-l">对手危险传球</p>
+                                </li>
+                                <li class="event-item f-l">
+                                    <i class="f-l"><img src="images/all-goals.png" height="25" alt=""></i>
+                                    <p class="f-l">对手危险传球</p>
+                                </li>
+                                <li class="event-item f-l">
+                                    <i class="f-l"><img src="images/all-goals.png" height="25" alt=""></i>
+                                    <p class="f-l">对手危险传球</p>
+                                </li>
+                                
+                            </ul>
+                            <hr />  
+                        </div>   
+                        <div class="game-module">
+                            <p class="module-title clearfix">比赛
+                                
+                                <span class="filter-search f-r"><img src="images/search1.png" alt="" width="14"></span>
+                            </p>
+                            <div class="container">
+                                <ul class="match-video-list clearfix">
+                                    <li class="item f-l">
+                                        <i class="camera f-l"><img src="images/all-goals.png" alt="" width="24"></i>
+                                        <div>
+                                            <p class="match-name">切尔西6-1曼彻斯特联队</p>
+                                            <p class="match-round">2017赛季-英超联赛第32轮</p>
+                                        </div>
+                                    </li>
+                                    <li class="item f-l">
+                                        <i class="camera f-l"><img src="images/all-goals.png" alt="" width="24"></i>
+                                        <div>
+                                            <p class="match-name">切尔西6-1曼彻斯特联队</p>
+                                            <p class="match-round">2017赛季-英超联赛第32轮</p>
+                                        </div>
+                                    </li>
+                                    <li class="item f-l">
+                                        <i class="camera f-l"><img src="images/all-goals.png" alt="" width="24"></i>
+                                        <div>
+                                            <p class="match-name">切尔西6-1曼彻斯特联队</p>
+                                            <p class="match-round">2017赛季-英超联赛第32轮</p>
+                                        </div>
+                                    </li>
+                                    <li class="item f-l">
+                                        <i class="camera f-l"><img src="images/all-goals.png" alt="" width="24"></i>
+                                        <div>
+                                            <p class="match-name">切尔西6-1曼彻斯特联队</p>
+                                            <p class="match-round">2017赛季-英超联赛第32轮</p>
+                                        </div>
+                                    </li>
+                                    <li class="item f-l">
+                                        <i class="camera f-l"><img src="images/all-goals.png" alt="" width="24"></i>
+                                        <div>
+                                            <p class="match-name">切尔西6-1曼彻斯特联队</p>
+                                            <p class="match-round">2017赛季-英超联赛第32轮</p>
+                                        </div>
+                                    </li>
+                                    <li class="item f-l">
+                                        <i class="camera f-l"><img src="images/all-goals.png" alt="" width="24"></i>
+                                        <div>
+                                            <p class="match-name">切尔西6-1曼彻斯特联队</p>
+                                            <p class="match-round">2017赛季-英超联赛第32轮</p>
+                                        </div>
+                                    </li>
+                                    
+                                </ul>
+                                <div class="pagination">
+                                    <button class="prev-btn"><img src="images/prev-page.png"  width="14" alt=""></button>
+                                    <p><span>0</span>/<span>0</span></p>
+                                    <button class="next-btn"><img src="images/next-page.png"  width="14" alt=""></button>
+                                    <span id="cancel" class="select-all f-r">取消</span> 
+                                    <span id="multiple" class="download-selected f-r select">多选</span>
+
+                                </div>
+                            </div>
+                        </div>    
+                    
+                    </div>
+                    <div class="video-info-center f-l">
+                        <div class="playback-module">
+                            <p class="module-title clearfix">广州恒大淘宝
+                                <span class="screenshot f-r">截图</span>
+                            </p>
+                            <div class="container">
+                                <div class="video-box">
+                                    <!-- <video src="">比赛视频</video> -->
+                                    <img src="images/video.png" alt="">
+                                </div>
+                                <div class="time-quantum">
+                                    <ul class="clearfix">
+                                        <li class="time-list f-l">
+                                            <b>1</b>
+                                            <p>比洛-进球-27：58</p>
+                                            <input type="checkbox" class="checkbox f-r">
+                                            <i class="f-r"><img src="images/video-download.png" width="7" alt=""></i>
+                                        </li>
+                                        <li class="time-list f-l">
+                                            <b>1</b>
+                                            <p>比洛-进球-27：58</p>
+                                            <input type="checkbox" class="checkbox f-r">
+                                            <i class="f-r"><img src="images/video-download.png" width="7" alt=""></i>
+                                        </li>
+                                        <li class="time-list f-l">
+                                            <b>1</b>
+                                            <p>比洛-进球-27：58</p>
+                                            <input type="checkbox" class="checkbox f-r">
+                                            <i class="f-r"><img src="images/video-download.png" width="7" alt=""></i>
+                                        </li>
+                                        <li class="time-list f-l">
+                                            <b>1</b>
+                                            <p>比洛-进球-27：58</p>
+                                            <input type="checkbox" class="checkbox f-r">
+                                            <i class="f-r"><img src="images/video-download.png" width="7" alt=""></i>
+                                        </li>
+                                        <li class="time-list f-l">
+                                            <b>1</b>
+                                            <p>比洛-进球-27：58</p>
+                                            <input type="checkbox" class="checkbox f-r">
+                                            <i class="f-r"><img src="images/video-download.png" width="7" alt=""></i>
+                                        </li>
+                                        
+                                    </ul>
+                                    <div class="pagination clearfix">
+                                        <button class="prev-btn"><img src="images/prev-page.png"  width="14" alt=""></button>
+                                        <p><span>0</span>/<span>0</span></p>
+                                        <button class="next-btn"><img src="images/next-page.png"  width="14" alt=""></button>
+                                        <span class="download-selected f-r">下载</span>
+                                        <span class="select-all f-r">全选</span>  
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video-info-right f-l">
+                        <div class="match-result">
+                            <p class="module-title clearfix">
+                                <!-- <span class="linkto-details f-r">查看详情</span> -->
+                                <!-- 此模块没有标题名，点位 -->
+                            </p>
+                            <div class="container">
+                                <div class="coaching-board">
+                                    <img src="images/coaching-board.png" width="237" alt="">
+                                    <!-- <div class="select-area-box clearfix">
+                                        <ul class="clearfix f-l">
+                                            <li class="f-l"></li>
+                                            <li class="f-l"></li>
+                                            <li class="f-l"></li>
+                                            <li class="f-l"></li>
+                                        </ul>
+                                        <ul class="clearfix f-l">
+                                            <li class="f-l"></li>
+                                            <li class="f-l"></li>
+                                            <li class="f-l"></li>
+                                            <li class="f-l"></li>
+                                        </ul>
+                                        <ul class="clearfix f-l">
+                                            <li class="f-l"></li>
+                                            <li class="f-l"></li>
+                                            <li class="f-l"></li>
+                                            <li class="f-l"></li>
+                                        </ul>
+                                        <ul class="clearfix f-l">
+                                            <li class="f-l"></li>
+                                            <li class="f-l"></li>
+                                            <li class="f-l"></li>
+                                            <li class="f-l"></li>
+                                        </ul>
+                                        <ul class="clearfix f-l">
+                                            <li class="f-l"></li>
+                                            <li class="f-l"></li>
+                                            <li class="f-l"></li>
+                                            <li class="f-l"></li>
+                                        </ul>
+                                        <ul class="clearfix f-l">
+                                            <li class="f-l"></li>
+                                            <li class="f-l"></li>
+                                            <li class="f-l"></li>
+                                            <li class="f-l"></li>
+                                        </ul>
+                                        
+                                    </div> -->
+                                </div>
+                                <div class="area-filter">
+                                    <div class="area-filter-box event-start">
+                                        <p>选择事件发生区域</p>
+                                        <ul class="area-start clearfix">
+                                            <li class="all select"></li>
+                                            <li class="left"></li>
+                                            <li class="right"></li>
+                                            <li class="center"></li>
+                                            <li></li>
+                                            <li class="top"></li>
+                                            <li class="bottom"></li>
+                                            <li class="middle"></li>
+                                        </ul>
+                                    </div>
+                                    <div class="area-filter-box event-end disabled">
+                                        <p>选择事件结束区域</p>
+                                        <ul class="area-start clearfix">
+                                            <li class="all select"></li>
+                                            <li class="left"></li>
+                                            <li class="right"></li>
+                                            <li class="center"></li>
+                                            <li></li>
+                                            <li class="top"></li>
+                                            <li class="bottom"></li>
+                                            <li class="middle"></li>
+                                        </ul>
+                                    </div>
+            
+                                </div>
+                                <!-- <ul class="select-area clearfix">
+                                    <li><a class="choose-area" href="javascript:;">选区</a></li>
+                                    <li><a class="play-video" href="javascript:;">播放</a></li>
+                                    <li><a class="download-video" href="javascript:;">下载</a></li>
+                                </ul> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 球员分析模块 -->
+                <div class="players-analyze video-info-body clearfix hide">
+                    <div class="video-info-left f-l">
+                        <div class="game-module">
+                            <p class="module-title clearfix">球员</p>
+                            <div class="container players-container">
+                                <ul class="player-list clearfix">
+                                    <li>
+                                        <img src="images/avatar.png" alt="">
+                                        <p class="player-name">罗杰 马尔丁斯</p>
+                                    </li>
+                                    <li>
+                                        <img src="images/avatar.png" alt="">
+                                        <p class="player-name">罗杰 马尔丁斯</p>
+                                    </li>
+                                    <li>
+                                        <img src="images/avatar.png" alt="">
+                                        <p class="player-name">罗杰 马尔丁斯</p>
+                                    </li>
+                                    <li>
+                                        <img src="images/avatar.png" alt="">
+                                        <p class="player-name">罗杰 马尔丁斯</p>
+                                    </li>
+                                    <li>
+                                        <img src="images/avatar.png" alt="">
+                                        <p class="player-name">罗杰 马尔丁斯</p>
+                                    </li>
+                                    <li>
+                                        <img src="images/avatar.png" alt="">
+                                        <p class="player-name">罗杰 马尔丁斯</p>
+                                    </li>
+                                </ul>
+                                <hr />
+                            </div>
+                        </div>
+                            
+                        <div class="events-module">
+                            <p class="module-title">事件</p>
+                            <ul class="event-list clearfix">
+                                <li class="event-item f-l">
+                                    <i class="f-l"><img src="images/all-goals.png" height="25" alt=""></i>
+                                    <p class="f-l">对手危险传球</p>
+                                </li>
+                                <li class="event-item f-l">
+                                    <i class="f-l"><img src="images/all-goals.png" height="25" alt=""></i>
+                                    <p class="f-l">对手危险传球</p>
+                                </li>
+                                <li class="event-item f-l">
+                                    <i class="f-l"><img src="images/all-goals.png" height="25" alt=""></i>
+                                    <p class="f-l">对手危险传球</p>
+                                </li>
+                                <li class="event-item f-l">
+                                    <i class="f-l"><img src="images/all-goals.png" height="25" alt=""></i>
+                                    <p class="f-l">对手危险传球</p>
+                                </li>
+                                <li class="event-item f-l">
+                                    <i class="f-l"><img src="images/all-goals.png" height="25" alt=""></i>
+                                    <p class="f-l">对手危险传球</p>
+                                </li>
+                                <li class="event-item f-l">
+                                    <i class="f-l"><img src="images/all-goals.png" height="25" alt=""></i>
+                                    <p class="f-l">对手危险传球</p>
+                                </li>
+                                <li class="event-item f-l">
+                                    <i class="f-l"><img src="images/all-goals.png" height="25" alt=""></i>
+                                    <p class="f-l">对手危险传球</p>
+                                </li>
+                                <li class="event-item f-l">
+                                    <i class="f-l"><img src="images/all-goals.png" height="25" alt=""></i>
+                                    <p class="f-l">对手危险传球</p>
+                                </li>
+                                <li class="event-item f-l">
+                                    <i class="f-l"><img src="images/all-goals.png" height="25" alt=""></i>
+                                    <p class="f-l">对手危险传球</p>
+                                </li>
+                                <li class="event-item f-l">
+                                    <i class="f-l"><img src="images/all-goals.png" height="25" alt=""></i>
+                                    <p class="f-l">对手危险传球</p>
+                                </li>
+                                <li class="event-item f-l">
+                                    <i class="f-l"><img src="images/all-goals.png" height="25" alt=""></i>
+                                    <p class="f-l">对手危险传球</p>
+                                </li>
+                                <li class="event-item f-l">
+                                    <i class="f-l"><img src="images/all-goals.png" height="25" alt=""></i>
+                                    <p class="f-l">对手危险传球</p>
+                                </li>
+                                
+                            </ul>
+                            
+                        </div>                    
+                    </div>
+                    <div class="video-info-center f-l">
+                        <div class="playback-module">
+                            <p class="module-title clearfix">广州恒大淘宝
+                                <span class="screenshot f-r">截图</span>
+                            </p>
+                            <div class="container">
+                                <div class="video-box">
+                                    <!-- <video src="">比赛视频</video> -->
+                                    <img src="images/video.png" alt="">
+                                </div>
+                                <div class="time-quantum">
+                                    <ul class="clearfix">
+                                        <li class="time-list f-l">
+                                            <b>1</b>
+                                            <p>比洛-进球-27：58</p>
+                                            <input type="checkbox" class="checkbox f-r">
+                                            <i class="f-r"><img src="images/video-download.png" width="7" alt=""></i>
+                                        </li>
+                                        <li class="time-list f-l">
+                                            <b>1</b>
+                                            <p>比洛-进球-27：58</p>
+                                            <input type="checkbox" class="checkbox f-r">
+                                            <i class="f-r"><img src="images/video-download.png" width="7" alt=""></i>
+                                        </li>
+                                        <li class="time-list f-l">
+                                            <b>1</b>
+                                            <p>比洛-进球-27：58</p>
+                                            <input type="checkbox" class="checkbox f-r">
+                                            <i class="f-r"><img src="images/video-download.png" width="7" alt=""></i>
+                                        </li>
+                                        <li class="time-list f-l">
+                                            <b>1</b>
+                                            <p>比洛-进球-27：58</p>
+                                            <input type="checkbox" class="checkbox f-r">
+                                            <i class="f-r"><img src="images/video-download.png" width="7" alt=""></i>
+                                        </li>
+                                        <li class="time-list f-l">
+                                            <b>1</b>
+                                            <p>比洛-进球-27：58</p>
+                                            <input type="checkbox" class="checkbox f-r">
+                                            <i class="f-r"><img src="images/video-download.png" width="7" alt=""></i>
+                                        </li>
+                                        
+                                    </ul>
+                                    <div class="pagination clearfix">
+                                        <button class="prev-btn"><img src="images/prev-page.png"  width="14" alt=""></button>
+                                        <p><span>0</span>/<span>0</span></p>
+                                        <button class="next-btn"><img src="images/next-page.png"  width="14" alt=""></button>
+                                        <span class="download-selected f-r">下载</span>
+                                        <span class="select-all f-r">全选</span>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video-info-right f-l">
+                        <div class="match-result">
+                            <p class="module-title clearfix">
+                                <a href="personal_data.html" class="linkto-details f-r">查看详情</a>
+                            </p>
+                            <div class="container">
+                                <div class="information-details">
+                                    <div class="player-info">
+                                        <div class="player-avatar clearfix">
+                                            <img src="images/avatar.png" width="80" alt="">                                          
+                                            <p>罗杰 帕帕斯塔索普洛斯</p>                                           
+                                        </div>
+                                        <ul class="player-stats clearfix">
+                                            <li>年龄：28</li>
+                                            <li>体重：86</li>
+                                            <li>国籍：中国</li>
+                                            <li>位置：门将</li>
+                                            <li>身高：196</li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="data-type-tab">
+                                        <ul class="clearfix">
+                                            <li class="f-l type-selected">
+                                                <a href="javascript:;">基本</a>
+                                                <b class="triangle"></b>
+                                            </li>
+                                            <li class="f-l">
+                                                <a href="javascript:;">进攻</a>
+                                                <b class="triangle"></b>
+                                            </li>
+                                            <li class="f-l">
+                                                <a href="javascript:;">防守</a>
+                                                <b class="triangle"></b>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <ul class="player-details">
+                                        <li><span class="f-l">控球率</span><span class="f-r">49%</span></li>
+                                        <li><span class="f-l">射门</span><span class="f-r">52</span></li>
+                                        <li><span class="f-l">射正</span><span class="f-r">2</span></li>
+                                        <li><span class="f-l">红黄牌</span><span class="f-r">12</span></li>
+                                        <li><span class="f-l">犯规</span><span class="f-r">11</span></li>
+                                        <li><span class="f-l">射门成功率</span><span class="f-r">54%</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                        
+            </div>
+
+        </div>  
+    </div>
+
+
+    <!-- 页面底部 -->
+    <div class="footer">
+        <p class="copyright">©2015 上海创冰信息科技有限公司  , All Rights Reserved  (沪ICP备14033075号-1)</p>
+    </div>
+
+    <div class="player-modal-wrapper hide">         
+        <div class="player-modal">
+            <i class="close-modal"></i>
+            <div class="modal-head">
+                <div class="modal-title">选择需要查看的球员</div>
+                <div class="season filter clearfix">
+                    <span>赛季:</span>
+                    <ul>
+                        <li>
+                            <a class="active" href="javascript:;">2017-2018</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">2017-2018</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">2017-2018</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">2017-2018</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="data filter">
+                    <span>数据:</span>
+                    <ul>
+                            <li>
+                                <a class="active" href="javascript:;">总览</a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">进攻</a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">防守</a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">控球</a>   
+                            </li>
+                        </ul>
+                </div>
+            </div>
+            <table class="players-table" id="players-table-index">
+                <thead>
+                    <tr>
+                        <th><a href="javascript:;" data-value="1" name="num">号码</a></th>
+                        <th><a href="javascript:;" data-value="2" name="">信息<b>一二三四五六七八九十</b></a></th>
+                        <th><a href="javascript:;" data-value="3" name="matchCount">出场次数</a></th>
+                        <th><a href="javascript:;" data-value="4" name="matchTime">出场时间</a></th>
+                        <th><a href="javascript:;" data-value="5" name="goal">进球</a></th>
+                        <th><a href="javascript:;" data-value="6" name="xG">xG</a></th>
+                        <th><a href="javascript:;" data-value="7" name="assist">助攻</a></th>
+                        <th><a href="javascript:;" data-value="8" name="keyPass">关键传球</a></th>
+                        <th><a href="javascript:;" data-value="9" name="pass">传球</a></th>
+                        <th><a href="javascript:;" data-value="10" name="passSuccessRate">传球成功率</a></th>
+                        <th><a href="javascript:;" data-value="11" name="averageScore">平均评分</a></th>
+                        <th><a href="javascript:;" data-value="12" name="nearestFiveTimeAvScore">近5场评分</a></th>
+                    </tr>                  
+                </thead>
+                <tbody></tbody>
+                <!-- <tbody>
+                        <tr data-value="1"><td><a href="javascript:;" data-value="1">1</a></td><td><a href="javascript:;" data-value="2"><p class="name">一二三四五六七八九十一二</p><p class="position">前峰</p></a></td><td><a href="javascript:;" data-value="3">2</a></td><td><a href="javascript:;" data-value="4">90</a></td><td><a href="javascript:;" data-value="5">1</a></td><td><a href="javascript:;" data-value="6">2</a></td><td><a href="javascript:;" data-value="7">3</a></td><td><a href="javascript:;" data-value="8">3</a></td><td><a href="javascript:;" data-value="9">4</a></td><td><a href="javascript:;" data-value="10">10%</a></td><td><a href="javascript:;" data-value="11">9</a></td><td><a href="javascript:;" data-value="12">8</a></td></tr><tr data-value="2"><td><a href="javascript:;" data-value="1">2</a></td><td><a href="javascript:;" data-value="2"><p class="name">一二三四五六七八九十一二</p><p class="position">前峰</p></a></td><td><a href="javascript:;" data-value="3">3</a></td><td><a href="javascript:;" data-value="4">100</a></td><td><a href="javascript:;" data-value="5">1</a></td><td><a href="javascript:;" data-value="6">2</a></td><td><a href="javascript:;" data-value="7">3</a></td><td><a href="javascript:;" data-value="8">3</a></td><td><a href="javascript:;" data-value="9">4</a></td><td><a href="javascript:;" data-value="10">20%</a></td><td><a href="javascript:;" data-value="11">9</a></td><td><a href="javascript:;" data-value="12">8</a></td></tr><tr data-value="3"><td><a href="javascript:;" data-value="1">3</a></td><td><a href="javascript:;" data-value="2"><p class="name">一二三四五六七八九十一二</p><p class="position">前峰</p></a></td><td><a href="javascript:;" data-value="3">5</a></td><td><a href="javascript:;" data-value="4">80</a></td><td><a href="javascript:;" data-value="5">3</a></td><td><a href="javascript:;" data-value="6">2</a></td><td><a href="javascript:;" data-value="7">3</a></td><td><a href="javascript:;" data-value="8">3</a></td><td><a href="javascript:;" data-value="9">4</a></td><td><a href="javascript:;" data-value="10">50%</a></td><td><a href="javascript:;" data-value="11">9</a></td><td><a href="javascript:;" data-value="12">8</a></td></tr><tr data-value="4"><td><a href="javascript:;" data-value="1">4</a></td><td><a href="javascript:;" data-value="2"><p class="name">一二三四五六七八九十一二</p><p class="position">前峰</p></a></td><td><a href="javascript:;" data-value="3">1</a></td><td><a href="javascript:;" data-value="4">60</a></td><td><a href="javascript:;" data-value="5">0</a></td><td><a href="javascript:;" data-value="6">2</a></td><td><a href="javascript:;" data-value="7">3</a></td><td><a href="javascript:;" data-value="8">3</a></td><td><a href="javascript:;" data-value="9">4</a></td><td><a href="javascript:;" data-value="10">40%</a></td><td><a href="javascript:;" data-value="11">9</a></td><td><a href="javascript:;" data-value="12">8</a></td></tr><tr data-value="5"><td><a href="javascript:;" data-value="1">5</a></td><td><a href="javascript:;" data-value="2"><p class="name">一二三四五六七八九十一二</p><p class="position">前峰</p></a></td><td><a href="javascript:;" data-value="3">1</a></td><td><a href="javascript:;" data-value="4">60</a></td><td><a href="javascript:;" data-value="5">0</a></td><td><a href="javascript:;" data-value="6">2</a></td><td><a href="javascript:;" data-value="7">3</a></td><td><a href="javascript:;" data-value="8">3</a></td><td><a href="javascript:;" data-value="9">4</a></td><td><a href="javascript:;" data-value="10">60%</a></td><td><a href="javascript:;" data-value="11">9</a></td><td><a href="javascript:;" data-value="12">8</a></td></tr><tr data-value="6"><td><a href="javascript:;" data-value="1">6</a></td><td><a href="javascript:;" data-value="2"><p class="name">一二三四五六七八九十一二</p><p class="position">前峰</p></a></td><td><a href="javascript:;" data-value="3">1</a></td><td><a href="javascript:;" data-value="4">60</a></td><td><a href="javascript:;" data-value="5">0</a></td><td><a href="javascript:;" data-value="6">2</a></td><td><a href="javascript:;" data-value="7">3</a></td><td><a href="javascript:;" data-value="8">3</a></td><td><a href="javascript:;" data-value="9">4</a></td><td><a href="javascript:;" data-value="10">10%</a></td><td><a href="javascript:;" data-value="11">9</a></td><td><a href="javascript:;" data-value="12">8</a></td></tr><tr data-value="7"><td><a href="javascript:;" data-value="1">7</a></td><td><a href="javascript:;" data-value="2"><p class="name">一二三四五六七八九十一二</p><p class="position">前峰</p></a></td><td><a href="javascript:;" data-value="3">1</a></td><td><a href="javascript:;" data-value="4">60</a></td><td><a href="javascript:;" data-value="5">0</a></td><td><a href="javascript:;" data-value="6">2</a></td><td><a href="javascript:;" data-value="7">3</a></td><td><a href="javascript:;" data-value="8">3</a></td><td><a href="javascript:;" data-value="9">4</a></td><td><a href="javascript:;" data-value="10">20%</a></td><td><a href="javascript:;" data-value="11">9</a></td><td><a href="javascript:;" data-value="12">8</a></td></tr><tr data-value="8"><td><a href="javascript:;" data-value="1">8</a></td><td><a href="javascript:;" data-value="2"><p class="name">一二三四五六七八九十一二</p><p class="position">前峰</p></a></td><td><a href="javascript:;" data-value="3">1</a></td><td><a href="javascript:;" data-value="4">60</a></td><td><a href="javascript:;" data-value="5">0</a></td><td><a href="javascript:;" data-value="6">2</a></td><td><a href="javascript:;" data-value="7">3</a></td><td><a href="javascript:;" data-value="8">3</a></td><td><a href="javascript:;" data-value="9">4</a></td><td><a href="javascript:;" data-value="10">40%</a></td><td><a href="javascript:;" data-value="11">9</a></td><td><a href="javascript:;" data-value="12">8</a></td></tr><tr data-value="9"><td><a href="javascript:;" data-value="1">9</a></td><td><a href="javascript:;" data-value="2"><p class="name">一二三四五六七八九十一二</p><p class="position">前峰</p></a></td><td><a href="javascript:;" data-value="3">1</a></td><td><a href="javascript:;" data-value="4">60</a></td><td><a href="javascript:;" data-value="5">0</a></td><td><a href="javascript:;" data-value="6">2</a></td><td><a href="javascript:;" data-value="7">3</a></td><td><a href="javascript:;" data-value="8">3</a></td><td><a href="javascript:;" data-value="9">4</a></td><td><a href="javascript:;" data-value="10">30%</a></td><td><a href="javascript:;" data-value="11">9</a></td><td><a href="javascript:;" data-value="12">8</a></td></tr><tr data-value="10"><td><a href="javascript:;" data-value="1">10</a></td><td><a href="javascript:;" data-value="2"><p class="name">一二三四五六七八九十一二</p><p class="position">前峰</p></a></td><td><a href="javascript:;" data-value="3">1</a></td><td><a href="javascript:;" data-value="4">60</a></td><td><a href="javascript:;" data-value="5">0</a></td><td><a href="javascript:;" data-value="6">2</a></td><td><a href="javascript:;" data-value="7">3</a></td><td><a href="javascript:;" data-value="8">3</a></td><td><a href="javascript:;" data-value="9">4</a></td><td><a href="javascript:;" data-value="10">20%</a></td><td><a href="javascript:;" data-value="11">9</a></td><td><a href="javascript:;" data-value="12">8</a></td></tr><tr data-value="11"><td><a href="javascript:;" data-value="1">11</a></td><td><a href="javascript:;" data-value="2"><p class="name">一二三四五六七八九十一二</p><p class="position">前峰</p></a></td><td><a href="javascript:;" data-value="3">1</a></td><td><a href="javascript:;" data-value="4">60</a></td><td><a href="javascript:;" data-value="5">0</a></td><td><a href="javascript:;" data-value="6">2</a></td><td><a href="javascript:;" data-value="7">3</a></td><td><a href="javascript:;" data-value="8">3</a></td><td><a href="javascript:;" data-value="9">4</a></td><td><a href="javascript:;" data-value="10">10%</a></td><td><a href="javascript:;" data-value="11">9</a></td><td><a href="javascript:;" data-value="12">8</a></td></tr>
+                </tbody> -->
+                <!-- <tbody>
+                    <tr data-value="1">
+                        <td><a href="javascript:;" data-value="1">1</a></td>
+                        <td>
+                            <a href="javascript:;" data-value="2">
+                                <p class="name">何晓彤一二三四五六七八九十</p>
+                                <p class="position">门将</p>
+                            </a>
+                        </td>
+                        <td><a href="javascript:;" data-value="3">1</a></td>
+                        <td><a href="javascript:;" data-value="4">1</a></td>
+                        <td><a href="javascript:;" data-value="5">1</a></td>
+                        <td><a href="javascript:;" data-value="6">1</a></td>
+                        <td><a href="javascript:;" data-value="7">1</a></td>
+                        <td><a href="javascript:;" data-value="8">1</a></td>
+                        <td><a href="javascript:;" data-value="9">1</a></td>
+                        <td><a href="javascript:;" data-value="10">1</a></td>
+                        <td><a href="javascript:;" data-value="11">1</a></td>
+                        <td><a href="javascript:;" data-value="12">1</a></td>
+                    </tr>    
+                    <tr data-value="2">
+                        <td><a href="javascript:;" data-value="1">2</a></td>
+                        <td>
+                            <a href="javascript:;" data-value="2">
+                                <p class="name">何晓彤一二三四五六七八九十</p>
+                                <p class="position">门将</p>
+                            </a>
+                        </td>
+                        <td><a href="javascript:;" data-value="3">1</a></td>
+                        <td><a href="javascript:;" data-value="4">1</a></td>
+                        <td><a href="javascript:;" data-value="5">1</a></td>
+                        <td><a href="javascript:;" data-value="6">1</a></td>
+                        <td><a href="javascript:;" data-value="7">1</a></td>
+                        <td><a href="javascript:;" data-value="8">1</a></td>
+                        <td><a href="javascript:;" data-value="9">1</a></td>
+                        <td><a href="javascript:;" data-value="10">1</a></td>
+                        <td><a href="javascript:;" data-value="11">1</a></td>
+                        <td><a href="javascript:;" data-value="12">1</a></td>
+                    </tr>    
+                    <tr data-value="3">
+                        <td><a href="javascript:;" data-value="1">3</a></td>
+                        <td>
+                            <a href="javascript:;" data-value="2">
+                                <p class="name">何晓彤一二三四五六七八九十</p>
+                                <p class="position">门将</p>
+                            </a>
+                        </td>
+                        <td><a href="javascript:;" data-value="3">1</a></td>
+                        <td><a href="javascript:;" data-value="4">1</a></td>
+                        <td><a href="javascript:;" data-value="5">1</a></td>
+                        <td><a href="javascript:;" data-value="6">1</a></td>
+                        <td><a href="javascript:;" data-value="7">1</a></td>
+                        <td><a href="javascript:;" data-value="8">1</a></td>
+                        <td><a href="javascript:;" data-value="9">1</a></td>
+                        <td><a href="javascript:;" data-value="10">1</a></td>
+                        <td><a href="javascript:;" data-value="11">1</a></td>
+                        <td><a href="javascript:;" data-value="12">1</a></td>
+                    </tr>    
+                    <tr data-value="4">
+                        <td><a href="javascript:;" data-value="1">4</a></td>
+                        <td>
+                            <a href="javascript:;" data-value="2">
+                                <p class="name">何晓彤一二三四五六七八九十</p>
+                                <p class="position">门将</p>
+                            </a>
+                        </td>
+                        <td><a href="javascript:;" data-value="3">1</a></td>
+                        <td><a href="javascript:;" data-value="4">1</a></td>
+                        <td><a href="javascript:;" data-value="5">1</a></td>
+                        <td><a href="javascript:;" data-value="6">1</a></td>
+                        <td><a href="javascript:;" data-value="7">1</a></td>
+                        <td><a href="javascript:;" data-value="8">1</a></td>
+                        <td><a href="javascript:;" data-value="9">1</a></td>
+                        <td><a href="javascript:;" data-value="10">1</a></td>
+                        <td><a href="javascript:;" data-value="11">1</a></td>
+                        <td><a href="javascript:;" data-value="12">1</a></td>
+                    </tr>    
+                    <tr data-value="5">
+                        <td><a href="javascript:;" data-value="1">5</a></td>
+                        <td>
+                            <a href="javascript:;" data-value="2">
+                                <p class="name">何晓彤一二三四五六七八九十</p>
+                                <p class="position">门将</p>
+                            </a>
+                        </td>
+                        <td><a href="javascript:;" data-value="3">1</a></td>
+                        <td><a href="javascript:;" data-value="4">1</a></td>
+                        <td><a href="javascript:;" data-value="5">1</a></td>
+                        <td><a href="javascript:;" data-value="6">1</a></td>
+                        <td><a href="javascript:;" data-value="7">1</a></td>
+                        <td><a href="javascript:;" data-value="8">1</a></td>
+                        <td><a href="javascript:;" data-value="9">1</a></td>
+                        <td><a href="javascript:;" data-value="10">1</a></td>
+                        <td><a href="javascript:;" data-value="11">1</a></td>
+                        <td><a href="javascript:;" data-value="12">1</a></td>
+                    </tr>    
+                    <tr data-value="6">
+                        <td><a href="javascript:;" data-value="1">6</a></td>
+                        <td>
+                            <a href="javascript:;" data-value="2">
+                                <p class="name">何晓彤一二三四五六七八九十</p>
+                                <p class="position">门将</p>
+                            </a>
+                        </td>
+                        <td><a href="javascript:;" data-value="3">1</a></td>
+                        <td><a href="javascript:;" data-value="4">1</a></td>
+                        <td><a href="javascript:;" data-value="5">1</a></td>
+                        <td><a href="javascript:;" data-value="6">1</a></td>
+                        <td><a href="javascript:;" data-value="7">1</a></td>
+                        <td><a href="javascript:;" data-value="8">1</a></td>
+                        <td><a href="javascript:;" data-value="9">1</a></td>
+                        <td><a href="javascript:;" data-value="10">1</a></td>
+                        <td><a href="javascript:;" data-value="11">1</a></td>
+                        <td><a href="javascript:;" data-value="12">1</a></td>
+                    <tr data-value="7">
+                        <td><a href="javascript:;" data-value="1">7</a></td>
+                        <td>
+                            <a href="javascript:;" data-value="2">
+                                <p class="name">何晓彤一二三四五六七八九十</p>
+                                <p class="position">门将</p>
+                            </a>
+                        </td>
+                        <td><a href="javascript:;" data-value="3">1</a></td>
+                        <td><a href="javascript:;" data-value="4">1</a></td>
+                        <td><a href="javascript:;" data-value="5">1</a></td>
+                        <td><a href="javascript:;" data-value="6">1</a></td>
+                        <td><a href="javascript:;" data-value="7">1</a></td>
+                        <td><a href="javascript:;" data-value="8">1</a></td>
+                        <td><a href="javascript:;" data-value="9">1</a></td>
+                        <td><a href="javascript:;" data-value="10">1</a></td>
+                        <td><a href="javascript:;" data-value="11">1</a></td>
+                        <td><a href="javascript:;" data-value="12">1</a></td>
+                    </tr>    
+                    <tr data-value="8">
+                        <td><a href="javascript:;" data-value="1">8</a></td>
+                        <td>
+                            <a href="javascript:;" data-value="2">
+                                <p class="name">何晓彤一二三四五六七八九十</p>
+                                <p class="position">门将</p>
+                            </a>
+                        </td>
+                        <td><a href="javascript:;" data-value="3">1</a></td>
+                        <td><a href="javascript:;" data-value="4">1</a></td>
+                        <td><a href="javascript:;" data-value="5">1</a></td>
+                        <td><a href="javascript:;" data-value="6">1</a></td>
+                        <td><a href="javascript:;" data-value="7">1</a></td>
+                        <td><a href="javascript:;" data-value="8">1</a></td>
+                        <td><a href="javascript:;" data-value="9">1</a></td>
+                        <td><a href="javascript:;" data-value="10">1</a></td>
+                        <td><a href="javascript:;" data-value="11">1</a></td>
+                        <td><a href="javascript:;" data-value="12">1</a></td>
+                    </tr>    
+                    <tr data-value="9">
+                        <td><a href="javascript:;" data-value="1">9</a></td>
+                        <td>
+                            <a href="javascript:;" data-value="2">
+                                <p class="name">何晓彤一二三四五六七八九十</p>
+                                <p class="position">门将</p>
+                            </a>
+                        </td>
+                        <td><a href="javascript:;" data-value="3">1</a></td>
+                        <td><a href="javascript:;" data-value="4">1</a></td>
+                        <td><a href="javascript:;" data-value="5">1</a></td>
+                        <td><a href="javascript:;" data-value="6">1</a></td>
+                        <td><a href="javascript:;" data-value="7">1</a></td>
+                        <td><a href="javascript:;" data-value="8">1</a></td>
+                        <td><a href="javascript:;" data-value="9">1</a></td>
+                        <td><a href="javascript:;" data-value="10">1</a></td>
+                        <td><a href="javascript:;" data-value="11">1</a></td>
+                        <td><a href="javascript:;" data-value="12">1</a></td>
+                    </tr>    
+                    <tr data-value="10">
+                        <td><a href="javascript:;" data-value="1">10</a></td>
+                        <td>
+                            <a href="javascript:;" data-value="2">
+                                <p class="name">何晓彤一二三四五六七八九十</p>
+                                <p class="position">门将</p>
+                            </a>
+                        </td>
+                        <td><a href="javascript:;" data-value="3">1</a></td>
+                        <td><a href="javascript:;" data-value="4">1</a></td>
+                        <td><a href="javascript:;" data-value="5">1</a></td>
+                        <td><a href="javascript:;" data-value="6">1</a></td>
+                        <td><a href="javascript:;" data-value="7">1</a></td>
+                        <td><a href="javascript:;" data-value="8">1</a></td>
+                        <td><a href="javascript:;" data-value="9">1</a></td>
+                        <td><a href="javascript:;" data-value="10">1</a></td>
+                        <td><a href="javascript:;" data-value="11">1</a></td>
+                        <td><a href="javascript:;" data-value="12">1</a></td>
+                    </tr>    
+                    <tr data-value="11">
+                        <td><a href="javascript:;" data-value="1">11</a></td>
+                        <td>
+                            <a href="javascript:;" data-value="2">
+                                <p class="name">何晓彤一二三四五六七八九十</p>
+                                <p class="position">门将</p>
+                            </a>
+                        </td>
+                        <td><a href="javascript:;" data-value="3">1</a></td>
+                        <td><a href="javascript:;" data-value="4">1</a></td>
+                        <td><a href="javascript:;" data-value="5">1</a></td>
+                        <td><a href="javascript:;" data-value="6">1</a></td>
+                        <td><a href="javascript:;" data-value="7">1</a></td>
+                        <td><a href="javascript:;" data-value="8">1</a></td>
+                        <td><a href="javascript:;" data-value="9">1</a></td>
+                        <td><a href="javascript:;" data-value="10">1</a></td>
+                        <td><a href="javascript:;" data-value="11">1</a></td>
+                        <td><a href="javascript:;" data-value="12">1</a></td>
+                    </tr>    
+                    <tr data-value="12">
+                        <td><a href="javascript:;" data-value="1">12</a></td>
+                        <td>
+                            <a href="javascript:;" data-value="2">
+                                <p class="name">何晓彤一二三四五六七八九十</p>
+                                <p class="position">门将</p>
+                            </a>
+                        </td>
+                        <td><a href="javascript:;" data-value="3">1</a></td>
+                        <td><a href="javascript:;" data-value="4">1</a></td>
+                        <td><a href="javascript:;" data-value="5">1</a></td>
+                        <td><a href="javascript:;" data-value="6">1</a></td>
+                        <td><a href="javascript:;" data-value="7">1</a></td>
+                        <td><a href="javascript:;" data-value="8">1</a></td>
+                        <td><a href="javascript:;" data-value="9">1</a></td>
+                        <td><a href="javascript:;" data-value="10">1</a></td>
+                        <td><a href="javascript:;" data-value="11">1</a></td>
+                        <td><a href="javascript:;" data-value="12">1</a></td>
+                    </tr>    
+                </tbody> -->
+            </table>
+        </div>      
+    </div>
+
+
+<script src="js/jquery.min.js"></script>
+<script src="highchat/highcharts.js"></script>
+<script src="highchat/highcharts-more.js"></script>
+<script src="js/exporting.js"></script>
+<script src="highchat/modules/solid-gauge.js"></script>
+<script src="js/highcharts-zh_CN.js"></script>
+<script src="js/common.js"></script>
+<script src="js/index.js"></script>
+<script src="js/video.js"></script>
+
+</body>
+</html>

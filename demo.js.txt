@@ -1,0 +1,102 @@
+$(function () {
+    Highcharts.chart('container', {
+        chart: {
+            type: 'solidgauge',
+            marginLeft: 80
+        },
+        title: {
+            text: null
+        },
+        pane: {
+            startAngle: 0,
+            endAngle: 360,
+            background: [{ // Track for Move
+                outerRadius: '72',
+                innerRadius: '70',
+                backgroundColor: '#4b5266',
+                borderWidth: 0
+            }, { // Track for Exercise
+                outerRadius: '56',
+                innerRadius: '54',
+                backgroundColor: "#9a9a9e",
+                borderWidth: 0
+            }, { // Track for Stand
+                outerRadius: '38',
+                innerRadius: '36',
+                backgroundColor: "#cdcdcd",
+                borderWidth: 0
+            }]
+        },
+        legend: {
+            enabled: true
+        },
+        yAxis: {
+            min: 0,
+            max: 100,
+            lineWidth: 0,
+            tickPositions: []
+        },
+        plotOptions: {
+            solidgauge: {
+                borderWidth: '4px',
+                dataLabels: {
+                    enabled: false
+                },
+                linecap: '',
+                stickyTracking: false
+            },
+            showInLegend: true
+        },
+        series: [{
+            name: '长传',
+            borderColor:'#008cd6',
+            data: [{
+                color: "#008cd6",
+                radius: '108',
+                innerRadius: '100',
+                y: 50
+            }]
+        }, {
+            name: '中传',
+            borderColor: "#35aae6",
+            data: [{
+                color: "#35aae6",
+                radius: '84',
+                innerRadius: '76',
+                y: 60
+            }]
+        }, {
+            name: '短传',
+            borderColor:"#80d4ff",
+            data: [{
+                color: "#80d4ff",
+                radius: '58',
+                innerRadius: '50',
+                y: 70
+            }]
+        }]
+    },
+                     /**
+     * In the chart load callback, add icons on top of the circular shapes
+     */
+                     function callback() {
+        // // Move icon
+        // this.renderer.path(['M', -8, 0, 'L', 8, 0, 'M', 0, -8, 'L', 8, 0, 0, 8])
+        //     .attr({
+        // })
+        //     .translate(190, 26)
+        //     .add(this.series[2].group);
+        // // Exercise icon
+        // this.renderer.path(['M', -8, 0, 'L', 8, 0, 'M', 0, -8, 'L', 8, 0, 0, 8, 'M', 8, -8, 'L', 16, 0, 8, 8])
+        //     .attr({
+        // })
+        //     .translate(190, 61)
+        //     .add(this.series[2].group);
+        // // Stand icon
+        // this.renderer.path(['M', 0, 8, 'L', 0, -8, 'M', -8, 0, 'L', 0, -8, 8, 0])
+        //     .attr({
+        // })
+        //     .translate(190, 96)
+        //     .add(this.series[2].group);
+    });
+});

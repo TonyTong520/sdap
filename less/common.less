@@ -1,0 +1,265 @@
+/*公共头部样式*/
+.header {
+    height: 50px;
+    background-color: #4B5266;
+    .bx {
+        .sdap-info {
+            line-height: 50px;
+            color:#fff;
+            .logo {
+                margin-top: 9px;
+            }
+            .sdap-version {
+                font-size: 14px;
+                margin-left:10px;
+                display: inline-block;
+                > span {
+                    font-size: 8px;
+                }
+            }
+        }
+        .header-right ul {
+            height:50xp;
+            line-height: 50px;
+            li {
+                margin-left: 50px;
+                font-size: 12px;
+                height: 50px;
+                a {
+                    color: #8c8c91;
+                    i {
+                        display: inline-block;
+                    }
+                }
+                :hover {
+                    color:#fff;
+                }
+            }
+            .use-quit {
+                i {
+                    background-image: url("../images/use-quit1.png");
+                    width: 15px;
+                    height: 12px;
+                }
+                :hover {
+                    i {
+                        background-image: url("../images/use-quit2.png");
+                    }
+                }
+            }
+            .use-set {
+                i {
+                    background-image: url("../images/use-set1.png");
+                    width: 14px;
+                    height: 13px;
+                }
+                :hover {
+                    i {
+                        background-image: url("../images/use-set2.png");
+                    }
+                }
+            }
+            .use-guide {
+                i {
+                    background-image: url("../images/use-guide1.png");
+                    width: 13px;
+                    height: 13px;
+                }
+                :hover {
+                    i {
+                        background-image: url("../images/use-guide2.png");
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*公共导航条样式*/
+ .nav-bar {
+    height: 50px;
+    background-color: #3d4254;
+    .bx ul {
+        li {
+            line-height: 50px;
+            width: 190px;
+            text-align: center;
+            vertical-align: middle;
+            a {
+                display: inline-block;
+                width: 100px;
+                height: 25px;
+                border-radius: 4px;
+                margin-top:12px;
+                font-size: 14px;
+                color: #fff;
+                line-height: 25px;
+            }
+        }
+    }
+}
+
+
+/*公共球队导航样式*/
+.team-nav {
+    // background-color: #edeae7;
+    padding: 27px 0 30px 0;
+    .bx {
+        .team-row {
+            // margin-bottom:31px;
+            .team-info {
+                height:130px;     
+                .team-wrapper {
+                    display: inline-block;
+                    width: 98px;
+                    height: 130px;
+                    background-color: #fff;
+                    margin-right: 10px;
+                    >p {
+                        font-size:12px;
+                        text-align: center;
+                        height:41px;
+                        line-height: 41px;
+                    }
+                    
+                }
+            }
+            .team-logo {
+                width: 87px;
+                height: 81px;
+                margin: 0 auto;
+                text-align: center;
+                border-radius: 4px;
+                img {
+                    margin:7px 0 0;
+                } 
+                >p {
+                    text-align: center;
+                    font-size:12px;
+                    font-weight: 600;
+                    line-height: 1.4;
+                    // color:#4b5266;
+                    font-family: PingFangSC-Semibold;
+                }
+            }
+            .other-team {
+                .other-teams-wrapper {
+                    width: 984px;
+                    height: 130px;
+                    background-color: #fff; 
+                    >p {
+                        font-size:12px;
+                        text-align: center;
+                        height:41px;
+                        line-height: 41px;
+                    }
+                    .select-bar {
+                        .select-box {
+                            width: 48px;
+                            height: 81px;
+                            position: relative;
+                        }
+                        .prev {
+                            img {
+                                position: absolute;
+                                top: 20px;
+                                left: 19px;
+                                cursor: pointer;
+                            }
+                        }
+                        .next {
+                            img {
+                                position: absolute;
+                                top: 20px;
+                                right: 19px;
+                                cursor: pointer;
+                            }
+                        }
+                        .scroll-box {
+                            width: 888px;
+                            height: 81px;
+                            overflow:hidden; 
+                            position: relative;
+                            -ms-touch-action: none;
+                            z-index: 1;
+                            #scroller {
+                                position: absolute;
+                                left: 0;
+                                top:0;
+                                transition:all 0.5s ease;
+                                height: 81px;
+                                
+                                ul {
+                                    height: 81px;
+                                    
+                                     li {
+                                         margin:0 12px;
+                                         cursor: pointer;
+                                     }
+                                     li:hover {
+                                         background-color: #ecf0f1;
+                                     }
+                                }
+                            }
+                           
+                        }                      
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*公共页面页脚*/
+.footer {
+    height: 55px;
+    background-color: #4B5266;
+    .copyright {
+        line-height: 55px;
+        font-size:12px;
+        color:#fff;
+        text-align: center;
+    }
+}
+
+/* 分组导航 */ 
+.filter-pagination {
+    text-align: center;
+    line-height: 24px;
+    height: 24px;
+    .prev-page,.next-page {
+        display: inline-block;
+        background-color: #35aae6;
+        width: 24px;
+        height: 24px;
+        line-height: 24px;
+        text-align: center;
+        color:#4b5266;
+        cursor: pointer;
+        font-size:12px;
+        font-weight: 600;
+        vertical-align: top;
+    }
+    .pagination-bar {
+        display: inline-block;
+        .page-item,.page-item-dots {
+            background-color: #fff;
+            width: 24px;
+            height: 24px;
+            line-height: 24px;
+            text-align: center;
+            margin: 0 1px;
+            color:#4b5266;
+            
+            font-size:12px;
+            font-weight: 600;
+        }
+        .page-item {
+            cursor: pointer;
+        }
+    }
+}
+
+/*============以上为公共不变的部分============*/ 
+
+

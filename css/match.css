@@ -1,0 +1,2048 @@
+.match-info-board {
+  /*比赛信息板*/
+}
+.match-info-board .bx .board-main {
+  width: 1200px;
+  margin: 36px 0;
+  background: url("../images/board_bg.png");
+  background-size: cover;
+  padding-top: 28px;
+  color: #fff;
+  background-color: none;
+}
+.match-info-board .bx .board-main .board-top {
+  width: 967px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+.match-info-board .bx .board-main .board-top > .team {
+  width: 172px;
+  display: inline-block;
+}
+.match-info-board .bx .board-main .board-top > .team .team-avatar {
+  width: 100%;
+  height: 140px;
+}
+.match-info-board .bx .board-main .board-top > .team .team-avatar .team-logo {
+  width: 90px;
+  height: 90px;
+  background: url("../images/gzhd.png") no-repeat;
+  background-size: 90px;
+  background-position: center center;
+  margin: 0 auto;
+}
+.match-info-board .bx .board-main .board-top > .team .team-avatar > h3 {
+  height: 49px;
+  line-height: 49px;
+  font-size: 18px;
+  text-align: center;
+}
+.match-info-board .bx .board-main .board-top > .team .events {
+  padding: 2px 0;
+  border-top: 1px dashed #fff;
+}
+.match-info-board .bx .board-main .board-top > .team .events > li {
+  height: 17px;
+  line-height: 17px;
+  font-size: 12px;
+  margin: 10px 10px;
+  vertical-align: middle;
+}
+.match-info-board .bx .board-main .board-top > .team .events > li > span,
+.match-info-board .bx .board-main .board-top > .team .events > li i {
+  float: right;
+  margin: 0 3px;
+}
+.match-info-board .bx .board-main .board-top > .team .events > li > i {
+  width: 10px;
+  height: 17px;
+  background-color: red;
+  vertical-align: middle;
+}
+.match-info-board .bx .board-main .board-top > .team .events > li .goal {
+  background: url("../images/goal_trans.png") no-repeat;
+  background-size: 10px;
+  background-position: center center;
+}
+.match-info-board .bx .board-main .board-top > .team .events > li .yellow-card {
+  background: url("../images/yellow_card.png") no-repeat;
+  background-size: 10px;
+  background-position: center center;
+}
+.match-info-board .bx .board-main .board-top > .team .events > li .red-card {
+  background: url("../images/red_card.png") no-repeat;
+  background-size: 10px;
+  background-position: center center;
+}
+.match-info-board .bx .board-main .board-top > .team .events > li .yellow-to-red {
+  background: url("../images/2yellow1red.png") no-repeat;
+  background-size: 10px;
+  background-position: center center;
+}
+.match-info-board .bx .board-main .board-top > .team .events > li .penalty-kick-no {
+  background: url("../images/penalty_kick_no.png") no-repeat;
+  background-size: 10px;
+  background-position: center center;
+}
+.match-info-board .bx .board-main .board-top > .team .events > li .penalty-kick-yes {
+  background: url("../images/penalty_kick_yes.png") no-repeat;
+  background-size: 10px;
+  background-position: center center;
+}
+.match-info-board .bx .board-main .board-top .board-t-l {
+  float: left;
+}
+.match-info-board .bx .board-main .board-top .board-t-r {
+  float: right;
+}
+.match-info-board .bx .board-main .board-top .board-t-r .events > li > span,
+.match-info-board .bx .board-main .board-top .board-t-r .events > li i {
+  float: left;
+}
+.match-info-board .bx .board-main .board-top .board-t-c {
+  display: inline-block;
+  width: 361px;
+  margin: 0 auto;
+  padding-top: 6px;
+}
+.match-info-board .bx .board-main .board-top .board-t-c .match-round {
+  width: 262px;
+  height: 40px;
+  margin: 0 auto 13px;
+}
+.match-info-board .bx .board-main .board-top .board-t-c .match-round > p {
+  font-size: 14px;
+  text-align: center;
+}
+.match-info-board .bx .board-main .board-top .board-t-c > .match-result {
+  height: 69px;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  position: relative;
+}
+.match-info-board .bx .board-main .board-top .board-t-c > .match-result .score {
+  height: 69px;
+  line-height: 69px;
+  font-size: 40px;
+  position: absolute;
+  margin: 0 5px;
+}
+.match-info-board .bx .board-main .board-top .board-t-c > .match-result .score > span {
+  display: inline-block;
+  height: 69px;
+}
+.match-info-board .bx .board-main .board-top .board-t-c > .match-result .score .penalty-kick-score {
+  display: inline-block;
+  width: 56px;
+  height: 69px;
+  text-align: center;
+  font-size: 30px!important;
+}
+.match-info-board .bx .board-main .board-top .board-t-c > .match-result .normal-score {
+  margin: 0 5px;
+}
+.match-info-board .bx .board-main .board-top .board-t-c > .match-result .home-score {
+  left: 0;
+  top: 0;
+}
+.match-info-board .bx .board-main .board-top .board-t-c > .match-result .home-score > span {
+  float: left;
+}
+.match-info-board .bx .board-main .board-top .board-t-c > .match-result .away-score {
+  right: 0;
+  top: 0;
+}
+.match-info-board .bx .board-main .board-top .board-t-c > .match-result .away-score > span {
+  float: right;
+}
+.match-info-board .bx .board-main .board-top .board-t-c > .match-result .line {
+  height: 69px;
+  line-height: 69px;
+  text-align: center;
+}
+.match-info-board .bx .board-main .board-top .board-t-c .match-status {
+  font-size: 30px;
+  height: 42px;
+  line-height: 42px;
+  text-align: center;
+  margin-top: 12px;
+}
+.match-info-board .bx .board-main .time-title {
+  width: 23px;
+  height: 38px;
+  margin: 27px auto 0;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  position: relative;
+}
+.match-info-board .bx .board-main .time-title > p {
+  width: 100px;
+  font-size: 14px;
+  line-height: 38px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -50px;
+  text-align: center;
+}
+.match-info-board .bx .board-main .time-shaft {
+  height: 117px;
+  width: 1200px;
+  margin-top: 18px;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 18px 137.5px;
+  position: relative;
+}
+.match-info-board .bx .board-main .time-shaft .logo-mini {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: 137.5px;
+}
+.match-info-board .bx .board-main .time-shaft .home-logo-mini {
+  top: 18px;
+  background: url("../images/gzhd.png") no-repeat;
+  background-size: 30px;
+  background-position: center center;
+}
+.match-info-board .bx .board-main .time-shaft .away-logo-mini {
+  bottom: 18px;
+  background: url("../images/gzhd.png") no-repeat;
+  background-size: 30px;
+  background-position: center center;
+}
+.match-info-board .bx .board-main .time-shaft .time-shaft-bar {
+  width: 883px;
+  height: 8px;
+  border: 1px solid #fff;
+  background-color: #fff;
+  position: absolute;
+  left: 179.5px;
+  top: 50%;
+  margin-top: -4px;
+}
+.match-info-board .bx .board-main .time-shaft .time-shaft-bar > div {
+  border-right: 20px solid #4a5266;
+  float: left;
+  position: relative;
+}
+.match-info-board .bx .board-main .time-shaft .time-shaft-bar > div > span {
+  position: absolute;
+  width: 20px;
+  height: 8px;
+  right: -20px;
+  top: -1px;
+  cursor: pointer;
+}
+.match-info-board .bx .board-main .time-shaft .time-shaft-bar > div > span > b {
+  display: none;
+  font-size: 12px;
+  padding: 5px;
+  background: #fff;
+  color: #464646;
+  border-radius: 2px;
+  white-space: nowrap;
+  box-shadow: 0px 0px 4px #000;
+  position: absolute;
+  left: -4px;
+  bottom: 30px;
+}
+.match-info-board .bx .board-main .time-shaft .time-shaft-bar > div > span > b > i {
+  display: block;
+  width: 0;
+  height: 0;
+  border-width: 8px 8px;
+  border-style: solid;
+  border-bottom-color: transparent;
+  border-top-color: #fff;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  position: absolute;
+  left: 6px;
+  bottom: -16px;
+}
+.match-info-board .bx .board-main .time-shaft .time-shaft-bar > div > span:hover > b {
+  display: block;
+}
+.match-info-board .bx .board-main .time-shaft .time-shaft-bar .team-events {
+  height: 18px;
+  width: 883px;
+  position: absolute;
+  left: -1px;
+}
+.match-info-board .bx .board-main .time-shaft .time-shaft-bar .team-events > li:hover > span {
+  display: block;
+}
+.match-info-board .bx .board-main .time-shaft .time-shaft-bar .team-events > .goal {
+  width: 14px;
+  height: 14px;
+  background: url("../images/goal_trans.png") no-repeat;
+  background-size: cover;
+  margin-left: -7px;
+}
+.match-info-board .bx .board-main .time-shaft .time-shaft-bar .team-events > .yellow-card {
+  width: 12px;
+  height: 17px;
+  background: url("../images/yellow_card.png") no-repeat;
+  background-size: cover;
+  margin-left: -6px;
+}
+.match-info-board .bx .board-main .time-shaft .time-shaft-bar .team-events > .red-card {
+  width: 12px;
+  height: 17px;
+  background: url("../images/red_card.png") no-repeat;
+  background-size: cover;
+  margin-left: -6px;
+}
+.match-info-board .bx .board-main .time-shaft .time-shaft-bar .team-events .yellow-to-red {
+  width: 12px;
+  height: 17px;
+  background: url("../images/2yellow1red.png") no-repeat;
+  background-size: cover;
+  margin-left: -6px;
+}
+.match-info-board .bx .board-main .time-shaft .time-shaft-bar .team-events .substitute {
+  width: 9px;
+  height: 18px;
+  background: url("../images/substitute.png") no-repeat;
+  background-size: 9px 18px;
+  margin-left: -4.5px;
+}
+.match-info-board .bx .board-main .time-shaft .time-shaft-bar .team-events .penalty-kick-success {
+  width: 14px;
+  height: 14px;
+  background: url("../images/penalty_kick_yes.png") no-repeat;
+  background-size: cover;
+  margin-left: -7px;
+}
+.match-info-board .bx .board-main .time-shaft .time-shaft-bar .team-events .penalty-kick-failure {
+  width: 14px;
+  height: 14px;
+  background: url("../images/penalty_kick_no.png") no-repeat;
+  background-size: cover;
+  margin-left: -7px;
+}
+.match-info-board .bx .board-main .time-shaft .time-shaft-bar .home-team-events {
+  top: -24px;
+  bottom: 0;
+}
+.match-info-board .bx .board-main .time-shaft .time-shaft-bar .home-team-events > li {
+  position: absolute;
+  cursor: pointer;
+}
+.match-info-board .bx .board-main .time-shaft .time-shaft-bar .home-team-events > li > span {
+  padding: 5px 5px;
+  position: absolute;
+  left: -10px;
+  bottom: 30px;
+  font-size: 12px;
+  color: #464646;
+  background-color: #fff;
+  border-radius: 2px;
+  white-space: nowrap;
+  box-shadow: 0px 0px 4px #000;
+  display: none;
+}
+.match-info-board .bx .board-main .time-shaft .time-shaft-bar .home-team-events > li > span > b {
+  display: block;
+  width: 0;
+  height: 0;
+  border-width: 8px 8px;
+  border-style: solid;
+  border-bottom-color: transparent;
+  border-top-color: #fff;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  position: absolute;
+  left: 8px;
+  bottom: -16px;
+}
+.match-info-board .bx .board-main .time-shaft .time-shaft-bar .home-team-events .goal {
+  left: 40%;
+}
+.match-info-board .bx .board-main .time-shaft .time-shaft-bar .home-team-events #goal1 {
+  left: 41%;
+}
+.match-info-board .bx .board-main .time-shaft .time-shaft-bar .home-team-events .yellow-card {
+  left: 51%;
+}
+.match-info-board .bx .board-main .time-shaft .time-shaft-bar .home-team-events .red-card {
+  left: 54%;
+}
+.match-info-board .bx .board-main .time-shaft .time-shaft-bar .home-team-events .yellow-to-red {
+  left: 60%;
+}
+.match-info-board .bx .board-main .time-shaft .time-shaft-bar .away-team-events {
+  bottom: -24px;
+}
+.match-info-board .bx .board-main .time-shaft .time-shaft-bar .away-team-events > li {
+  position: absolute;
+  top: 0;
+  cursor: pointer;
+}
+.match-info-board .bx .board-main .time-shaft .time-shaft-bar .away-team-events > li > span {
+  padding: 5px 5px;
+  position: absolute;
+  left: -10px;
+  top: 30px;
+  font-size: 12px;
+  color: #464646;
+  background-color: #fff;
+  border-radius: 2px;
+  white-space: nowrap;
+  box-shadow: 0px 0px 4px #000;
+  display: none;
+}
+.match-info-board .bx .board-main .time-shaft .time-shaft-bar .away-team-events > li > span > b {
+  display: block;
+  width: 0;
+  height: 0;
+  border-width: 8px 8px;
+  border-style: solid;
+  border-bottom-color: #fff;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  position: absolute;
+  left: 9px;
+  top: -16px;
+}
+.match-info-board .bx .board-main .time-shaft .time-shaft-bar .away-team-events .goal {
+  left: 65%;
+}
+.match-info-board .bx .board-main .time-shaft .time-shaft-bar .away-team-events .substitute {
+  left: 63%;
+}
+.match-info-board .bx .board-main .time-shaft .time-shaft-bar .away-team-events .substitute b {
+  left: 6px;
+}
+.match-info-board .bx .board-main .time-shaft .time-shaft-bar .away-team-events .penalty-kick-success {
+  left: 92%;
+}
+.match-info-board .bx .board-main .time-shaft .time-shaft-bar .away-team-events .penalty-kick-failure {
+  left: 94%;
+}
+.match-info-board .bx .board-main .time-shaft .normal .half {
+  height: 6px;
+  width: 50%;
+}
+.match-info-board .bx .board-main .time-shaft .injury-time .half {
+  height: 6px;
+  width: 40%;
+}
+.match-info-board .bx .board-main .time-shaft .injury-time .injury {
+  height: 6px;
+  width: 10%;
+}
+.match-info-board .bx .board-main .time-shaft .penalty-kick .half {
+  height: 6px;
+  width: 35%;
+}
+.match-info-board .bx .board-main .time-shaft .penalty-kick .injury {
+  height: 6px;
+  width: 10%;
+}
+.match-info-board .bx .board-main .time-shaft .penalty-kick .penalty {
+  height: 6px;
+  width: 10%;
+}
+.data-module {
+  /*数据项*/
+}
+.data-module .bx {
+  height: 670px;
+  background-color: #fff;
+  margin-bottom: 42px;
+}
+.data-module .bx .list-menu {
+  height: 670px;
+  width: 182px;
+  background-color: #f2f2f2;
+  padding: 0 9px;
+  position: relative;
+}
+.data-module .bx .list-menu .title {
+  height: 56px;
+  line-height: 56px;
+  font-size: 14px;
+  padding-left: 6px;
+  font-weight: 600;
+}
+.data-module .bx .list-menu .lv1st-list {
+  border-top: 1px solid #c4c4c4;
+  height: 613px;
+  overflow: auto;
+  padding-bottom: 50px;
+}
+.data-module .bx .list-menu .lv1st-list > li {
+  height: 20px;
+  line-height: 20px;
+  font-size: 14px;
+  padding-left: 6px;
+  margin: 14px 0;
+}
+.data-module .bx .list-menu .lv1st-list > li > input {
+  width: 14px;
+  height: 14px;
+  vertical-align: middle;
+  margin-right: 10px;
+  padding-left: 10px;
+}
+.data-module .bx .list-menu .lv1st-list li:hover {
+  background-color: #ccc;
+}
+.data-module .bx .list-menu .lv1st-list .lv2nd-list {
+  display: none;
+}
+.data-module .bx .list-menu .lv1st-list .lv2nd-list > li {
+  height: 17px;
+  line-height: 17px;
+  font-size: 12px;
+  margin: 12px 0;
+  padding-left: 16px;
+}
+.data-module .bx .list-menu .lv1st-list .lv2nd-list > li > input {
+  width: 14px;
+  height: 14px;
+  vertical-align: text-bottom;
+  margin-right: 10px;
+  padding-left: 10px;
+}
+.data-module .bx .list-menu .tactics-data {
+  background-color: #f2f2f2;
+  width: 147px;
+  height: 50px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+.data-module .bx .list-menu .tactics-data > input {
+  width: 112px;
+  height: 30px;
+  font-size: 16px;
+  color: #fff;
+  border-radius: 5px;
+  position: absolute;
+  left: 35px;
+  top: 10px;
+  background-color: #35aae5;
+  cursor: pointer;
+}
+.data-module .bx .data-main {
+  height: 670px;
+  width: 1018px;
+  background-color: #fff;
+}
+.data-module .bx .data-main .player-list {
+  width: 176px;
+  height: 670px;
+  padding: 0 12px;
+  overflow: auto;
+}
+.data-module .bx .data-main .player-list .title {
+  height: 56px;
+  line-height: 56px;
+  font-size: 14px;
+  padding-left: 6px;
+}
+.data-module .bx .data-main .player-list .title > input {
+  width: 14px;
+  height: 14px;
+  vertical-align: middle;
+  margin-right: 10px;
+  padding-left: 10px;
+}
+.data-module .bx .data-main .player-list .lv1st-list {
+  border-top: 1px solid #c4c4c4;
+}
+.data-module .bx .data-main .player-list .lv1st-list > li {
+  height: 20px;
+  line-height: 20px;
+  font-size: 14px;
+  padding-left: 6px;
+  margin: 14px 0;
+}
+.data-module .bx .data-main .player-list .lv1st-list > li > input {
+  width: 14px;
+  height: 14px;
+  vertical-align: middle;
+  margin-right: 10px;
+  padding-left: 10px;
+}
+.data-module .bx .data-main .player-list .lv1st-list li:hover {
+  background-color: #ccc;
+}
+.data-module .bx .data-main .player-list .lv1st-list .lv2nd-list > li {
+  height: 17px;
+  line-height: 17px;
+  font-size: 12px;
+  margin: 12px 0;
+  padding-left: 16px;
+}
+.data-module .bx .data-main .player-list .lv1st-list .lv2nd-list > li > input {
+  width: 14px;
+  height: 14px;
+  vertical-align: text-bottom;
+  margin-right: 10px;
+  padding-left: 10px;
+}
+.data-module .bx .data-main .data-main-c {
+  width: 666px;
+  height: 670px;
+  background-color: #f2f2f2;
+}
+.data-module .bx .data-main .data-main-c .football-court {
+  width: 655px;
+  height: 441px;
+  background: url("../images/football_court.png") no-repeat;
+  background-size: 655px;
+  margin: 10px auto 0;
+}
+.data-module .bx .data-main .data-main-c .time-filter-bar {
+  width: 600px;
+  height: 43px;
+  margin: 11px auto 0;
+  padding-top: 5px;
+}
+.data-module .bx .data-main .data-main-c .time-filter-bar .progress-bar {
+  width: 600px;
+  height: 8px;
+  background-color: #fff;
+  margin: 0 auto;
+  position: relative;
+}
+.data-module .bx .data-main .data-main-c .time-filter-bar .progress-bar .slider {
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  background-color: #fff;
+  border: 1px solid #35aae5;
+  position: absolute;
+  top: 4px;
+  z-index: 1;
+  font-size: 12px;
+  text-align: center;
+  line-height: 18px;
+}
+.data-module .bx .data-main .data-main-c .time-filter-bar .progress-bar .slider-left {
+  left: -10px;
+  margin-top: -10px;
+}
+.data-module .bx .data-main .data-main-c .time-filter-bar .progress-bar .slider-right {
+  right: -10px;
+  margin-top: -10px;
+}
+.data-module .bx .data-main .data-main-c .time-filter-bar .progress-bar .focus {
+  background-color: #35aae5;
+}
+.data-module .bx .data-main .data-main-c .time-filter-bar .progress-bar .inner-bar {
+  height: 8px;
+  left: 0px;
+  right: 0px;
+  position: absolute;
+  background-color: #35aae5;
+}
+.data-module .bx .data-main .data-main-c .time-filter-bar .scale-bar {
+  width: 602px;
+  height: 8px;
+  background-color: none;
+  margin: 0 auto;
+  border-left: 2px solid #c4c4c4;
+  border-right: 2px solid #c4c4c4;
+  margin-left: -1px;
+  position: relative;
+}
+.data-module .bx .data-main .data-main-c .time-filter-bar .scale-bar .scale {
+  width: 50%;
+  height: 8px;
+  border-right: 2px solid #c4c4c4;
+  position: absolute;
+  left: 2px;
+  top: 0;
+}
+.data-module .bx .data-main .data-main-c .time-filter-bar .scale-bar .m45 {
+  width: 50%;
+}
+.data-module .bx .data-main .data-main-c .time-filter-bar .scale-bar .m90 {
+  width: 100%;
+}
+.data-module .bx .data-main .data-main-c .time-filter-bar .scale-bar > span {
+  font-size: 12px;
+  position: absolute;
+  top: 10px;
+}
+.data-module .bx .data-main .data-main-c .time-filter-bar .scale-bar .zero {
+  left: -4px;
+}
+.data-module .bx .data-main .data-main-c .time-filter-bar .scale-bar .half {
+  left: 290px;
+  margin-left: -7px;
+}
+.data-module .bx .data-main .data-main-c .time-filter-bar .scale-bar .ninety {
+  left: 100%;
+  margin-left: -7px;
+}
+.data-module .bx .data-main .data-main-c .time-filter-bar .scale-bar .all {
+  left: 100%;
+  margin-left: -7px;
+}
+.data-module .bx .data-main .data-main-c .time-filter-bar .scale-bar .first-half {
+  left: 25%;
+  margin-left: -18px;
+}
+.data-module .bx .data-main .data-main-c .time-filter-bar .scale-bar .second-half {
+  left: 75%;
+  margin-left: -18px;
+}
+.data-module .bx .data-main .data-main-c .area-filter {
+  width: 575px;
+  height: 155px;
+  border-top: 1px solid #e3e3e3;
+  margin: 8px auto 0;
+  padding-top: 10px;
+}
+.data-module .bx .data-main .data-main-c .area-filter .area-filter-box {
+  width: 575px;
+  height: 55px;
+}
+.data-module .bx .data-main .data-main-c .area-filter .area-filter-box > p {
+  font-size: 12px;
+  height: 17px;
+  line-height: 17px;
+}
+.data-module .bx .data-main .data-main-c .area-filter .area-filter-box > ul {
+  height: 30px;
+  margin-top: 8px;
+}
+.data-module .bx .data-main .data-main-c .area-filter .area-filter-box > ul > li {
+  float: left;
+  width: 50px;
+  height: 30px;
+  margin-right: 37px;
+  cursor: pointer;
+}
+.data-module .bx .data-main .data-main-c .area-filter .area-filter-box > ul > li:last-child {
+  margin-right: 0;
+}
+.data-module .bx .data-main .data-main-c .area-filter .area-filter-box > ul .all {
+  background: url("../images/all-n.png");
+}
+.data-module .bx .data-main .data-main-c .area-filter .area-filter-box > ul .all.select {
+  background: url("../images/all-s.png");
+}
+.data-module .bx .data-main .data-main-c .area-filter .area-filter-box > ul .left {
+  background: url("../images/left-n.png");
+}
+.data-module .bx .data-main .data-main-c .area-filter .area-filter-box > ul .right {
+  background: url("../images/right-n.png");
+}
+.data-module .bx .data-main .data-main-c .area-filter .area-filter-box > ul .center {
+  background: url("../images/center-n.png");
+}
+.data-module .bx .data-main .data-main-c .area-filter .area-filter-box > ul .top {
+  background: url("../images/top-n.png");
+}
+.data-module .bx .data-main .data-main-c .area-filter .area-filter-box > ul .bottom {
+  background: url("../images/bottom-n.png");
+}
+.data-module .bx .data-main .data-main-c .area-filter .area-filter-box > ul .middle {
+  background: url("../images/middle-n.png");
+}
+.data-module .bx .data-main .data-main-c .area-filter .area-filter-box > ul .left.select {
+  background: url("../images/left-s.png");
+}
+.data-module .bx .data-main .data-main-c .area-filter .area-filter-box > ul .right.select {
+  background: url("../images/right-s.png");
+}
+.data-module .bx .data-main .data-main-c .area-filter .area-filter-box > ul .center.select {
+  background: url("../images/center-s.png");
+}
+.data-module .bx .data-main .data-main-c .area-filter .area-filter-box > ul .top.select {
+  background: url("../images/top-s.png");
+}
+.data-module .bx .data-main .data-main-c .area-filter .area-filter-box > ul .bottom.select {
+  background: url("../images/bottom-s.png");
+}
+.data-module .bx .data-main .data-main-c .area-filter .area-filter-box > ul .middle.select {
+  background: url("../images/middle-s.png");
+}
+.data-module .bx .data-main .data-main-c .area-filter .event-start {
+  margin-bottom: 19px;
+}
+.data-module .bx .data-main .data-main-c .area-filter .event-end {
+  margin-bottom: 0;
+}
+.data-module .bx .data-main .data-main-c .area-filter .event-end.disabled > p,
+.data-module .bx .data-main .data-main-c .area-filter .event-end.disabled > p {
+  color: #dcdcdc;
+}
+.data-module .bx .data-main .data-main-c .area-filter .event-end.disabled > ul,
+.data-module .bx .data-main .data-main-c .area-filter .event-end.disabled > ul {
+  opacity: 1;
+}
+.data-module .bx .data-main .data-main-c .area-filter .event-end.disabled > ul > li,
+.data-module .bx .data-main .data-main-c .area-filter .event-end.disabled > ul > li {
+  cursor: default;
+}
+.data-module .bx .data-main .data-main-c .area-filter .event-end.disabled > ul .all,
+.data-module .bx .data-main .data-main-c .area-filter .event-end.disabled > ul .all {
+  background: url("../images/all-d.png");
+}
+.data-module .bx .data-main .data-main-c .area-filter .event-end.disabled > ul .left,
+.data-module .bx .data-main .data-main-c .area-filter .event-end.disabled > ul .left {
+  background: url("../images/left-d.png");
+}
+.data-module .bx .data-main .data-main-c .area-filter .event-end.disabled > ul .right,
+.data-module .bx .data-main .data-main-c .area-filter .event-end.disabled > ul .right {
+  background: url("../images/right-d.png");
+}
+.data-module .bx .data-main .data-main-c .area-filter .event-end.disabled > ul .center,
+.data-module .bx .data-main .data-main-c .area-filter .event-end.disabled > ul .center {
+  background: url("../images/center-d.png");
+}
+.data-module .bx .data-main .data-main-c .area-filter .event-end.disabled > ul .top,
+.data-module .bx .data-main .data-main-c .area-filter .event-end.disabled > ul .top {
+  background: url("../images/top-d.png");
+}
+.data-module .bx .data-main .data-main-c .area-filter .event-end.disabled > ul .bottom,
+.data-module .bx .data-main .data-main-c .area-filter .event-end.disabled > ul .bottom {
+  background: url("../images/bottom-d.png");
+}
+.data-module .bx .data-main .data-main-c .area-filter .event-end.disabled > ul .middle,
+.data-module .bx .data-main .data-main-c .area-filter .event-end.disabled > ul .middle {
+  background: url("../images/middle-d.png");
+}
+.data-details {
+  /*数据项明细*/
+}
+.data-details .bx {
+  height: 708px;
+  margin-bottom: 42px;
+}
+.data-details .bx .tab-bar {
+  height: 40px;
+}
+.data-details .bx .tab-bar > ul > li {
+  width: 117px;
+  line-height: 32px;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+  font-weight: 600;
+}
+.data-details .bx .data-details-main {
+  background-color: #fff;
+  height: 660px;
+  position: relative;
+}
+.data-details .bx .data-details-main .main-left {
+  width: 356px;
+  height: 660px;
+  padding: 6px 7px 0 14px;
+}
+.data-details .bx .data-details-main .main-left .data-type-tab ul {
+  padding-top: 11px;
+  border-bottom: 5px solid #e3e3e3;
+}
+.data-details .bx .data-details-main .main-left .data-type-tab ul li {
+  height: 34px;
+  width: 50%;
+  border-right: 1px solid #f2f2f2;
+  cursor: pointer;
+  position: relative;
+}
+.data-details .bx .data-details-main .main-left .data-type-tab ul li > a {
+  display: block;
+  height: 24px;
+  line-height: 24px;
+  font-size: 12px;
+  text-align: center;
+}
+.data-details .bx .data-details-main .main-left .data-type-tab ul li:last-child {
+  border-right: none;
+}
+.data-details .bx .data-details-main .main-left .data-type-tab ul .type-selected > a {
+  font-weight: 700;
+}
+.data-details .bx .data-details-main .main-left .data-type-tab ul .type-selected > b {
+  display: block;
+  width: 0;
+  height: 0;
+  border-width: 0 8px 8px;
+  border-style: solid;
+  border-bottom-color: #e3e3e3;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  position: absolute;
+  left: 76px;
+  bottom: 0;
+}
+.data-details .bx .data-details-main .main-left #tab22 ul li {
+  width: 33.33%;
+}
+.data-details .bx .data-details-main .main-left #tab22 ul .type-selected > b {
+  left: 46px;
+}
+.data-details .bx .data-details-main .main-left .filter-box {
+  width: 100%;
+  height: 199px;
+  border-bottom: solid 5px #858585;
+}
+.data-details .bx .data-details-main .main-left .filter-box .filter-box-t > ul {
+  width: 100%;
+  padding: 12px 10px;
+  border-bottom: solid 3px #e3e3e3;
+}
+.data-details .bx .data-details-main .main-left .filter-box .filter-box-t > ul > li {
+  width: 130px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.05);
+  margin-right: 55px;
+  line-height: 40px;
+  position: relative;
+  cursor: pointer;
+}
+.data-details .bx .data-details-main .main-left .filter-box .filter-box-t > ul > li > span {
+  font-size: 12px;
+  height: 17px;
+  line-height: 17px;
+  margin-left: 40px;
+}
+.data-details .bx .data-details-main .main-left .filter-box .filter-box-t > ul > li > i {
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  width: 24px;
+  height: 24px;
+  border-radius: 2px;
+  background: url("../images/icon_data.png");
+}
+.data-details .bx .data-details-main .main-left .filter-box .filter-box-t > ul > li:nth-child(2n) {
+  margin-right: 0;
+}
+.data-details .bx .data-details-main .main-left .filter-box .filter-box-t > ul > li:nth-child( n+3 ) {
+  margin-top: 13px;
+}
+.data-details .bx .data-details-main .main-left .filter-box .filter-box-t > ul:last-child {
+  border: none;
+}
+.data-details .bx .data-details-main .main-left .passing-count .title {
+  height: 50px;
+  line-height: 50px;
+  font-size: 14px;
+}
+.data-details .bx .data-details-main .main-left .passing-count .team-count {
+  height: 22px;
+  line-height: 22px;
+}
+.data-details .bx .data-details-main .main-left .passing-count .team-count > span {
+  font-size: 12px;
+  float: left;
+  line-height: 22px;
+  margin-right: 15px;
+}
+.data-details .bx .data-details-main .main-left .passing-count .team-count .count-bar {
+  height: 22px;
+  width: 171px;
+  background-color: #4a5266;
+  position: relative;
+}
+.data-details .bx .data-details-main .main-left .passing-count .team-count .count-bar .team-pass-per {
+  height: 22px;
+  width: 60%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: #35aae5;
+}
+.data-details .bx .data-details-main .main-left .passing-count .team-count .num {
+  float: right;
+  margin-right: 5px;
+  width: 101px;
+  text-align: right;
+  font-weight: 600;
+}
+.data-details .bx .data-details-main .main-left .passing-count .home-team-count {
+  margin-bottom: 26px;
+}
+.data-details .bx .data-details-main .main-left .main-left-b {
+  width: 335px;
+  height: 248px;
+}
+.data-details .bx .data-details-main .main-left .main-left-b #home-or-away {
+  margin-top: 17px;
+}
+.data-details .bx .data-details-main .main-left .main-left-b .count-table {
+  width: 335px;
+  height: 88px;
+}
+.data-details .bx .data-details-main .main-left .main-left-b .count-table > thead tr {
+  font-size: 12px;
+  height: 38px;
+  line-height: 38px;
+}
+.data-details .bx .data-details-main .main-left .main-left-b .count-table > thead tr > th {
+  width: 60px;
+  text-align: center;
+}
+.data-details .bx .data-details-main .main-left .main-left-b .count-table > thead tr > th > span {
+  margin: 0 8px;
+}
+.data-details .bx .data-details-main .main-left .main-left-b .count-table > thead tr > th:nth-child(1) {
+  width: 155px;
+  text-align: left;
+}
+.data-details .bx .data-details-main .main-left .main-left-b .count-table > tbody > tr {
+  background-color: #dde0e4;
+  height: 20px!important;
+  margin: 0;
+  font-size: 12px;
+  border-top: 2px solid #fff;
+}
+.data-details .bx .data-details-main .main-left .main-left-b .count-table > tbody > tr > td {
+  width: 60px;
+  font-weight: 600;
+  text-align: center;
+}
+.data-details .bx .data-details-main .main-left .main-left-b .count-table > tbody > tr > td > span {
+  margin: 0 8px;
+}
+.data-details .bx .data-details-main .main-left .main-left-b .count-table > tbody > tr > td:nth-child(1) {
+  width: 155px;
+  text-align: left;
+  font-weight: 400;
+}
+.data-details .bx .data-details-main .main-left .main-left-b .count-table > tbody > tr > td:nth-child(2n+1) {
+  background-color: #edeff2;
+}
+.data-details .bx .data-details-main .main-left .main-left-b .count-table.group {
+  margin: 0px 0px;
+}
+.data-details .bx .data-details-main .main-left .main-left-b .count-table.group td {
+  background-color: #edeff2!important;
+}
+.data-details .bx .data-details-main .main-left .main-left-b .count-table.group td:last-child {
+  background-color: #dde0e4!important;
+}
+.data-details .bx .data-details-main .main-left .main-left-b .wrapper {
+  height: 248px;
+  margin-top: 17px;
+  border-top: 1px solid #e3e3e3;
+  padding-top: 17px;
+}
+.data-details .bx .data-details-main .main-left .main-left-b .wrapper #continuity_pass_chart {
+  width: 335px;
+  height: 230px;
+}
+.data-details .bx .data-details-main .main-right {
+  width: 844px;
+  height: 660px;
+  padding: 0 18px 0 14px;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+.data-details .bx .data-details-main .main-right .football-court {
+  width: 396px;
+}
+.data-details .bx .data-details-main .main-right .football-court > .title {
+  height: 58px;
+  font-size: 14px;
+  line-height: 58px;
+}
+.data-details .bx .data-details-main .main-right .football-court .court {
+  width: 396px;
+  height: 588px;
+  background: url("../images/coaching-board.png") no-repeat;
+  background-size: cover;
+  position: relative;
+}
+.data-details .bx .data-details-main .main-right .football-court .court > svg > text {
+  font-size: 12px;
+}
+.data-details .bx .data-details-main .main-right > table {
+  width: 812px;
+  height: 630px;
+  margin: 15px auto;
+  font-size: 12px;
+}
+.data-details .bx .data-details-main .main-right > table > thead tr {
+  height: 162px;
+}
+.data-details .bx .data-details-main .main-right > table > thead tr th {
+  height: 162px;
+  width: 12px;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+.data-details .bx .data-details-main .main-right > table > thead tr th span {
+  display: block;
+  width: 12px;
+  margin: 0 auto;
+  line-height: 12px;
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.data-details .bx .data-details-main .main-right > table > tbody {
+  height: 448px;
+}
+.data-details .bx .data-details-main .main-right > table > tbody > tr > td {
+  text-align: center;
+  border: 1px solid #dcdcdc;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+.data-details .bx .data-details-main .main-right > table > tbody > tr td:first-child,
+.data-details .bx .data-details-main .main-right > table > tbody > tr td:first-child:hover {
+  text-align: left;
+  text-indent: 5px;
+  cursor: default;
+}
+.data-details .bx .data-details-main .main-right > .title {
+  height: 58px;
+  font-size: 14px;
+  line-height: 58px;
+}
+.data-details .bx .data-details-main .main-right .football-court-horizontal {
+  height: 357px;
+  background: url("../images/court_bg1.png") no-repeat;
+  background-size: cover;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  position: relative;
+}
+.data-details .bx .data-details-main .main-right .football-court-horizontal > span {
+  font-size: 18px;
+  color: #fff;
+  position: absolute;
+}
+.data-details .bx .data-details-main .main-right .football-court-horizontal .home-left {
+  left: 305px;
+  top: 53px;
+}
+.data-details .bx .data-details-main .main-right .football-court-horizontal .home-center {
+  left: 296px;
+  top: 149px;
+}
+.data-details .bx .data-details-main .main-right .football-court-horizontal .home-right {
+  left: 288px;
+  top: 254px;
+}
+.data-details .bx .data-details-main .main-right .football-court-horizontal .away-left {
+  right: 286px;
+  top: 254px;
+}
+.data-details .bx .data-details-main .main-right .football-court-horizontal .away-center {
+  right: 296px;
+  top: 149px;
+}
+.data-details .bx .data-details-main .main-right .football-court-horizontal .away-right {
+  right: 302px;
+  top: 53px;
+}
+.data-details .bx .data-details-main .main-right .newpossession_bar_box {
+  height: 60px;
+  box-sizing: border-box;
+  text-align: center;
+  border-top: 1px solid #ccc;
+  padding: 30px 0px;
+  position: relative;
+}
+.data-details .bx .data-details-main .main-right .newpossession_bar_box .newpossession_bar {
+  width: 630px;
+  height: 60px;
+  margin: 0 auto;
+}
+.data-details .bx .data-details-main .main-right .newpossession_bar_box .newpossession_bar > p {
+  font-size: 12px;
+  line-height: 20px;
+  color: #5F5F5F;
+  margin-bottom: 10px;
+}
+.data-details .bx .data-details-main .main-right .newpossession_bar_box .newpossession_bar .newpossession_bar_left {
+  background-color: #35aae6;
+  text-align: left;
+  padding-left: 10px;
+  box-sizing: border-box;
+  position: relative;
+}
+.data-details .bx .data-details-main .main-right .newpossession_bar_box .newpossession_bar .newpossession_bar_left > .scale {
+  height: 30px;
+  width: 315px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-right: 1px solid #fff;
+}
+.data-details .bx .data-details-main .main-right .newpossession_bar_box .newpossession_bar .newpossession_bar_right {
+  background-color: #a7afbd;
+  text-align: right;
+  padding-right: 10px;
+  box-sizing: border-box;
+}
+.data-details .bx .data-details-main .main-right .newpossession_bar_box .newpossession_bar .newpossession_bar {
+  float: left;
+  height: 30px;
+  line-height: 30px;
+  color: #fff;
+  font-size: 12px;
+}
+.data-details .bx .data-details-main .main-right .newpossession_bar_box .logo {
+  height: 30px;
+  width: 26px;
+  margin-top: 30px;
+}
+.data-details .bx .data-details-main .main-right .newpossession_bar_box .home-team-logo {
+  position: absolute;
+  left: 0;
+  top: 30px;
+  background: url("../images/gzfl.png");
+  background-size: cover;
+  margin-left: 50px;
+}
+.data-details .bx .data-details-main .main-right .newpossession_bar_box .away-team-logo {
+  position: absolute;
+  right: 0;
+  top: 30px;
+  background: url("../images/tjqj.png");
+  background-size: cover;
+  margin-right: 50px;
+}
+.data-details .bx .data-details-main .main-right.half-ctrl-percentage .football-court-horizontal {
+  background: url("../images/court_bg2.png") no-repeat;
+  background-size: cover;
+}
+.data-details .bx .data-details-main .main-right.half-ctrl-percentage .football-court-horizontal .court_bg2_data1,
+.data-details .bx .data-details-main .main-right.half-ctrl-percentage .football-court-horizontal .court_bg2_data2 {
+  position: absolute;
+  color: #5F5F5F;
+  font-size: 20px;
+}
+.data-details .bx .data-details-main .main-right.half-ctrl-percentage .football-court-horizontal .court_bg2_data1 {
+  top: 50px;
+  left: 220px;
+}
+.data-details .bx .data-details-main .main-right.half-ctrl-percentage .football-court-horizontal .court_bg2_data2 {
+  top: 50px;
+  left: 532px;
+}
+.data-details .bx .data-details-main .main-right.half-ctrl-percentage .football-court-horizontal .court_bg2_column1,
+.data-details .bx .data-details-main .main-right.half-ctrl-percentage .football-court-horizontal .court_bg2_column2,
+.data-details .bx .data-details-main .main-right.half-ctrl-percentage .football-court-horizontal .court_bg2_column3,
+.data-details .bx .data-details-main .main-right.half-ctrl-percentage .football-court-horizontal .court_bg2_column4 {
+  border-radius: 4px 4px 0 0;
+  width: 40px;
+  text-align: center;
+  box-sizing: border-box;
+  position: absolute;
+}
+.data-details .bx .data-details-main .main-right.half-ctrl-percentage .football-court-horizontal .court_bg2_column1 > p,
+.data-details .bx .data-details-main .main-right.half-ctrl-percentage .football-court-horizontal .court_bg2_column2 > p,
+.data-details .bx .data-details-main .main-right.half-ctrl-percentage .football-court-horizontal .court_bg2_column3 > p,
+.data-details .bx .data-details-main .main-right.half-ctrl-percentage .football-court-horizontal .court_bg2_column4 > p {
+  margin-top: -35px;
+  font-size: 12px;
+}
+.data-details .bx .data-details-main .main-right.half-ctrl-percentage .football-court-horizontal .court_bg2_column1,
+.data-details .bx .data-details-main .main-right.half-ctrl-percentage .football-court-horizontal .court_bg2_column3 {
+  background-color: #2faae8;
+}
+.data-details .bx .data-details-main .main-right.half-ctrl-percentage .football-court-horizontal .court_bg2_column2,
+.data-details .bx .data-details-main .main-right.half-ctrl-percentage .football-court-horizontal .court_bg2_column4 {
+  background-color: #fff;
+}
+.data-details .bx .data-details-main .main-right.half-ctrl-percentage .football-court-horizontal .court_bg2_column1 {
+  bottom: 32px;
+  left: 199px;
+}
+.data-details .bx .data-details-main .main-right.half-ctrl-percentage .football-court-horizontal .court_bg2_column2 {
+  bottom: 32px;
+  left: 249px;
+}
+.data-details .bx .data-details-main .main-right.half-ctrl-percentage .football-court-horizontal .court_bg2_column3 {
+  bottom: 32px;
+  left: 509px;
+}
+.data-details .bx .data-details-main .main-right.half-ctrl-percentage .football-court-horizontal .court_bg2_column4 {
+  bottom: 32px;
+  left: 559px;
+}
+.data-details .bx .data-details-main .main-right.three-area-percentage .football-court-horizontal {
+  background: url("../images/court_bg3.png") no-repeat;
+  background-size: cover;
+}
+.data-details .bx .data-details-main .main-right.three-area-percentage .football-court-horizontal .court_bg3_data1,
+.data-details .bx .data-details-main .main-right.three-area-percentage .football-court-horizontal .court_bg3_data2,
+.data-details .bx .data-details-main .main-right.three-area-percentage .football-court-horizontal .court_bg3_data3 {
+  position: absolute;
+  color: #5F5F5F;
+  font-size: 20px;
+}
+.data-details .bx .data-details-main .main-right.three-area-percentage .football-court-horizontal .court_bg3_data1 {
+  top: 50px;
+  left: 160px;
+}
+.data-details .bx .data-details-main .main-right.three-area-percentage .football-court-horizontal .court_bg3_data2 {
+  top: 50px;
+  left: 350px;
+}
+.data-details .bx .data-details-main .main-right.three-area-percentage .football-court-horizontal .court_bg3_data3 {
+  top: 50px;
+  left: 540px;
+}
+.data-details .bx .data-details-main .main-right.three-area-percentage .football-court-horizontal .court_bg3_column1,
+.data-details .bx .data-details-main .main-right.three-area-percentage .football-court-horizontal .court_bg3_column2,
+.data-details .bx .data-details-main .main-right.three-area-percentage .football-court-horizontal .court_bg3_column3,
+.data-details .bx .data-details-main .main-right.three-area-percentage .football-court-horizontal .court_bg3_column4,
+.data-details .bx .data-details-main .main-right.three-area-percentage .football-court-horizontal .court_bg3_column5,
+.data-details .bx .data-details-main .main-right.three-area-percentage .football-court-horizontal .court_bg3_column6 {
+  border-radius: 4px 4px 0 0;
+  width: 40px;
+  text-align: center;
+  box-sizing: border-box;
+  position: absolute;
+}
+.data-details .bx .data-details-main .main-right.three-area-percentage .football-court-horizontal .court_bg3_column1 > p,
+.data-details .bx .data-details-main .main-right.three-area-percentage .football-court-horizontal .court_bg3_column2 > p,
+.data-details .bx .data-details-main .main-right.three-area-percentage .football-court-horizontal .court_bg3_column3 > p,
+.data-details .bx .data-details-main .main-right.three-area-percentage .football-court-horizontal .court_bg3_column4 > p,
+.data-details .bx .data-details-main .main-right.three-area-percentage .football-court-horizontal .court_bg3_column5 > p,
+.data-details .bx .data-details-main .main-right.three-area-percentage .football-court-horizontal .court_bg3_column6 > p {
+  margin-top: -20px;
+  font-size: 12px;
+}
+.data-details .bx .data-details-main .main-right.three-area-percentage .football-court-horizontal .court_bg3_column1,
+.data-details .bx .data-details-main .main-right.three-area-percentage .football-court-horizontal .court_bg3_column3,
+.data-details .bx .data-details-main .main-right.three-area-percentage .football-court-horizontal .court_bg3_column5 {
+  background-color: #2faae8;
+}
+.data-details .bx .data-details-main .main-right.three-area-percentage .football-court-horizontal .court_bg3_column2,
+.data-details .bx .data-details-main .main-right.three-area-percentage .football-court-horizontal .court_bg3_column4,
+.data-details .bx .data-details-main .main-right.three-area-percentage .football-court-horizontal .court_bg3_column6 {
+  background-color: #fff;
+}
+.data-details .bx .data-details-main .main-right.three-area-percentage .football-court-horizontal .court_bg3_column1 {
+  bottom: 32px;
+  left: 130px;
+}
+.data-details .bx .data-details-main .main-right.three-area-percentage .football-court-horizontal .court_bg3_column2 {
+  bottom: 32px;
+  left: 184px;
+}
+.data-details .bx .data-details-main .main-right.three-area-percentage .football-court-horizontal .court_bg3_column3 {
+  bottom: 32px;
+  left: 360px;
+}
+.data-details .bx .data-details-main .main-right.three-area-percentage .football-court-horizontal .court_bg3_column4 {
+  bottom: 32px;
+  left: 414px;
+}
+.data-details .bx .data-details-main .main-right.three-area-percentage .football-court-horizontal .court_bg3_column5 {
+  bottom: 32px;
+  left: 600px;
+}
+.data-details .bx .data-details-main .main-right.three-area-percentage .football-court-horizontal .court_bg3_column6 {
+  bottom: 32px;
+  left: 654px;
+}
+.data-details #attack-percentage .filter-box {
+  height: auto;
+  border-bottom: none;
+}
+.position.data-details {
+  /*球员站位*/
+}
+.position.data-details .bx .data-details-main .main-left .data-type-tab ul li {
+  width: 33.3%;
+}
+.position.data-details .bx .data-details-main .main-left .data-type-tab ul .type-selected > b {
+  left: 47px;
+}
+.position.data-details .bx .data-details-main .main-left .filter-box {
+  width: 100%;
+  height: auto;
+  border-bottom: none;
+}
+.position.data-details .bx .data-details-main .main-right {
+  width: 844px;
+  height: 660px;
+  padding: 0 18px 0 14px;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+.position.data-details .bx .data-details-main .main-right .football-court {
+  width: 396px;
+}
+.position.data-details .bx .data-details-main .main-right .football-court > .title {
+  height: 58px;
+  font-size: 14px;
+  line-height: 58px;
+}
+.position.data-details .bx .data-details-main .main-right .football-court > .away > ul > li > span > em {
+  background-color: #4a5266!important;
+}
+.position.data-details .bx .data-details-main .main-right .football-court .court {
+  background-color: pink;
+  width: 396px;
+  height: 588px;
+  background: url("../images/coaching-board.png") no-repeat;
+  background-size: cover;
+  position: relative;
+}
+.position.data-details .bx .data-details-main .main-right .football-court .court > .details_float {
+  /*平均站位球员悬浮框*/
+  background-color: #FFF;
+  color: #333;
+  padding: 2px 8px;
+  border: 1px #eee solid;
+  position: absolute;
+  display: none;
+  border-radius: 4px;
+  overflow: visible;
+  font-size: 12px;
+  white-space: nowrap;
+  box-shadow: -2px -2px 4px #000000;
+}
+.position.data-details .bx .data-details-main .main-right .football-court .court > .details_float > i {
+  width: 0;
+  height: 0;
+  border-width: 5px 5px;
+  border-style: solid;
+  border-bottom-color: transparent;
+  border-top-color: #fff;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  position: absolute;
+  left: 5px;
+  bottom: -10px;
+  z-index: 0;
+}
+.position.data-details .bx .data-details-main .main-right .football-court .court > svg {
+  /*平均站位球员位置svg图*/
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.position.data-details .bx .data-details-main .main-right .football-court .court > svg text,
+.position.data-details .bx .data-details-main .main-right .football-court .court > svg circle {
+  cursor: pointer;
+}
+.position.data-details .bx .data-details-main .main-right .football-court .court > ul {
+  /*首发站位*/
+  width: 100%;
+  height: 30px;
+  position: absolute;
+}
+.position.data-details .bx .data-details-main .main-right .football-court .court > ul > li {
+  position: absolute;
+  top: 50%;
+  margin-top: -15px;
+  height: 30px;
+  text-align: center;
+}
+.position.data-details .bx .data-details-main .main-right .football-court .court > ul > li > span {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  animation: mymove 0.5s ease;
+  margin-left: -15px;
+}
+.position.data-details .bx .data-details-main .main-right .football-court .court > ul > li > span > em {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  border: 1px solid #fff;
+  background-color: #35aae5;
+  position: absolute;
+  font-size: 12px;
+  line-height: 28px;
+  text-align: center;
+  font-weight: 700;
+  color: #fff;
+  margin-left: -15px;
+}
+.position.data-details .bx .data-details-main .main-right .football-court .court > ul > li > span > b {
+  position: absolute;
+  left: 50%;
+  margin-left: -100px;
+  bottom: -20px;
+  width: 200px;
+  font-size: 12px;
+  font-weight: 400;
+  color: #fff;
+}
+@keyframes mymove {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.position.data-details .bx .data-details-main .main-right .football-court .court > ul > li .mvp > em {
+  border: 1px solid gold;
+  color: gold;
+}
+.position.data-details .bx .data-details-main .main-right .football-court .court .two {
+  /*首发站位*/
+}
+.position.data-details .bx .data-details-main .main-right .football-court .court .two > li {
+  width: 50%;
+}
+.position.data-details .bx .data-details-main .main-right .football-court .court .two > li:nth-child(1) {
+  left: 0;
+}
+.position.data-details .bx .data-details-main .main-right .football-court .court .two > li:nth-child(1) > span {
+  right: 17%;
+}
+.position.data-details .bx .data-details-main .main-right .football-court .court .two > li:nth-child(2) {
+  left: 50%;
+}
+.position.data-details .bx .data-details-main .main-right .football-court .court .two > li:nth-child(2) > span {
+  left: 17%;
+  margin-left: 0;
+}
+.position.data-details .bx .data-details-main .main-right .football-court .court .three {
+  /*首发站位*/
+}
+.position.data-details .bx .data-details-main .main-right .football-court .court .three > li {
+  width: 33.33%;
+}
+.position.data-details .bx .data-details-main .main-right .football-court .court .three > li:nth-child(1) {
+  left: 0;
+}
+.position.data-details .bx .data-details-main .main-right .football-court .court .three > li:nth-child(2) {
+  left: 33.33%;
+}
+.position.data-details .bx .data-details-main .main-right .football-court .court .three > li:nth-child(3) {
+  left: 66.66%;
+}
+.position.data-details .bx .data-details-main .main-right .football-court .court .four {
+  /*首发站位*/
+}
+.position.data-details .bx .data-details-main .main-right .football-court .court .four > li {
+  width: 25%;
+}
+.position.data-details .bx .data-details-main .main-right .football-court .court .four > li:nth-child(1) {
+  left: 0;
+}
+.position.data-details .bx .data-details-main .main-right .football-court .court .four > li:nth-child(2) {
+  left: 25%;
+}
+.position.data-details .bx .data-details-main .main-right .football-court .court .four > li:nth-child(3) {
+  left: 50%;
+}
+.position.data-details .bx .data-details-main .main-right .football-court .court .four > li:nth-child(4) {
+  left: 75%;
+}
+.position.data-details .bx .data-details-main .main-right .football-court .court .five {
+  /*首发站位*/
+}
+.position.data-details .bx .data-details-main .main-right .football-court .court .five > li {
+  width: 20%;
+}
+.position.data-details .bx .data-details-main .main-right .football-court .court .five > li:nth-child(1) {
+  left: 0;
+}
+.position.data-details .bx .data-details-main .main-right .football-court .court .five > li:nth-child(2) {
+  left: 20%;
+}
+.position.data-details .bx .data-details-main .main-right .football-court .court .five > li:nth-child(3) {
+  left: 40%;
+}
+.position.data-details .bx .data-details-main .main-right .football-court .court .five > li:nth-child(4) {
+  left: 60%;
+}
+.position.data-details .bx .data-details-main .main-right .football-court .court .five > li:nth-child(5) {
+  left: 80%;
+}
+.position.data-details .bx .data-details-main .main-right .football-court .court .forward {
+  /*首发站位*/
+  top: 115px;
+}
+.position.data-details .bx .data-details-main .main-right .football-court .court .midfielder {
+  /*首发站位*/
+  top: 202px;
+}
+.position.data-details .bx .data-details-main .main-right .football-court .court .center {
+  /*首发站位*/
+  top: 296px;
+}
+.position.data-details .bx .data-details-main .main-right .football-court .court .back {
+  /*首发站位*/
+  top: 400px;
+}
+.position.data-details .bx .data-details-main .main-right .football-court .court .goalkeeper {
+  /*首发站位*/
+  top: 500px;
+}
+.position.data-details .bx .data-details-main .main-right .football-court .court .goalkeeper > li {
+  left: 50%;
+}
+.position.data-details .bx .data-details-main .main-right .football-court .court > .line {
+  height: 20px;
+  width: 337px;
+  position: absolute;
+  left: 30px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 17px;
+  color: #000;
+}
+.position.data-details .bx .data-details-main .main-right .football-court .court > .attack-line {
+  border-bottom: 3px solid red;
+  top: 22px;
+  transition: top 1s;
+}
+.position.data-details .bx .data-details-main .main-right .football-court .court > .defend-line {
+  border-top: 3px solid #35aae6;
+  bottom: 22px;
+  transition: bottom 1s;
+}
+.position.data-details .bx .data-details-main .main-right > table {
+  width: 812px;
+  height: 630px;
+  margin: 15px auto;
+  font-size: 12px;
+}
+.position.data-details .bx .data-details-main .main-right > table > thead tr {
+  height: 162px;
+}
+.position.data-details .bx .data-details-main .main-right > table > thead tr th {
+  height: 162px;
+  width: 12px;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+.position.data-details .bx .data-details-main .main-right > table > thead tr th span {
+  display: block;
+  width: 12px;
+  margin: 0 auto;
+  line-height: 12px;
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.position.data-details .bx .data-details-main .main-right > table > tbody {
+  height: 448px;
+}
+.position.data-details .bx .data-details-main .main-right > table > tbody > tr > td {
+  text-align: center;
+  border: 1px solid #dcdcdc;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+.position.data-details .bx .data-details-main .main-right > table > tbody > tr td:first-child {
+  text-align: left;
+  text-indent: 5px;
+  cursor: default;
+}
+.position.data-details .bx .data-details-main .main-right > table > tbody > tr:nth-child(1) > td:nth-child(2) {
+  background-color: #35aae5;
+}
+.position.data-details .bx .data-details-main .main-right > table > tbody > tr:nth-child(2) > td:nth-child(3) {
+  background-color: #35aae5;
+}
+.position.data-details .bx .data-details-main .main-right > table > tbody > tr:nth-child(3) > td:nth-child(4) {
+  background-color: #35aae5;
+}
+.position.data-details .bx .data-details-main .main-right > table > tbody > tr:nth-child(4) > td:nth-child(5) {
+  background-color: #35aae5;
+}
+.position.data-details .bx .data-details-main .main-right > table > tbody > tr:nth-child(5) > td:nth-child(6) {
+  background-color: #35aae5;
+}
+.position.data-details .bx .data-details-main .main-right > table > tbody > tr:nth-child(6) > td:nth-child(7) {
+  background-color: #35aae5;
+}
+.position.data-details .bx .data-details-main .main-right > table > tbody > tr:nth-child(7) > td:nth-child(8) {
+  background-color: #35aae5;
+}
+.position.data-details .bx .data-details-main .main-right > table > tbody > tr:nth-child(8) > td:nth-child(9) {
+  background-color: #35aae5;
+}
+.position.data-details .bx .data-details-main .main-right > table > tbody > tr:nth-child(9) > td:nth-child(10) {
+  background-color: #35aae5;
+}
+.position.data-details .bx .data-details-main .main-right > table > tbody > tr:nth-child(10) > td:nth-child(11) {
+  background-color: #35aae5;
+}
+.position.data-details .bx .data-details-main .main-right > table > tbody > tr:nth-child(11) > td:nth-child(12) {
+  background-color: #35aae5;
+}
+.position.data-details .bx .data-details-main .main-right > table > tbody > tr:nth-child(12) > td:nth-child(13) {
+  background-color: #35aae5;
+}
+.position.data-details .bx .data-details-main .main-right > table > tbody > tr:nth-child(13) > td:nth-child(14) {
+  background-color: #35aae5;
+}
+.position.data-details .bx .data-details-main .main-right > table > tbody > tr:nth-child(14) > td:nth-child(15) {
+  background-color: #35aae5;
+}
+.position.data-details .bx .data-details-main .main-right .hedge-figure {
+  padding: 10px;
+}
+.position.data-details .bx .data-details-main .main-right .hedge-figure .data-title {
+  height: 41px;
+  line-height: 41px;
+  text-align: center;
+  font-size: 12px;
+}
+.position.data-details .bx .data-details-main .main-right .hedge-figure .data-bar {
+  height: 12px;
+  text-align: center;
+}
+.position.data-details .bx .data-details-main .main-right .hedge-figure .data-bar .bar {
+  width: 650px;
+  height: 12px;
+  display: inline-block;
+  background-color: #3d4254;
+  vertical-align: top;
+  position: relative;
+}
+.position.data-details .bx .data-details-main .main-right .hedge-figure .data-bar .bar .bar-per {
+  background-color: #35aae6;
+  height: 12px;
+}
+.position.data-details .bx .data-details-main .main-right .hedge-figure .data-bar .bar .scale-half {
+  width: 50%;
+  position: absolute;
+  border-right: 1px solid #fff;
+  height: 12px;
+  left: 0;
+  top: 0;
+}
+.position.data-details .bx .data-details-main .main-right .hedge-figure .data-bar .data-text {
+  width: 58px;
+  height: 12px;
+  line-height: 12px;
+  text-align: center;
+  font-size: 12px;
+}
+.player-modal {
+  /*球员数据明细*/
+  width: 1200px;
+  background-color: #ffffff;
+  margin-bottom: 50px;
+}
+.player-modal .modal-head {
+  padding: 10px 285px 24px 23px;
+}
+.player-modal .modal-head .filter {
+  height: 48px;
+  line-height: 46px;
+  border-bottom: 2px dashed #d7d7d7;
+}
+.player-modal .modal-head .filter > span {
+  font-size: 14px;
+  font-weight: 600;
+  float: left;
+  margin-right: 40px;
+  width: 70px;
+}
+.player-modal .modal-head .filter > ul {
+  float: left;
+  font-size: 14px;
+}
+.player-modal .modal-head .filter > ul > li {
+  float: left;
+  margin-right: 55px;
+}
+.player-modal .modal-head .filter > ul > li > a:hover {
+  text-decoration: underline;
+}
+.player-modal > table {
+  width: 100%;
+}
+.player-modal > table > thead {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  background-color: #4a5266;
+  font-size: 0;
+}
+.player-modal > table > thead tr {
+  height: 40px;
+  display: inline-block;
+}
+.player-modal > table > thead tr th {
+  height: 40px!important;
+  display: inline-block;
+}
+.player-modal > table > thead tr th > a {
+  display: inline-block;
+  padding: 0 10.5px;
+  height: 40px;
+  line-height: 40px;
+  margin: 0 8.5px;
+  color: #fff;
+  text-align: center;
+  font-size: 12px;
+  border-left: 1px solid #4a5266;
+  border-right: 1px solid #4a5266;
+}
+.player-modal > table > thead tr th > a > b {
+  color: #4a5266;
+}
+.player-modal > table > thead tr th a:hover {
+  border-left-color: #fff;
+  border-right-color: #fff;
+  color: #35a7e3;
+}
+.player-modal > table > thead tr th a.active {
+  border-left-color: #fff;
+  border-right-color: #fff;
+  color: #35a7e3;
+}
+.player-modal > table > thead tr th:nth-child(2) > a {
+  width: 163px;
+}
+.player-modal > table > tbody {
+  display: block;
+  width: 100%;
+  font-size: 0;
+}
+.player-modal > table > tbody tr {
+  height: 50px;
+  display: inline-block;
+}
+.player-modal > table > tbody tr td {
+  height: 50px;
+  display: inline-block;
+}
+.player-modal > table > tbody tr td a {
+  text-align: center;
+  display: inline-block;
+  padding: 0 8.5px;
+  height: 50px;
+  line-height: 50px;
+  margin: 0 8.5px;
+  font-size: 12px;
+  cursor: default;
+}
+.player-modal > table > tbody tr td a:nth-child(1) {
+  width: 47px;
+}
+.player-modal > table > tbody tr td .sort {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.player-modal > table > tbody tr td:nth-child(2) > a {
+  width: 163px;
+  text-align: left;
+  cursor: pointer;
+}
+.player-modal > table > tbody tr td:nth-child(2) > a > p {
+  font-size: 12px;
+  line-height: 25px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.player-modal > table > tbody tr td:nth-child(2) > a .name {
+  font-weight: 500;
+}
+.player-modal > table > tbody tr td:nth-child(2) > a .position {
+  color: #97979a;
+}
+.player-modal > table > tbody tr td:nth-child(3) > a,
+.player-modal > table > tbody tr td:nth-child(4) > a,
+.player-modal > table > tbody tr td:nth-child(8) > a,
+.player-modal > table > tbody tr td:nth-child(11) > a {
+  width: 71px;
+}
+.player-modal > table > tbody tr td:nth-child(5) > a,
+.player-modal > table > tbody tr td:nth-child(7) > a,
+.player-modal > table > tbody tr td:nth-child(9) > a,
+.player-modal > table > tbody tr td:nth-child(14) > a {
+  width: 47px;
+}
+.player-modal > table > tbody tr td:nth-child(6) > a {
+  width: 38.02px;
+}
+.player-modal > table > tbody tr td:nth-child(10) > a {
+  width: 83px;
+}
+.player-modal > table > tbody tr td:nth-child(12) > a,
+.player-modal > table > tbody tr td:nth-child(13) > a {
+  width: 78.05px;
+}
+.player-modal > table > tbody tr:nth-child(2n) {
+  background-color: #f4f4f4;
+}
+.event-playback-modal-wrapper {
+  /*弹出事件回话模态框*/
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transition: opacity .5s;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.event-playback-modal-wrapper .event-playback-modal {
+  width: 1070px;
+  height: 607px;
+  background-color: #ffffff;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -535px;
+  margin-top: -303.5px;
+  padding: 0 18px;
+}
+.event-playback-modal-wrapper .event-playback-modal .close-modal {
+  display: inline-block;
+  width: 19px;
+  height: 19px;
+  background: url(../images/icon_close.png);
+  background-size: cover;
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  cursor: pointer;
+}
+.event-playback-modal-wrapper .event-playback-modal .close-modal:hover {
+  background: url(../images/icon_close_hover.png);
+  background-size: cover;
+}
+.event-playback-modal-wrapper .event-playback-modal .title {
+  font-size: 20px;
+  text-align: left;
+  height: 68px;
+  line-height: 68px;
+  color: #4a4a4a;
+}
+.event-playback-modal-wrapper .event-playback-modal .modal-left {
+  width: 352px;
+  height: 523px;
+  background: url("../images/coaching-board.png");
+  background-size: cover;
+}
+.event-playback-modal-wrapper .event-playback-modal .modal-left text,
+.event-playback-modal-wrapper .event-playback-modal .modal-left circle {
+  font-size: 12px;
+  cursor: pointer;
+}
+.event-playback-modal-wrapper .event-playback-modal .modal-right {
+  width: 666px;
+  padding-top: 14px;
+}
+.event-playback-modal-wrapper .event-playback-modal .modal-right > video {
+  width: 666px;
+  height: 418px;
+  background: url("../images/video.png") no-repeat;
+  background-size: cover;
+}
+.event-playback-modal-wrapper .event-playback-modal .modal-right .control-button {
+  margin-top: 14px;
+}
+.event-playback-modal-wrapper .event-playback-modal .modal-right .control-button > button {
+  width: 64px;
+  height: 21px;
+  background-color: #35aae5;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 12px;
+  cursor: pointer;
+}
+.event-playback-modal-wrapper .event-playback-modal .modal-right .control-button .download {
+  margin-right: 15px;
+}
+.event-playback-modal-wrapper .event-playback-modal .modal-right .control-button .screenshot {
+  margin-right: 20px;
+}
+.score-bar {
+  /*固定比赛比分通栏*/
+  width: 100%;
+  height: 100px;
+  background-color: #fff;
+  position: fixed;
+  left: 0;
+  top: 0;
+  box-shadow: 0px 11px 20px 0px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: all 0.2s ease;
+}
+.score-bar .bx {
+  height: 100px;
+  text-align: center;
+}
+.score-bar .bx > .team > .team-logo {
+  width: 60px;
+  height: 60px;
+  background: url("../images/gzhd.png") no-repeat;
+  background-size: cover;
+  margin: 20px 14px;
+}
+.score-bar .bx > .team > .team-name {
+  height: 100px;
+  line-height: 100px;
+  font-size: 18px;
+  color: #4a4a4a;
+}
+.score-bar .bx .bar-center {
+  display: inline-block;
+  width: 361px;
+  margin: 0 auto;
+  text-align: center;
+}
+.score-bar .bx .bar-center > p {
+  font-size: 14px;
+  height: 20px;
+  line-height: 20px;
+  margin-top: 14px;
+}
+.score-bar .bx .bar-center > .match-result {
+  height: 56px;
+  position: relative;
+}
+.score-bar .bx .bar-center > .match-result .score {
+  height: 56px;
+  line-height: 56px;
+  font-size: 40px;
+  position: absolute;
+  margin: 0 5px;
+}
+.score-bar .bx .bar-center > .match-result .score > span {
+  display: inline-block;
+  height: 56px;
+}
+.score-bar .bx .bar-center > .match-result .score .penalty-kick-score {
+  display: inline-block;
+  width: 56px;
+  height: 56px;
+  text-align: center;
+  font-size: 30px!important;
+}
+.score-bar .bx .bar-center > .match-result .normal-score {
+  margin: 0 5px;
+}
+.score-bar .bx .bar-center > .match-result .home-score {
+  left: 0;
+  top: 0;
+}
+.score-bar .bx .bar-center > .match-result .home-score > span {
+  float: left;
+}
+.score-bar .bx .bar-center > .match-result .away-score {
+  right: 0;
+  top: 0;
+}
+.score-bar .bx .bar-center > .match-result .away-score > span {
+  float: right;
+}
+.score-bar .bx .bar-center > .match-result .line {
+  height: 69px;
+  line-height: 69px;
+  text-align: center;
+}

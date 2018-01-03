@@ -1,0 +1,1386 @@
+.personal-resume-bar {
+  padding: 27px 0 20px 0;
+}
+.personal-resume-bar .bx .pesonal-resume-wrapper {
+  height: 140px;
+  background-color: #fff;
+  position: relative;
+}
+.personal-resume-bar .bx .pesonal-resume-wrapper .personal-avatar {
+  width: 98px;
+  height: 98px;
+  background: url("../images/avatar2.png");
+  margin: 21px;
+  border-radius: 8px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.personal-resume-bar .bx .pesonal-resume-wrapper .resume-info {
+  margin: 0 140px;
+  height: 140px;
+}
+.personal-resume-bar .bx .pesonal-resume-wrapper .resume-info .personal-name {
+  padding: 20px 14px 12px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 28px;
+  border-bottom: 1px solid #dcdcdc;
+}
+.personal-resume-bar .bx .pesonal-resume-wrapper .resume-info .info-list {
+  padding-left: 2px;
+  padding-top: 14px;
+  height: 59px;
+  line-height: 45px;
+  overflow: visible;
+}
+.personal-resume-bar .bx .pesonal-resume-wrapper .resume-info .info-list li {
+  text-align: center;
+  float: left;
+  border-left: 1px solid #dcdcdc;
+  border-right: 1px solid #dcdcdc;
+  width: 135px;
+  height: 45px;
+  margin-left: -1px;
+}
+.personal-resume-bar .bx .pesonal-resume-wrapper .resume-info .info-list li .li-t {
+  line-height: 22px;
+  font-size: 16px;
+  color: #4b5266;
+  margin-bottom: 7px;
+}
+.personal-resume-bar .bx .pesonal-resume-wrapper .resume-info .info-list li .li-b {
+  line-height: 25px;
+  font-size: 18px;
+  color: #35aae6;
+}
+.personal-resume-bar .bx .pesonal-resume-wrapper .team-avatar {
+  width: 98px;
+  height: 98px;
+  margin: 21px;
+  padding-top: 6px;
+  text-align: center;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.personal-resume-bar .bx .pesonal-resume-wrapper .team-avatar .team-logo {
+  width: 60px;
+  height: 60px;
+  background: url("../images/gzhd.png");
+  background-size: cover;
+  margin: 0 auto;
+}
+.personal-resume-bar .bx .pesonal-resume-wrapper .team-avatar .team-name {
+  font-size: 14px;
+  line-height: 20px;
+  color: #4b5266;
+  margin-top: 7px;
+}
+.personal-data-main .bx .personal-data-wrapper {
+  /*个人数据列表*/
+  width: 930px;
+  margin-right: 17px;
+}
+.personal-data-main .bx .personal-data-wrapper .tab-bar {
+  height: 40px;
+}
+.personal-data-main .bx .personal-data-wrapper .tab-bar > ul > li {
+  width: 117px;
+  line-height: 32px;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+  font-weight: 600;
+}
+.personal-data-main .bx .personal-data-wrapper .personal-data-body {
+  width: 100%;
+}
+.personal-data-main .bx .personal-data-wrapper .personal-data-body .table-box {
+  background-color: #fff;
+  padding-top: 16px;
+  margin-bottom: 26px;
+  width: 930px;
+  margin-right: 17px;
+}
+.personal-data-main .bx .personal-data-wrapper .personal-data-body .table-box > table {
+  width: 100%;
+}
+.personal-data-main .bx .personal-data-wrapper .personal-data-body .table-box > table > thead {
+  display: block;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  background-color: #4a5266;
+  font-size: 0;
+}
+.personal-data-main .bx .personal-data-wrapper .personal-data-body .table-box > table > thead tr {
+  width: 100%;
+  height: 40px;
+  display: inline-block;
+}
+.personal-data-main .bx .personal-data-wrapper .personal-data-body .table-box > table > thead tr th {
+  width: 10%;
+  height: 40px!important;
+  display: inline-block;
+  text-align: center;
+  padding: 0 8.5px;
+}
+.personal-data-main .bx .personal-data-wrapper .personal-data-body .table-box > table > thead tr th > a {
+  width: 100%;
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+  color: #fff;
+  font-size: 14px;
+  border-left: 1px solid #4a5266;
+  border-right: 1px solid #4a5266;
+}
+.personal-data-main .bx .personal-data-wrapper .personal-data-body .table-box > table > thead tr th a:hover {
+  border-left-color: #fff;
+  border-right-color: #fff;
+  color: #35a7e3;
+}
+.personal-data-main .bx .personal-data-wrapper .personal-data-body .table-box > table > thead tr th a.active {
+  border-left-color: #fff;
+  border-right-color: #fff;
+  color: #35a7e3;
+}
+.personal-data-main .bx .personal-data-wrapper .personal-data-body .table-box > table > tbody,
+.personal-data-main .bx .personal-data-wrapper .personal-data-body .table-box > table tfoot {
+  display: block;
+  width: 100%;
+  line-height: 40px;
+  font-size: 0;
+}
+.personal-data-main .bx .personal-data-wrapper .personal-data-body .table-box > table > tbody tr,
+.personal-data-main .bx .personal-data-wrapper .personal-data-body .table-box > table tfoot tr {
+  width: 100%;
+  height: 40px;
+  display: inline-block;
+}
+.personal-data-main .bx .personal-data-wrapper .personal-data-body .table-box > table > tbody tr td,
+.personal-data-main .bx .personal-data-wrapper .personal-data-body .table-box > table tfoot tr td {
+  width: 10%;
+  height: 40px!important;
+  display: inline-block;
+  text-align: center;
+  padding: 0 8.5px;
+}
+.personal-data-main .bx .personal-data-wrapper .personal-data-body .table-box > table > tbody tr td > a,
+.personal-data-main .bx .personal-data-wrapper .personal-data-body .table-box > table tfoot tr td > a {
+  width: 100%;
+  display: inline-block;
+  height: 50px;
+  line-height: 50px;
+  color: #4b5266;
+  font-size: 12px;
+  cursor: default;
+}
+.personal-data-main .bx .personal-data-wrapper .personal-data-body .table-box > table tfoot {
+  font-weight: 600!important;
+}
+.personal-data-main .bx .personal-data-wrapper .personal-data-body .table-box > table tfoot a {
+  font-size: 14px!important;
+}
+.personal-data-main .bx .players-score {
+  /*当前赛季队友*/
+  width: 253px;
+  background-color: #fff;
+}
+.personal-data-main .bx .players-score .players-score-header {
+  height: 40px;
+  background-color: #4b5266;
+  line-height: 40px;
+}
+.personal-data-main .bx .players-score .players-score-header > p {
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  display: inline-block;
+  margin-left: 19px;
+}
+.personal-data-main .bx .players-score .players-list {
+  padding: 3px 15px 3px;
+}
+.personal-data-main .bx .players-score .players-list ul {
+  border-bottom: 1px solid #4b5266;
+}
+.personal-data-main .bx .players-score .players-list ul li > a {
+  display: block;
+  height: 40px;
+  border-bottom: 1px solid #e8e8e8;
+  line-height: 40px;
+  padding: 0 9px 0 7px;
+  font-size: 14px;
+}
+.personal-data-main .bx .players-score .players-list ul li > a span {
+  float: right;
+  font-weight: 700;
+}
+.personal-data-main .bx .players-score .players-list ul li:last-child {
+  border-bottom: none;
+}
+.personal-data-main .bx .players-score .players-list ul li:hover {
+  background-color: #ecf0f1;
+}
+.personal-data-main .bx .players-score .players-list ul:last-child {
+  border-bottom: none;
+}
+.personal-data-main .bx .season-scoring {
+  /*联赛赛季评分*/
+  width: 930px;
+  background-color: #fff;
+  margin-bottom: 20px;
+}
+.personal-data-main .bx .season-scoring .filter-condition {
+  padding: 5px 17px 0 21px;
+}
+.personal-data-main .bx .season-scoring .filter-condition > .filter-c-row {
+  line-height: 44px;
+  border-bottom: 2px dashed #d7d7d7;
+  padding: 0 2px 0;
+}
+.personal-data-main .bx .season-scoring .filter-condition > .filter-c-row span {
+  font-size: 14px;
+  font-weight: 600;
+  display: inline-block;
+  width: 102px;
+}
+.personal-data-main .bx .season-scoring .filter-condition > .filter-c-row a {
+  margin-right: 80px;
+  font-size: 13px;
+}
+.personal-data-main .bx .season-scoring .filter-condition > .filter-c-row a:hover {
+  text-decoration: underline;
+}
+.personal-data-main .bx .season-scoring .filter-condition > .filter-c-row > ul {
+  width: 680px;
+  display: inline-block;
+}
+.personal-data-main .bx .season-scoring .filter-condition > .filter-c-row > ul > li {
+  height: 46px;
+}
+.personal-data-main .bx .season-scoring .filter-condition .round-filter {
+  height: 70px;
+  line-height: 70px;
+}
+.personal-data-main .bx .season-scoring .filter-condition .round-filter > span {
+  font-size: 14px;
+  font-weight: 600;
+  display: inline-block;
+  width: 42px;
+  margin-right: 20px;
+}
+.personal-data-main .bx .season-scoring .filter-condition .round-filter .filter-slider-box {
+  display: inline-block;
+  width: 822px;
+  height: 36px;
+  line-height: 36px;
+  vertical-align: middle;
+  font-size: 0;
+}
+.personal-data-main .bx .season-scoring .filter-condition .round-filter .filter-slider-box .handle {
+  display: inline-block;
+  width: 12px;
+  height: 36px;
+  background-image: linear-gradient(180deg, #ededed 0%, #d7d7d7 100%);
+  border-radius: 4px;
+  border: solid 1px #c1c1c1;
+  vertical-align: middle;
+}
+.personal-data-main .bx .season-scoring .filter-condition .round-filter .filter-slider-box .slider-bg {
+  display: inline-block;
+  width: 798px;
+  height: 30px;
+  line-height: 30px;
+  background-color: #f0f0f0;
+  vertical-align: middle;
+  text-align: center;
+}
+.personal-data-main .bx .season-scoring .filter-condition .round-filter .filter-slider-box .slider-bg .slider-bar {
+  width: 778px;
+  height: 22px;
+  vertical-align: middle;
+  display: inline-block;
+  position: relative;
+  z-index: 0;
+  cursor: pointer;
+}
+.personal-data-main .bx .season-scoring .filter-condition .round-filter .filter-slider-box .slider-bg .slider-bar > li {
+  width: 50.015px;
+  height: 22px;
+  float: left;
+  margin-right: 2px;
+  position: relative;
+}
+.personal-data-main .bx .season-scoring .filter-condition .round-filter .filter-slider-box .slider-bg .slider-bar > li > i {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: -140px;
+  width: 200px;
+  height: 126px;
+  background-color: #fff;
+  box-shadow: 1px -1px 9px 0px rgba(0, 0, 0, 0.36);
+  border-radius: 6px;
+}
+.personal-data-main .bx .season-scoring .filter-condition .round-filter .filter-slider-box .slider-bg .slider-bar > li > i > .box-top {
+  cursor: default;
+  display: inline-block;
+  height: 80px;
+  width: 100%;
+  border-bottom: 1px solid #dfdfdf;
+}
+.personal-data-main .bx .season-scoring .filter-condition .round-filter .filter-slider-box .slider-bg .slider-bar > li > i > .box-top .t-l {
+  display: inline-block;
+  width: 54px;
+  height: 54px;
+  border-radius: 27px;
+  font-size: 20px;
+  color: #fff;
+  text-align: center;
+  line-height: 54px;
+  font-style: normal;
+  margin: 12px 0 0 13px;
+}
+.personal-data-main .bx .season-scoring .filter-condition .round-filter .filter-slider-box .slider-bg .slider-bar > li > i > .box-top .t-r {
+  height: 41px;
+  width: 110px;
+  margin: 19px 13px 0 0;
+  font-style: normal;
+}
+.personal-data-main .bx .season-scoring .filter-condition .round-filter .filter-slider-box .slider-bg .slider-bar > li > i > .box-top .t-r > p {
+  height: 17px;
+  font-size: 12px;
+  line-height: 17px;
+  color: #4a4a4a;
+}
+.personal-data-main .bx .season-scoring .filter-condition .round-filter .filter-slider-box .slider-bg .slider-bar > li > i > .box-top .t-r > p .team {
+  width: 90px;
+  text-align: left;
+}
+.personal-data-main .bx .season-scoring .filter-condition .round-filter .filter-slider-box .slider-bg .slider-bar > li > i > .box-top .t-r > p .score {
+  width: 20px;
+  text-align: left;
+}
+.personal-data-main .bx .season-scoring .filter-condition .round-filter .filter-slider-box .slider-bg .slider-bar > li > i > .box-top .t-r > p:nth-child(2) {
+  margin-top: 7px;
+  color: #909094;
+}
+.personal-data-main .bx .season-scoring .filter-condition .round-filter .filter-slider-box .slider-bg .slider-bar > li > i > .box-bottom {
+  height: 46px;
+  cursor: default;
+}
+.personal-data-main .bx .season-scoring .filter-condition .round-filter .filter-slider-box .slider-bg .slider-bar > li > i > .box-bottom .scoring {
+  font-size: 12px;
+  line-height: 17px;
+  font-style: normal;
+  margin: 13px 0 0 14px;
+}
+.personal-data-main .bx .season-scoring .filter-condition .round-filter .filter-slider-box .slider-bg .slider-bar > li > i > .box-bottom .check {
+  width: 76px;
+  height: 23px;
+  background-color: #35aae5;
+  border-radius: 4px;
+  border: 1px solid #498fe1;
+  margin: 11px 10px 0 0;
+  font-size: 12px;
+  color: #ecf0f1;
+  cursor: pointer;
+}
+.personal-data-main .bx .season-scoring .filter-condition .round-filter .filter-slider-box .slider-bg .slider-bar > li > i > em {
+  display: none;
+  width: 0;
+  height: 0;
+  border-width: 17px 10px;
+  border-style: solid;
+  border-bottom-color: transparent;
+  border-top-color: #fff;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  position: absolute;
+  left: 16px;
+  top: 123px;
+}
+.personal-data-main .bx .season-scoring .filter-condition .round-filter .filter-slider-box .slider-bg .slider-bar > li:hover > i {
+  display: block;
+}
+.personal-data-main .bx .season-scoring .filter-condition .round-filter .filter-slider-box .slider-bg .slider-bar > li:hover > i > em {
+  display: block;
+}
+.personal-data-main .bx .season-scoring .filter-condition .round-filter .filter-slider-box .slider-bg .slider-bar .undeed {
+  line-height: 22px;
+}
+.personal-data-main .bx .season-scoring .filter-condition .round-filter .filter-slider-box .slider-bg .slider-bar .undeed > a {
+  display: inline-block;
+  vertical-align: middle;
+  height: 75%;
+  width: 40%;
+  background: url(../images/undeed1.png) no-repeat center center;
+  background-size: contain;
+}
+.personal-data-main .bx .season-scoring .filter-condition .round-filter .filter-slider-box .slider-bg .slider-bar > li:last-child {
+  margin-right: 0;
+}
+.personal-data-main .bx .season-scoring .filter-condition .round-filter .filter-slider-box .slider-bg .slider-bar .slider-range {
+  background-color: rgba(0, 0, 0, 0.2);
+  height: 30px;
+  position: absolute;
+  left: 0;
+  top: -4px;
+  right: 0;
+  z-index: -1;
+}
+.personal-data-main .bx .season-scoring .filter-condition .round-filter .filter-slider-box .slider-bg .slider-bar .slider-handler {
+  width: 14px;
+  height: 36px;
+  background: url("../images/slider-handler.png") no-repeat;
+  position: absolute;
+  bottom: -4px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  z-index: 1;
+}
+.personal-data-main .bx .season-scoring .filter-condition .round-filter .filter-slider-box .slider-bg .slider-bar .slider-handler-left {
+  left: -7px;
+}
+.personal-data-main .bx .season-scoring .filter-condition .round-filter .filter-slider-box .slider-bg .slider-bar .slider-handler-right {
+  right: -8px;
+}
+.personal-data-main .bx .season-scoring .filter-condition .round-filter .filter-slider-box .slider-bg .slider-bar .focus {
+  border: 1px solid #35aae5;
+  border-radius: 4px;
+}
+.personal-data-main .bx .season-scoring .filter-result {
+  height: 361px;
+  border-top: 1px solid #dcdcdc;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-l {
+  width: 361px;
+  display: inline-block;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-l > li {
+  width: 121px;
+  height: 121px;
+  float: left;
+  border: 1px solid #dcdcdc;
+  margin-top: -1px;
+  margin-left: -1px;
+  cursor: pointer;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-l > li > p {
+  text-align: center;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-l > li .item-name {
+  font-size: 12px;
+  line-height: 17px;
+  margin-top: 31px;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-l > li .item-data {
+  font-size: 22px;
+  line-height: 30px;
+  margin-top: 9px;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-l > li:hover {
+  background-color: #ecf0f1;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r {
+  height: 360px;
+  width: 569px;
+  position: relative;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .chart {
+  height: 360px;
+  width: 569px;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .goals {
+  /*球员进球*/
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .goals .chart-left {
+  width: 389px;
+  height: 360px;
+  background-color: aqua;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .goals .chart-right {
+  width: 160px;
+  height: 100%;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .goals .chart-right .chart-r-t {
+  height: 170px;
+  padding: 15px 0;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .goals .chart-right .chart-r-t .data-list {
+  height: 140px;
+  background-color: #ecf0f1;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .goals .chart-right .chart-r-t .data-list > li {
+  height: 35px;
+  line-height: 35px;
+  font-size: 16px;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .goals .chart-right .chart-r-t .data-list > li .item {
+  width: 110px;
+  line-height: 35px;
+  text-indent: 10px;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .goals .chart-right .chart-r-t .data-list > li .value {
+  width: 40px;
+  line-height: 35px;
+  text-align: right;
+  margin-right: 10px;
+  color: #35aae6;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .goals .chart-right .chart-r-b {
+  height: 170px;
+  background: url("../images/area-tips.png");
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .goals-accuracy {
+  /*球员射门准确率*/
+  padding-top: 8px;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .goals-accuracy .data-list {
+  width: 520px;
+  height: 53px;
+  margin: 0 19px 0;
+  background-color: #f1f1f1;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .goals-accuracy .data-list > li {
+  width: 25%;
+  height: 53px;
+  float: left;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .goals-accuracy .data-list > li p {
+  height: 27px;
+  line-height: 27px;
+  font-size: 14px;
+  text-align: center;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .goals-accuracy .goals-area {
+  width: 501px;
+  height: 288px;
+  background: url(../images/goals.png) no-repeat;
+  margin: 7px auto 0;
+  position: relative;
+  text-align: center;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .goals-accuracy .goals-area > div {
+  float: left;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .goals-accuracy .goals-area .out-left-top {
+  width: 68px;
+  height: 62px;
+  line-height: 62px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .goals-accuracy .goals-area .out-center-top {
+  width: 356px;
+  height: 62px;
+  line-height: 62px;
+  position: absolute;
+  left: 70px;
+  top: 0;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .goals-accuracy .goals-area .out-right-top {
+  width: 73px;
+  height: 62px;
+  line-height: 62px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .goals-accuracy .goals-area .out-left-bottom {
+  width: 66px;
+  height: 180px;
+  line-height: 180px;
+  position: absolute;
+  left: 0;
+  top: 63px;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .goals-accuracy .goals-area .out-right-bottom {
+  width: 73px;
+  height: 180px;
+  line-height: 180px;
+  position: absolute;
+  right: 0;
+  top: 63px;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .goals-accuracy .goals-area .goal-inner {
+  position: absolute;
+  left: 74px;
+  top: 67px;
+  width: 351px;
+  height: 176px;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .goals-accuracy .goals-area .goal-inner > div {
+  line-height: 88px;
+  float: left;
+  width: 33.33%;
+  height: 88px;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .win-compete {
+  /*球员赢得对抗*/
+  padding: 47px 92px 0 93px;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .win-compete > .item-wrapper {
+  width: 384px;
+  height: 60px;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .win-compete > .item-wrapper .item-title {
+  height: 40px;
+  padding: 10px 43px 0;
+  text-align: center;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .win-compete > .item-wrapper .item-title > p {
+  display: inline-block;
+  font-size: 14px;
+  line-height: 30px;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .win-compete > .item-wrapper .item-bar {
+  height: 20px;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .win-compete > .item-wrapper .item-bar > p {
+  height: 20px;
+  width: 43px;
+  font-size: 14px;
+  line-height: 20px;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .win-compete > .item-wrapper .item-bar .failure-rate {
+  text-align: right;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .win-compete > .item-wrapper .item-bar > .bar {
+  width: 298px;
+  height: 20px;
+  display: inline-block;
+  background-color: #3d4254;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .win-compete > .item-wrapper .item-bar > .bar .success-bar {
+  width: 39%;
+  height: 20px;
+  background-color: #35aae6;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .win-balls {
+  /*球员赢得球权*/
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .win-balls .data-list {
+  width: 534px;
+  height: 53px;
+  margin: 10px 18px 0;
+  background-color: #f1f1f1;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .win-balls .data-list > li {
+  width: 33.33%;
+  height: 53px;
+  padding-top: 7px;
+  float: left;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .win-balls .data-list > li > p {
+  height: 20px;
+  line-height: 20px;
+  font-size: 14px;
+  margin-bottom: 3px;
+  text-align: center;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .win-balls .data-list > li:nth-child(1) > .item-value {
+  color: #2d98e0;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .win-balls .data-list > li:nth-child(2) > .item-value {
+  color: #c6000e;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .win-balls .data-areas {
+  width: 426px;
+  height: 287px;
+  background: url("../images/field_area4x6.png");
+  margin: 6px auto 0;
+  text-align: center;
+  position: relative;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .win-balls .data-areas .areas {
+  width: 366px;
+  height: 244px;
+  position: absolute;
+  left: 29px;
+  top: 21px;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .win-balls .data-areas .areas > li {
+  float: left;
+  width: 61px;
+  height: 61px;
+  line-height: 61px;
+  text-align: center;
+  color: #ecf0f1;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .create-opportunities {
+  /*球员创造机会*/
+  padding-top: 8px;
+  position: relative;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .create-opportunities .data-list {
+  width: 520px;
+  height: 53px;
+  margin: 0 19px 0;
+  background-color: #f1f1f1;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .create-opportunities .data-list > li {
+  width: 25%;
+  height: 53px;
+  float: left;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .create-opportunities .data-list > li p {
+  height: 27px;
+  line-height: 27px;
+  font-size: 14px;
+  text-align: center;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .create-opportunities .data-list > li:nth-child(1) > .item-value {
+  color: #2d98e0;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .create-opportunities .data-list > li:nth-child(2) > .item-value {
+  color: #c6000e;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .create-opportunities .football-court > .bg {
+  width: 427px;
+  height: 289px;
+  background: url(../images/football_court.png);
+  margin: 5px auto 0;
+  text-align: center;
+  padding: 21px 0 0 30px;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .create-opportunities .football-court > .bg .svg-wrapper {
+  width: 366px;
+  height: 244px;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .create-opportunities .football-court > .bg .svg-wrapper svg:not(:root) {
+  overflow: visible!important;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .single-game-fouls {
+  /*球员单场犯规次数*/
+  padding-top: 8px;
+  position: relative;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .single-game-fouls .data-list {
+  width: 520px;
+  height: 53px;
+  margin: 0 19px 0;
+  background-color: #f1f1f1;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .single-game-fouls .data-list > li {
+  width: 25%;
+  height: 53px;
+  float: left;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .single-game-fouls .data-list > li p {
+  height: 27px;
+  line-height: 27px;
+  font-size: 14px;
+  text-align: center;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .single-game-fouls .data-list > li:nth-child(1) > .item-value {
+  color: #2d98e0;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .single-game-fouls .data-list > li:nth-child(2) > .item-value {
+  color: #f39700;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .single-game-fouls .data-list > li:nth-child(3) > .item-value {
+  color: #c6000e;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .single-game-fouls .data-list > li:nth-child(4) > .item-value {
+  color: #dd626b;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .single-game-fouls .football-court > .bg {
+  width: 427px;
+  height: 289px;
+  background: url(../images/football_court.png);
+  margin: 5px auto 0;
+  overflow: hidden;
+  text-align: center;
+  padding: 21px 0 0 30px;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .single-game-fouls .football-court > .bg .wrapper {
+  width: 366px;
+  height: 244px;
+  position: relative;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .single-game-fouls .football-court > .bg .wrapper > div {
+  position: absolute;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .single-game-fouls .football-court > .bg .wrapper .foul {
+  width: 10px;
+  height: 10px;
+  background-color: #2d98e0;
+  border-radius: 5px;
+  box-shadow: 0px 0px 6px #fff;
+  left: 157px;
+  top: 20px;
+  margin-left: -5px;
+  margin-top: -5px;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .single-game-fouls .football-court > .bg .wrapper .yellow-card {
+  width: 12px;
+  height: 17px;
+  left: 218px;
+  top: 66px;
+  margin-left: -6px;
+  margin-top: -8.5px;
+  background: url("../images/yellow_card.png");
+  border-radius: 3px;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .single-game-fouls .football-court > .bg .wrapper .red-card {
+  width: 12px;
+  height: 17px;
+  left: 77px;
+  top: 34px;
+  margin-left: -6px;
+  margin-top: -8.5px;
+  background: url("../images/red_card.png");
+  border-radius: 3px;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .single-game-fouls .football-court > .bg .wrapper .yellow-to-red {
+  width: 10px;
+  height: 15px;
+  left: 137px;
+  top: 134px;
+  margin-left: -5px;
+  margin-top: -7.5px;
+  background: url(../images/2yellow1red.png);
+  border-radius: 3px;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .goal-kick-droppoint {
+  /*守门员球门球距离落点*/
+  padding-top: 8px;
+  position: relative;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .goal-kick-droppoint .data-list {
+  width: 520px;
+  height: 53px;
+  margin: 0 19px 0;
+  background-color: #f1f1f1;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .goal-kick-droppoint .data-list > li {
+  width: 25%;
+  height: 53px;
+  float: left;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .goal-kick-droppoint .data-list > li p {
+  height: 27px;
+  line-height: 27px;
+  font-size: 14px;
+  text-align: center;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .goal-kick-droppoint .data-list > li:nth-child(1) > .item-value {
+  color: #2d98e0;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .goal-kick-droppoint .football-court > .bg {
+  width: 427px;
+  height: 289px;
+  background: url(../images/football_court.png);
+  margin: 5px auto 0;
+  overflow: hidden;
+  text-align: center;
+  padding: 21px 0 0 30px;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .goal-kick-droppoint .football-court > .bg .wrapper {
+  width: 366px;
+  height: 244px;
+  position: relative;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .goal-kick-droppoint .football-court > .bg .wrapper > div {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #2d98e0;
+  border-radius: 5px;
+  box-shadow: 0px 0px 6px #fff;
+  margin-left: -5px;
+  margin-top: -5px;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .goal-kick-droppoint .football-court > .bg .wrapper .droppoint {
+  left: 157px;
+  top: 20px;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .goal-kick-droppoint .football-court > .bg .wrapper .droppoint1 {
+  left: 216px;
+  top: 65px;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .tackl-cross {
+  /*守门员拦截传中*/
+  padding-top: 8px;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .tackl-cross .data-list {
+  width: 520px;
+  height: 53px;
+  margin: 0 19px 0;
+  background-color: #f1f1f1;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .tackl-cross .data-list > li {
+  width: 33%;
+  height: 53px;
+  float: left;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .tackl-cross .data-list > li p {
+  height: 27px;
+  line-height: 27px;
+  font-size: 14px;
+  text-align: center;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .tackl-cross .data-list > li > .item-value {
+  color: #2d98e0;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .tackl-cross .wrapper {
+  width: 498px;
+  height: 247px;
+  background: url("../images/penalty_box.png");
+  margin: 26px auto;
+  position: relative;
+  overflow: hidden;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .tackl-cross .wrapper .hide-football-court {
+  width: 763px;
+  height: 1090px;
+  position: absolute;
+  left: 50%;
+  margin-left: -381.5px;
+  top: 21px;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .tackl-cross .wrapper .hide-football-court > div {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #2d98e0;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.459);
+  margin-left: -5px;
+  margin-top: -5px;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .tackl-cross .wrapper .hide-football-court .tackl-point {
+  left: 300px;
+  top: 50px;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .tackl-cross .wrapper .hide-football-court .tackl-point1 {
+  left: 310px;
+  top: 70px;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .tackl-cross .wrapper .hide-football-court .tackl-point2 {
+  left: 350px;
+  top: 90px;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .tackl-cross .wrapper .hide-football-court .tackl-point3 {
+  left: 120px;
+  top: 68px;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .save-penalty {
+  /*守门员扑出点球*/
+  padding-top: 8px;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .save-penalty .data-list {
+  width: 520px;
+  height: 53px;
+  margin: 0 19px 0;
+  background-color: #f1f1f1;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .save-penalty .data-list > li {
+  width: 33%;
+  height: 53px;
+  float: left;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .save-penalty .data-list > li p {
+  height: 27px;
+  line-height: 27px;
+  font-size: 14px;
+  text-align: center;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .save-penalty .data-list > li > .item-value {
+  color: #2d98e0;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .save-penalty .wrapper {
+  width: 501px;
+  height: 288px;
+  background: url(../images/goals.png) no-repeat;
+  margin: 7px auto 0;
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .save-penalty .wrapper .hide-goal-mouth {
+  width: 358px;
+  height: 180px;
+  position: absolute;
+  left: 70px;
+  top: 63px;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .save-penalty .wrapper .hide-goal-mouth > div {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #2d98e0;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.459);
+  margin-left: -5px;
+  margin-top: -5px;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .save-penalty .wrapper .hide-goal-mouth .save-goal-point {
+  left: 300px;
+  top: 50px;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .save-penalty .wrapper .hide-goal-mouth .save-goal-point1 {
+  left: 275px;
+  top: 80px;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .save-penalty .wrapper .hide-goal-mouth .save-goal-point2 {
+  left: -50px;
+  top: 50px;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .save-penalty .wrapper .hide-goal-mouth .save-goal-point3 {
+  left: -25px;
+  top: -16px;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r > p {
+  position: absolute;
+  font-size: 12px;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .pass_f {
+  top: 11px;
+  left: 240px;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .pass_l {
+  top: 185px;
+  left: 102px;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .pass_r {
+  top: 185px;
+  left: 438px;
+}
+.personal-data-main .bx .season-scoring .filter-result .res-r .pass_b {
+  bottom: 19px;
+  left: 240px;
+}
+.personal-data-main .bx .match-in-season {
+  /*当前赛季已参与的比赛*/
+  width: 930px;
+  padding-bottom: 35px;
+}
+.personal-data-main .bx .match-in-season > h3 {
+  padding-left: 16px;
+  height: 44px;
+  text-align: left;
+  font-size: 16px;
+  color: #909094;
+  line-height: 44px;
+}
+.personal-data-main .bx .match-in-season .detail-header {
+  height: 40px;
+  background-color: #4a5266;
+}
+.personal-data-main .bx .match-in-season .detail-header span {
+  line-height: 40px;
+  height: 40px;
+  font-size: 14px;
+  color: #fff;
+}
+.personal-data-main .bx .match-in-season .detail-header .score {
+  margin-right: 117px;
+}
+.personal-data-main .bx .match-in-season .detail-header .in-time {
+  margin-right: 23px;
+}
+.personal-data-main .bx .match-in-season .detail-main {
+  height: 400px;
+  background-color: #fff;
+  margin-bottom: 29px;
+}
+.personal-data-main .bx .match-in-season .detail-main > li {
+  height: 50px;
+}
+.personal-data-main .bx .match-in-season .detail-main > li > .detail-row {
+  line-height: 50px;
+  height: 50px;
+  font-size: 14px;
+}
+.personal-data-main .bx .match-in-season .detail-main > li > .detail-row > .league-name {
+  padding: 0 15px;
+  width: 114px;
+  margin-right: 15px;
+}
+.personal-data-main .bx .match-in-season .detail-main > li > .detail-row > .match-time {
+  width: 90px;
+}
+.personal-data-main .bx .match-in-season .detail-main > li > .detail-row > .home-team-name {
+  width: 112px;
+  text-align: right;
+  margin-left: 10px;
+}
+.personal-data-main .bx .match-in-season .detail-main > li > .detail-row > .match-result {
+  width: 80px;
+  text-align: center;
+}
+.personal-data-main .bx .match-in-season .detail-main > li > .detail-row > .match-result > a {
+  display: inline-block;
+  width: 50px;
+  height: 22px;
+  line-height: 22px;
+  vertical-align: middle;
+  border-radius: 4px;
+  color: #fff;
+}
+.personal-data-main .bx .match-in-season .detail-main > li > .detail-row > .away-team-name {
+  width: 112px;
+  text-align: left;
+  margin-right: 10px;
+}
+.personal-data-main .bx .match-in-season .detail-main > li > .detail-row > .match-deed > .deed-list {
+  margin: 0 13px;
+}
+.personal-data-main .bx .match-in-season .detail-main > li > .detail-row > .match-deed > .deed-list > li {
+  width: 17px;
+  height: 17px;
+  margin-left: 13px;
+  margin-top: 17px;
+  cursor: pointer;
+}
+.personal-data-main .bx .match-in-season .detail-main > li > .detail-row > .match-deed > .deed-list > li:first-child {
+  margin-left: 0;
+}
+.personal-data-main .bx .match-in-season .detail-main > li > .detail-row > .match-deed > .deed-list .goal {
+  background: url("../images/goal.png");
+  position: relative;
+}
+.personal-data-main .bx .match-in-season .detail-main > li > .detail-row > .match-deed > .deed-list .goal .deed-time-list {
+  position: absolute;
+  left: -23px;
+  bottom: 30px;
+  background-color: #fff;
+  box-shadow: 1px -1px 9px 0px rgba(0, 0, 0, 0.36);
+  border-radius: 6px;
+  display: none;
+  width: 132px;
+  padding: 6px 13px;
+}
+.personal-data-main .bx .match-in-season .detail-main > li > .detail-row > .match-deed > .deed-list .goal .deed-time-list > li {
+  height: 17px;
+  width: 100%;
+  font-size: 12px;
+  line-height: 17px;
+  color: #909094;
+}
+.personal-data-main .bx .match-in-season .detail-main > li > .detail-row > .match-deed > .deed-list .goal > em {
+  display: none;
+  width: 0;
+  height: 0;
+  border-width: 17px 10px;
+  border-style: solid;
+  border-bottom-color: transparent;
+  border-top-color: #fff;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  position: absolute;
+  left: -1px;
+  top: -19px;
+}
+.personal-data-main .bx .match-in-season .detail-main > li > .detail-row > .match-deed > .deed-list .goal:hover .deed-time-list {
+  display: block;
+}
+.personal-data-main .bx .match-in-season .detail-main > li > .detail-row > .match-deed > .deed-list .goal:hover > em {
+  display: block;
+}
+.personal-data-main .bx .match-in-season .detail-main > li > .detail-row > .match-deed > .deed-list .assist {
+  background: url("../images/assist.png");
+  position: relative;
+}
+.personal-data-main .bx .match-in-season .detail-main > li > .detail-row > .match-deed > .deed-list .assist .deed-time-list {
+  position: absolute;
+  left: -23px;
+  bottom: 30px;
+  background-color: #fff;
+  box-shadow: 1px -1px 9px 0px rgba(0, 0, 0, 0.36);
+  border-radius: 6px;
+  display: none;
+  width: 132px;
+  padding: 6px 13px;
+}
+.personal-data-main .bx .match-in-season .detail-main > li > .detail-row > .match-deed > .deed-list .assist .deed-time-list > li {
+  height: 17px;
+  width: 100%;
+  font-size: 12px;
+  line-height: 17px;
+  color: #909094;
+}
+.personal-data-main .bx .match-in-season .detail-main > li > .detail-row > .match-deed > .deed-list .assist > em {
+  display: none;
+  width: 0;
+  height: 0;
+  border-width: 17px 10px;
+  border-style: solid;
+  border-bottom-color: transparent;
+  border-top-color: #fff;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  position: absolute;
+  left: -1px;
+  top: -19px;
+}
+.personal-data-main .bx .match-in-season .detail-main > li > .detail-row > .match-deed > .deed-list .assist:hover .deed-time-list {
+  display: block;
+}
+.personal-data-main .bx .match-in-season .detail-main > li > .detail-row > .match-deed > .deed-list .assist:hover > em {
+  display: block;
+}
+.personal-data-main .bx .match-in-season .detail-main > li > .detail-row > .match-deed > .deed-list .yellow-card {
+  padding: 0 2.5px;
+  background: url("../images/yellow_card.png") center center no-repeat;
+  position: relative;
+}
+.personal-data-main .bx .match-in-season .detail-main > li > .detail-row > .match-deed > .deed-list .yellow-card .deed-time-list {
+  position: absolute;
+  left: -23px;
+  bottom: 30px;
+  background-color: #fff;
+  box-shadow: 1px -1px 9px 0px rgba(0, 0, 0, 0.36);
+  border-radius: 6px;
+  display: none;
+  width: 132px;
+  padding: 6px 13px;
+}
+.personal-data-main .bx .match-in-season .detail-main > li > .detail-row > .match-deed > .deed-list .yellow-card .deed-time-list > li {
+  height: 17px;
+  width: 100%;
+  font-size: 12px;
+  line-height: 17px;
+  color: #909094;
+}
+.personal-data-main .bx .match-in-season .detail-main > li > .detail-row > .match-deed > .deed-list .yellow-card > em {
+  display: none;
+  width: 0;
+  height: 0;
+  border-width: 17px 10px;
+  border-style: solid;
+  border-bottom-color: transparent;
+  border-top-color: #fff;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  position: absolute;
+  left: -1px;
+  top: -19px;
+}
+.personal-data-main .bx .match-in-season .detail-main > li > .detail-row > .match-deed > .deed-list .yellow-card:hover .deed-time-list {
+  display: block;
+}
+.personal-data-main .bx .match-in-season .detail-main > li > .detail-row > .match-deed > .deed-list .yellow-card:hover > em {
+  display: block;
+}
+.personal-data-main .bx .match-in-season .detail-main > li > .detail-row > .match-deed > .deed-list .red-card {
+  padding: 0 2.5px;
+  background: url("../images/red_card.png") center center no-repeat;
+  position: relative;
+}
+.personal-data-main .bx .match-in-season .detail-main > li > .detail-row > .match-deed > .deed-list .red-card .deed-time-list {
+  position: absolute;
+  left: -23px;
+  bottom: 30px;
+  background-color: #fff;
+  box-shadow: 1px -1px 9px 0px rgba(0, 0, 0, 0.36);
+  border-radius: 6px;
+  display: none;
+  width: 132px;
+  padding: 6px 13px;
+}
+.personal-data-main .bx .match-in-season .detail-main > li > .detail-row > .match-deed > .deed-list .red-card .deed-time-list > li {
+  height: 17px;
+  width: 100%;
+  font-size: 12px;
+  line-height: 17px;
+  color: #909094;
+}
+.personal-data-main .bx .match-in-season .detail-main > li > .detail-row > .match-deed > .deed-list .red-card > em {
+  display: none;
+  width: 0;
+  height: 0;
+  border-width: 17px 10px;
+  border-style: solid;
+  border-bottom-color: transparent;
+  border-top-color: #fff;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  position: absolute;
+  left: -1px;
+  top: -19px;
+}
+.personal-data-main .bx .match-in-season .detail-main > li > .detail-row > .match-deed > .deed-list .red-card:hover .deed-time-list {
+  display: block;
+}
+.personal-data-main .bx .match-in-season .detail-main > li > .detail-row > .match-deed > .deed-list .red-card:hover > em {
+  display: block;
+}
+.personal-data-main .bx .match-in-season .detail-main > li > .detail-row > .match-deed > .deed-list .yellow-to-red {
+  padding: 0 2.5px;
+  background: url("../images/2yellow1red.png") center center no-repeat;
+  position: relative;
+}
+.personal-data-main .bx .match-in-season .detail-main > li > .detail-row > .match-deed > .deed-list .yellow-to-red .deed-time-list {
+  position: absolute;
+  left: -23px;
+  bottom: 30px;
+  background-color: #fff;
+  box-shadow: 1px -1px 9px 0px rgba(0, 0, 0, 0.36);
+  border-radius: 6px;
+  display: none;
+  width: 132px;
+  padding: 6px 13px;
+}
+.personal-data-main .bx .match-in-season .detail-main > li > .detail-row > .match-deed > .deed-list .yellow-to-red .deed-time-list > li {
+  height: 17px;
+  width: 100%;
+  font-size: 12px;
+  line-height: 17px;
+  color: #909094;
+}
+.personal-data-main .bx .match-in-season .detail-main > li > .detail-row > .match-deed > .deed-list .yellow-to-red > em {
+  display: none;
+  width: 0;
+  height: 0;
+  border-width: 17px 10px;
+  border-style: solid;
+  border-bottom-color: transparent;
+  border-top-color: #fff;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  position: absolute;
+  left: -1px;
+  top: -19px;
+}
+.personal-data-main .bx .match-in-season .detail-main > li > .detail-row > .match-deed > .deed-list .yellow-to-red:hover .deed-time-list {
+  display: block;
+}
+.personal-data-main .bx .match-in-season .detail-main > li > .detail-row > .match-deed > .deed-list .yellow-to-red:hover > em {
+  display: block;
+}
+.personal-data-main .bx .match-in-season .detail-main > li > .detail-row > .in-match-time {
+  width: 56px;
+  text-align: center;
+}
+.personal-data-main .bx .match-in-season .detail-main > li > .detail-row > .match-score {
+  width: 50px;
+  text-align: center;
+  margin-left: 11px;
+  color: #35aae6;
+}
+.personal-data-main .bx .match-in-season .detail-main > li > .detail-row > .more-details {
+  width: 16px;
+  height: 16px;
+  background: url("../images/more_data.png");
+  margin-left: 50px;
+  margin-top: 18px;
+  cursor: pointer;
+}
+.personal-data-main .bx .match-in-season .detail-main > li > .detail-row > .more-details:hover {
+  background: url("../images/more_data_hover.png");
+}
+.personal-data-main .bx .match-in-season .detail-main > li:nth-child(2n) {
+  background-color: #f4f4f4;
+}
+.personal-data-main .bx .match-in-season .detail-main > li:hover {
+  background-color: #ecf0f1;
+}

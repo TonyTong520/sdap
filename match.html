@@ -837,7 +837,7 @@
                             <input class="lv2-check duels" value="356" name="duels" type="checkbox">空中对抗
                         </li>
                         <li>
-                            <input class="lv2-check duels" value="357" name="duels" type="checkbox">地面对抗
+                            <input class="lv2-check duels" value="357" name="duels" type="checkbox" id="ground_duel">地面对抗
                         </li>
                     </ul>
                     <li class="lv1" data-value="other">
@@ -900,7 +900,10 @@
                     </ul>
                 </div>
                 <div class="data-main-c f-l">
-                    <div class="football-court"></div>
+                    <div class="football-court">
+                        <div id="div_title_trace" class="details_float" style="margin-left: 371px; margin-top: 325px; display: none;">20 Yu Hanchao 38'39'' 关键传球</div>
+                        <svg id="chalk-board" xmlns="http://www.w3.org/2000/svg" version="1.1" height="441px" width="655px"></svg>
+                    </div>
                     <div class="time-filter-bar">
                         <div class="progress-bar">
                             <div class="slider-left slider" value="0">0</div>
@@ -2376,6 +2379,13 @@
         </div>
     </div>
 
+    <!-- 页面隐藏信息区块 -->
+    <input type="hidden" id="hometeamId" value="1000">
+    <input type="hidden" id="guestteamId" value="1030">
+    <input type="hidden" id="isOverTime" value="">
+    <input type="hidden" id="currentGroupId" value="">
+    <input type="hidden" id="actionTime" value="">
+
 </body>
 
 <script src="js/jquery.min.js"></script>
@@ -2386,6 +2396,9 @@
 <script src="js/exporting.js"></script>
 <script src="highchat/modules/solid-gauge.js"></script>
 <script src="js/highcharts-zh_CN.js"></script>
+<script src="js/hammer.min.js"></script>
+<script src="js/commutil.js"></script>
+<script src="js/block_field.js"></script>
 <script src="js/common.js"></script>
 <script src="js/match.js"></script>
 

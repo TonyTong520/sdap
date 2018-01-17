@@ -3,15 +3,46 @@ $(function(){
     // document.oncontextmenu=function(){return false;}; 
     document.onselectstart=function(){return false;};
 
+    var leagueId = $("#leagueId").val();
+    $.ajax({
+        url : "http://192.168.2.6:8888/dataapi/teamReport/teamList                                               .html?ak=123456&leagueId="+leagueId,
+        type: "GET",
+        dataType: "json",
+        success:function(da){
+            var json = eval(da);
+            console.log(1111111111)
+        }
+    });
+
     // 动态添加球队选择滚动条
     var html="";
     var scrollWidth = 0;
     var allianceTeams = 30;  //联赛球队数--动态获取
+    var allianceTeams = [
+        "广州恒大淘宝",
+        "上海上港",
+        "天津权健",
+        "河北华夏幸福",
+        "广州富力",
+        "山东鲁能泰山",
+        "长春亚泰",
+        "贵州恒丰智诚",
+        "北京中赫国安",
+        "重庆当代",
+        "上海绿地申花",
+        "江苏苏宁",
+        "天津泰达亿利",
+        "河南建业",
+        "延边富德",
+        "辽宁沈阳开新",
+        "延边富德",
+        "辽宁沈阳开新",
+    ]; 
     
-    for(var i = 0; i < allianceTeams; i++){
+    for(var i = 0; i < allianceTeams.length; i++){
         html+= '<li class="f-l team-logo">'+
         '<img src="images/gzhd.png" alt="">'+
-        '<p>广州恒大淘宝'+i+'</p>'+
+        '<p>'+allianceTeams[i]+'</p>'+
         '</li>';
         scrollWidth+=111;
     }
@@ -39,14 +70,14 @@ $(function(){
     $(".next-team").click(function(){
         
            
-        if(leftNum > -(allianceTeams-8)*step ){       
+        if(leftNum > -(allianceTeams.length-8)*step ){       
             num-=8;
         }else{
-            leftNum = -(allianceTeams-8)*step;
+            leftNum = -(allianceTeams.length-8)*step;
         }
         leftNum = step*num;  
-        if(leftNum <= (8-allianceTeams)*step){
-            leftNum = (8-allianceTeams)*step;
+        if(leftNum <= (8-allianceTeams.length)*step){
+            leftNum = (8-allianceTeams.length)*step;
         }
         $("#scroller").css("left", leftNum+"px");
     })

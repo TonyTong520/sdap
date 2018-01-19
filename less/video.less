@@ -79,9 +79,11 @@
                 padding-left:23px;
                 .game-module {
                     >.module-title {
+                            
                         .filter-btn {
                             display:inline-block;
-                            width: 64px;
+                            position: relative;
+                            padding: 0 8px;
                             height: 21px;
                             line-height: 21px;
                             text-align: center;
@@ -92,16 +94,18 @@
                             font-weight: 400;
                             font-size:12px;
                             cursor: pointer;
-                            position: relative;
+                            background-color: #35aae6;
                             .filter-btn-selectbox {
                                 background-color: #fff;
                                 position: absolute;
                                 left: 0px;
                                 top: 21px;
+                                width: 142px;
                                 height: 85px;
                                 padding: 5px;
                                 border: 1px solid #ccc;
                                 border-radius: 2px;
+                                display: none;
                                 >li {
                                     height: 25px;
                                     line-height: 25px;
@@ -113,10 +117,7 @@
                                     background-color: #ecf0f1;
                                 }
                             }
-                        }
-                        .filter-btn:hover {
-                            background-color: #35aae6;
-                        }
+                        } 
                         .filter-search {
                             line-height: 20px;
                             height: 20px;
@@ -153,6 +154,7 @@
                     .container {
                         width: 390px;
                         .match-video-list {
+                            height: 288px;
                             .item {
                                 width: 100%;
                                 height: 48px;
@@ -174,7 +176,27 @@
                                     }
                                 }
                                 .download-pdf {
+                                    width: 17px;
+                                    height: 15px;
                                     margin-right:25px;
+                                    background: url("../images/video-pdf.png");
+                                    background-size: cover;
+                                    margin-top: 16.5px;
+                                }
+                                .download-pdf:hover {
+                                    background: url("../images/video-pdf1.png");
+                                    background-size: cover;
+                                }
+                                .detail {
+                                    width: 15px;
+                                    height: 15px;
+                                    background: url("../images/video-detail.png");
+                                    background-size: cover;
+                                    margin-top: 16.5px;
+                                }
+                                .detail:hover {
+                                    background: url("../images/video-detail1.png");
+                                    background-size: cover;
                                 }
                                 .camera {
                                     margin-top:11px;
@@ -182,6 +204,10 @@
                                 }
                             }
                             .item:hover {
+                                background-color: #ecf0f1;
+                                border-radius: 3px;
+                            }
+                            .match-selected {
                                 background-color: #ecf0f1;
                                 border-radius: 3px;
                             }
@@ -247,15 +273,26 @@
                 .events-module {
                     .event-list {
                         margin:2px 0 0 7px;
+                        height: 188px;
+                        overflow: overlay;
                         .event-item {
                             width:33%;
                             height: 25px;
                             line-height: 25px;
                             margin-bottom: 22px;
+                            cursor: pointer;
                             p {
                                 margin-left:12px;
                                 font-size: 12px;
                             }
+                        }
+                        .event-item:hover {
+                            background-color: #ecf0f1;
+                            border-radius: 3px;
+                        }
+                        .event-selected {
+                            background-color: #ecf0f1;
+                            border-radius: 3px;
                         }
                     }
                     
@@ -289,17 +326,24 @@
                         .video-box {
                             height: 311px;
                             border-bottom:2px solid #ededed;
+                            position: relative;
                             >video {
                                 width: 466px;
                                 height: 292px;
-                                background-color: pink;
-                                
-                                
+                                box-shadow: 0px 0px 4px #ccc;
+                                z-index: 1;
+                            }
+                            >canvas {
+                                position: absolute;
+                                left:0;
+                                top:0;
+                                z-index: -1;
                             }
                         }
                         .time-quantum {
                             >ul {
                                 padding-top:11px;
+                                height: 216px;
                                 .time-list {
                                     height: 41px;
                                     width: 458px;
@@ -308,6 +352,7 @@
                                     padding-right: 12px;
                                     font-size:12px;
                                     font-weight: 400;
+                                    cursor: pointer;
                                     >b {
                                         display: inline-block;                             
                                         width: 17px;
@@ -335,6 +380,14 @@
                                         height: 11px;
                                         line-height: 11px;
                                     }
+                                }
+                                .time-list:hover {
+                                    background-color: #ecf0f1;
+                                    border-radius: 3px;
+                                }
+                                .play-now {
+                                    background-color: #ecf0f1;
+                                    border-radius: 3px;
                                 }
                             }
 

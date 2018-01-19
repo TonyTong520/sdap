@@ -2326,19 +2326,19 @@ $(function () {
     
 
 
-    $.ajax({
-        url: "http://192.168.2.6:8888/dataapi/teamPersonList.html?ak=123456&teamId="+1030,
-        type: "GET",
-        dataType: "json",
-        success: function (result) {
-            console.log(result);
+    // $.ajax({
+    //     url: "http://192.168.2.6:8888/dataapi/teamPersonList.html?ak=123456&teamId="+1030,
+    //     type: "GET",
+    //     dataType: "json",
+    //     success: function (result) {
+    //         console.log(result);
             
             
-        },
-        error: function (result) {
-            console.log(result);
-        }
-    })
+    //     },
+    //     error: function (result) {
+    //         console.log(result);
+    //     }
+    // })
 
 
 })

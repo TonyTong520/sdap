@@ -1,13 +1,5 @@
 $(function(){
 
-
-    // 首页/视频分析/数据报告页面切换
-    $(".nav-bar").on("click","a",function(){
-        $(this).addClass("select").parent().siblings().children("a").removeClass("select");
-        var nameStr = $(this).attr("name");
-        $("."+nameStr+"-main").removeClass("hide").siblings(".main").addClass("hide");
-    })
-
     //联赛类型切换
     $(".league-tab ul").on("click","li",function(){
         $(this).addClass("tab-selected").siblings().removeClass("tab-selected");

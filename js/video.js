@@ -1,28 +1,18 @@
 $(function(){
 
 
-    
-    // 比赛、事件、球员分析切换
-    $(".video-tab ul li").click(function(){
-        $(this).addClass("tab-selected").siblings().removeClass("tab-selected");
-        var name = $(this).attr("name");
-        $(".video-info-body").addClass("hide");
-        $("."+name).removeClass("hide");
-    })
+
 
     // 比赛分析->比赛-> 筛选
-    var filterBtnTimer;
-    $(".filter-btn").on("mouseenter ",function(){
-        filterBtnTimer = setTimeout(function(){
-            $(".filter-btn-selectbox").removeClass("hide");
-        },500)
+    $(".filter-btn").on("click","span",function(){   
+        $(".filter-btn-selectbox").toggle();  
     })
-    $(".filter-btn").on("mouseleave",function(){
-        clearTimeout(filterBtnTimer);
-        $(".filter-btn-selectbox").addClass("hide");
+    $(".filter-btn").on("mouseleave",function(){     
+        $(".filter-btn-selectbox").hide();  
     })
     $(".filter-btn-selectbox").on("click","li",function(){
-        $(this).addClass("select").siblings().removeClass("select").parent().addClass("hide");
+        var text = $(this).text();
+        $(this).addClass("select").siblings().removeClass("select").parent().hide().prev().text("筛选（"+text+"）");
     })
 
     // 比赛分析->比赛-> 搜索悬浮+点击
@@ -45,20 +35,6 @@ $(function(){
         $(".search-box").children("input").css("width","0").val("");
     })
 
-
-    // 比赛分析->比赛-> pdf、详情悬停和点击事件
-    $(".download-pdf > img").on("mouseenter",function(){
-        $(this).attr("src","images/video-pdf1.png");
-    })
-    $(".download-pdf > img").on("mouseleave",function(){
-        $(this).attr("src","images/video-pdf.png");
-    })
-    $(".detail > img").on("mouseenter",function(){
-        $(this).attr("src","images/video-detail1.png");
-    })
-    $(".detail > img").on("mouseleave",function(){
-        $(this).attr("src","images/video-detail.png");
-    })
 
     // 事件分析->足球场白板逻辑=======================
     // ----选区切换
@@ -87,10 +63,7 @@ $(function(){
         $(this).addClass("active").parent().siblings().children("a").removeClass("active");
     })
 
-
-
-
-
+    
 
 
     

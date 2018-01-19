@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>创冰首页</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/video.css">
+   
+</head>
+<body onselectstart="return false">
+    <!-- 页面头部 -->
+    <div class="header">
+        <div class="bx">
+            <div class="sdap-info clearfix">
+                <img class="logo f-l" src="images/logo.png" alt="logo" width="50px">
+                <p class="sdap-version f-l">
+                    创冰足球大师数据分析系统 SDAP
+                    <span class="version-num">&nbsp; v3.0.0.1</span>
+                </p>
+                <!-- 头部右侧 -->
+                <div class="header-right f-r clearfix">
+                    <ul class="clearfix">
+                        <li class="use-quit f-r">
+                            <a href="#">
+                                <span>登出</span> 
+                                <i></i>
+                            </a>
+                        </li>
+                        <li class="use-set f-r">
+                            <a href="#">
+                                <span>设置</span> 
+                                <i></i>
+                            </a>
+                        </li>
+                        <li class="use-guide f-r">
+                            <a href="#">
+                                <span>说明</span> 
+                                <i></i>
+                            </a>
+                        </li>        
+                    </ul>
+                </div>
+            </div>           
+        </div>
+    </div>
+    <!-- 页面导航条 -->
+    <div class="nav-bar">
+        <div class="bx">
+            <ul class="clearfix">
+                <li class="f-l">
+                    <a href="index.html" name="index">首页</a>
+                </li>
+                <li class="f-l">
+                    <a href="video.html" name="video">视频分析</a>
+                </li>
+                <li class="f-l">
+                    <a class="select" href="report.html" name="report">数据报告</a>
+                </li>
+            </ul>
+        </div>
+       
+    </div> 
+    <!-- 公共球队导航样式 -->
+    <div class="team-nav">
+        <div class="bx clearfix">
+            <div class="team-row clearfix">
+                <div class="ourteam team-info f-l">
+                    <div class="team-wrapper">
+                        <p>本队</p>
+                        <div class="team-logo select">
+                            <img src="images/gzhd.png" alt=""   >
+                            <p>广州恒大淘宝</p>
+                        </div>
+                    </div>   
+                </div>
+                <div class="opponent team-info f-l">
+                    <div class="team-wrapper">
+                        <p>下轮对手</p>
+                        <div class="team-logo">
+                            <img src="images/gzhd.png" alt=""   >
+                            <p>上海上港</p>
+                        </div>
+                    </div>   
+                </div>
+                <div class="other-team f-l">
+                    <div class="other-teams-wrapper">
+                        <p>联赛其他球队</p>
+                        <div class="select-bar clearfix">
+                            <div class="prev select-box f-l">
+                                <img class="prev-team" src="images/prevbtn.png" alt="" width="22">
+                            </div>
+                            <div class="scroll-box f-l clearfix" id="scrollbox">
+                                <div class="f-l clearfix" id="scroller">
+                                    <ul class="f-l clearfix">
+                                        <li class="f-l team-logo select">
+                                            <img src="images/gzhd.png" alt=""   >
+                                            <p>上海上港</p>
+                                        </li>
+                                        <li class="f-l team-logo">
+                                            <img src="images/gzhd.png" alt=""   >
+                                            <p>天津权健</p>
+                                        </li>
+                                        <li class="f-l team-logo">
+                                            <img src="images/gzhd.png" alt=""   >
+                                            <p>河北华夏</p>
+                                        </li>
+                                        <li class="f-l team-logo">
+                                            <img src="images/gzhd.png" alt=""   >
+                                            <p>广州富力</p>
+                                        </li>
+                                        <li class="f-l team-logo">
+                                            <img src="images/gzhd.png" alt=""   >
+                                            <p>山东鲁能</p>
+                                        </li>
+                                        <li class="f-l team-logo">
+                                            <img src="images/gzhd.png" alt=""   >
+                                            <p>长春亚泰</p>
+                                        </li>
+                                        <li class="f-l team-logo">
+                                            <img src="images/gzhd.png" alt=""   >
+                                            <p>贵州恒丰</p>
+                                        </li>
+                                        <li class="f-l team-logo">
+                                            <img src="images/gzhd.png" alt=""   >
+                                            <p>北京国安</p>
+                                        </li>
+                                    </ul>
+                                </div>  
+                            </div>
+
+                            <div class="next select-box f-r">
+                                <img class="next-team" src="images/nextbtn.png" alt="" width="22">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 分割线 以上为公共部分 -->
+        </div>         
+    </div>   
+
+    <!-- 页面底部 -->
+    <div class="footer">
+        <p class="copyright">©2015 上海创冰信息科技有限公司  , All Rights Reserved  (沪ICP备14033075号-1)</p>
+    </div>
+
+
+
+<script src="js/jquery.min.js"></script>
+<script src="highchat/highcharts.js"></script>
+<script src="highchat/highcharts-more.js"></script>
+<script src="js/exporting.js"></script>
+<script src="highchat/modules/solid-gauge.js"></script>
+<script src="js/highcharts-zh_CN.js"></script>
+<script src="js/common.js"></script>
+
+</body>
+</html>

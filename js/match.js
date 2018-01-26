@@ -621,7 +621,6 @@ $(function () {
                 }
             }
         }
-        console.log(code)
         //获取passCode
         passCode = "";
         $(".list-menu .lv2-check.passes").each(function(){
@@ -637,7 +636,6 @@ $(function () {
         if($("#check_recive").attr("checked")){
             passCode="505";
         }
-        console.log(passCode)
         // 获取时间区间timeStart,timeEnd
         if($(".slider-left").attr("value") == "45+"){
             timeStart = 451;

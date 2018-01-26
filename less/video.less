@@ -245,13 +245,20 @@
                             }
                         }
                         .player-list {
-                            margin-left: 15px;
+                            // margin-left: 15px;
+                            height: 310px;
+                            overflow: overlay;
                             >li {
                                 float:left;
                                 font-size: 0;
-                                margin: 17px 48px 23px 0;
+                                // margin: 17px 48px 23px 0;
+                                margin: 7px 6px 13px 6px;
+                                padding: 10px 10px;
+                                border: 1px solid transparent;
                                 >img {
                                     border-radius: 6px;
+                                    width: 90px;
+                                    height: 90px;
                                 }
                                 >p {
                                     height: 25px;
@@ -262,6 +269,13 @@
                             }
                             li:nth-child(3n) {
                                 margin-right: 0;
+                            }
+                            li:hover {
+                                background-color: #ecf0f1;
+                                border-radius: 3px;
+                            }
+                            .player-selected {
+                                border: 1px solid #35aae6;
                             }
                         }
                     }
@@ -399,6 +413,7 @@
                 width: 269px;
                 height: 596px;
                 .match-result {
+                    display: none;
                     >p {
                         .linkto-details {
                             width: 64px;
@@ -588,6 +603,7 @@
                                         .bar-per {
                                             background-color: #35aae6;
                                             height: 12px;
+                                            transition: all 0.5s linear;
                                         }
                                     }
                                     .data-text {
@@ -604,6 +620,7 @@
                                 .player-avatar {
                                     >img {
                                         float: left;
+                                        border-radius: 6px;
                                     }
                                     >p {
                                         width: 140px;
@@ -613,6 +630,7 @@
                                         margin-left: 9px;
                                         margin-top: 13px;
                                         width: 135px;
+                                        text-align: center;
                                     }
                                 }
                                 .player-stats {
@@ -637,10 +655,19 @@
                                     line-height: 50px;
                                     border-bottom: 1px solid #d9d8d8;
                                     margin: 0 auto;
-                                    span {
+                                    >span {
                                         width: 50%;
                                         font-size: 12px;
+                                        line-height: 50px;
+                                        height: 50px;
                                         text-align: center;
+                                        display: inline-block;
+                                        >b {
+                                            height: 24px;
+                                            display: inline-block;
+                                            line-height: 24px!important;
+                                            font-weight: 400;
+                                        }
                                     }
                                 }
                                 li:last-child {
@@ -652,39 +679,14 @@
                             text-align: center;
                             position: relative;
                             font-size: 0;
-                            // .select-area-box {
-                            //     // display: none;
-                            //     position: absolute;
-                            //     left: 20px;
-                            //     top: 23px;
-                            //     width: 204px;
-                            //     height: 306px;
-                                
-                            //     // ul {
-                            //     //     li {
-                            //     //         width: 51px;
-                            //     //         height: 51px;
-                            //     //         cursor: pointer;
-                            //     //         background-color: rgba(0, 0, 0, 0.3);
-                            //     //     }
-                                    
-                                   
-                            //     //     .selected-area {
-                            //     //         background-color: rgba(9, 3, 85, 0.5)!important;
-                            //     //     }
-                            //     // }
-                            //     // ul:nth-child(2n+1){
-                            //     //     li:nth-child(2n+1) {
-                            //     //         background-color: rgba(255, 255, 255, 0.3);
-                            //     //     }  
-                            //     // }
-                            //     // ul:nth-child(2n){
-                            //     //     li:nth-child(2n) {
-                            //     //         background-color: rgba(255, 255, 255, 0.3);
-                            //     //     }
-                            //     // }
-                            // }
-
+                            .football-court {
+                                height: 352px;
+                                width:237px;
+                                margin: 0 auto;
+                                background: url(../images/coaching-board.png) no-repeat;
+                                background-size: 237px;
+                            }
+                           
                         }
                         .area-filter {
                             width: 245px;

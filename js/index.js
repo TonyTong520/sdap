@@ -16,7 +16,62 @@ $(function(){
              that.children("span").removeClass("hide");
              var categoryName = that.attr("name");
              console.log(categoryName)
-             $(".hover-tips").removeClass("hide").children(".category-name").text(categoryName);
+             if(categoryName == "创造机会能力（xG）"){
+                $(".hover-tips").removeClass("hide").children(".category-name").text(categoryName);
+                $(".hover-tips .ranking span").text("第"+1+"名").parent().siblings("p").text("高于联赛平均水平");
+                $(".league-avg").text("42.93")
+                $(".league-home").text("52.48")
+                $(".league-best").text("52.48")
+                $(".league-worst").text("31.09")
+                $(".best-team p").html("广州恒大淘宝");
+                $(".worst-team p").text("辽宁沈阳开新");
+             }else if(categoryName == "得分能力（进球-xG）"){
+                $(".hover-tips").removeClass("hide").children(".category-name").text(categoryName);
+                $(".hover-tips .ranking span").text("第"+2+"名").parent().siblings("p").text("高于联赛平均水平");
+                $(".league-avg").text("2.82")
+                $(".league-home").text("16.52")
+                $(".league-best").text("20.11")
+                $(".league-worst").text("-10.77")
+                $(".best-team p").text("上海上港");
+                $(".worst-team p").text("天津亿利");
+             }else if(categoryName == "防守表现"){
+                $(".hover-tips").removeClass("hide").children(".category-name").text(categoryName);
+                $(".hover-tips .ranking span").text("第"+3+"名").parent().siblings("p").text("高于联赛平均水平");
+                $(".league-avg").text("42.93")
+                $(".league-home").text("37.07")
+                $(".league-best").text("32.7")
+                $(".league-worst").text("63.65")
+                $(".best-team p").text("北京中赫国安");
+                $(".worst-team p").text("辽宁沈阳开新");
+             }else if(categoryName == "防守效果"){
+                $(".hover-tips").removeClass("hide").children(".category-name").text(categoryName);
+                $(".hover-tips .ranking span").text("第"+11+"名").parent().siblings("p").text("低于联赛平均水平");
+                $(".league-avg").text("2.82")
+                $(".league-home").text("4.93")
+                $(".league-best").text("-7.08")
+                $(".league-worst").text("10.94")
+                $(".best-team p").text("上海上港");
+                $(".worst-team p").text("天津亿利");
+             }else if(categoryName == "攻守平衡"){
+                $(".hover-tips").removeClass("hide").children(".category-name").text(categoryName);
+                $(".hover-tips .ranking span").text("第"+"3"+"名").parent().siblings("p").text("高于联赛平均水平");
+                $(".league-avg").text("0")
+                $(".league-home").text("15.41")
+                $(".league-best").text("19.19")
+                $(".league-worst").text("-32.56")
+                $(".best-team p").text("山东鲁能泰山");
+                $(".worst-team p").text("辽宁沈阳开新");
+             }else if(categoryName == "个人表现"){
+                $(".hover-tips").removeClass("hide").children(".category-name").text(categoryName);
+                $(".hover-tips .ranking span").text("第"+3+"名").parent().siblings("p").text("高于联赛平均水平");
+                $(".league-avg").text("62.93")
+                $(".league-home").text("65.53")
+                $(".league-best").text("66.51")
+                $(".league-worst").text("59.33")
+                $(".best-team p").text("上海上港");
+                $(".worst-team p").text("辽宁沈阳开新");
+             }
+             
              if(that.hasClass("right")){
                  $(".hover-tips").css("left","44px");
              }else{
@@ -76,18 +131,18 @@ $(function(){
                     '<tbody>'+
                     '<tr>'+
                     '<td style="text-align:center;">数据</td>'+
-                    '<td style="text-align:center;">1</td>'+
-                    '<td style="text-align:center;">1</td>'+
+                    '<td style="text-align:center;">385.47</td>'+
+                    '<td style="text-align:center;">338.09</td>'+
                     '</tr>'+
                     '<tr>'+
                     '<td style="text-align:center;">占总数</td>'+
-                    '<td style="text-align:center;">'+ this.y +'%</td>'+
-                    '<td style="text-align:center;">1</td>'+
+                    '<td style="text-align:center;">91.24%</td>'+
+                    '<td style="text-align:center;">89.25%</td>'+
                     '</tr>'+
                     '<tr>'+
                     '<td style="text-align:center;">准确率</td>'+
-                    '<td style="text-align:center;">1</td>'+
-                    '<td style="text-align:center;">1</td>'+
+                    '<td style="text-align:center;">81.45%</td>'+
+                    '<td style="text-align:center;">79.25%</td>'+
                     '</tr>'+
                     '</tbody>'+
                     '</table>'
@@ -106,7 +161,7 @@ $(function(){
         },
         yAxis: {
             min: 0,
-            max: 100,
+            max: 671.1,
             lineWidth: 0,
             tickPositions: []
         },
@@ -121,13 +176,13 @@ $(function(){
             }
         },
         series: [{
-            name: '长传',
+            name: '短传',
             borderColor:'#008cd6',
             data: [{
                 color: "#008cd6",
                 radius: '108',
                 innerRadius: '100',
-                y: 50
+                y: 385.47
             }]
         }, {
             name: '中传',
@@ -136,16 +191,16 @@ $(function(){
                 color: '#35aae6',
                 radius: '84',
                 innerRadius: '76',
-                y: 30
+                y: 248.63
             }]
         }, {
-            name: '短传',
+            name: '长传',
             borderColor:'#80d4ff',
             data: [{
                 color: '#80d4ff',
                 radius: '58',
                 innerRadius: '50',
-                y: 20
+                y: 37
             }]
         }]
     });

@@ -109,13 +109,14 @@
   border-radius: 4px;
 }
 .team-nav .bx .team-row .team-logo img {
-  margin: 7px 0 0;
+  width: 47px;
+  margin: 5px 0 0;
 }
 .team-nav .bx .team-row .team-logo > p {
   text-align: center;
   font-size: 12px;
   font-weight: 600;
-  line-height: 1.4;
+  line-height: 1.2;
   font-family: PingFangSC-Semibold;
 }
 .team-nav .bx .team-row .other-team .other-teams-wrapper {

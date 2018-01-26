@@ -1,4 +1,5 @@
 .index-main .bx {
+
     padding-bottom:30px;
     .game-info {/*比赛数据*/
         width: 930px;
@@ -105,55 +106,55 @@
                             .bar1 {
                                 left:15px;
                                 .average-num {
-                                    bottom: 120px;  /*平均值动态改变*/
+                                    bottom: 0;/*平均值动态改变*/
                                 }
                                 .team-num {
-                                    height: 150px;  /*本队表现值动态改变*/
+                                    height: 0;  /*本队表现值动态改变*/
                                 }
                             }
                             .bar2 {
                                 left:70px;
                                 .average-num {
-                                    bottom: 130px;  /*平均值动态改变*/
+                                    bottom: 0;  /*平均值动态改变*/
                                 }
                                 .team-num {
-                                    height: 130px;  /*本队表现值动态改变*/
+                                    height: 0;  /*本队表现值动态改变*/
                                 }                               
                             }
                             .bar3 {
                                 left:125px;
                                 .average-num {
-                                    bottom: 110px;  /*平均值动态改变*/
+                                    bottom: 0;  /*平均值动态改变*/
                                 }
                                 .team-num {
-                                    height: 90px;  /*本队表现值动态改变*/
+                                    height: 0; /*本队表现值动态改变*/
                                 }
                             }
                             .bar4 {
                                 left:180px;
                                 .average-num {
-                                    bottom: 120px;  /*平均值动态改变*/
+                                    bottom: 0;  /*平均值动态改变*/
                                 }
                                 .team-num {
-                                    height: 130px;  /*本队表现值动态改变*/
+                                    height: 0;  /*本队表现值动态改变*/
                                 }
                             }
                             .bar5 {
                                 left:235px;
                                 .average-num {
-                                    bottom: 150px;  /*平均值动态改变*/
+                                    bottom: 0;  /*平均值动态改变*/
                                 }
                                 .team-num {
-                                    height: 145px;  /*本队表现值动态改变*/
+                                    height: 0;  /*本队表现值动态改变*/
                                 }
                             }
                             .bar6 {
                                 left:290px;
                                 .average-num {
-                                    bottom: 120px;  /*平均值动态改变*/
+                                    bottom: 0;  /*平均值动态改变*/
                                 }
                                 .team-num {
-                                    height: 150px;  /*本队表现值动态改变*/
+                                    height: 0;  /*本队表现值动态改变*/
                                 }
                             }
                         }
@@ -171,12 +172,13 @@
                             >p {
                                 font-size: 14px;
                                 color:#35aae6;
-                                width: 180px;
+                                width: 100%;
                                 margin-left: 10px;
                                 margin-top:15px;
                                 line-height: 1;
                             }
                             >span {
+                                width: 100px;
                                 font-size: 12px;
                                 margin-right: 10px;
                                 margin-top:15px;
@@ -376,14 +378,14 @@
                             }
                         }
                         .attack-line {
-                            height: 100px;
+                            height: 0;
                             border-bottom:2px solid #d0021b;
                             span {
                                 color:#d0021b;
                             }
                         }
                         .defense-line {
-                            height: 300px;
+                            height: 100%;
                             border-bottom:2px solid #35aae6;
                             span {
                                 color:#35aae6;
@@ -518,7 +520,6 @@
                             p {
                                 height:26px;
                                 line-height: 26px;
-                                padding:0 5px;
                                 font-size:12px;
                                 span {
                                     font-weight: 600;
@@ -526,6 +527,7 @@
                             }
                             p:first-child {
                                 color:#3bade7;
+                                padding:0 5px;
                             }
                         }
                         .leftfield {

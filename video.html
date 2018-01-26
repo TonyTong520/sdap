@@ -993,7 +993,7 @@
                                             <li class="left"></li>
                                             <li class="right"></li>
                                             <li class="center"></li>
-                                            <li></li>
+                                            <!-- <li></li> -->
                                             <li class="top"></li>
                                             <li class="bottom"></li>
                                             <li class="middle"></li>
@@ -1006,7 +1006,7 @@
                                             <li class="left"></li>
                                             <li class="right"></li>
                                             <li class="center"></li>
-                                            <li></li>
+                                            <!-- <li></li> -->
                                             <li class="top"></li>
                                             <li class="bottom"></li>
                                             <li class="middle"></li>
@@ -1449,6 +1449,7 @@
     var code = "";
     var flag = 1;
     var teamId = 1000;
+    var teamIdStore = teamId;
     var opponentTeamId = "";
     var homeTeamId = "";
     var guestTeamId = "";
@@ -1468,6 +1469,8 @@
     var season = 2017;
 
     var allPersonIdStr = "";
+    var allPersonIdStrStore = "";
+    var isGuest = false;
 
     $.ajax({
         url: "http://192.168.2.6:8888/dataapi/getTeamSchedule.html?ak=123456&teamId="+teamId+"&season="+season,
@@ -1575,30 +1578,38 @@
 
     // 比赛列表点击事件（事件模块）
     $(".match-video-list.event").on("click", "li", function () {
+        personId = "";
+        allPersonIdStr = allPersonIdStrStore;
         moduleKeyWord = "event";
         matchId = $(this).data("value");
         homeTeamId = $(this).data("home");
         guestTeamId = $(this).data("guest");
         $(this).addClass("match-selected").siblings().removeClass("match-selected");
 
-        // if($(".event-list.event li.event-selected").hasClass("opposite")){
-        //     if(homeTeamId == teamId){
-        //         teamId = guestTeamId;
-                
-        //         getTeamPersonList(true);
-                
+        if(flag == 2){
+            if(homeTeamId == teamId){
+                teamId = guestTeamId;
+                isGuest = false;
+                getTeamPersonList(true);
+                queryVideoList()
 
-        //     }else if(guestTeamId == teamId){
-        //         teamId = homeTeamId;
-        //         getTeamPersonList(true);
-
-        //     }
-
-        // }
-        getChalkBoardAjax();
-        teamId = "1000";
-        personId = "";
-        queryVideoList()
+            }else if(guestTeamId == teamId){
+                teamId = homeTeamId;
+                isGuest = true;
+                getTeamPersonList(true);
+                queryVideoList()
+            }
+        }else{
+            if(homeTeamId == teamId){
+                isGuest = false;
+            }else if(guestTeamId == teamId){
+                isGuest = true;
+            }
+            queryVideoList()
+        }
+        
+        // teamId = "1000";
+       
         
     })
 
@@ -1855,6 +1866,10 @@
                     var totalPage = Math.ceil(result.length / 5)
                     res = result.slice(0, 5);
                     renderMatchVideoList(res, page);
+                    if(flag != 2){
+                        getChalkBoardAjax();
+                    }
+                    
                     $("#curentPage4").text(page);
                     $("#totalPage4").text(totalPage);
 
@@ -2145,7 +2160,7 @@
     
     // 点击球员模块，请求球队球员列表
     function getTeamPersonList(flag) {
-     
+    
         $.ajax({
             url: "http://192.168.2.6:8888/dataapi/getTeamPersonList.html?ak=123456&teamId=" + teamId + "&season=" + season,
             type: "GET",
@@ -2169,13 +2184,17 @@
                     }
                    
                 })
-                console.log(allPersonIdStr)
+               
                 if(!flag){
+                    allPersonIdStrStore = allPersonIdStr;
                     $(".player-list").html(html);
+                }else{
+                    getChalkBoardAjax();
                 }
             
             }
         })
+        teamId = teamIdStore;
     }
 
     $("img").one("error", function(e){
@@ -2566,7 +2585,7 @@
         $("#chalk-board").empty();
         var m2 = getMarkerArrow1("chalk-board");
 
-        
+        console.log(code);
         if(personId != "" && code != ""){
             $.ajax({
                 url: "http://192.168.2.6:8888/dataapi/match/trace.html?ak=123456&matchId="+matchId +"&half="+half+"&personId="+personId+"&code="+code+"&areaBlockedFrom="+areaBlockedFrom+"&draftedFrom="+draftedFrom+"&timeStart="+timeStart+"&timeEnd="+timeEnd+"&timeStartHalf="+timeStartHalf+"&timeEndHalf="+timeEndHalf+"&isOverTime="+isOverTime,
@@ -2575,11 +2594,20 @@
                 success: function (result) {
                     
                     var json = eval(result);
-                    json = $.map(json, function(item){
+                    if(isGuest){
+                        json = $.map(json, function(item){
+                            item.x = 352 - item.x * 0.56592;
+                            item.y = 237 - item.y * 0.56835;
+                            return item;
+                        });
+                    }else{
+                        json = $.map(json, function(item){
                         item.x = item.x * 0.56592;
                         item.y = item.y * 0.56835;
                         return item;
                     });
+                    }
+                    
                     $.each(json, function(i, item) {
 
                         if(!item.code){
@@ -2601,19 +2629,19 @@
                                 if(item.code == 1 || item.code == 87){
                                     drawGoal("chalk-board", item.half,item.y, 352 - item.x,json[i+1]["x"], item.personNumber,item.personName,item.groupNo,item.eventTimeNum,item.actionName,teamType,null)
                                 }else{
-                                    drawAttack("chalk-board", item.half,item.x, item.y, item.personNumber,item.personName,10,teamType,item.groupNo,item.eventTimeNum,item.code,item.actionName,null);
+                                    drawAttack("chalk-board", item.half,item.y, 352 - item.x, item.personNumber,item.personName,10,teamType,item.groupNo,item.eventTimeNum,item.code,item.actionName,null);
                                 }
                             }
                         }else if(item.codeType==2 &&  item.code != ""){//防守
                             if(item.code ==204 ||item.code ==205 ||item.code ==502 ){//阻断传球，阻断射门，守门员扑球，需要显示线路
                                 $.each(json, function(j, itemDefend) {
                                     if(item.groupNo == itemDefend.groupNo && isEmpty(itemDefend.code)){
-                                        drawPersonBlock("chalk-board",itemDefend.personNumber,itemDefend.x,itemDefend.y,item.personNumber,item.x,item.y,itemDefend.teamId);
+                                        drawPersonBlock("chalk-board",itemDefend.personNumber,itemDefend.y,352-itemDefend.x,item.personNumber,item.y,352-item.x,itemDefend.teamId);
                                         return false;
                                     }
                                 });
                             }
-                            drawyTriangle("chalk-board",item.half, item.x, item.y, item.personNumber,item.personName,teamType,item.groupNo,item.eventTimeNum,item.code,item.actionName);
+                            drawyTriangle("chalk-board",item.half,item.y,352 - item.x,  item.personNumber,item.personName,teamType,item.groupNo,item.eventTimeNum,item.code,item.actionName);
                         }else if(item.codeType==4 && item.code!=22){//犯规
                             var foulsPerson="";
     
@@ -2625,12 +2653,12 @@
                                     }
                                 });
                             }
-                            drawyRect("chalk-board", item.half,item.x, item.y, item.personNumber,item.personName,teamType,item.eventTimeNum,item.code,item.actionName,item.groupNo,foulsPerson);
+                            drawyRect("chalk-board", item.half, item.y, 352 - item.x,  item.personNumber,item.personName,teamType,item.eventTimeNum,item.code,item.actionName,item.groupNo,foulsPerson);
                         } else if(item.codeType==6){//对抗
-                            drawDuels("chalk-board", item.half,item.x, item.y, item.personNumber,item.personName,teamType,item.eventTimeNum,item.code,item.actionName,item.groupNo);
+                            drawDuels("chalk-board", item.half, item.y, 352 - item.x,  item.personNumber,item.personName,teamType,item.eventTimeNum,item.code,item.actionName,item.groupNo);
                         }
                         else if(item.codeType==7){//其他
-                            drawShift("chalk-board",item.half, item.x, item.y, item.personNumber,item.personName,teamType,item.eventTimeNum,item.code,item.actionName);
+                            drawShift("chalk-board",item.half, item.y, 352 - item.x,  item.personNumber,item.personName,teamType,item.eventTimeNum,item.code,item.actionName);
                         }
                         
                         //timeline
@@ -2644,11 +2672,13 @@
                         //         nextX = json[i+1]["x"];
                         //     }
                         //     if (isOverTimeCom == "2") {
-                        //         cbTimeLine(item.half,item.eventTimeNum*0.82,item.x,item.y,nextX,codeType,item.code,item.personNumber,item.personName,item.eventTimeFull,teamType,item.actionName);
+                        //         cbTimeLine(item.half,item.eventTimeNum*0.82,item.y, 352 -  item.x,nextX,codeType,item.code,item.personNumber,item.personName,item.eventTimeFull,teamType,item.actionName);
                         //     } else {
-                        //         cbTimeLine(item.half,item.timeNum,item.x,item.y,nextX,codeType,item.code,item.personNumber,item.personName,item.eventTimeFull,teamType,item.actionName);
+                        //         cbTimeLine(item.half,item.timeNum,item.y, 352 - item.x, nextX,codeType,item.code,item.personNumber,item.personName,item.eventTimeFull,teamType,item.actionName);
                         //     }
                         // }
+
+                        personId = "";
                     });
                 },
                 error: function (result) {
@@ -2734,9 +2764,9 @@
             fill: "none",
             "marker-end": m2
         });
-        if(team1!=team2){
-            stroke="red";
-        }
+        // if(team1!=team2){
+        //     stroke="red";
+        // }
         if(isNotEmpty(istrace)){
             line.attr("istrace",istrace);
         }
@@ -2762,9 +2792,10 @@
 
         var goalType = "GOAL";
         
-        if((teamType=="H" && x2<310)||(teamType=="G" && x2>310)){//乌龙球
-            goalType = "OWN";
-        }
+        /* todo 乌龙球问题待解决 */
+        // if((teamType=="H" && x2<310)||(teamType=="G" && x2>310)){//乌龙球
+        //     goalType = "OWN";
+        // }
         var id = "s_"+half.toString()+x.toString()+y.toString()+number.toString();
         var image = svg.paper.image("images/icon_"+goalType+".png", x-10, y-10, 20, 20).attr({"name":half.toString()+x.toString()+y.toString()+number.toString(),"id":id,"cursor":"hand"});
 
@@ -2786,21 +2817,22 @@
             $("#actionTime").val(eventTimeFull);
         });
         image.mouseover(function() {
-            highlight(svgId,half+""+x+""+y+""+number,teamType,1); 
-            $("#div_title_trace").html(number+" "+name+" "+eventTimeFull+" "+actionName);
+            // highlight(svgId,half+""+x+""+y+""+number,teamType,1); 
+            // $("#div_title_trace").html(number+" "+name+" "+eventTimeFull+" "+actionName);
+            $("#div_title_trace").html(number+" "+name+ " " +actionName);
             $("#div_title_trace").css("margin-left",x-20);
             $("#div_title_trace").css("margin-top",y-40);
             $("#div_title_trace").css("display","block");
         });
         image.mouseout(function() {
-            highlight(svgId,half+""+x+""+y+""+number,teamType,2); 
+            // highlight(svgId,half+""+x+""+y+""+number,teamType,2); 
             $("#div_title_trace").css("display","none");
         });
         
     }
 
-        //进攻
-        function drawAttack(svgId,half,x,y,number,name,size,teamType,groupNo,eventTimeFull,code,actionName,istrace){
+    //进攻
+    function drawAttack(svgId,half,x,y,number,name,size,teamType,groupNo,eventTimeFull,code,actionName,istrace){
         x= parseInt(x);
         y= parseInt(y);
         number= parseInt(number);
@@ -2841,47 +2873,48 @@
             circle.attr("fill", "#DCF2FE");
             text.attr("fill","black");
         }
-        text.click(function(){
-            $("#currentGroupId").val(groupNo);
-            $("#actionType").val(1);
-            $("#actionTime").val(eventTimeFull);
-            darken(svgId);
-            //画进攻轨迹
-            traceLine(groupNo);
+        // text.click(function(){
+        //     $("#currentGroupId").val(groupNo);
+        //     $("#actionType").val(1);
+        //     $("#actionTime").val(eventTimeFull);
+        //     darken(svgId);
+        //     //画进攻轨迹
+        //     traceLine(groupNo);
             
-        });
-        circle.click(function(){
-            $("#currentGroupId").val(groupNo);
-            $("#actionType").val(1);
-            $("#actionTime").val(eventTimeFull);
-            darken(svgId);
-            //画进攻轨迹
-            traceLine(groupNo);
-        });
-        circle.dblclick(function(){
-            playMedia(groupNo);
-        });
-        text.dblclick(function(){
-            playMedia(groupNo);
-        });
-        var circleHammer = new Hammer(document.getElementById(circleId));
-        circleHammer.on("doubletap", function(ev) {
-            playMedia(groupNo);
-        });
-        var textHammer = new Hammer(document.getElementById(textId));
-        textHammer.on("doubletap", function(ev) {
-            playMedia(groupNo);
-        });
+        // });
+        // circle.click(function(){
+        //     $("#currentGroupId").val(groupNo);
+        //     $("#actionType").val(1);
+        //     $("#actionTime").val(eventTimeFull);
+        //     darken(svgId);
+        //     //画进攻轨迹
+        //     traceLine(groupNo);
+        // });
+        // circle.dblclick(function(){
+        //     playMedia(groupNo);
+        // });
+        // text.dblclick(function(){
+        //     playMedia(groupNo);
+        // });
+        // var circleHammer = new Hammer(document.getElementById(circleId));
+        // circleHammer.on("doubletap", function(ev) {
+        //     playMedia(groupNo);
+        // });
+        // var textHammer = new Hammer(document.getElementById(textId));
+        // textHammer.on("doubletap", function(ev) {
+        //     playMedia(groupNo);
+        // });
         
         text.mouseover(function() {
-            highlight(svgId,half+""+x+""+y+""+number,teamType,1); 
-            $("#div_title_trace").html(number+" "+name+" "+eventTimeFull+" "+actionName);
+            // highlight(svgId,half+""+x+""+y+""+number,teamType,1); 
+            // $("#div_title_trace").html(number+" "+name+" "+eventTimeFull+" "+actionName);
+            $("#div_title_trace").html(number+" "+name+" "+actionName);
             $("#div_title_trace").css("margin-left",x-20);
             $("#div_title_trace").css("margin-top",y-40);
             $("#div_title_trace").css("display","block");
         });
         text.mouseout(function() {
-            highlight(svgId,half+""+x+""+y+""+number,teamType,2); 
+            // highlight(svgId,half+""+x+""+y+""+number,teamType,2); 
             $("#div_title_trace").css("display","none");
         });
     }
@@ -2896,7 +2929,7 @@
         var svg = Snap("#"+svgId);
         var polySize=10;
         var poly = svg.paper.polygon([x,y-polySize ,x-polySize,y+polySize ,x+polySize,y+polySize]).attr({"name":docName,"id":"s_"+half.toString()+x.toString()+y.toString()+number.toString(),"stroke":colorMap.get(code+""),"stroke-width":"2"});
-        var text = svg.paper.text(x, y+8, number).attr({"name":docName,"text-anchor":"middle" });
+        var text = svg.paper.text(x, y+8, number).attr({"name":docName,"text-anchor":"middle" ,"font-size":"10px" });
         
         // 抢断失败和门将出击失败(显示虚线)
         if(code==350 || code==353){
@@ -2911,8 +2944,9 @@
             text.attr("fill","black");
         }
         text.mouseover(function() {
-            highlight(svgId,docName,teamType,1); 
-            $("#div_title_trace").html(number+" "+name+" "+eventTimeFull+" "+actionName);
+            // highlight(svgId,docName,teamType,1); 
+            // $("#div_title_trace").html(number+" "+name+" "+eventTimeFull+" "+actionName);
+            $("#div_title_trace").html(number+" "+name+" "+actionName);
             $("#div_title_trace").css("margin-left",x-20);
             $("#div_title_trace").css("margin-top",y-40);
             $("#div_title_trace").css("display","block");
@@ -2920,7 +2954,7 @@
             darkenOtherByName(svgId,docName);
         });
         text.mouseout(function() {
-            highlight(svgId,docName,teamType,2); 
+            // highlight(svgId,docName,teamType,2); 
             $("#div_title_trace").css("display","none");
             lighten(svgId);
         });
@@ -2950,7 +2984,8 @@
         var circleFromColor;
         var textFromColor;
         
-        if(teamId==hometeamId){
+        console.log(homeTeamId)
+        if(teamId==homeTeamId){
             circleFromColor="#3C7994";
             textFromColor="white";
         }else{//客队
@@ -2966,7 +3001,8 @@
             "name":docName
         });
         var circleFrom = svg.paper.circle(personFromX, personFromY, 8).attr({"name":docName });
-        var textFrom = svg.paper.text(personFromX, personFromY+5, personFromNum).attr({"text-anchor":"middle","name":docName });
+        console.log(personFromNum)
+        var textFrom = svg.paper.text(personFromX, personFromY+5, personFromNum).attr({"text-anchor":"middle","name":docName ,"font-size":"10px" });
         circleFrom.attr("fill", circleFromColor);
         textFrom.attr("fill",textFromColor);
         
@@ -2991,7 +3027,7 @@
         var rectId = "s_"+half.toString()+x.toString()+y.toString()+number.toString();
         var textId = "t_"+rectId;
         var rect = svg.paper.rect(x-rectWidth/2, y-rectWidth/2, rectWidth, rectWidth, 2).attr({"name":half.toString()+x.toString()+y.toString()+number.toString(),"id":rectId,"stroke":colorMap.get(code+""),"stroke-width":"2"});
-        var text = svg.paper.text(x, y+5, number).attr({"name":half.toString()+x.toString()+y.toString()+number.toString(),"id":textId,"text-anchor":"middle"});
+        var text = svg.paper.text(x, y+5, number).attr({"name":half.toString()+x.toString()+y.toString()+number.toString(),"id":textId,"text-anchor":"middle","font-size":"10px"});
         
         if(teamType=="H"){//主队
             rect.attr("fill", "#3C7994");
@@ -3000,32 +3036,34 @@
             rect.attr("fill", "#DCF2FE");
             text.attr("fill","black");
         }
-        text.dblclick(function(){
-            $("#actionTime").val(eventTimeFull);
-            $("#currentGroupId").val(groupNo);
-            playMedia(groupNo);
-        });
-        var rectHammer = new Hammer(document.getElementById(rectId));
-        rectHammer.on("doubletap", function(ev) {
-            playMedia(groupNo);
-        });
-        var textHammer = new Hammer(document.getElementById(textId));
-        textHammer.on("doubletap", function(ev) {
-            playMedia(groupNo);
-        });
+        // text.dblclick(function(){
+        //     $("#actionTime").val(eventTimeFull);
+        //     $("#currentGroupId").val(groupNo);
+        //     playMedia(groupNo);
+        // });
+        // var rectHammer = new Hammer(document.getElementById(rectId));
+        // rectHammer.on("doubletap", function(ev) {
+        //     playMedia(groupNo);
+        // });
+        // var textHammer = new Hammer(document.getElementById(textId));
+        // textHammer.on("doubletap", function(ev) {
+        //     playMedia(groupNo);
+        // });
         text.mouseover(function() {
-            highlight(svgId,half+""+x+""+y+""+number,teamType,1); 
+            // highlight(svgId,half+""+x+""+y+""+number,teamType,1); 
             if(code = 21){//如果是犯规，则显示被犯规人
-                $("#div_title_trace").html(number+" "+name+" "+eventTimeFull +" "+ actionName+" "+foulsPerson);
+                // $("#div_title_trace").html(number+" "+name+" "+eventTimeFull +" "+ actionName+" "+foulsPerson);
+                $("#div_title_trace").html(number+" "+name +" "+ actionName+" "+foulsPerson);
             }else{
-                $("#div_title_trace").html(number+" "+name+" "+eventTimeFull+" "+actionName);
+                // $("#div_title_trace").html(number+" "+name+" "+eventTimeFull+" "+actionName);
+                $("#div_title_trace").html(number+" "+name+" "+actionName);
             }
             $("#div_title_trace").css("margin-left",x-20);
             $("#div_title_trace").css("margin-top",y-40);
             $("#div_title_trace").css("display","block");
         });
         text.mouseout(function() {
-            highlight(svgId,half+""+x+""+y+""+number,teamType,2);
+            // highlight(svgId,half+""+x+""+y+""+number,teamType,2);
             $("#div_title_trace").css("display","none");
         });
     }
@@ -3122,7 +3160,7 @@
                 text.attr("fill","black");
             }
             text.mouseover(function() {
-                highlight(svgId,docName,teamType,1); 
+                // highlight(svgId,docName,teamType,1); 
                 $("#div_title_trace").html(number+" "+name+" "+eventTimeFull+" "+actionName);
                 $("#div_title_trace").css("margin-left",x-20);
                 $("#div_title_trace").css("margin-top",y-40);
@@ -3131,14 +3169,28 @@
                 darkenOtherByName(svgId,docName);
             });
             text.mouseout(function() {
-                highlight(svgId,docName,teamType,2); 
+                // highlight(svgId,docName,teamType,2); 
                 $("#div_title_trace").css("display","none");
                 lighten(svgId);
             });
         }
     }
 
+    function darken(svgId){
+        $("#"+svgId+"> *").css("opacity","0.2");
+        //截图时防止背景变黑
+        $("#"+svgId+"> #trace_bg").css("opacity","1");
+    }
     
+    // 高亮
+    function lighten(svgId){
+        $("#"+svgId+"> *").css("opacity","1");
+    }
+    // 选中本项，其他项变暗  
+    function darkenOtherByName(svgId,docName){
+        darken(svgId);
+        $("#"+svgId+">[name='"+docName+"']").css("opacity","1");
+    }
 
 </script>
 

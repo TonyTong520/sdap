@@ -645,7 +645,6 @@
 }
 .video-main .bx .video-info-body .video-info-right .match-result .container .coaching-board {
   text-align: center;
-  position: relative;
   font-size: 0;
 }
 .video-main .bx .video-info-body .video-info-right .match-result .container .coaching-board .football-court {
@@ -654,6 +653,15 @@
   margin: 0 auto;
   background: url(../images/coaching-board.png) no-repeat;
   background-size: 237px;
+}
+.video-main .bx .video-info-body .video-info-right .match-result .container .coaching-board .football-court > #div_title_trace {
+  background-color: #FFF;
+  color: #333;
+  padding: 2px 8px;
+  border: 1px #eee solid;
+  position: absolute;
+  border-radius: 4px;
+  font-size: 12px;
 }
 .video-main .bx .video-info-body .video-info-right .match-result .container .area-filter {
   width: 245px;
@@ -667,63 +675,60 @@
   line-height: 32px;
   font-size: 12px;
 }
+.video-main .bx .video-info-body .video-info-right .match-result .container .area-filter .area-filter-box > ul {
+  margin: 5px 0;
+}
 .video-main .bx .video-info-body .video-info-right .match-result .container .area-filter .area-filter-box > ul > li {
   float: left;
-  width: 50px;
-  height: 30px;
-  margin-right: 12px;
+  width: 30px;
+  height: 50px;
+  margin-right: 5px;
   cursor: pointer;
 }
-.video-main .bx .video-info-body .video-info-right .match-result .container .area-filter .area-filter-box > ul > li:nth-child(4n) {
+.video-main .bx .video-info-body .video-info-right .match-result .container .area-filter .area-filter-box > ul > li:last-child {
   margin-right: 0;
 }
-.video-main .bx .video-info-body .video-info-right .match-result .container .area-filter .area-filter-box > ul li:nth-child(-n+4) {
-  margin-bottom: 12px;
-}
-.video-main .bx .video-info-body .video-info-right .match-result .container .area-filter .area-filter-box > ul li:nth-child(5) {
-  cursor: default;
-}
 .video-main .bx .video-info-body .video-info-right .match-result .container .area-filter .area-filter-box > ul .all {
-  background: url("../images/all-n.png");
+  background: url("../images/all-n-v.png");
 }
 .video-main .bx .video-info-body .video-info-right .match-result .container .area-filter .area-filter-box > ul .all.select {
-  background: url("../images/all-s.png");
+  background: url("../images/all-s-v.png");
 }
 .video-main .bx .video-info-body .video-info-right .match-result .container .area-filter .area-filter-box > ul .left {
-  background: url("../images/left-n.png");
+  background: url("../images/left-n-v.png");
 }
 .video-main .bx .video-info-body .video-info-right .match-result .container .area-filter .area-filter-box > ul .right {
-  background: url("../images/right-n.png");
+  background: url("../images/right-n-v.png");
 }
 .video-main .bx .video-info-body .video-info-right .match-result .container .area-filter .area-filter-box > ul .center {
-  background: url("../images/center-n.png");
+  background: url("../images/center-n-v.png");
 }
 .video-main .bx .video-info-body .video-info-right .match-result .container .area-filter .area-filter-box > ul .top {
-  background: url("../images/top-n.png");
+  background: url("../images/top-n-v.png");
 }
 .video-main .bx .video-info-body .video-info-right .match-result .container .area-filter .area-filter-box > ul .bottom {
-  background: url("../images/bottom-n.png");
+  background: url("../images/bottom-n-v.png");
 }
 .video-main .bx .video-info-body .video-info-right .match-result .container .area-filter .area-filter-box > ul .middle {
-  background: url("../images/middle-n.png");
+  background: url("../images/middle-n-v.png");
 }
 .video-main .bx .video-info-body .video-info-right .match-result .container .area-filter .area-filter-box > ul .left.select {
-  background: url("../images/left-s.png");
+  background: url("../images/left-s-v.png");
 }
 .video-main .bx .video-info-body .video-info-right .match-result .container .area-filter .area-filter-box > ul .right.select {
-  background: url("../images/right-s.png");
+  background: url("../images/right-s-v.png");
 }
 .video-main .bx .video-info-body .video-info-right .match-result .container .area-filter .area-filter-box > ul .center.select {
-  background: url("../images/center-s.png");
+  background: url("../images/center-s-v.png");
 }
 .video-main .bx .video-info-body .video-info-right .match-result .container .area-filter .area-filter-box > ul .top.select {
-  background: url("../images/top-s.png");
+  background: url("../images/top-s-v.png");
 }
 .video-main .bx .video-info-body .video-info-right .match-result .container .area-filter .area-filter-box > ul .bottom.select {
-  background: url("../images/bottom-s.png");
+  background: url("../images/bottom-s-v.png");
 }
 .video-main .bx .video-info-body .video-info-right .match-result .container .area-filter .area-filter-box > ul .middle.select {
-  background: url("../images/middle-s.png");
+  background: url("../images/middle-s-v.png");
 }
 .video-main .bx .video-info-body .video-info-right .match-result .container .area-filter .event-end.disabled > p,
 .video-main .bx .video-info-body .video-info-right .match-result .container .area-filter .event-end.disabled > p {
@@ -739,31 +744,31 @@
 }
 .video-main .bx .video-info-body .video-info-right .match-result .container .area-filter .event-end.disabled > ul .all,
 .video-main .bx .video-info-body .video-info-right .match-result .container .area-filter .event-end.disabled > ul .all {
-  background: url("../images/all-d.png");
+  background: url("../images/all-d-v.png");
 }
 .video-main .bx .video-info-body .video-info-right .match-result .container .area-filter .event-end.disabled > ul .left,
 .video-main .bx .video-info-body .video-info-right .match-result .container .area-filter .event-end.disabled > ul .left {
-  background: url("../images/left-d.png");
+  background: url("../images/left-d-v.png");
 }
 .video-main .bx .video-info-body .video-info-right .match-result .container .area-filter .event-end.disabled > ul .right,
 .video-main .bx .video-info-body .video-info-right .match-result .container .area-filter .event-end.disabled > ul .right {
-  background: url("../images/right-d.png");
+  background: url("../images/right-d-v.png");
 }
 .video-main .bx .video-info-body .video-info-right .match-result .container .area-filter .event-end.disabled > ul .center,
 .video-main .bx .video-info-body .video-info-right .match-result .container .area-filter .event-end.disabled > ul .center {
-  background: url("../images/center-d.png");
+  background: url("../images/center-d-v.png");
 }
 .video-main .bx .video-info-body .video-info-right .match-result .container .area-filter .event-end.disabled > ul .top,
 .video-main .bx .video-info-body .video-info-right .match-result .container .area-filter .event-end.disabled > ul .top {
-  background: url("../images/top-d.png");
+  background: url("../images/top-d-v.png");
 }
 .video-main .bx .video-info-body .video-info-right .match-result .container .area-filter .event-end.disabled > ul .bottom,
 .video-main .bx .video-info-body .video-info-right .match-result .container .area-filter .event-end.disabled > ul .bottom {
-  background: url("../images/bottom-d.png");
+  background: url("../images/bottom-d-v.png");
 }
 .video-main .bx .video-info-body .video-info-right .match-result .container .area-filter .event-end.disabled > ul .middle,
 .video-main .bx .video-info-body .video-info-right .match-result .container .area-filter .event-end.disabled > ul .middle {
-  background: url("../images/middle-d.png");
+  background: url("../images/middle-d-v.png");
 }
 body {
   height: 100%;

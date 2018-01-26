@@ -676,15 +676,25 @@
                             }
                         }
                         .coaching-board {
-                            text-align: center;
-                            position: relative;
+                            text-align: center;                
                             font-size: 0;
                             .football-court {
                                 height: 352px;
                                 width:237px;
                                 margin: 0 auto;
+                                // position: relative;
                                 background: url(../images/coaching-board.png) no-repeat;
                                 background-size: 237px;
+                                >#div_title_trace{
+                                    background-color: #FFF;
+                                    color: #333;
+                                    padding: 2px 8px;
+                                    border: 1px #eee solid;
+                                    position: absolute;
+                                    // display: none;
+                                    border-radius: 4px;
+                                    font-size: 12px;
+                                }
                             }
                            
                         }
@@ -699,63 +709,65 @@
                                     font-size: 12px;
                                 }  
                                 >ul {
+                                    margin: 5px 0;
                                     >li {
                                         float: left;
-                                        width: 50px;
-                                        height: 30px;
-                                        margin-right: 12px;
+                                        width: 30px;
+                                        height: 50px;
+                                        margin-right: 5px;
                                         cursor: pointer;
+                                        // transform: rotate(-90deg);
                                     }
-                                    >li:nth-child(4n) {
+                                    >li:last-child {
                                         margin-right: 0;
                                     }
-                                    li:nth-child(-n+4) {
-                                        margin-bottom: 12px;   
-                                    }
-                                    li:nth-child(5) {
-                                        cursor: default; 
-                                    }
+                                    // li:nth-child(-n+4) {
+                                    //     margin-bottom: 12px;   
+                                    // }
+                                    // li:nth-child(5) {
+                                    //     cursor: default; 
+                                    // }
                                     .all {
-                                        background: url("../images/all-n.png");
+                                        background: url("../images/all-n-v.png");
                                     }
                                     .all.select {
-                                        background: url("../images/all-s.png");
+                                        background: url("../images/all-s-v.png");
                                     }
                                     .left {
-                                        background: url("../images/left-n.png");  
+                                        background: url("../images/left-n-v.png");  
                                     }
                                     .right {
-                                        background: url("../images/right-n.png");
+                                        background: url("../images/right-n-v.png");
                                     }
                                     .center {
-                                        background: url("../images/center-n.png");
+                                        background: url("../images/center-n-v.png");
                                     }
                                     .top {
-                                        background: url("../images/top-n.png");
+                                        background: url("../images/top-n-v.png");
                                     }
                                     .bottom {
-                                        background: url("../images/bottom-n.png");
+                                        background: url("../images/bottom-n-v.png");
                                     }
                                     .middle {
-                                        background: url("../images/middle-n.png");
+                                        background: url("../images/middle-n-v.png");
                                     }
                                     .left.select {
-                                        background: url("../images/left-s.png");
+                                        background: url("../images/left-s-v.png");
                                     }
                                     .right.select {
-                                        background: url("../images/right-s.png");
+                                        background: url("../images/right-s-v.png");
                                     }
                                     .center.select {
-                                        background: url("../images/center-s.png");
+                                        background: url("../images/center-s-v.png");
                                     }
                                     .top.select {
-                                        background: url("../images/top-s.png");
+                                        background: url("../images/top-s-v.png");
                                     }
                                     .bottom.select {
-                                        background: url("../images/bottom-s.png");
+                                        background: url("../images/bottom-s-v.png");
                                     }
                                     .middle.select {
-                                        background: url("../images/middle-s.png");
+                                        background: url("../images/middle-s-v.png");
                                     }
                                 }                 
                             }
@@ -769,25 +781,25 @@
                                         cursor: default;
                                     }
                                     .all {
-                                        background: url("../images/all-d.png");
+                                        background: url("../images/all-d-v.png");
                                     }
                                     .left {
-                                        background: url("../images/left-d.png");
+                                        background: url("../images/left-d-v.png");
                                     }
                                     .right {
-                                        background: url("../images/right-d.png");
+                                        background: url("../images/right-d-v.png");
                                     }
                                     .center {
-                                        background: url("../images/center-d.png");
+                                        background: url("../images/center-d-v.png");
                                     }
                                     .top {
-                                        background: url("../images/top-d.png");
+                                        background: url("../images/top-d-v.png");
                                     }
                                     .bottom {
-                                        background: url("../images/bottom-d.png");
+                                        background: url("../images/bottom-d-v.png");
                                     }
                                     .middle {
-                                        background: url("../images/middle-d.png");
+                                        background: url("../images/middle-d-v.png");
                                     }
                                 }
                             } 

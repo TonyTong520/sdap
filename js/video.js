@@ -43,7 +43,9 @@ $(function(){
         if(!$(this).parent().parent().hasClass("disabled") && $(this)[0].className != ""){
             $(this).addClass("select").siblings().removeClass("select");
         }
-
+        getChalkBoardAjax();
+        // var keyWord = $(this)[0].className.split(" ")[0];
+        // console.log(areaBlockedFrom)
     });
 
     // 比赛分析->球队比赛数据切换逻辑=======================

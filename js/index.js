@@ -34,7 +34,7 @@ $(function(){
                 $(".league-worst").text("-10.77")
                 $(".best-team p").text("上海上港");
                 $(".worst-team p").text("天津亿利");
-             }else if(categoryName == "防守表现"){
+            }else if(categoryName == "防守表现"){
                 $(".hover-tips").removeClass("hide").children(".category-name").text(categoryName);
                 $(".hover-tips .ranking span").text("第"+3+"名").parent().siblings("p").text("高于联赛平均水平");
                 $(".league-avg").text("42.93")

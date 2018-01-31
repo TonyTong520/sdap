@@ -43,7 +43,10 @@ $(function(){
         if(!$(this).parent().parent().hasClass("disabled") && $(this)[0].className != ""){
             $(this).addClass("select").siblings().removeClass("select");
         }
-        getChalkBoardAjax();
+        queryVideoList();
+        // getChalkBoardAjax();
+       
+        // $(".time-quantum.event ul li").hide();
         // var keyWord = $(this)[0].className.split(" ")[0];
         // console.log(areaBlockedFrom)
     });

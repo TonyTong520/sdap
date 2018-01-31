@@ -354,57 +354,66 @@
                                 z-index: -1;
                             }
                         }
-                        .time-quantum {
-                            >ul {
-                                padding-top:11px;
-                                height: 216px;
-                                .time-list {
-                                    height: 41px;
-                                    width: 458px;
-                                    line-height: 41px;
-                                    padding-left: 9px;
-                                    padding-right: 12px;
-                                    font-size:12px;
-                                    font-weight: 400;
-                                    cursor: pointer;
-                                    >b {
-                                        display: inline-block;                             
-                                        width: 17px;
-                                        height: 17px;
-                                        line-height: 17px;
-                                        border: 1px solid #2c9ad2;
-                                        text-align: center;
-                                        color:#fff;
-                                        border-radius: 1px;
-                                        background-color: #35aae6;
+                        >.wrapper {
+                            padding-top:11px;
+                            .time-quantum {
+                                height: 205px;
+                                overflow: hidden;
+                                position: relative;
+                                ul {            
+                                    transition: all 0.5s ease;
+                                    position: absolute;
+                                    left:0;
+                                    top:0;                                      
+                                    .time-list {
+                                        // display: none;
+                                        height: 41px;
+                                        width: 458px;
+                                        line-height: 41px;
+                                        padding-left: 9px;
+                                        padding-right: 12px;
+                                        font-size:12px;
+                                        font-weight: 400;
+                                        cursor: pointer;
+                                        >b {
+                                            display: inline-block;                             
+                                            width: 17px;
+                                            height: 17px;
+                                            line-height: 17px;
+                                            border: 1px solid #2c9ad2;
+                                            text-align: center;
+                                            color:#fff;
+                                            border-radius: 1px;
+                                            background-color: #35aae6;
+                                        }
+                                        >p {
+                                            line-height: 12px;
+                                            display: inline-block;
+                                            margin-left:7px;
+                                        }
+                                        .checkbox {
+                                            width: 14px;
+                                            height: 14px;
+                                            margin-top:13px;
+                                        }
+                                        >i {
+                                            margin-top:15px;
+                                            margin-right: 14px;
+                                            height: 11px;
+                                            line-height: 11px;
+                                        }
                                     }
-                                    >p {
-                                        line-height: 12px;
-                                        display: inline-block;
-                                        margin-left:7px;
+                                    .time-list:hover {
+                                        background-color: #ecf0f1;
+                                        border-radius: 3px;
                                     }
-                                    .checkbox {
-                                        width: 14px;
-                                        height: 14px;
-                                        margin-top:13px;
-                                    }
-                                    >i {
-                                        margin-top:15px;
-                                        margin-right: 14px;
-                                        height: 11px;
-                                        line-height: 11px;
+                                    .play-now {
+                                        background-color: #ecf0f1;
+                                        border-radius: 3px;
                                     }
                                 }
-                                .time-list:hover {
-                                    background-color: #ecf0f1;
-                                    border-radius: 3px;
-                                }
-                                .play-now {
-                                    background-color: #ecf0f1;
-                                    border-radius: 3px;
-                                }
-                            }
 
+                            }
                         }
                     }
                 }

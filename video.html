@@ -435,16 +435,19 @@
                                     <canvas id="screenshot" name="screenshot" width="466" height="292"></canvas>
                                     <div class="video_content" id="videoContent" name="videoContent"></div>
                                 </div>
-                                <div class="time-quantum game">
-                                    <ul class="clearfix">
-                                        <!-- <li class="time-list f-l">
-                                            <b>1</b>
-                                            <p>比洛-进球-27：58</p>
-                                            <input type="checkbox" class="checkbox f-r">
-                                            <i class="f-r"><img src="images/video-download.png" width="7" alt=""></i>
-                                        </li> -->
+                                <div class="wrapper">
+                                    <div class="time-quantum game">
+                                        <ul class="clearfix">
+                                            <!-- <li class="time-list f-l">
+                                                <b>1</b>
+                                                <p>比洛-进球-27：58</p>
+                                                <input type="checkbox" class="checkbox f-r">
+                                                <i class="f-r"><img src="images/video-download.png" width="7" alt=""></i>
+                                            </li> -->
 
-                                    </ul>
+                                        </ul>
+                                       
+                                    </div>
                                     <div class="pagination clearfix">
                                         <button class="prev-btn prev-btn2">
                                             <img src="images/prev-page.png" width="14" alt="">
@@ -460,7 +463,6 @@
                                         <span class="select-all f-r">全选</span>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -943,23 +945,25 @@
                                     <canvas id="screenshot" name="screenshot" width="466" height="292"></canvas>
                                     <div class="video_content" id="videoContent" name="videoContent"></div>
                                 </div>
-                                <div class="time-quantum event">
-                                    <ul class="clearfix">
-                                        <!-- <li class="time-list f-l">
-                                            <b>1</b>
-                                            <p>比洛-进球-27：58</p>
-                                            <input type="checkbox" class="checkbox f-r">
-                                            <i class="f-r"><img src="images/video-download.png" width="7" alt=""></i>
-                                        </li> -->
+                                <div class="wrapper">
+                                    <div class="time-quantum event">
+                                        <ul class="clearfix">
+                                            <!-- <li class="time-list f-l">
+                                                <b>1</b>
+                                                <p>比洛-进球-27：58</p>
+                                                <input type="checkbox" class="checkbox f-r">
+                                                <i class="f-r"><img src="images/video-download.png" width="7" alt=""></i>
+                                            </li> -->
 
-                                    </ul>
+                                        </ul>                           
+                                    </div>
                                     <div class="pagination clearfix">
                                         <button class="prev-btn prev-btn4">
                                             <img src="images/prev-page.png" width="14" alt="">
                                         </button>
                                         <p>
-                                            <span id="curentPage4">0</span>/
-                                            <span id="totalPage4">0</span>
+                                            <span id="curentPage4">1</span>/
+                                            <span id="totalPage4">1</span>
                                         </p>
                                         <button class="next-btn next-btn4">
                                             <img src="images/next-page.png" width="14" alt="">
@@ -968,7 +972,6 @@
                                         <span class="select-all f-r">全选</span>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -988,7 +991,7 @@
                                 <div class="area-filter">
                                     <div class="area-filter-box event-start">
                                         <p>选择事件发生区域</p>
-                                        <ul class="area-start clearfix">
+                                        <ul id="event_start_area" class="area-start clearfix">
                                             <li class="all select"></li>
                                             <li class="left"></li>
                                             <li class="right"></li>
@@ -1266,18 +1269,20 @@
                                     <canvas id="screenshot" name="screenshot" width="466" height="292"></canvas>
                                     <div class="video_content" id="videoContent" name="videoContent"></div>
                                 </div>
-                                <div class="time-quantum player">
-                                    <ul class="clearfix">
-                                        <!-- <li class="time-list f-l">
-                                            <b>1</b>
-                                            <p>比洛-进球-27：58</p>
-                                            <input type="checkbox" class="checkbox f-r">
-                                            <i class="f-r">
-                                                <img src="images/video-download.png" width="7" alt="">
-                                            </i>
-                                        </li> -->
+                                <div class="wrapper">
+                                    <div class="time-quantum player">
+                                        <ul class="clearfix">
+                                            <!-- <li class="time-list f-l">
+                                                <b>1</b>
+                                                <p>比洛-进球-27：58</p>
+                                                <input type="checkbox" class="checkbox f-r">
+                                                <i class="f-r">
+                                                    <img src="images/video-download.png" width="7" alt="">
+                                                </i>
+                                            </li> -->
 
-                                    </ul>
+                                        </ul>                           
+                                    </div>
                                     <div class="pagination clearfix">
                                         <button class="prev-btn prev-btn5">
                                             <img src="images/prev-page.png" width="14" alt="">
@@ -1293,7 +1298,6 @@
                                         <span class="select-all f-r">全选</span>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -1475,6 +1479,10 @@
     var ownGoalPersonId = "";
 
     var groupNoStr = "";
+    var totalPageEventVideoList = 0;
+
+    var currentPage4 = 1;
+    var selectedLiClassNameS = "";
 
     $.ajax({
         url: "http://192.168.2.6:8888/dataapi/getTeamSchedule.html?ak=123456&teamId="+teamId+"&season="+season,
@@ -1589,6 +1597,7 @@
         homeTeamId = $(this).data("home");
         guestTeamId = $(this).data("guest");
         $(this).addClass("match-selected").siblings().removeClass("match-selected");
+        $("#event_start_area li").eq(0).addClass("select").siblings().removeClass("select");
 
         if(flag == 2){
             if(homeTeamId == teamId){
@@ -1618,6 +1627,7 @@
     })
 
     //事件模块--》事件列表点击筛选视频事件（必须选中其中一个）
+    $(".event-list.event").unbind("click");
     $(".event-list.event").on("click", "li", function () {
         code = "";
         moduleKeyWord = "event";
@@ -1690,6 +1700,12 @@
             $(this).trigger("play");
             $(this).removeClass('pause');
             $(this).addClass('play');
+            $('#videoPlayBox-event').trigger("pause");
+            $('#videoPlayBox-event').removeClass('play');
+            $('#videoPlayBox-event').addClass('pause');
+            $('#videoPlayBox-player').trigger("pause");
+            $('#videoPlayBox-player').removeClass('play');
+            $('#videoPlayBox-player').addClass('pause');
         } else {
             $(this).trigger("pause");
             $(this).removeClass('play');
@@ -1712,6 +1728,12 @@
             $(this).trigger("play");
             $(this).removeClass('pause');
             $(this).addClass('play');
+            $('#videoPlayBox-match').trigger("pause");
+            $('#videoPlayBox-match').removeClass('play');
+            $('#videoPlayBox-match').addClass('pause');
+            $('#videoPlayBox-player').trigger("pause");
+            $('#videoPlayBox-player').removeClass('play');
+            $('#videoPlayBox-player').addClass('pause');
         } else {
             $(this).trigger("pause");
             $(this).removeClass('play');
@@ -1720,7 +1742,7 @@
     })
 
     // 视频双击进入、退出全屏
-    $('#videoPlayBox-player').on('dblclick', function () {
+    $('#videoPlayBox-event').on('dblclick', function () {
         if ($(this)[0].clientHeight === window.screen.height && $(this)[0].clientWidth === window.screen.width) {
             exitFullscreen();
         } else {
@@ -1728,12 +1750,18 @@
         }
     });
 
-        // 视频点击播放、暂停
-        $('#videoPlayBox-player').click(function () {
+    // 视频点击播放、暂停
+    $('#videoPlayBox-player').click(function () {
         if ($(this).hasClass('pause')) {
             $(this).trigger("play");
             $(this).removeClass('pause');
             $(this).addClass('play');
+            $('#videoPlayBox-match').trigger("pause");
+            $('#videoPlayBox-match').removeClass('play');
+            $('#videoPlayBox-match').addClass('pause');
+            $('#videoPlayBox-event').trigger("pause");
+            $('#videoPlayBox-event').removeClass('play');
+            $('#videoPlayBox-event').addClass('pause');
         } else {
             $(this).trigger("pause");
             $(this).removeClass('play');
@@ -1750,7 +1778,7 @@
         }
     });
 
-    
+    var eventVideoListRes = "";
     
     //请求比赛视频列表
     function queryVideoList() {
@@ -1790,7 +1818,8 @@
             dataType: "json",
             success: function (result) {
 
-                
+                eventVideoListRes = result;
+
                 if (result == "") {
                     alert("没有相关视频！")
                     return;
@@ -1900,9 +1929,11 @@
                     })
                 } else if (moduleKeyWord == "event" && matchId != "") {
                     var res = "";
-                    var page = 1;
-                    var totalPage = Math.ceil(result.length / 5)
-                    res = result.slice(0, 5);
+                    // var page = $("#curentPage4").text();
+                    
+                    totalPageEventVideoList = Math.ceil(result.length / 5)
+                    // res = result.slice(0, 5);
+                    res = result;
                     $.each(result, function (i, item) {
                         if(item.code == "87"){
                             hasOwnGoal = true;
@@ -1913,35 +1944,33 @@
                             }
                         }
                     })
-                    renderMatchVideoList(res, page);
+                    renderMatchVideoList(res, currentPage4);
                     if(flag != 2){
                         getChalkBoardAjax();
                     }
                     
-                    $("#curentPage4").text(page);
+                    $("#curentPage4").text(currentPage4);
                     $("#totalPage4").text(totalPage);
 
                     $(".prev-btn4").unbind("click");
                     $(".prev-btn4").on("click", function () {
-                        if (page <= 1) {
-                            page = 1;
+                        if (currentPage4 <= 1) {
+                            currentPage4 = 1;
                             return;
                         }
-                        page--;
-                        $("#curentPage4").text(page);
-                        res = result.slice((page - 1) * 5, page * 5);
-                        renderMatchVideoList(res, page);
+                        currentPage4--;
+                        $("#curentPage4").text(currentPage4);
+                        $(".time-quantum.event ul").css({"top": -(currentPage4-1)*205})
                     })
                     $(".next-btn4").unbind("click");
                     $(".next-btn4").on("click", function () {
-                        if (page >= totalPage) {
-                            page = totalPage;
+                        if (currentPage4 >= totalPageEventVideoList) {
+                            page = totalPageEventVideoList;
                             return;
                         }
-                        page++;
-                        $("#curentPage4").text(page);
-                        res = result.slice((page - 1) * 5, page * 5);
-                        renderMatchVideoList(res, page);
+                        currentPage4++;
+                        $("#curentPage4").text(currentPage4);
+                        $(".time-quantum.event ul").css({"top": -(currentPage4-1)*205})
                     })
                 } else if (moduleKeyWord == "player" && code != ""){
                     var res = "";
@@ -1977,8 +2006,7 @@
                 }
 
             },
-            error: function (result) {
-                
+            error: function (result) {            
             }
         })
     }
@@ -2090,7 +2118,7 @@
             $.each(res, function (i, item) {
                 var videoTopHtml = "'" + item.personName + "-" + item.actionCode + "&nbsp;&nbsp;" + item.homeTeamName + "-" + item.guestTeamName + "&nbsp;&nbsp;" + item.homeScore + " : " + item.guestScore + "'";
                 item.mediaOssUrl = "'" + item.mediaOssUrl + "'";
-                html += '<li class="time-list f-l" id="playBox' + i + 'event" onclick="playMedia(' + videoTopHtml + ',' + item.mediaOssUrl + ',' + i + ')" data-groupno="'+item.groupNo+'"">'
+                html += '<li class="time-list hide f-l '+item.groupNo+'" id="playBox' + i + 'event" onclick="playMedia(' + videoTopHtml + ',' + item.mediaOssUrl + ',' + i + ')" data-groupno="'+item.groupNo+'"">'
                     + '<b>' + ((page - 1) * 5 + i + 1) + '</b>'
                     + '<p>' + item.personName + '-' + item.actionCode + '&nbsp;&nbsp;' + item.matchDate + '</p>'
                     + '<input type="checkbox" class="checkbox f-r">'
@@ -2139,32 +2167,41 @@
         } else if (moduleKeyWord == "event") {
             $("#" + lastPlayBox + "event").removeClass("play-now");
             $("#playBox" + index + "event").toggleClass("play-now", true);
-            
+            $(".time-quantum.event ul").css("top",-Math.floor(index/5)*205);
+            currentPage4 = Math.floor(index/5)+1;
+            $("#curentPage4").text(currentPage4);
 
             $("#videoTopHtmlEvent").html(param);
 
             $("#videoPlayBox-" + moduleKeyWord).attr("src", mediaUrl);
             $("#videoPlayBox-" + moduleKeyWord).attr("autoplay", "true");
             groupNoStr = $("#playBox" + index + "event").data("groupno");
-            console.log(groupNoStr)
+            
            
-            // $("#chalk-board>*[class='"+groupNoStr+"']").on("click",function(){
-            //     alert(1)
-            // })
             $("#videoPlayBox-" + moduleKeyWord).on("play", function () {
-            //     console.log($("#chalk-board>*[class='"+groupNoStr+"']"))
-                $("#chalk-board>image[class='"+groupNoStr+"']").trigger("mouseenter");
+                $("#chalk-board>*[class='"+groupNoStr+"']").trigger("mouseenter");
                 $("#div_title_trace").css("display","none");
             })
-            // console.log($("#chalk-board *[class='"+groupNoStr+"']"))
-
             $("#videoPlayBox-" + moduleKeyWord).show();
 
             lastPlayBox = "playBox" + index;
             playVideoIndex = index;
+            $("#videoPlayBox-" + moduleKeyWord).unbind("ended");
             $("#videoPlayBox-" + moduleKeyWord).on("ended", function () {
-                $("#playBox" + (index + 1) + "event").trigger("click");
-                index = index + 1;
+
+                $("#chalk-board>*[class='"+groupNoStr+"']").trigger("mouseleave");
+                index++;
+                for(var i = index; i < $(".time-quantum.event ul li").length; i++){
+                    if(!$(".time-quantum.event ul li").eq(i).hasClass("hide")){
+                        $(".time-quantum.event ul li").eq(i).trigger("click");
+                        
+                        // $(".time-quantum.event ul").css("top",-Math.floor(i/5)*205);
+                        // currentPage4 = Math.floor(i/5)+1;
+                        // $("#curentPage4").text(currentPage4)  
+                        return;
+                    }
+                }
+                
             })
         }else if (moduleKeyWord == "player") {
             $("#" + lastPlayBox + "player").removeClass("play-now");
@@ -2591,7 +2628,7 @@
         areaBlockedTo = "";
         // 获取选择事件发生和结束区域areaBlockedFrom
         // 发生区域
-        var selectedLiClassNameS = $(".event-start li[class*='select']").attr("class").split(" ")[0];
+        selectedLiClassNameS = $(".event-start li[class*='select']").attr("class").split(" ")[0];
         switch (selectedLiClassNameS) {
             case "all":
                 areaBlockedFrom = "areaForm26,areaForm25,areaForm3,areaForm4,areaForm5,areaForm6,areaForm7,areaForm8,areaForm9,areaForm10,areaForm11,areaForm12,areaForm13,areaForm14,areaForm15,areaForm16,areaForm17,areaForm18,areaForm19,areaForm20,areaForm21,areaForm22,areaForm23,areaForm24";
@@ -2733,14 +2770,30 @@
             return item;
         });
         }
-        
+
+        console.log(json)
+        console.log(eventVideoListRes)
+        console.log(selectedLiClassNameS)
+        var tempArr = [];
+        // $(".time-quantum.event ul li").addClass("hide");
         $.each(json, function(i, item) {
+            if(item.code != 555){
+                var tempStr = item.groupNo;
+                $("."+tempStr).removeClass("hide");
+               
+            }
+            
+            // $(".time-quantum.event ul li").each(function(){
+            //     var tempStr = $(this).data("groupno");
+            //     if(tempStr == item.groupNo){
+            //         $(this).show();
+            //     }
+            // })
 
             if(!item.code){
                 return true;
             }
-            var teamType = "H";
-            
+            var teamType = "H";           
             if(item.teamId == guestTeamId){
                 teamType = "G";
             }
@@ -2764,7 +2817,7 @@
                 if(item.code ==204 ||item.code ==205 ||item.code ==502 ){//阻断传球，阻断射门，守门员扑球，需要显示线路
                     $.each(json, function(j, itemDefend) {
                         if(item.groupNo == itemDefend.groupNo && isEmpty(itemDefend.code)){
-                            drawPersonBlock("chalk-board",itemDefend.personNumber,itemDefend.y,352-itemDefend.x,item.personNumber,item.y,352-item.x,itemDefend.teamId);
+                            drawPersonBlock("chalk-board",itemDefend.personNumber,itemDefend.y,352-itemDefend.x,item.personNumber,item.y,352-item.x,itemDefend.teamId,itemDefend.groupNo);
                             return false;
                         }
                     });
@@ -2805,10 +2858,32 @@
             //         cbTimeLine(item.half,item.timeNum,item.y, 352 - item.x, nextX,codeType,item.code,item.personNumber,item.personName,item.eventTimeFull,teamType,item.actionName);
             //     }
             // }
+            if(selectedLiClassNameS != "all"){
+                for(var i = 0; i < eventVideoListRes.length ; i++){
+                    if(eventVideoListRes[i].groupNo == item.groupNo){
+                        if($.inArray(eventVideoListRes[i], tempArr) == "-1"){
+                            tempArr.push(eventVideoListRes[i]);
+                        }      
+                    }
+                }   
+            }
 
             personId = "";
         });
 
+        // todo:
+        if(selectedLiClassNameS != "all"){
+            console.log(tempArr)
+            // renderMatchVideoList(tempArr,currentPage4);
+            $(".time-quantum.event ul").empty();
+            renderMatchVideoList(tempArr, 1);
+        }
+
+        totalPageEventVideoList = Math.ceil($(".time-quantum.event li").not(".hide").length/5);
+        $("#totalPage4").text(totalPageEventVideoList);
+        $(".time-quantum.event ul").css("top",0);
+        $(".time-quantum.event ul li").not(".hide").eq(0).trigger("click");
+        $('#videoPlayBox-' + moduleKeyWord).trigger('pause');
         hasOwnGoal = false;
     }
 
@@ -2883,16 +2958,16 @@
         var svg = Snap("#"+svgId);
         var goalType = "GOAL";     
         /* todo 乌龙球问题待解决 */
-        console.log(x2)
+        
         if(x2){//乌龙球
             goalType = "OWN";
         }
         var id = "s_"+half.toString()+x.toString()+y.toString()+number.toString();
-        var image = svg.paper.image("images/icon_"+goalType+".png", x-10, y-10, 20, 20).attr({"name":half.toString()+x.toString()+y.toString()+number.toString(),"class":groupNo,"id":id,"cursor":"hand","z-index":ZIndexNum});
+        var image = svg.paper.image("images/icon_"+goalType+".png", x-10, y-10, 20, 20).attr({"name":half.toString()+x.toString()+y.toString()+number.toString(),"class":groupNo,"id":id,"cursor":"hand"});
 
-        image.dblclick(function(){
-            playMedia(groupNo);
-        });
+        // image.dblclick(function(){
+        //     playMedia(groupNo);
+        // });
         if(isNotEmpty(istrace)){
             image.attr("istrace",istrace);
         }
@@ -2900,18 +2975,22 @@
         hammerImage.on("doubletap", function(ev) {
             playMedia(groupNo);
         });
-        image.click(function(){
-            // darken(svgId);
-            // //画进攻轨迹
-            // traceLine(groupNo);
-            // $("#currentGroupId").val(groupNo);
-            // $("#actionTime").val(eventTimeFull);
-            alert("click")
+        // image.click(function(){
+        //     // darken(svgId);
+        //     // //画进攻轨迹
+        //     // traceLine(groupNo);
+        //     // $("#currentGroupId").val(groupNo);
+        //     // $("#actionTime").val(eventTimeFull);
+        //     alert("click")
+        // });
+        
+        $("."+groupNo).dblclick(function(){
+            $(".time-quantum.event ul ."+groupNo).trigger("click");
         });
-        ZIndexNum = 1;
         $("."+groupNo).unbind("mouseenter");
         $("."+groupNo).on("mouseenter",function() {
-            console.log("enter")
+            // $(".time-quantum.event ul ."+groupNo).trigger("mouseenter");
+            console.log($(".time-quantum.event ul ."+groupNo))
             highlight(svgId,half+""+x+""+y+""+number,teamType,1); 
             $("#div_title_trace").html(number+" "+name+" "+eventTimeFull+" "+actionName);
             $("#div_title_trace").css("margin-left",x-20);
@@ -2921,10 +3000,13 @@
         });
         $("."+groupNo).unbind("mouseleave");
         $("."+groupNo).on("mouseleave",function() {
-            console.log("leave")
-            // highlight(svgId,half+""+x+""+y+""+number,teamType,2); 
+            
+            highlight(svgId,half+""+x+""+y+""+number,teamType,2); 
             $("#div_title_trace").css("display","none");
             lighten(svgId);
+            var selectedGroupNo =  $(".time-quantum.event ul li.play-now").data("groupno");
+            $("."+selectedGroupNo).trigger("mouseenter");
+            $("#div_title_trace").css("display","none");
         });
         
     }
@@ -2951,8 +3033,8 @@
         }
         var circleId = "s_"+half.toString()+x.toString()+y.toString()+number.toString();
         var textId ="t_"+circleId;
-        var circle = svg.paper.circle(x, y, size).attr({"name":half.toString()+x.toString()+y.toString()+number.toString(),"id":circleId,"cursor":"hand","stroke":colorMap.get(code+""),"stroke-width":"2"});
-        var text = svg.paper.text(x, y+5, number).attr({"name":half.toString()+x.toString()+y.toString()+number.toString(),"id":textId,"text-anchor":"middle","font-size":size ,"cursor":"hand"});
+        var circle = svg.paper.circle(x, y, size).attr({"name":half.toString()+x.toString()+y.toString()+number.toString(),"class":groupNo,"id":circleId,"cursor":"hand","stroke":colorMap.get(code+""),"stroke-width":"2"});
+        var text = svg.paper.text(x, y+5, number).attr({"name":half.toString()+x.toString()+y.toString()+number.toString(),"class":groupNo,"id":textId,"text-anchor":"middle","font-size":size ,"cursor":"hand"});
         
         if(isNotEmpty(istrace)){
             circle.attr("istrace",istrace);
@@ -3003,19 +3085,36 @@
         //     playMedia(groupNo);
         // });
         
-        text.mouseover(function() {
+        $("."+groupNo).dblclick(function(){
+            $(".time-quantum.event ul ."+groupNo).trigger("click");
+        });
+        $("."+groupNo).unbind("mouseenter");
+        $("."+groupNo).on("mouseenter",function() {
             highlight(svgId,half+""+x+""+y+""+number,teamType,1); 
             $("#div_title_trace").html(number+" "+name+" "+eventTimeFull+" "+actionName);
             $("#div_title_trace").css("margin-left",x-20);
             $("#div_title_trace").css("margin-top",y-40);
             $("#div_title_trace").css("display","block");
+            darkenOtherByClass(svgId,groupNo);
         });
-        text.mouseout(function() {
+        $("."+groupNo).unbind("mouseleave");
+        $("."+groupNo).on("mouseleave",function() {
+            
             highlight(svgId,half+""+x+""+y+""+number,teamType,2); 
+            $("#div_title_trace").css("display","none");
+            lighten(svgId);
+            var selectedGroupNo =  $(".time-quantum.event ul li.play-now").data("groupno");
+            $("."+selectedGroupNo).trigger("mouseenter");
             $("#div_title_trace").css("display","none");
         });
     }
 
+    // $(".time-quantum.event ul").on("li","mouseenter",function(){
+    //     $(this).css({
+    //         backgroundColor:"ecf0f1",
+    //         borderRadius:"3px"
+    //     })
+    // })
     //防守，三角形
     function drawyTriangle(svgId,half,x,y,number,name,teamType,groupNo,eventTimeFull,code,actionName){
         var docName = "pb"+number+"_"+x+"_"+y;
@@ -3025,8 +3124,8 @@
         number= parseInt(number);
         var svg = Snap("#"+svgId);
         var polySize=10;
-        var poly = svg.paper.polygon([x,y-polySize ,x-polySize,y+polySize ,x+polySize,y+polySize]).attr({"name":docName,"id":"s_"+half.toString()+x.toString()+y.toString()+number.toString(),"stroke":colorMap.get(code+""),"stroke-width":"2"});
-        var text = svg.paper.text(x, y+8, number).attr({"name":docName,"text-anchor":"middle" ,"font-size":"10px" });
+        var poly = svg.paper.polygon([x,y-polySize ,x-polySize,y+polySize ,x+polySize,y+polySize]).attr({"name":docName,"class":groupNo,"id":"s_"+half.toString()+x.toString()+y.toString()+number.toString(),"stroke":colorMap.get(code+""),"stroke-width":"2"});
+        var text = svg.paper.text(x, y+8, number).attr({"name":docName,"text-anchor":"middle" ,"font-size":"10px","class":groupNo });
         
         // 抢断失败和门将出击失败(显示虚线)
         if(code==350 || code==353){
@@ -3040,39 +3139,63 @@
             poly.attr("fill", "#DCF2FE");
             text.attr("fill","black");
         }
-        text.mouseover(function() {
-            highlight(svgId,docName,teamType,1); 
+        // text.mouseover(function() {
+        //     highlight(svgId,docName,teamType,1); 
+        //     $("#div_title_trace").html(number+" "+name+" "+eventTimeFull+" "+actionName);
+        //     $("#div_title_trace").css("margin-left",x-20);
+        //     $("#div_title_trace").css("margin-top",y-40);
+        //     $("#div_title_trace").css("display","block");
+            
+        //     darkenOtherByName(svgId,docName);
+        // });
+        // text.mouseout(function() {
+        //     highlight(svgId,docName,teamType,2); 
+        //     $("#div_title_trace").css("display","none");
+        //     lighten(svgId);
+        // });
+        
+        // poly.dblclick(function(){
+        //     playMedia(groupNo);
+        // });
+        
+        // text.dblclick(function(){
+        //     playMedia(groupNo);
+        // });
+        
+        $("."+groupNo).dblclick(function(){
+            $(".time-quantum.event ul ."+groupNo).trigger("click");
+        });
+        $("."+groupNo).unbind("mouseenter");
+        $("."+groupNo).on("mouseenter",function() {
+            console.log($(this));
+            highlight(svgId,half+""+x+""+y+""+number,teamType,1); 
             $("#div_title_trace").html(number+" "+name+" "+eventTimeFull+" "+actionName);
             $("#div_title_trace").css("margin-left",x-20);
             $("#div_title_trace").css("margin-top",y-40);
             $("#div_title_trace").css("display","block");
-            
-            darkenOtherByName(svgId,docName);
+            darkenOtherByClass(svgId,groupNo);
         });
-        text.mouseout(function() {
-            highlight(svgId,docName,teamType,2); 
+        $("."+groupNo).unbind("mouseleave");
+        $("."+groupNo).on("mouseleave",function() {
+            
+            highlight(svgId,half+""+x+""+y+""+number,teamType,2); 
             $("#div_title_trace").css("display","none");
             lighten(svgId);
-        });
-        
-        poly.dblclick(function(){
-            playMedia(groupNo);
-        });
-        
-        text.dblclick(function(){
-            playMedia(groupNo);
+            var selectedGroupNo =  $(".time-quantum.event ul li.play-now").data("groupno");
+            $("."+selectedGroupNo).trigger("mouseenter");
+            $("#div_title_trace").css("display","none");
         });
     }
 
     //画被防守人
-    function drawPersonBlock(svgId,personFromNum,personFromX,personFromY,personToNum,personToX,personToY,teamId){
+    function drawPersonBlock(svgId,personFromNum,personFromX,personFromY,personToNum,personToX,personToY,teamId,groupNo){
         personFromX = parseInt(personFromX);
         personFromY = parseInt(personFromY);
         personFromNum = parseInt(personFromNum);
         personToX = parseInt(personToX);
         personToY = parseInt(personToY);
         personToNum = parseInt(personToNum);
-        
+            
         var docName = "pb"+personToNum+"_"+personToX+"_"+personToY;
         
         var svg = Snap("#"+svgId);
@@ -3092,18 +3215,39 @@
         //画线
         var pathStr = drawLineArrow(personFromX,personFromY,personToX,personToY);
         var linePath = svg.paper.path(pathStr).attr({
+            "class":groupNo,
             stroke: "red",
             strokeWidth: 1,
             "name":docName
         });
-        var circleFrom = svg.paper.circle(personFromX, personFromY, 8).attr({"name":docName })
+        var circleFrom = svg.paper.circle(personFromX, personFromY, 8).attr({"name":docName,"class":groupNo });
+        var textFrom = svg.paper.text(personFromX, personFromY+5, personFromNum).attr({"text-anchor":"middle","class":groupNo,"name":docName,"font-size":"10px" });
+        circleFrom.attr("fill", circleFromColor);
         textFrom.attr("fill",textFromColor);
         
-        textFrom.mouseover(function(){
-            darkenOtherByName(svgId,docName);
+        
+        $("."+groupNo).dblclick(function(){
+            $(".time-quantum.event ul ."+groupNo).trigger("click");
         });
-        textFrom.mouseout(function() {
+        $("."+groupNo).unbind("mouseenter");
+        $("."+groupNo).on("mouseenter",function() {
+            console.log($(this));
+            highlight(svgId,half+""+x+""+y+""+number,teamType,1); 
+            $("#div_title_trace").html(number+" "+name+" "+eventTimeFull+" "+actionName);
+            $("#div_title_trace").css("margin-left",x-20);
+            $("#div_title_trace").css("margin-top",y-40);
+            $("#div_title_trace").css("display","block");
+            darkenOtherByClass(svgId,groupNo);
+        });
+        $("."+groupNo).unbind("mouseleave");
+        $("."+groupNo).on("mouseleave",function() {
+            
+            highlight(svgId,half+""+x+""+y+""+number,teamType,2); 
+            $("#div_title_trace").css("display","none");
             lighten(svgId);
+            var selectedGroupNo =  $(".time-quantum.event ul li.play-now").data("groupno");
+            $("."+selectedGroupNo).trigger("mouseenter");
+            $("#div_title_trace").css("display","none");
         });
     }
 
@@ -3119,8 +3263,8 @@
         var rectWidth=15;
         var rectId = "s_"+half.toString()+x.toString()+y.toString()+number.toString();
         var textId = "t_"+rectId;
-        var rect = svg.paper.rect(x-rectWidth/2, y-rectWidth/2, rectWidth, rectWidth, 2).attr({"name":half.toString()+x.toString()+y.toString()+number.toString(),"id":rectId,"stroke":colorMap.get(code+""),"stroke-width":"2"});
-        var text = svg.paper.text(x, y+5, number).attr({"name":half.toString()+x.toString()+y.toString()+number.toString(),"id":textId,"text-anchor":"middle","font-size":"10px"});
+        var rect = svg.paper.rect(x-rectWidth/2, y-rectWidth/2, rectWidth, rectWidth, 2).attr({"name":half.toString()+x.toString()+y.toString()+number.toString(),"class":groupNo,"id":rectId,"stroke":colorMap.get(code+""),"stroke-width":"2"});
+        var text = svg.paper.text(x, y+5, number).attr({"name":half.toString()+x.toString()+y.toString()+number.toString(),"class":groupNo,"id":textId,"text-anchor":"middle","font-size":"10px"});
         
         if(teamType=="H"){//主队
             rect.attr("fill", "#3C7994");
@@ -3142,19 +3286,27 @@
         // textHammer.on("doubletap", function(ev) {
         //     playMedia(groupNo);
         // });
-        text.mouseover(function() {
+        $("."+groupNo).dblclick(function(){
+            $(".time-quantum.event ul ."+groupNo).trigger("click");
+        });
+        $("."+groupNo).unbind("mouseenter");
+        $("."+groupNo).on("mouseenter",function() {
+            console.log($(this));
             highlight(svgId,half+""+x+""+y+""+number,teamType,1); 
-            if(code = 21){//如果是犯规，则显示被犯规人
-                $("#div_title_trace").html(number+" "+name+" "+eventTimeFull +" "+ actionName+" "+foulsPerson);
-            }else{
-                $("#div_title_trace").html(number+" "+name+" "+eventTimeFull+" "+actionName);
-            }
+            $("#div_title_trace").html(number+" "+name+" "+eventTimeFull+" "+actionName);
             $("#div_title_trace").css("margin-left",x-20);
             $("#div_title_trace").css("margin-top",y-40);
             $("#div_title_trace").css("display","block");
+            darkenOtherByClass(svgId,groupNo);
         });
-        text.mouseout(function() {
-            highlight(svgId,half+""+x+""+y+""+number,teamType,2);
+        $("."+groupNo).unbind("mouseleave");
+        $("."+groupNo).on("mouseleave",function() {
+            
+            highlight(svgId,half+""+x+""+y+""+number,teamType,2); 
+            $("#div_title_trace").css("display","none");
+            lighten(svgId);
+            var selectedGroupNo =  $(".time-quantum.event ul li.play-now").data("groupno");
+            $("."+selectedGroupNo).trigger("mouseenter");
             $("#div_title_trace").css("display","none");
         });
     }
@@ -3267,11 +3419,10 @@
         }
     }
 
-    var ZIndexNum = 1;
+ 
     //鼠标移动，高亮显示
     function highlight(svgId,name,teamType,tag){
         var color;
-        ZIndexNum++;
         if(tag==1){
             color = "#FF5151";
         }else{
@@ -3282,32 +3433,34 @@
             }
         }
         // var newNode = $("[name='"+name+"']");
-        $("[name='"+name+"']").css("z-index",ZIndexNum);
+        // $("[name='"+name+"']").css("z-index",ZIndexNum);
         // $("#"+svgId).append(newNode);
         $("#s_"+name+"").attr({fill:color});
     }
 
 
     function darken(svgId){
-        $("#"+svgId+"> *").css("opacity","0.2");
+        $("#"+svgId+"> *").css({"opacity":"0.2","z-index":1});
         //截图时防止背景变黑
-        $("#"+svgId+"> #trace_bg").css("opacity","1");
+        $("#"+svgId+"> #trace_bg").css({"opacity":"1","z-index":999});
     }
     
     // 高亮
     function lighten(svgId){
-        $("#"+svgId+"> *").css("opacity","1");
+        $("#"+svgId+"> *").css({"opacity":"1","z-index":999});
     }
     // 选中本项，其他项变暗  
     function darkenOtherByName(svgId,docName){
         darken(svgId);
-        $("#"+svgId+">[name='"+docName+"']").css("opacity","1");
+        $("#"+svgId+">[name='"+docName+"']").css({"opacity":"1","z-index":999});
     }
     // 选中本项，其他项变暗  
     function darkenOtherByClass(svgId,className){
         darken(svgId);
-        $("#"+svgId+">[class='"+className+"']").css("opacity","1");
+        $("#"+svgId+">[class='"+className+"']").css({"opacity":"1","z-index":999});
     }
+
+    
 
 </script>
 

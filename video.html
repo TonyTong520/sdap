@@ -1479,7 +1479,7 @@
     var ownGoalPersonId = "";
 
     var groupNoStr = "";
-    var totalPageEventVideoList = 0;
+    var totalPageEventVideoList = 1;
 
     var currentPage4 = 1;
     var selectedLiClassNameS = "";
@@ -1533,6 +1533,7 @@
     getTeamPersonList();
 
     // 比赛、事件、球员分析切换
+    $(".video-tab ul li").unbind("click");
     $(".video-tab ul li").click(function () {
         $(this).addClass("tab-selected").siblings().removeClass("tab-selected");
         var name = $(this).attr("name");
@@ -1547,6 +1548,7 @@
 
 
     // 比赛列表点击事件(比赛模块)
+    $(".match-video-list.game").unbind("click");
     $(".match-video-list.game").on("click", "li", function () {
         $(".event-list.match .event-item").hide().removeClass("event-selected");
         code="";
@@ -1563,6 +1565,7 @@
     })
 
     // 比赛列表数据方向点击事件(比赛模块)
+    $("#matchStaticTab").unbind("click");
     $("#matchStaticTab").on("click","li",function(){
         $(this).addClass("type-selected").siblings().removeClass("type-selected");
         var dataValue = $(this).data("value");
@@ -1574,6 +1577,7 @@
 
 
     //比赛模块--》事件列表点击筛选视频事件（不点击刚默认全部）
+    $(".event-list.match").unbind("click");
     $(".event-list.match").on("click", "li", function () {
         moduleKeyWord = "match";
         $(this).addClass("event-selected").siblings().removeClass("event-selected");
@@ -1589,6 +1593,7 @@
     })
 
     // 比赛列表点击事件（事件模块）
+    $(".match-video-list.event").unbind("click");
     $(".match-video-list.event").on("click", "li", function () {
         personId = "";
         allPersonIdStr = allPersonIdStrStore;
@@ -1653,6 +1658,7 @@
     // })
 
     //球员分析--》球员列表选择
+    $(".player-list").unbind("click");
     $(".player-list").on("click", "li", function () {
         var srcStr = $(this).children("img").attr("src");
         $(this).addClass("player-selected").siblings().removeClass("player-selected");
@@ -1672,6 +1678,7 @@
     })
 
     //球员分析--》球员事件列表选择 
+    $(".event-list.player").unbind("click");
     $(".event-list.player").on("click","li",function(){
 
         $(this).addClass("event-selected").siblings().removeClass("event-selected");
@@ -1688,6 +1695,7 @@
     })
 
     // 球员分析--球员数据方向(球员分析)
+    $("#playerStaticTab").unbind("click");
     $("#playerStaticTab").on("click","li",function(){
         $(this).addClass("type-selected").siblings().removeClass("type-selected");
         var dataValue = $(this).data("value");
@@ -1695,6 +1703,7 @@
     })
 
     // 视频点击播放、暂停
+    $("#videoPlayBox-match").unbind("click");
     $('#videoPlayBox-match').click(function () {
         if ($(this).hasClass('pause')) {
             $(this).trigger("play");
@@ -1723,6 +1732,7 @@
     });
 
     // 视频点击播放、暂停
+    $("#videoPlayBox-event").unbind("click");
     $('#videoPlayBox-event').click(function () {
         if ($(this).hasClass('pause')) {
             $(this).trigger("play");
@@ -1751,6 +1761,7 @@
     });
 
     // 视频点击播放、暂停
+    $("#videoPlayBox-player").unbind("click");
     $('#videoPlayBox-player').click(function () {
         if ($(this).hasClass('pause')) {
             $(this).trigger("play");
@@ -2115,19 +2126,19 @@
             $("#playBox" + 0).trigger("click");
             $('#videoPlayBox-' + moduleKeyWord).trigger('pause');
         } else if (moduleKeyWord == "event") {
-            $.each(res, function (i, item) {
-                var videoTopHtml = "'" + item.personName + "-" + item.actionCode + "&nbsp;&nbsp;" + item.homeTeamName + "-" + item.guestTeamName + "&nbsp;&nbsp;" + item.homeScore + " : " + item.guestScore + "'";
-                item.mediaOssUrl = "'" + item.mediaOssUrl + "'";
-                html += '<li class="time-list hide f-l '+item.groupNo+'" id="playBox' + i + 'event" onclick="playMedia(' + videoTopHtml + ',' + item.mediaOssUrl + ',' + i + ')" data-groupno="'+item.groupNo+'"">'
-                    + '<b>' + ((page - 1) * 5 + i + 1) + '</b>'
-                    + '<p>' + item.personName + '-' + item.actionCode + '&nbsp;&nbsp;' + item.matchDate + '</p>'
-                    + '<input type="checkbox" class="checkbox f-r">'
-                    + '<i class="f-r"><img src="images/video-download.png" width="7" alt=""></i>'
-                    + '</li>';
-            })
-            $(".time-quantum.event ul").html(html);
-            $("#playBox" + 0 + "event").trigger("click");
-            $('#videoPlayBox-' + moduleKeyWord).trigger('pause');
+            // $.each(res, function (i, item) {
+            //     var videoTopHtml = "'" + item.personName + "-" + item.actionCode + "&nbsp;&nbsp;" + item.homeTeamName + "-" + item.guestTeamName + "&nbsp;&nbsp;" + item.homeScore + " : " + item.guestScore + "'";
+            //     item.mediaOssUrl = "'" + item.mediaOssUrl + "'";
+            //     html += '<li class="time-list f-l '+item.groupNo+'" id="playBox' + i + 'event" onclick="playMedia(' + videoTopHtml + ',' + item.mediaOssUrl + ',' + i + ')" data-groupno="'+item.groupNo+'"">'
+            //         + '<b>' + ((page - 1) * 5 + i + 1) + '</b>'
+            //         + '<p>' + item.personName + '-' + item.actionCode + '&nbsp;&nbsp;' + item.matchDate + '</p>'
+            //         + '<input type="checkbox" class="checkbox f-r">'
+            //         + '<i class="f-r"><img src="images/video-download.png" width="7" alt=""></i>'
+            //         + '</li>';
+            // })
+            // $(".time-quantum.event ul").html(html);
+            // $("#playBox" + 0 + "event").trigger("click");
+            // $('#videoPlayBox-' + moduleKeyWord).trigger('pause');
         } else if (moduleKeyWord == "player") {
             $.each(res, function (i, item) {
                 var videoTopHtml = "'" + item.personName + "-" + item.actionCode + "&nbsp;&nbsp;" + item.homeTeamName + "-" + item.guestTeamName + "&nbsp;&nbsp;" + item.homeScore + " : " + item.guestScore + "'";
@@ -2189,15 +2200,15 @@
             $("#videoPlayBox-" + moduleKeyWord).unbind("ended");
             $("#videoPlayBox-" + moduleKeyWord).on("ended", function () {
 
-                $("#chalk-board>*[class='"+groupNoStr+"']").trigger("mouseleave");
+                $("#chalk-board ."+groupNoStr).trigger("mouseleave");
                 index++;
                 for(var i = index; i < $(".time-quantum.event ul li").length; i++){
                     if(!$(".time-quantum.event ul li").eq(i).hasClass("hide")){
                         $(".time-quantum.event ul li").eq(i).trigger("click");
                         
-                        // $(".time-quantum.event ul").css("top",-Math.floor(i/5)*205);
-                        // currentPage4 = Math.floor(i/5)+1;
-                        // $("#curentPage4").text(currentPage4)  
+                        $(".time-quantum.event ul").css("top",-Math.floor(i/5)*205);
+                        currentPage4 = Math.floor(i/5)+1;
+                        $("#curentPage4").text(currentPage4)  
                         return;
                     }
                 }
@@ -2765,31 +2776,25 @@
             });
         }else{
             json = $.map(json, function(item){
-            item.x = item.x * 0.56592;
-            item.y = item.y * 0.56835;
-            return item;
-        });
+                item.x = item.x * 0.56592;
+                item.y = item.y * 0.56835;
+                return item;
+            });
         }
 
-        console.log(json)
-        console.log(eventVideoListRes)
-        console.log(selectedLiClassNameS)
+        // console.log(json)
+        // console.log(eventVideoListRes)
+        // console.log(selectedLiClassNameS)
         var tempArr = [];
         // $(".time-quantum.event ul li").addClass("hide");
         $.each(json, function(i, item) {
             if(item.code != 555){
                 var tempStr = item.groupNo;
                 $("."+tempStr).removeClass("hide");
+                tempArr.push(tempStr);
                
             }
             
-            // $(".time-quantum.event ul li").each(function(){
-            //     var tempStr = $(this).data("groupno");
-            //     if(tempStr == item.groupNo){
-            //         $(this).show();
-            //     }
-            // })
-
             if(!item.code){
                 return true;
             }
@@ -2842,44 +2847,57 @@
                 drawShift("chalk-board",item.half, item.y, 352 - item.x,  item.personNumber,item.personName,teamType,item.eventTimeFull,item.code,item.actionName);
             }
             
-            //timeline
-            // var codeType=item.codeType;
-            // if(item.code == 1 || item.code == 87){
-            //     codeType="goal";
-            // }
-            // if(item.code !=555 && item.code !=22 && isNotEmpty(item.code)){//空，落球点，被犯规 不需要在时间轴上显示
-            //     var nextX = null;
-            //     if(json[i+1]){
-            //         nextX = json[i+1]["x"];
-            //     }
-            //     if (isOverTimeCom == "2") {
-            //         cbTimeLine(item.half,item.eventTimeFull*0.82,item.y, 352 -  item.x,nextX,codeType,item.code,item.personNumber,item.personName,item.eventTimeFull,teamType,item.actionName);
-            //     } else {
-            //         cbTimeLine(item.half,item.timeNum,item.y, 352 - item.x, nextX,codeType,item.code,item.personNumber,item.personName,item.eventTimeFull,teamType,item.actionName);
-            //     }
-            // }
-            if(selectedLiClassNameS != "all"){
-                for(var i = 0; i < eventVideoListRes.length ; i++){
-                    if(eventVideoListRes[i].groupNo == item.groupNo){
-                        if($.inArray(eventVideoListRes[i], tempArr) == "-1"){
-                            tempArr.push(eventVideoListRes[i]);
-                        }      
-                    }
-                }   
-            }
-
             personId = "";
         });
+        
+        
+        var tempVideoList = [];
+        $.each(eventVideoListRes,function(i,item){
+            if($.inArray(eventVideoListRes[i].groupNo, tempArr) != "-1"){
+                tempVideoList.push(eventVideoListRes[i]);
+            }
+        })
 
-        // todo:
-        if(selectedLiClassNameS != "all"){
-            console.log(tempArr)
-            // renderMatchVideoList(tempArr,currentPage4);
-            $(".time-quantum.event ul").empty();
-            renderMatchVideoList(tempArr, 1);
+        var html = "";
+        $.each(tempVideoList, function (i, item) {
+            var videoTopHtml = "'" + item.personName + "-" + item.actionCode + "&nbsp;&nbsp;" + item.homeTeamName + "-" + item.guestTeamName + "&nbsp;&nbsp;" + item.homeScore + " : " + item.guestScore + "'";
+            if((item.mediaOssUrl).indexOf("'") == -1){
+                item.mediaOssUrl = "'" + item.mediaOssUrl + "'";
+            }           
+            html += '<li class="time-list f-l '+item.groupNo+'" id="playBox' + i + 'event" onclick="playMedia(' + videoTopHtml + ',' + item.mediaOssUrl + ',' + i + ')" data-groupno="'+item.groupNo+'"">'
+                + '<b>' + (i + 1) + '</b>'
+                + '<p>' + item.personName + '-' + item.actionCode + '&nbsp;&nbsp;' + item.matchDate + '</p>'
+                + '<input type="checkbox" class="checkbox f-r">'
+                + '<i class="f-r"><img src="images/video-download.png" width="7" alt=""></i>'
+                + '</li>';
+        })
+        $(".time-quantum.event ul").html(html);
+        currentPage4 = 1;
+        if(html == ""){
+            currentPage4 = 0;
+            $("#videoPlayBox-" + moduleKeyWord).attr("src","");
         }
+        $("#curentPage4").text(currentPage4);
+        $("#playBox" + 0 + "event").trigger("click");
+        $('#videoPlayBox-' + moduleKeyWord).trigger('pause');
+
+            
+        $(".time-quantum.event ul").unbind("mouseenter");
+        $(".time-quantum.event ul").on("mouseenter","li",function(){
+            var tempGroupStr = $(this).data("groupno");
+            $("#chalk-board ."+tempGroupStr).trigger("mouseenter");
+        })
+        $(".time-quantum.event ul").unbind("mouseleave");
+        $(".time-quantum.event ul").on("mouseleave","li",function(){
+            var tempGroupStr = $(this).data("groupno");
+            $("#chalk-board ."+tempGroupStr).trigger("mouseleave");
+            var selectedGroupNo =  $(".time-quantum.event ul li.play-now").data("groupno");
+            $(".time-quantum.event ul ."+selectedGroupNo).trigger("mouseenter");
+            $("#div_title_trace").css("display","none");
+        })
 
         totalPageEventVideoList = Math.ceil($(".time-quantum.event li").not(".hide").length/5);
+        
         $("#totalPage4").text(totalPageEventVideoList);
         $(".time-quantum.event ul").css("top",0);
         $(".time-quantum.event ul li").not(".hide").eq(0).trigger("click");
@@ -2984,13 +3002,13 @@
         //     alert("click")
         // });
         
-        $("."+groupNo).dblclick(function(){
+        $("#chalk-board ."+groupNo).dblclick(function(){
             $(".time-quantum.event ul ."+groupNo).trigger("click");
+            
         });
-        $("."+groupNo).unbind("mouseenter");
-        $("."+groupNo).on("mouseenter",function() {
+        $("#chalk-board ."+groupNo).unbind("mouseenter");
+        $("#chalk-board ."+groupNo).on("mouseenter",function() {
             // $(".time-quantum.event ul ."+groupNo).trigger("mouseenter");
-            console.log($(".time-quantum.event ul ."+groupNo))
             highlight(svgId,half+""+x+""+y+""+number,teamType,1); 
             $("#div_title_trace").html(number+" "+name+" "+eventTimeFull+" "+actionName);
             $("#div_title_trace").css("margin-left",x-20);
@@ -2998,15 +3016,13 @@
             $("#div_title_trace").css("display","block");
             darkenOtherByClass(svgId,groupNo);
         });
-        $("."+groupNo).unbind("mouseleave");
-        $("."+groupNo).on("mouseleave",function() {
+        $("#chalk-board ."+groupNo).unbind("mouseleave");
+        $("#chalk-board ."+groupNo).on("mouseleave",function() {
             
             highlight(svgId,half+""+x+""+y+""+number,teamType,2); 
             $("#div_title_trace").css("display","none");
             lighten(svgId);
-            var selectedGroupNo =  $(".time-quantum.event ul li.play-now").data("groupno");
-            $("."+selectedGroupNo).trigger("mouseenter");
-            $("#div_title_trace").css("display","none");
+            
         });
         
     }
@@ -3085,11 +3101,11 @@
         //     playMedia(groupNo);
         // });
         
-        $("."+groupNo).dblclick(function(){
+        $("#chalk-board ."+groupNo).dblclick(function(){
             $(".time-quantum.event ul ."+groupNo).trigger("click");
         });
-        $("."+groupNo).unbind("mouseenter");
-        $("."+groupNo).on("mouseenter",function() {
+        $("#chalk-board ."+groupNo).unbind("mouseenter");
+        $("#chalk-board ."+groupNo).on("mouseenter",function() {
             highlight(svgId,half+""+x+""+y+""+number,teamType,1); 
             $("#div_title_trace").html(number+" "+name+" "+eventTimeFull+" "+actionName);
             $("#div_title_trace").css("margin-left",x-20);
@@ -3097,14 +3113,14 @@
             $("#div_title_trace").css("display","block");
             darkenOtherByClass(svgId,groupNo);
         });
-        $("."+groupNo).unbind("mouseleave");
-        $("."+groupNo).on("mouseleave",function() {
+        $("#chalk-board ."+groupNo).unbind("mouseleave");
+        $("#chalk-board ."+groupNo).on("mouseleave",function() {
             
             highlight(svgId,half+""+x+""+y+""+number,teamType,2); 
             $("#div_title_trace").css("display","none");
             lighten(svgId);
             var selectedGroupNo =  $(".time-quantum.event ul li.play-now").data("groupno");
-            $("."+selectedGroupNo).trigger("mouseenter");
+            $("#chalk-board ."+selectedGroupNo).trigger("mouseenter");
             $("#div_title_trace").css("display","none");
         });
     }
@@ -3162,11 +3178,11 @@
         //     playMedia(groupNo);
         // });
         
-        $("."+groupNo).dblclick(function(){
+        $("#chalk-board ."+groupNo).dblclick(function(){
             $(".time-quantum.event ul ."+groupNo).trigger("click");
         });
-        $("."+groupNo).unbind("mouseenter");
-        $("."+groupNo).on("mouseenter",function() {
+        $("#chalk-board ."+groupNo).unbind("mouseenter");
+        $("#chalk-board ."+groupNo).on("mouseenter",function() {
             console.log($(this));
             highlight(svgId,half+""+x+""+y+""+number,teamType,1); 
             $("#div_title_trace").html(number+" "+name+" "+eventTimeFull+" "+actionName);
@@ -3175,15 +3191,13 @@
             $("#div_title_trace").css("display","block");
             darkenOtherByClass(svgId,groupNo);
         });
-        $("."+groupNo).unbind("mouseleave");
-        $("."+groupNo).on("mouseleave",function() {
+        $("#chalk-board ."+groupNo).unbind("mouseleave");
+        $("#chalk-board ."+groupNo).on("mouseleave",function() {
             
             highlight(svgId,half+""+x+""+y+""+number,teamType,2); 
             $("#div_title_trace").css("display","none");
             lighten(svgId);
-            var selectedGroupNo =  $(".time-quantum.event ul li.play-now").data("groupno");
-            $("."+selectedGroupNo).trigger("mouseenter");
-            $("#div_title_trace").css("display","none");
+
         });
     }
 
@@ -3226,11 +3240,11 @@
         textFrom.attr("fill",textFromColor);
         
         
-        $("."+groupNo).dblclick(function(){
+        $("#chalk-board ."+groupNo).dblclick(function(){
             $(".time-quantum.event ul ."+groupNo).trigger("click");
         });
-        $("."+groupNo).unbind("mouseenter");
-        $("."+groupNo).on("mouseenter",function() {
+        $("#chalk-board ."+groupNo).unbind("mouseenter");
+        $("#chalk-board ."+groupNo).on("mouseenter",function() {
             console.log($(this));
             highlight(svgId,half+""+x+""+y+""+number,teamType,1); 
             $("#div_title_trace").html(number+" "+name+" "+eventTimeFull+" "+actionName);
@@ -3239,15 +3253,13 @@
             $("#div_title_trace").css("display","block");
             darkenOtherByClass(svgId,groupNo);
         });
-        $("."+groupNo).unbind("mouseleave");
-        $("."+groupNo).on("mouseleave",function() {
+        $("#chalk-board ."+groupNo).unbind("mouseleave");
+        $("#chalk-board ."+groupNo).on("mouseleave",function() {
             
             highlight(svgId,half+""+x+""+y+""+number,teamType,2); 
             $("#div_title_trace").css("display","none");
             lighten(svgId);
-            var selectedGroupNo =  $(".time-quantum.event ul li.play-now").data("groupno");
-            $("."+selectedGroupNo).trigger("mouseenter");
-            $("#div_title_trace").css("display","none");
+
         });
     }
 
@@ -3286,11 +3298,11 @@
         // textHammer.on("doubletap", function(ev) {
         //     playMedia(groupNo);
         // });
-        $("."+groupNo).dblclick(function(){
+        $("#chalk-board ."+groupNo).dblclick(function(){
             $(".time-quantum.event ul ."+groupNo).trigger("click");
         });
-        $("."+groupNo).unbind("mouseenter");
-        $("."+groupNo).on("mouseenter",function() {
+        $("#chalk-board ."+groupNo).unbind("mouseenter");
+        $("#chalk-board ."+groupNo).on("mouseenter",function() {
             console.log($(this));
             highlight(svgId,half+""+x+""+y+""+number,teamType,1); 
             $("#div_title_trace").html(number+" "+name+" "+eventTimeFull+" "+actionName);
@@ -3299,15 +3311,13 @@
             $("#div_title_trace").css("display","block");
             darkenOtherByClass(svgId,groupNo);
         });
-        $("."+groupNo).unbind("mouseleave");
-        $("."+groupNo).on("mouseleave",function() {
+        $("#chalk-board ."+groupNo).unbind("mouseleave");
+        $("#chalk-board ."+groupNo).on("mouseleave",function() {
             
             highlight(svgId,half+""+x+""+y+""+number,teamType,2); 
             $("#div_title_trace").css("display","none");
             lighten(svgId);
-            var selectedGroupNo =  $(".time-quantum.event ul li.play-now").data("groupno");
-            $("."+selectedGroupNo).trigger("mouseenter");
-            $("#div_title_trace").css("display","none");
+
         });
     }
 

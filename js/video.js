@@ -38,12 +38,15 @@ $(function(){
 
     // 事件分析->足球场白板逻辑=======================
     // ----选区切换
+    $(".area-filter-box .area-start").unbind("click");
     $(".area-filter-box .area-start").on("click","li",function(){
 
         if(!$(this).parent().parent().hasClass("disabled") && $(this)[0].className != ""){
             $(this).addClass("select").siblings().removeClass("select");
         }
+        personId = "";
         queryVideoList();
+        getChalkBoardAjax();
         // getChalkBoardAjax();
        
         // $(".time-quantum.event ul li").hide();

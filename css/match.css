@@ -17,7 +17,7 @@
   position: relative;
 }
 .match-info-board .bx .board-main .board-top > .team {
-  width: 172px;
+  width: 240px;
   display: inline-block;
 }
 .match-info-board .bx .board-main .board-top > .team .team-avatar {
@@ -60,22 +60,22 @@
   background-color: red;
   vertical-align: middle;
 }
-.match-info-board .bx .board-main .board-top > .team .events > li .goal {
+.match-info-board .bx .board-main .board-top > .team .events > li .GOAL {
   background: url("../images/goal_trans.png") no-repeat;
   background-size: 10px;
   background-position: center center;
 }
-.match-info-board .bx .board-main .board-top > .team .events > li .yellow-card {
+.match-info-board .bx .board-main .board-top > .team .events > li .YELC {
   background: url("../images/yellow_card.png") no-repeat;
   background-size: 10px;
   background-position: center center;
 }
-.match-info-board .bx .board-main .board-top > .team .events > li .red-card {
+.match-info-board .bx .board-main .board-top > .team .events > li .REDC {
   background: url("../images/red_card.png") no-repeat;
   background-size: 10px;
   background-position: center center;
 }
-.match-info-board .bx .board-main .board-top > .team .events > li .yellow-to-red {
+.match-info-board .bx .board-main .board-top > .team .events > li .YRC {
   background: url("../images/2yellow1red.png") no-repeat;
   background-size: 10px;
   background-position: center center;
@@ -85,7 +85,7 @@
   background-size: 10px;
   background-position: center center;
 }
-.match-info-board .bx .board-main .board-top > .team .events > li .penalty-kick-yes {
+.match-info-board .bx .board-main .board-top > .team .events > li .PK {
   background: url("../images/penalty_kick_yes.png") no-repeat;
   background-size: 10px;
   background-position: center center;
@@ -233,7 +233,6 @@
   height: 8px;
   right: -20px;
   top: -1px;
-  cursor: pointer;
 }
 .match-info-board .bx .board-main .time-shaft .time-shaft-bar > div > span > b {
   display: none;
@@ -427,25 +426,13 @@
   height: 6px;
   width: 50%;
 }
-.match-info-board .bx .board-main .time-shaft .injury-time .half {
+.match-info-board .bx .board-main .time-shaft .over-time .half {
   height: 6px;
-  width: 40%;
+  width: 37.5%;
 }
-.match-info-board .bx .board-main .time-shaft .injury-time .injury {
+.match-info-board .bx .board-main .time-shaft .over-time .overtime {
   height: 6px;
-  width: 10%;
-}
-.match-info-board .bx .board-main .time-shaft .penalty-kick .half {
-  height: 6px;
-  width: 35%;
-}
-.match-info-board .bx .board-main .time-shaft .penalty-kick .injury {
-  height: 6px;
-  width: 10%;
-}
-.match-info-board .bx .board-main .time-shaft .penalty-kick .penalty {
-  height: 6px;
-  width: 10%;
+  width: 12.5%;
 }
 .data-module {
   /*数据项*/

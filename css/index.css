@@ -654,10 +654,15 @@
   text-align: center;
   cursor: pointer;
 }
-.index-main .bx .data-info-filter .filter-result .result-item .result-list .match-data > ul > li > img {
+.index-main .bx .data-info-filter .filter-result .result-item .result-list .match-data > ul > li > a {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+.index-main .bx .data-info-filter .filter-result .result-item .result-list .match-data > ul > li > a > img {
   margin: 8px 0 0 8px;
 }
-.index-main .bx .data-info-filter .filter-result .result-item .result-list .match-data > ul > li > span {
+.index-main .bx .data-info-filter .filter-result .result-item .result-list .match-data > ul > li > a > span {
   font-size: 12px;
   margin: 15px 0 0 9px;
   line-height: 12px;

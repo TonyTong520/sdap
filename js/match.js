@@ -1,5 +1,105 @@
 $(function () {
 
+    var matchId = "";
+    var homeId = "";
+    var guestId = "";
+    // 从url地址中获取字段数据
+    function GetRequest() {
+        var url = location.search; //获取url中"?"符后的字串
+        var theRequest = new Object();
+        if (url.indexOf("?") != -1) {
+            var str = url.substr(1);
+            strs = str.split("&");
+            for(var i = 0; i < strs.length; i ++) {
+                theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+            }
+        }
+        return theRequest;
+    }
+    var Request = new Object();
+    Request = GetRequest();
+    matchId = Request.matchId;
+    console.log(matchId)
+
+    // 时间戳转化为日期
+    function formatDate(now) { 
+        var now = new Date(now); 
+        var year=now.getFullYear(); 
+        var month=now.getMonth()+1 < 10 ? '0'+(now.getMonth()+1) : now.getMonth()+1;
+        var date=now.getDate() < 10 ? '0' + now.getDate() : now.getDate(); 
+        var hour=now.getHours() < 10 ? '0' + now.getHours() : now.getHours();  
+        var minute=now.getMinutes() < 10 ? '0' + now.getMinutes() : now.getMinutes();   
+        return year+"-"+month+"-"+date+" "+hour+":"+minute; 
+    } 
+
+    $.ajax({
+        url: "http://192.168.2.6:8888/dataapi/match/general.html?ak=123456&matchId="+matchId,
+        type: "GET",
+        dataType: "json",
+        success: function (res) {
+            console.log(res);
+            $(".team-avatar.home").children("h3").text(res.home).siblings("div").css({"background-image":"url("+res.homeLogoB+")"});
+            $(".team-avatar.guest").children("h3").text(res.guest).siblings("div").css({"background-image":"url("+res.guestLogoB+")"});
+            $(".match-round p").eq(0).text(formatDate(res.matchDate)).siblings("p").text(res.season+res.leagueName+(isNaN(res.round) ? res.round :'第'+ res.round + '轮'));
+            $(".match-result .normal-score.home").text(res.homeScore);
+            $(".match-result .normal-score.guest").text(res.guestScore);         
+            $(".home-logo-mini").css({"background-image":"url("+res.homeLogoB+")"});      
+            $(".away-logo-mini").css({"background-image":"url("+res.guestLogoB+")"});      
+            if(res.isOverTime == 2){
+                $(".time-shaft-bar").removeClass("normal").addClass("over-time");
+            }else{
+                $(".time-shaft-bar").removeClass("over-time").addClass("normal");
+            }
+            homeId = res.hometeamId;
+            guestId = res.guestteamId;
+
+        },
+        error:function(err){
+        }
+     })   
+
+    $.ajax({
+        url: "http://192.168.2.6:8888/dataapi/match/timeLine.html?ak=123456&matchId="+matchId,
+        type: "GET",
+        dataType: "json",
+        success: function (res) {
+            console.log(res);
+            res.sort(function(a,b){
+                return transTimeToFloat(a.eventTimeFull) - transTimeToFloat(b.eventTimeFull);
+            })   
+            var homeEventHtml = "";
+            var guestEventHtml = "";
+            $.each(res,function(i,item){
+                if(item.teamId == homeId){
+                    if((item.event).indexOf("SUBS") == -1){
+                        homeEventHtml+='<li>'+
+                            '<i class="'+item.event+'"></i>'+
+                            '<span class="time">'+item.eventTimeFull+'</span>'+
+                            '<span class="line">—</span>'+
+                            '<span class="player">'+item.note+'</span>'+
+                        '</li>'
+                    }
+                    
+                }else{
+                    if((item.event).indexOf("SUBS") == -1){
+                        guestEventHtml+='<li>'+
+                            '<i class="'+item.event+'"></i>'+
+                            '<span class="time">'+item.eventTimeFull+'</span>'+
+                            '<span class="line">—</span>'+
+                            '<span class="player">'+item.note+'</span>'+
+                        '</li>'
+                    }
+                }
+            })
+            $(".normal-events.home").html(homeEventHtml);
+            $(".normal-events.guest").html(guestEventHtml);
+           
+        },
+        error:function(err){
+        }
+     })   
+
+
     var isOverTimeCom;
     var guestteamId = $("#guestteamId").val();
     if ($("#isOverTime").val() == "2") {
@@ -212,7 +312,7 @@ $(function () {
 
 
 // 数据项白板s
-    var matchId = 2994;
+    
     var half = 0;
     var personId = "";
     var code = "";
@@ -1422,10 +1522,10 @@ $(function () {
 // 传球、进攻比例、进攻方式 模块start
 
     //页面加载完成绘制传球->传控网络图start1111111111111
-    var homeId = 1000;  //从后台获取，暂时写死
+    // var homeId = 1000;  //从后台获取，暂时写死
     passNetworkDrawParper(homeId, "svg_pass_network_home_trace", "H", "");
-    var awayId = 1030;  //从后台获取，暂时写死
-    passNetworkDrawParper(awayId, "svg_pass_network_away_trace", "G", "");
+    // var guestId = 1030;  //从后台获取，暂时写死
+    passNetworkDrawParper(guestId, "svg_pass_network_away_trace", "G", "");
 
     //按照球场长622宽416计算传球线路和球员的X坐标和Y坐标
     function passNetworkDrawParper(teamId, svg, hg, personId) {
@@ -2337,6 +2437,12 @@ $(function () {
     //         console.log(result);
     //     }
     // })
+    
+    function transTimeToFloat(time){
+        var tempStrArr = time.replace("'",".").split("''");
+        var tempStr = tempStrArr[0];
+        return tempStr;
+    }
 
 
 })

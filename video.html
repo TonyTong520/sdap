@@ -151,7 +151,7 @@
                             </div>
                             <div class="container">
                                 <ul class="match-video-list game clearfix">
-                                    <li class="item f-l">
+                                    <!-- <li class="item f-l">
                                         <i class="camera f-l">
                                             <img src="images/all-goals.png" alt="" width="24">
                                         </i>
@@ -193,7 +193,7 @@
                                                     <span>(7)</span>3</b>
                                             </p>
                                         </div>
-                                    </li>
+                                    </li> -->
 
 
                                 </ul>
@@ -1462,7 +1462,6 @@
 
     var playVideoIndex = 0;
     var videoTopHtml;
-    // var moduleKeyWord = $(".video-tab ul li.tab-selected").attr("name");
     var moduleKeyWord = "match";
     var matchId = "";
     var leagueId = 1;
@@ -1480,9 +1479,12 @@
 
     var groupNoStr = "";
     var totalPageEventVideoList = 1;
-
+    var eventVideoListRes = "";
     var currentPage4 = 1;
     var selectedLiClassNameS = "";
+
+    var errorPic = "'"+"./images/avator_error.png"+"'";
+
 
     $.ajax({
         url: "http://192.168.2.6:8888/dataapi/getTeamSchedule.html?ak=123456&teamId="+teamId+"&season="+season,
@@ -1573,9 +1575,6 @@
         $(".data-details."+dataValue).removeClass("hide").siblings().addClass("hide");
     })
 
-
-
-
     //比赛模块--》事件列表点击筛选视频事件（不点击刚默认全部）
     $(".event-list.match").unbind("click");
     $(".event-list.match").on("click", "li", function () {
@@ -1650,12 +1649,6 @@
         queryVideoList();
 
     })
-
-    // 事件分析 -- 点击区域选择，筛选动作发生区域
-    // $(".area-start.event").on("click","li",function(){
-    //     var keyWord = $(this).attr("className");
-    //     
-    // })
 
     //球员分析--》球员列表选择
     $(".player-list").unbind("click");
@@ -1788,9 +1781,7 @@
             requestFullScreen();
         }
     });
-
-    var eventVideoListRes = "";
-    
+ 
     //请求比赛视频列表
     function queryVideoList() {
        
@@ -1940,10 +1931,7 @@
                     })
                 } else if (moduleKeyWord == "event" && matchId != "") {
                     var res = "";
-                    // var page = $("#curentPage4").text();
-                    
                     totalPageEventVideoList = Math.ceil(result.length / 5)
-                    // res = result.slice(0, 5);
                     res = result;
                     $.each(result, function (i, item) {
                         if(item.code == "87"){
@@ -2236,8 +2224,6 @@
 
     }
 
-
-
     //进入全屏
     function requestFullScreen() {
         if (moduleKeyWord == "match") {
@@ -2268,7 +2254,6 @@
         }
     }
 
-    
     // 点击球员模块，请求球队球员列表
     function getTeamPersonList(flag) {
     
@@ -2289,7 +2274,7 @@
                     
                     if(!flag){
                         html += '<li data-value=' + item.id + '>' +
-                        '<img src="' + item.personPhoto + '" alt="">' +
+                        '<img src="' + item.personPhoto + '" onerror="this.src='+errorPic+'" alt="图片加载失败">' +
                         '<p class="player-name">' + item.personName + '</p>' +
                         '</li>'
                     }
@@ -2307,11 +2292,6 @@
         })
         teamId = teamIdStore;
     }
-
-    $("img").one("error", function(e){
-        // alert(1)
-        $(this).attr('src',"./images/avator_error.png");
-    })
 
     // 比赛分析--》比赛列表点击右侧渲染比赛基本数据
     function getMatchStaticList() {
@@ -2565,74 +2545,16 @@
         return year+"-"+month+"-"+date+" "+hour+":"+minute+":"+second; 
     } 
 
-
-
     // 请求白板数据封装
     function getChalkBoardAjax(){
         //获取personId
-        personId = allPersonIdStr;
-        // // 过人成功和过人失败
-        // code = code;
-        // 
-        // if (code.indexOf("171") > 0) {
-        //     code = code.replace(/171/g, "86','172");
-        // }
-        // // 抢断成功和抢断失败
-        // if (code.indexOf("358") > 0) {
-        //     code = code.replace(/358/g, "26','350");
-        // }
-        // // 空中对抗
-        // if (code.indexOf("356") > 0) {
-        //     code = code.replace(/356/g, "61','400");
-        // }
-        // // 失误=失误+控球失误
-        // if (code.indexOf("412") > 0) {
-        //     code = code.replace(/412/g, "66','412");
-        // }
-        // //门将出击成功和门将出击失败
-        // if (code.indexOf("359") > 0) {
-        //     code = code.replace(/359/g, "352','353");
-        // }
-        // //如果选择了红牌或黄牌，则需要加上黄牌变红牌的代码
-        // if(code.indexOf("24") > 0 || code.indexOf("25") > 0){
-        //     code += ",'117'";
-        // }
-        // //如果选择进球，则将乌龙球加入进去
-        // if(code.indexOf("1") > -1){
-        //     var codestr = code.split(",");
-        //     for ( var i = 0; i < codestr.length; i++) {
-        //         if ("'1'" == codestr[i]) {
-        //             code += ",'87'";
-        //         }
-        //     }
-        // }
-        
+        personId = allPersonIdStr;    
         //获取passCode
         passCode = "";
-        $(".list-menu .lv2-check.passes").each(function(){
-            if( $(this).attr("checked")){
-                if(passCode == ""){
-                    passCode += "'" +$(this).val()+"'";
-                }else{
-                    passCode += "," +"'"+$(this).val()+"'";
-                }            
-            }
-        })    
-        //接球
-        if($("#check_recive").attr("checked")){
-            passCode="505";
-        }
         // 获取时间区间timeStart,timeEnd
-
         timeStart = 0;
-
-        timeEnd = 902;
-       
-
-
+        timeEnd = 902;     
         timeStartHalf = "1";
-
-
         timeEndHalf = "2";
 
         areaBlockedFrom = "areaForm26,areaForm25,areaForm3,areaForm4,areaForm5,areaForm6,areaForm7,areaForm8,areaForm9,areaForm10,areaForm11,areaForm12,areaForm13,areaForm14,areaForm15,areaForm16,areaForm17,areaForm18,areaForm19,areaForm20,areaForm21,areaForm22,areaForm23,areaForm24";
@@ -2663,32 +2585,6 @@
                 areaBlockedFrom = "areaForm7,areaForm8,areaForm13,areaForm14,areaForm9,areaForm15,areaForm10,areaForm16,areaForm11,areaForm17,areaForm12,areaForm18";
                 break;
         }
-        // 结束区域areaBlockedTo
-        // var selectedLiClassNameE = $(".event-end li[class*='select']").attr("class").split(" ")[0];
-        // switch (selectedLiClassNameE) {
-        //     case "all":
-        //         areaBlockedTo = "areaTo26,areaTo25,areaTo3,areaTo4,areaTo5,areaTo6,areaTo7,areaTo8,areaTo9,areaTo10,areaTo11,areaTo12,areaTo13,areaTo14,areaTo15,areaTo16,areaTo17,areaTo18,areaTo19,areaTo20,areaTo21,areaTo22,areaTo23,areaTo24";
-        //         break;
-        //     case "left":
-        //         areaBlockedTo = "areaTo26,areaTo25,areaTo3,areaTo7,areaTo8,areaTo9,areaTo13,areaTo14,areaTo15,areaTo19,areaTo20,areaTo21";
-        //         break;
-        //     case "right":
-        //         areaBlockedTo = "areaTo4,areaTo10,areaTo11,areaTo5,areaTo6,areaTo12,areaTo16,areaTo17,areaTo18,areaTo22,areaTo23,areaTo24";
-        //         break;
-        //     case "center":
-        //         areaBlockedTo = "areaTo3,areaTo4,areaTo9,areaTo10,areaTo15,areaTo16,areaTo21,areaTo22";
-        //         break;
-        //     case "top":
-        //         areaBlockedTo = "areaTo26,areaTo25,areaTo3,areaTo4,areaTo5,areaTo6";
-        //         break;
-        //     case "bottom":
-        //         areaBlockedTo = "areaTo19,areaTo20,areaTo21,areaTo22,areaTo23,areaTo24";
-        //         break;
-        //     case "middle":
-        //         areaBlockedTo = "areaTo7,areaTo8,areaTo13,areaTo14,areaTo9,areaTo15,areaTo10,areaTo16,areaTo11,areaTo17,areaTo12,areaTo18";
-        //         break;
-        // }
-
         // 拖拽区域选择draftedFrom,draftedTo
         draftedFrom = ""; //老版本需要字段，新版本不需要，默认为空
         draftedTo = ""; //老版本需要字段，新版本不需要，默认为空
@@ -2730,41 +2626,9 @@
             })
         }  
         
-        if(personId != "" && passCode != ""){
-            $.ajax({
-                url: "http://192.168.2.6:8888/dataapi/match/tracePass.html?ak=123456&matchId="+matchId +"&half="+half+"&personId="+personId+"&passCode="+passCode+"&areaBlockedFrom="+areaBlockedFrom+"&areaBlockedTo="+areaBlockedTo+"&draftedFrom="+draftedFrom+"&draftedTo="+draftedTo+"&timeStart="+timeStart+"&timeEnd="+timeEnd+"&timeStartHalf="+timeStartHalf+"&timeEndHalf="+timeEndHalf+"&isOverTime="+isOverTime,
-                type: "GET",
-                dataType: "json",
-                success: function (result) {
-                    
-                    var json = eval(result);
-                    json = $.map(json, function(item){
-                        item.x = item.x * 1.05305;
-                        item.y = item.y * 1.05755;
-                        item.personFromX = item.personFromX * 1.05305;
-                        item.personToX = item.personToX * 1.05305;
-                        item.personFromY = item.personFromY * 1.05755;
-                        item.personToY = item.personToY * 1.05755;
-                        return item;
-                    });
-
-
-                    $.each(json, function(i, item) {
-                        //画传球线路
-                        drawPassInChalkBoard("chalk-board",item.groupNo,item.personFromNum,item.personFromX,item.personFromY,item.personToNum,item.personToX,item.personToY,item.fromTeamId,item.toTeamId,item.fromTime);
-                    });
-
-                    
-                },
-                error: function (result) {
-                    
-                }
-            })
-        }
-
-
     }
 
+    // 渲染绘制数据白板数据
     function renderChalkBoardData(result){
         var m2 = getMarkerArrow1("chalk-board");
         var json = eval(result);
@@ -2782,11 +2646,7 @@
             });
         }
 
-        // console.log(json)
-        // console.log(eventVideoListRes)
-        // console.log(selectedLiClassNameS)
         var tempArr = [];
-        // $(".time-quantum.event ul li").addClass("hide");
         $.each(json, function(i, item) {
             if(item.code != 555){
                 var tempStr = item.groupNo;
@@ -2905,9 +2765,8 @@
         hasOwnGoal = false;
     }
 
+    // 画箭头
     function getMarkerArrow1(svgId){
-    // 	var marker = "<defs><marker id=\"markerArrow\" markerWidth=\"13\" markerHeight=\"13\" refx=\"2\" refy=\"6\" orient=\"auto\"><path d=\"M2,2 L2,11 L10,6 L2,2\" style=\"fill: #000000;\" /></marker></defs>"
-    // 	$("#"+svgId).append(marker);
         // 三角
         var p1 = Snap("#"+svgId).paper.path("M2,2 L2,11 L10,6 L2,2").attr({
             fill: "#000"
@@ -2916,7 +2775,7 @@
         // 变身标记
         return p1.marker(0, 0, 10, 10, 2, 6);
     }
-
+    // 画箭头线路
     function drawLineEnd(svgId,m2,x1,y1,x2,y2,team1,team2,person1,person2,code,groupNo,istrace){
 
         var svg = Snap("#"+svgId);
@@ -2975,7 +2834,6 @@
 
         var svg = Snap("#"+svgId);
         var goalType = "GOAL";     
-        /* todo 乌龙球问题待解决 */
         
         if(x2){//乌龙球
             goalType = "OWN";
@@ -2983,9 +2841,6 @@
         var id = "s_"+half.toString()+x.toString()+y.toString()+number.toString();
         var image = svg.paper.image("images/icon_"+goalType+".png", x-10, y-10, 20, 20).attr({"name":half.toString()+x.toString()+y.toString()+number.toString(),"class":groupNo,"id":id,"cursor":"hand"});
 
-        // image.dblclick(function(){
-        //     playMedia(groupNo);
-        // });
         if(isNotEmpty(istrace)){
             image.attr("istrace",istrace);
         }
@@ -2993,14 +2848,6 @@
         hammerImage.on("doubletap", function(ev) {
             playMedia(groupNo);
         });
-        // image.click(function(){
-        //     // darken(svgId);
-        //     // //画进攻轨迹
-        //     // traceLine(groupNo);
-        //     // $("#currentGroupId").val(groupNo);
-        //     // $("#actionTime").val(eventTimeFull);
-        //     alert("click")
-        // });
         
         $("#chalk-board ."+groupNo).dblclick(function(){
             $(".time-quantum.event ul ."+groupNo).trigger("click");
@@ -3069,29 +2916,6 @@
             circle.attr("fill", "#DCF2FE");
             text.attr("fill","black");
         }
-        // text.click(function(){
-        //     $("#currentGroupId").val(groupNo);
-        //     $("#actionType").val(1);
-        //     $("#actionTime").val(eventTimeFull);
-        //     darken(svgId);
-        //     //画进攻轨迹
-        //     traceLine(groupNo);
-            
-        // });
-        // circle.click(function(){
-        //     $("#currentGroupId").val(groupNo);
-        //     $("#actionType").val(1);
-        //     $("#actionTime").val(eventTimeFull);
-        //     darken(svgId);
-        //     //画进攻轨迹
-        //     traceLine(groupNo);
-        // });
-        // circle.dblclick(function(){
-        //     playMedia(groupNo);
-        // });
-        // text.dblclick(function(){
-        //     playMedia(groupNo);
-        // });
         // var circleHammer = new Hammer(document.getElementById(circleId));
         // circleHammer.on("doubletap", function(ev) {
         //     playMedia(groupNo);
@@ -3125,12 +2949,6 @@
         });
     }
 
-    // $(".time-quantum.event ul").on("li","mouseenter",function(){
-    //     $(this).css({
-    //         backgroundColor:"ecf0f1",
-    //         borderRadius:"3px"
-    //     })
-    // })
     //防守，三角形
     function drawyTriangle(svgId,half,x,y,number,name,teamType,groupNo,eventTimeFull,code,actionName){
         var docName = "pb"+number+"_"+x+"_"+y;
@@ -3155,29 +2973,7 @@
             poly.attr("fill", "#DCF2FE");
             text.attr("fill","black");
         }
-        // text.mouseover(function() {
-        //     highlight(svgId,docName,teamType,1); 
-        //     $("#div_title_trace").html(number+" "+name+" "+eventTimeFull+" "+actionName);
-        //     $("#div_title_trace").css("margin-left",x-20);
-        //     $("#div_title_trace").css("margin-top",y-40);
-        //     $("#div_title_trace").css("display","block");
-            
-        //     darkenOtherByName(svgId,docName);
-        // });
-        // text.mouseout(function() {
-        //     highlight(svgId,docName,teamType,2); 
-        //     $("#div_title_trace").css("display","none");
-        //     lighten(svgId);
-        // });
-        
-        // poly.dblclick(function(){
-        //     playMedia(groupNo);
-        // });
-        
-        // text.dblclick(function(){
-        //     playMedia(groupNo);
-        // });
-        
+       
         $("#chalk-board ."+groupNo).dblclick(function(){
             $(".time-quantum.event ul ."+groupNo).trigger("click");
         });
@@ -3285,19 +3081,7 @@
             rect.attr("fill", "#DCF2FE");
             text.attr("fill","black");
         }
-        // text.dblclick(function(){
-        //     $("#actionTime").val(eventTimeFull);
-        //     $("#currentGroupId").val(groupNo);
-        //     playMedia(groupNo);
-        // });
-        // var rectHammer = new Hammer(document.getElementById(rectId));
-        // rectHammer.on("doubletap", function(ev) {
-        //     playMedia(groupNo);
-        // });
-        // var textHammer = new Hammer(document.getElementById(textId));
-        // textHammer.on("doubletap", function(ev) {
-        //     playMedia(groupNo);
-        // });
+    
         $("#chalk-board ."+groupNo).dblclick(function(){
             $(".time-quantum.event ul ."+groupNo).trigger("click");
         });
@@ -3448,7 +3232,7 @@
         $("#s_"+name+"").attr({fill:color});
     }
 
-
+    // 变暗
     function darken(svgId){
         $("#"+svgId+"> *").css({"opacity":"0.2","z-index":1});
         //截图时防止背景变黑

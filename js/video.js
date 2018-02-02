@@ -1,8 +1,5 @@
 $(function(){
 
-
-
-
     // 比赛分析->比赛-> 筛选
     $(".filter-btn").on("click","span",function(){   
         $(".filter-btn-selectbox").toggle();  
@@ -47,11 +44,6 @@ $(function(){
         personId = "";
         queryVideoList();
         getChalkBoardAjax();
-        // getChalkBoardAjax();
-       
-        // $(".time-quantum.event ul li").hide();
-        // var keyWord = $(this)[0].className.split(" ")[0];
-        // console.log(areaBlockedFrom)
     });
 
     // 比赛分析->球队比赛数据切换逻辑=======================

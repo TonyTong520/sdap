@@ -227,49 +227,50 @@
                     top:50%;
                     margin-top: -4px;
                     >div {
-                        border-right: 20px solid #4a5266;
+                        // border-right: 20px solid #4a5266;
                         float: left;
                         position: relative;
                         >span { 
                             position: absolute;
                             width: 20px;
-                            height: 8px;
-                            right:-20px;
-                            top:-1px;
+                            height: 6px;
+                            right:0px;
+                            top:0px;
+                            background: #4a5266;
                             // cursor: pointer;
-                            >b {
-                                display: none;
-                                font-size: 12px;
-                                padding:5px;
-                                background: #fff;
-                                color: #464646;
-                                border-radius: 2px;
-                                white-space:nowrap;
-                                box-shadow: 0px 0px 4px #000;
-                                position: absolute;
-                                left:-4px;
-                                bottom: 30px;
-                                >i {
-                                    display: block;
-                                    width: 0;
-                                    height: 0;
-                                    border-width: 8px 8px;
-                                    border-style: solid;
-                                    border-bottom-color: transparent;
-                                    border-top-color: #fff;
-                                    border-left-color: transparent;
-                                    border-right-color: transparent;
-                                    position: absolute;
-                                    left: 6px;
-                                    bottom: -16px;
-                                }
-                            }
+                            // >b {
+                            //     display: none;
+                            //     font-size: 12px;
+                            //     padding:5px;
+                            //     background: #fff;
+                            //     color: #464646;
+                            //     border-radius: 2px;
+                            //     white-space:nowrap;
+                            //     box-shadow: 0px 0px 4px #000;
+                            //     position: absolute;
+                            //     left:-4px;
+                            //     bottom: 30px;
+                            //     >i {
+                            //         display: block;
+                            //         width: 0;
+                            //         height: 0;
+                            //         border-width: 8px 8px;
+                            //         border-style: solid;
+                            //         border-bottom-color: transparent;
+                            //         border-top-color: #fff;
+                            //         border-left-color: transparent;
+                            //         border-right-color: transparent;
+                            //         position: absolute;
+                            //         left: 6px;
+                            //         bottom: -16px;
+                            //     }
+                            // }
                         }
-                        >span:hover {
-                            >b {
-                                display: block;
-                            }
-                        }
+                        // >span:hover {
+                        //     >b {
+                        //         display: block;
+                        //     }
+                        // }
                     }
                     // .first-half {
                     //     width: 50%;
@@ -279,23 +280,24 @@
                     // }
                     .team-events {
                         height: 18px;
-                        width: 883px;
+                        width: 100%;
                         // background-color: pink;
                         position: absolute;
                         left: -1px;
                         > li:hover {
+                            z-index: 999;
                             >span {
                                 display: block;
                             }
                         }
-                        >.goal {
+                        >.GOAL {
                             width: 14px;
                             height: 14px;
                             background: url("../images/goal_trans.png") no-repeat;  
                             background-size: cover;  
                             margin-left: -7px;                    
                         }
-                        >.yellow-card {
+                        >.YELC {
                             width: 12px;
                             height: 17px;
                             background: url("../images/yellow_card.png") no-repeat;  
@@ -309,21 +311,21 @@
                             background-size: cover;  
                             margin-left: -6px;           
                         }
-                        .yellow-to-red {
+                        .YRC,.yellow-to-red {
                             width: 12px;
                             height: 17px;
                             background: url("../images/2yellow1red.png") no-repeat;  
                             background-size: cover;  
                             margin-left: -6px;       
                         }
-                        .substitute {
+                        .SUBS_HURT,.SUBS {
                             width: 9px;
                             height: 18px;
                             background: url("../images/substitute.png") no-repeat;  
                             background-size: 9px 18px;  
                             margin-left: -4.5px;       
                         }
-                        .penalty-kick-success {
+                        .PK,.penalty-kick-success {
                             width: 14px;
                             height: 14px;
                             background: url("../images/penalty_kick_yes.png") no-repeat;  
@@ -372,21 +374,21 @@
                                 }
                             }                       
                         }
-                        .goal {
-                            left: 40%;
-                        }
-                        #goal1 {
-                            left:41%;
-                        }
-                        .yellow-card {
-                            left:51%;
-                        }
-                        .red-card {
-                            left: 54%;
-                        }
-                        .yellow-to-red {
-                            left: 60%;
-                        }
+                        // .GOAL {
+                        //     left: 40%;
+                        // }
+                        // #goal1 {
+                        //     left:41%;
+                        // }
+                        // .YELC {
+                        //     left:51%;
+                        // }
+                        // .red-card {
+                        //     left: 54%;
+                        // }
+                        // .SUBS {
+                        //     left: 60%;
+                        // }
                     }
                     .away-team-events {
                         bottom: -24px;
@@ -423,21 +425,21 @@
                                 }
                             }                       
                         }
-                        .goal {
-                            left: 65%;
-                        }
-                        .substitute {
-                            left:63%;
-                            b {
-                                left:6px;
-                            }
-                        }
-                        .penalty-kick-success {
-                            left: 92%;
-                        }
-                        .penalty-kick-failure {
-                            left: 94%;
-                        }
+                        // .goal {
+                        //     left: 65%;
+                        // }
+                        // .substitute {
+                        //     left:63%;
+                        //     b {
+                        //         left:6px;
+                        //     }
+                        // }
+                        // .penalty-kick-success {
+                        //     left: 92%;
+                        // }
+                        // .penalty-kick-failure {
+                        //     left: 94%;
+                        // }
                     }
                 }
                 .normal {
@@ -1018,11 +1020,12 @@
                             position: relative;
                             .team-pass-per {
                                 height: 22px;
-                                width: 60%;
+                                width: 50%;
                                 position: absolute;
                                 left: 0;
                                 top: 0;
                                 background-color: #35aae5;
+                                transition: all 0.5s;
                             }
                         }
                         .num {
@@ -1521,9 +1524,10 @@
                             height: 30px;
                             position: absolute;
                             >li {
-                                position: absolute;
-                                top:50%;
-                                margin-top: -15px;
+                                // position: absolute;
+                                // top:50%;
+                                // margin-top: -15px;
+                                float: left;
                                 height:30px;
                                 text-align: center;
                                 >span {
@@ -1579,90 +1583,19 @@
                                 }
                             }
                         }
-                        .two {/*首发站位*/
-                            >li {
-                                width: 50%;
-                            }
-                            >li:nth-child(1){
-                                left:0;   
-                                >span {
-                                    right: 17%;
-                                }
-                            }
-                            >li:nth-child(2){
-                                left:50%;   
-                                >span {
-                                    left: 17%;
-                                    margin-left: 0;
-                                }                  
-                            }
-                        }
-                        .three {/*首发站位*/
-                            >li {
-                                width: 33.33%;
-                               
-                            }
-                            >li:nth-child(1){
-                                left:0;
-                            }
-                            >li:nth-child(2){
-                                left:33.33%;
-                            }
-                            >li:nth-child(3){
-                                left:66.66%;
-                            }
-                        }
-                        .four {/*首发站位*/
-                            >li {
-                                width: 25%;
-                                
-                            }
-                            >li:nth-child(1){
-                                left:0;
-                            }
-                            >li:nth-child(2){
-                                left:25%;
-                            }
-                            >li:nth-child(3){
-                                left:50%;
-                            }
-                            >li:nth-child(4){
-                                left:75%;
-                            }
-                        }
-                        .five {/*首发站位*/
-                            >li {
-                                width: 20%;
-                            }
-                            >li:nth-child(1){
-                                left:0;
-                            }
-                            >li:nth-child(2){
-                                left:20%;
-                            }
-                            >li:nth-child(3){
-                                left:40%;
-                            }
-                            >li:nth-child(4){
-                                left:60%;
-                            }
-                            >li:nth-child(5){
-                                left:80%;
-                            }
-                        }
-                        .forward {   /*首发站位*/
+                        .line5 {   /*首发站位*/
                             top: 115px;
                         }
-                        .midfielder {/*首发站位*/
+                        .line4 {/*首发站位*/
                             top: 202px;
                         }
-                        .center {/*首发站位*/
+                        .line3 {/*首发站位*/
                             top: 296px;
                         }
-                        .back {/*首发站位*/
+                        .line2 {/*首发站位*/
                             top:400px;
                         }
-                        .goalkeeper {/*首发站位*/
+                        .line1 {/*首发站位*/
                             top:500px;
                             >li {
                                 left:50%;
@@ -1814,44 +1747,61 @@
                 }
                 .hedge-figure {
                     padding:10px;
-                    .data-title {
-                        height: 41px;
-                        line-height: 41px;
-                        text-align: center;
-                        font-size: 12px;                                 
-                    }
-                    .data-bar {
-                        height: 12px;
-                        text-align: center;
-                        .bar {
-                            width: 650px;
-                            height: 12px;
-                            display: inline-block;
-                            background-color: #3d4254;
-                            vertical-align: top;
-                            position: relative;
-                            .bar-per {
-                                background-color: #35aae6;
-                                height: 12px;
-                                
+                    height: 100%;
+                    .item {
+                        height: 100%;
+                        position: relative;
+                        .wrapper {
+                            width:100%;
+                            height: 53px;
+                            margin: auto;  
+                            position: absolute;  
+                            top: 0; 
+                            left: 0; 
+                            bottom: 0; 
+                            right: 0; 
+                            .data-title {
+                                height: 30px;
+                                line-height: 41px;
+                                text-align: center;
+                                font-size: 12px;                               
                             }
-                            .scale-half {
-                                width: 50%;
-                                position: absolute;
-                                border-right: 1px solid #fff;
+                            .data-bar {
                                 height: 12px;
-                                left:0;
-                                top:0;
+                                text-align: center;
+                                .bar {
+                                    width: 650px;
+                                    height: 12px;
+                                    display: inline-block;
+                                    background-color: #3d4254;
+                                    vertical-align: top;
+                                    position: relative;
+                                    .bar-per {
+                                        background-color: #35aae6;
+                                        height: 12px;
+                                        width:50%;
+                                        transition: all 0.5s;
+                                    }
+                                    .scale-half {
+                                        width: 50%;
+                                        position: absolute;
+                                        border-right: 1px solid #fff;
+                                        height: 12px;
+                                        left:0;
+                                        top:0;
+                                    }
+                                }
+                                .data-text {
+                                    width: 58px;
+                                    height: 12px;
+                                    line-height: 12px;
+                                    text-align: center;
+                                    font-size: 12px;
+                                }
                             }
                         }
-                        .data-text {
-                            width: 58px;
-                            height: 12px;
-                            line-height: 12px;
-                            text-align: center;
-                            font-size: 12px;
-                        }
-                    }
+                        
+                    }                 
                 }
             }
         }
@@ -2106,6 +2056,49 @@
     }
 }
 
+.chalk-board-playback-modal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transition: opacity .5s;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.3);
+    .video-play-modal {
+        width: 760px;
+        height: 520px;
+        background-color: #ffffff;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: -380px;
+        margin-top: -260px;
+        padding: 0 18px;
+        >video {
+            width: 740px;
+            height: 480px;
+            position: absolute;
+            top:20px;
+            left:10px;
+        }
+    }
+    .close-modal {
+        display: inline-block;
+        width: 19px;
+        height: 19px;
+        background: url(../images/icon_close.png);
+        background-size: cover;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        cursor: pointer
+    }
+}
+
 
 .score-bar { /*固定比赛比分通栏*/
     width:100%;
@@ -2118,10 +2111,21 @@
     rgba(0, 0, 0, 0.3);
     opacity: 0;
     transition: all 0.2s ease;
+    >.close-bar {          
+        width: 10px;
+        height: 10px;
+        background: url(../images/icon_close.png);
+        background-size: cover;
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        cursor: pointer
+    }
     .bx {
         height: 50px;
         text-align: center;
         position: relative;
+       
         >.team {
             >.team-logo {
                 width: 30px;
@@ -2198,15 +2202,6 @@
                 }
             }
         }
-        >.close-bar {          
-            width: 10px;
-            height: 10px;
-            background: url(../images/icon_close.png);
-            background-size: cover;
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            cursor: pointer
-        }
+
     }
 }

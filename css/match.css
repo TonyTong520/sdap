@@ -223,64 +223,37 @@
   margin-top: -4px;
 }
 .match-info-board .bx .board-main .time-shaft .time-shaft-bar > div {
-  border-right: 20px solid #4a5266;
   float: left;
   position: relative;
 }
 .match-info-board .bx .board-main .time-shaft .time-shaft-bar > div > span {
   position: absolute;
   width: 20px;
-  height: 8px;
-  right: -20px;
-  top: -1px;
-}
-.match-info-board .bx .board-main .time-shaft .time-shaft-bar > div > span > b {
-  display: none;
-  font-size: 12px;
-  padding: 5px;
-  background: #fff;
-  color: #464646;
-  border-radius: 2px;
-  white-space: nowrap;
-  box-shadow: 0px 0px 4px #000;
-  position: absolute;
-  left: -4px;
-  bottom: 30px;
-}
-.match-info-board .bx .board-main .time-shaft .time-shaft-bar > div > span > b > i {
-  display: block;
-  width: 0;
-  height: 0;
-  border-width: 8px 8px;
-  border-style: solid;
-  border-bottom-color: transparent;
-  border-top-color: #fff;
-  border-left-color: transparent;
-  border-right-color: transparent;
-  position: absolute;
-  left: 6px;
-  bottom: -16px;
-}
-.match-info-board .bx .board-main .time-shaft .time-shaft-bar > div > span:hover > b {
-  display: block;
+  height: 6px;
+  right: 0px;
+  top: 0px;
+  background: #4a5266;
 }
 .match-info-board .bx .board-main .time-shaft .time-shaft-bar .team-events {
   height: 18px;
-  width: 883px;
+  width: 100%;
   position: absolute;
   left: -1px;
+}
+.match-info-board .bx .board-main .time-shaft .time-shaft-bar .team-events > li:hover {
+  z-index: 999;
 }
 .match-info-board .bx .board-main .time-shaft .time-shaft-bar .team-events > li:hover > span {
   display: block;
 }
-.match-info-board .bx .board-main .time-shaft .time-shaft-bar .team-events > .goal {
+.match-info-board .bx .board-main .time-shaft .time-shaft-bar .team-events > .GOAL {
   width: 14px;
   height: 14px;
   background: url("../images/goal_trans.png") no-repeat;
   background-size: cover;
   margin-left: -7px;
 }
-.match-info-board .bx .board-main .time-shaft .time-shaft-bar .team-events > .yellow-card {
+.match-info-board .bx .board-main .time-shaft .time-shaft-bar .team-events > .YELC {
   width: 12px;
   height: 17px;
   background: url("../images/yellow_card.png") no-repeat;
@@ -294,6 +267,7 @@
   background-size: cover;
   margin-left: -6px;
 }
+.match-info-board .bx .board-main .time-shaft .time-shaft-bar .team-events .YRC,
 .match-info-board .bx .board-main .time-shaft .time-shaft-bar .team-events .yellow-to-red {
   width: 12px;
   height: 17px;
@@ -301,13 +275,15 @@
   background-size: cover;
   margin-left: -6px;
 }
-.match-info-board .bx .board-main .time-shaft .time-shaft-bar .team-events .substitute {
+.match-info-board .bx .board-main .time-shaft .time-shaft-bar .team-events .SUBS_HURT,
+.match-info-board .bx .board-main .time-shaft .time-shaft-bar .team-events .SUBS {
   width: 9px;
   height: 18px;
   background: url("../images/substitute.png") no-repeat;
   background-size: 9px 18px;
   margin-left: -4.5px;
 }
+.match-info-board .bx .board-main .time-shaft .time-shaft-bar .team-events .PK,
 .match-info-board .bx .board-main .time-shaft .time-shaft-bar .team-events .penalty-kick-success {
   width: 14px;
   height: 14px;
@@ -357,21 +333,6 @@
   left: 8px;
   bottom: -16px;
 }
-.match-info-board .bx .board-main .time-shaft .time-shaft-bar .home-team-events .goal {
-  left: 40%;
-}
-.match-info-board .bx .board-main .time-shaft .time-shaft-bar .home-team-events #goal1 {
-  left: 41%;
-}
-.match-info-board .bx .board-main .time-shaft .time-shaft-bar .home-team-events .yellow-card {
-  left: 51%;
-}
-.match-info-board .bx .board-main .time-shaft .time-shaft-bar .home-team-events .red-card {
-  left: 54%;
-}
-.match-info-board .bx .board-main .time-shaft .time-shaft-bar .home-team-events .yellow-to-red {
-  left: 60%;
-}
 .match-info-board .bx .board-main .time-shaft .time-shaft-bar .away-team-events {
   bottom: -24px;
 }
@@ -406,21 +367,6 @@
   position: absolute;
   left: 9px;
   top: -16px;
-}
-.match-info-board .bx .board-main .time-shaft .time-shaft-bar .away-team-events .goal {
-  left: 65%;
-}
-.match-info-board .bx .board-main .time-shaft .time-shaft-bar .away-team-events .substitute {
-  left: 63%;
-}
-.match-info-board .bx .board-main .time-shaft .time-shaft-bar .away-team-events .substitute b {
-  left: 6px;
-}
-.match-info-board .bx .board-main .time-shaft .time-shaft-bar .away-team-events .penalty-kick-success {
-  left: 92%;
-}
-.match-info-board .bx .board-main .time-shaft .time-shaft-bar .away-team-events .penalty-kick-failure {
-  left: 94%;
 }
 .match-info-board .bx .board-main .time-shaft .normal .half {
   height: 6px;
@@ -960,11 +906,12 @@
 }
 .data-details .bx .data-details-main .main-left .passing-count .team-count .count-bar .team-pass-per {
   height: 22px;
-  width: 60%;
+  width: 50%;
   position: absolute;
   left: 0;
   top: 0;
   background-color: #35aae5;
+  transition: all 0.5s;
 }
 .data-details .bx .data-details-main .main-left .passing-count .team-count .num {
   float: right;
@@ -1445,9 +1392,7 @@
   position: absolute;
 }
 .position.data-details .bx .data-details-main .main-right .football-court .court > ul > li {
-  position: absolute;
-  top: 50%;
-  margin-top: -15px;
+  float: left;
   height: 30px;
   text-align: center;
 }
@@ -1494,100 +1439,27 @@
   border: 1px solid gold;
   color: gold;
 }
-.position.data-details .bx .data-details-main .main-right .football-court .court .two {
-  /*首发站位*/
-}
-.position.data-details .bx .data-details-main .main-right .football-court .court .two > li {
-  width: 50%;
-}
-.position.data-details .bx .data-details-main .main-right .football-court .court .two > li:nth-child(1) {
-  left: 0;
-}
-.position.data-details .bx .data-details-main .main-right .football-court .court .two > li:nth-child(1) > span {
-  right: 17%;
-}
-.position.data-details .bx .data-details-main .main-right .football-court .court .two > li:nth-child(2) {
-  left: 50%;
-}
-.position.data-details .bx .data-details-main .main-right .football-court .court .two > li:nth-child(2) > span {
-  left: 17%;
-  margin-left: 0;
-}
-.position.data-details .bx .data-details-main .main-right .football-court .court .three {
-  /*首发站位*/
-}
-.position.data-details .bx .data-details-main .main-right .football-court .court .three > li {
-  width: 33.33%;
-}
-.position.data-details .bx .data-details-main .main-right .football-court .court .three > li:nth-child(1) {
-  left: 0;
-}
-.position.data-details .bx .data-details-main .main-right .football-court .court .three > li:nth-child(2) {
-  left: 33.33%;
-}
-.position.data-details .bx .data-details-main .main-right .football-court .court .three > li:nth-child(3) {
-  left: 66.66%;
-}
-.position.data-details .bx .data-details-main .main-right .football-court .court .four {
-  /*首发站位*/
-}
-.position.data-details .bx .data-details-main .main-right .football-court .court .four > li {
-  width: 25%;
-}
-.position.data-details .bx .data-details-main .main-right .football-court .court .four > li:nth-child(1) {
-  left: 0;
-}
-.position.data-details .bx .data-details-main .main-right .football-court .court .four > li:nth-child(2) {
-  left: 25%;
-}
-.position.data-details .bx .data-details-main .main-right .football-court .court .four > li:nth-child(3) {
-  left: 50%;
-}
-.position.data-details .bx .data-details-main .main-right .football-court .court .four > li:nth-child(4) {
-  left: 75%;
-}
-.position.data-details .bx .data-details-main .main-right .football-court .court .five {
-  /*首发站位*/
-}
-.position.data-details .bx .data-details-main .main-right .football-court .court .five > li {
-  width: 20%;
-}
-.position.data-details .bx .data-details-main .main-right .football-court .court .five > li:nth-child(1) {
-  left: 0;
-}
-.position.data-details .bx .data-details-main .main-right .football-court .court .five > li:nth-child(2) {
-  left: 20%;
-}
-.position.data-details .bx .data-details-main .main-right .football-court .court .five > li:nth-child(3) {
-  left: 40%;
-}
-.position.data-details .bx .data-details-main .main-right .football-court .court .five > li:nth-child(4) {
-  left: 60%;
-}
-.position.data-details .bx .data-details-main .main-right .football-court .court .five > li:nth-child(5) {
-  left: 80%;
-}
-.position.data-details .bx .data-details-main .main-right .football-court .court .forward {
+.position.data-details .bx .data-details-main .main-right .football-court .court .line5 {
   /*首发站位*/
   top: 115px;
 }
-.position.data-details .bx .data-details-main .main-right .football-court .court .midfielder {
+.position.data-details .bx .data-details-main .main-right .football-court .court .line4 {
   /*首发站位*/
   top: 202px;
 }
-.position.data-details .bx .data-details-main .main-right .football-court .court .center {
+.position.data-details .bx .data-details-main .main-right .football-court .court .line3 {
   /*首发站位*/
   top: 296px;
 }
-.position.data-details .bx .data-details-main .main-right .football-court .court .back {
+.position.data-details .bx .data-details-main .main-right .football-court .court .line2 {
   /*首发站位*/
   top: 400px;
 }
-.position.data-details .bx .data-details-main .main-right .football-court .court .goalkeeper {
+.position.data-details .bx .data-details-main .main-right .football-court .court .line1 {
   /*首发站位*/
   top: 500px;
 }
-.position.data-details .bx .data-details-main .main-right .football-court .court .goalkeeper > li {
+.position.data-details .bx .data-details-main .main-right .football-court .court .line1 > li {
   left: 50%;
 }
 .position.data-details .bx .data-details-main .main-right .football-court .court > .line {
@@ -1694,18 +1566,33 @@
 }
 .position.data-details .bx .data-details-main .main-right .hedge-figure {
   padding: 10px;
+  height: 100%;
 }
-.position.data-details .bx .data-details-main .main-right .hedge-figure .data-title {
-  height: 41px;
+.position.data-details .bx .data-details-main .main-right .hedge-figure .item {
+  height: 100%;
+  position: relative;
+}
+.position.data-details .bx .data-details-main .main-right .hedge-figure .item .wrapper {
+  width: 100%;
+  height: 53px;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+.position.data-details .bx .data-details-main .main-right .hedge-figure .item .wrapper .data-title {
+  height: 30px;
   line-height: 41px;
   text-align: center;
   font-size: 12px;
 }
-.position.data-details .bx .data-details-main .main-right .hedge-figure .data-bar {
+.position.data-details .bx .data-details-main .main-right .hedge-figure .item .wrapper .data-bar {
   height: 12px;
   text-align: center;
 }
-.position.data-details .bx .data-details-main .main-right .hedge-figure .data-bar .bar {
+.position.data-details .bx .data-details-main .main-right .hedge-figure .item .wrapper .data-bar .bar {
   width: 650px;
   height: 12px;
   display: inline-block;
@@ -1713,11 +1600,13 @@
   vertical-align: top;
   position: relative;
 }
-.position.data-details .bx .data-details-main .main-right .hedge-figure .data-bar .bar .bar-per {
+.position.data-details .bx .data-details-main .main-right .hedge-figure .item .wrapper .data-bar .bar .bar-per {
   background-color: #35aae6;
   height: 12px;
+  width: 50%;
+  transition: all 0.5s;
 }
-.position.data-details .bx .data-details-main .main-right .hedge-figure .data-bar .bar .scale-half {
+.position.data-details .bx .data-details-main .main-right .hedge-figure .item .wrapper .data-bar .bar .scale-half {
   width: 50%;
   position: absolute;
   border-right: 1px solid #fff;
@@ -1725,7 +1614,7 @@
   left: 0;
   top: 0;
 }
-.position.data-details .bx .data-details-main .main-right .hedge-figure .data-bar .data-text {
+.position.data-details .bx .data-details-main .main-right .hedge-figure .item .wrapper .data-bar .data-text {
   width: 58px;
   height: 12px;
   line-height: 12px;
@@ -1968,6 +1857,48 @@
 .event-playback-modal-wrapper .event-playback-modal .modal-right .control-button .screenshot {
   margin-right: 20px;
 }
+.chalk-board-playback-modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transition: opacity .5s;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.chalk-board-playback-modal .video-play-modal {
+  width: 760px;
+  height: 520px;
+  background-color: #ffffff;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -380px;
+  margin-top: -260px;
+  padding: 0 18px;
+}
+.chalk-board-playback-modal .video-play-modal > video {
+  width: 740px;
+  height: 480px;
+  position: absolute;
+  top: 20px;
+  left: 10px;
+}
+.chalk-board-playback-modal .close-modal {
+  display: inline-block;
+  width: 19px;
+  height: 19px;
+  background: url(../images/icon_close.png);
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  cursor: pointer;
+}
 .score-bar {
   /*固定比赛比分通栏*/
   width: 100%;
@@ -1979,6 +1910,16 @@
   box-shadow: 0px 11px 20px 0px rgba(0, 0, 0, 0.3);
   opacity: 0;
   transition: all 0.2s ease;
+}
+.score-bar > .close-bar {
+  width: 10px;
+  height: 10px;
+  background: url(../images/icon_close.png);
+  background-size: cover;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
 }
 .score-bar .bx {
   height: 50px;
@@ -2057,14 +1998,4 @@
   height: 69px;
   line-height: 69px;
   text-align: center;
-}
-.score-bar .bx > .close-bar {
-  width: 10px;
-  height: 10px;
-  background: url(../images/icon_close.png);
-  background-size: cover;
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  cursor: pointer;
 }

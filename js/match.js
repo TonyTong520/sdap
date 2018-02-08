@@ -1,45 +1,58 @@
 $(function () {
+        
 
-    var matchId = "";
+    // 主客场球队id
     var homeId = "";
     var guestId = "";
-    // 从url地址中获取字段数据
-    function GetRequest() {
-        var url = location.search; //获取url中"?"符后的字串
-        var theRequest = new Object();
-        if (url.indexOf("?") != -1) {
-            var str = url.substr(1);
-            strs = str.split("&");
-            for(var i = 0; i < strs.length; i ++) {
-                theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
-            }
-        }
-        return theRequest;
-    }
+    
+    // 时间轴变量
+    var matchTimeHalf1 = 45;
+    var matchTimeHalf2 = 45;
+    var matchTimeHalf3 = 15;
+    var matchTimeHalf4 = 15;
+
+    // 球场宽高
+    var courtWidth = $(".court").width();
+    var courtHeight = $(".court").height();
+
+    // match.html 地址后的matchId截取
+    var matchId = "";
     var Request = new Object();
     Request = GetRequest();
     matchId = Request.matchId;
-    console.log(matchId)
 
-    // 时间戳转化为日期
-    function formatDate(now) { 
-        var now = new Date(now); 
-        var year=now.getFullYear(); 
-        var month=now.getMonth()+1 < 10 ? '0'+(now.getMonth()+1) : now.getMonth()+1;
-        var date=now.getDate() < 10 ? '0' + now.getDate() : now.getDate(); 
-        var hour=now.getHours() < 10 ? '0' + now.getHours() : now.getHours();  
-        var minute=now.getMinutes() < 10 ? '0' + now.getMinutes() : now.getMinutes();   
-        return year+"-"+month+"-"+date+" "+hour+":"+minute; 
-    } 
+    // 数据对比变量
+    var dataComparisonHalf = 0;
+    var dataComparisonIsImportent = "Y";
+    var dataComparisonActionType = "";
+
+    // 数据白板变量
+    var half = 0;
+    var personId = "";
+    var code = "";
+    var passCode = "";
+    var areaBlockedFrom = "";
+    var areaBlockedTo = "";
+    var draftedFrom = ""; //老版本需要字段，新版本不需要，默认为空
+    var draftedTo = ""; //老版本需要字段，新版本不需要，默认为空
+    var timeStart = "";
+    var timeEnd = "";
+    var timeStartHalf = "";
+    var timeEndHalf = "";
+    var isOverTime = "";
+
 
     $.ajax({
         url: "http://192.168.2.6:8888/dataapi/match/general.html?ak=123456&matchId="+matchId,
         type: "GET",
         dataType: "json",
         success: function (res) {
-            console.log(res);
+
             $(".team-avatar.home").children("h3").text(res.home).siblings("div").css({"background-image":"url("+res.homeLogoB+")"});
+            $(".score-bar .home-team").children(".team-name").text(res.home).siblings(".team-logo").css({"background-image":"url("+res.homeLogoB+")"});
             $(".team-avatar.guest").children("h3").text(res.guest).siblings("div").css({"background-image":"url("+res.guestLogoB+")"});
+            $(".score-bar .away-team").children(".team-name").text(res.guest).siblings(".team-logo").css({"background-image":"url("+res.guestLogoB+")"});
+            $(".bar-center .match-result p").text(res.season+res.leagueName+(isNaN(res.round) ? res.round :'第'+ res.round + '轮'));
             $(".match-round p").eq(0).text(formatDate(res.matchDate)).siblings("p").text(res.season+res.leagueName+(isNaN(res.round) ? res.round :'第'+ res.round + '轮'));
             $(".match-result .normal-score.home").text(res.homeScore);
             $(".match-result .normal-score.guest").text(res.guestScore);         
@@ -47,58 +60,46 @@ $(function () {
             $(".away-logo-mini").css({"background-image":"url("+res.guestLogoB+")"});      
             if(res.isOverTime == 2){
                 $(".time-shaft-bar").removeClass("normal").addClass("over-time");
+                $(".isOverTime").css({"opacity":"1"});
             }else{
                 $(".time-shaft-bar").removeClass("over-time").addClass("normal");
+                $(".isOverTime").css({"opacity":"0.2","pointer-events": "none"});
             }
             homeId = res.hometeamId;
             guestId = res.guestteamId;
-
+            getTeamEventList();
+            getPassesData(homeId)
+            getPassesData(guestId)
+            getPersonPassTop3(homeId)
+            getTeamPassTraceTop3(homeId)
         },
         error:function(err){
         }
      })   
 
-    $.ajax({
-        url: "http://192.168.2.6:8888/dataapi/match/timeLine.html?ak=123456&matchId="+matchId,
-        type: "GET",
-        dataType: "json",
-        success: function (res) {
-            console.log(res);
-            res.sort(function(a,b){
-                return transTimeToFloat(a.eventTimeFull) - transTimeToFloat(b.eventTimeFull);
-            })   
-            var homeEventHtml = "";
-            var guestEventHtml = "";
-            $.each(res,function(i,item){
-                if(item.teamId == homeId){
-                    if((item.event).indexOf("SUBS") == -1){
-                        homeEventHtml+='<li>'+
-                            '<i class="'+item.event+'"></i>'+
-                            '<span class="time">'+item.eventTimeFull+'</span>'+
-                            '<span class="line">—</span>'+
-                            '<span class="player">'+item.note+'</span>'+
-                        '</li>'
-                    }
-                    
-                }else{
-                    if((item.event).indexOf("SUBS") == -1){
-                        guestEventHtml+='<li>'+
-                            '<i class="'+item.event+'"></i>'+
-                            '<span class="time">'+item.eventTimeFull+'</span>'+
-                            '<span class="line">—</span>'+
-                            '<span class="player">'+item.note+'</span>'+
-                        '</li>'
-                    }
-                }
-            })
-            $(".normal-events.home").html(homeEventHtml);
-            $(".normal-events.guest").html(guestEventHtml);
-           
-        },
-        error:function(err){
-        }
-     })   
 
+
+    // $(".home-team-events").on("mouseenter","li",function(){
+    //     $(this).css({"bottom":"20px"}).children("span").show();
+    //     // $(this).siblings("li").css({"bottom":"0"}).children("span").hide();
+    // })
+    $(".home-team-events").on("click","li",function(){
+        $(this).css({"bottom":"20px"}).children("span").show();
+        // $(this).siblings("li").css({"bottom":"20px"}).children("span").hide();
+    })
+    // $(".time-shaft").on("mouseleave",function(){
+    //     $(".time-shaft .home-team-events li").css({"bottom":"0"}).children("span").hide();
+    //     $(".time-shaft .away-team-events li").css({"top":"0"}).children("span").hide();
+    // })
+
+    $(".away-team-events").on("click","li",function(){
+        $(this).css({"top":"20px"}).children("span").show()
+        // $(this).siblings("li").css({"top":"0"}).children("span").hide();
+    })
+
+    // $(".away-team-events").on("mouseleave",function(){
+    //     $(this).children("li").css({"top":"0"}).children("span").hide();
+    // })
 
     var isOverTimeCom;
     var guestteamId = $("#guestteamId").val();
@@ -137,9 +138,26 @@ $(function () {
         $(this).addClass("tab-selected").siblings().removeClass("tab-selected");
         var dataValue = $(this).data("value");
         $("#" + dataValue).removeClass("hide").siblings("div").addClass("hide");
+        if(dataValue == "data-comparison"){
+            getStaticData(dataComparisonHalf,dataComparisonIsImportent,dataComparisonActionType);
+        }
     })
 
-    // 球员站位->首发站位、平均站位、攻防无线切换
+    // 球员站位->首发站位、平均站位、攻防无线切换  
+    // 页面加载完成首次请求首发站位
+    getMatchFormatData();
+
+    // 首发站位
+    $(".filter-box.match-format ul").on("click", "li", function () {
+        $(this).addClass("select").siblings().removeClass("select");
+        if($(this).hasClass("check-num")){
+            checkoutPlayerNum();
+        }else if("check-score"){
+            checkoutPlayerScore();
+        }
+    })
+
+
     var flag = null;
     var timer;
     $("#tab11").on("click", "li", function () {
@@ -151,26 +169,30 @@ $(function () {
         if (dataValue != flag) {
             if (dataValue == "average-position") {
                 // 显示平均站位位置   
-                getThePlayersAveragePositionList();
+                getThePlayersAveragePositionList(homeId,0,"","");
+                getThePlayersAveragePositionList(guestId,0,"","");
             } else if (dataValue == "average-line") {
                 $(".attack-line.home").css({ "top": "22px" });
                 $(".defend-line.home").css({ "bottom": "22px" });
                 $(".attack-line.away").css({ "top": "22px" });
                 $(".defend-line.away").css({ "bottom": "22px" });
-                clearTimeout(timer);
-                // 显示平均线位置 
-                var attackLineHome = 38;  //根据后台传来的数据赋值，这里实验先直接赋值
-                var defendLineHome = 35;  //根据后台传来的数据赋值，这里实验先直接赋值
-                var attackLineAway = 33;  //根据后台传来的数据赋值，这里实验先直接赋值
-                var defendLineAway = 36;  //根据后台传来的数据赋值，这里实验先直接赋值
-                var realCourtHeight = 100;  //根据后台传来的数据赋值，这里实验先直接赋值  
-                var picCourtHeight = 507;  //页面上球场中球场区域高度
-                timer = setTimeout(function () {
-                    $(".attack-line.home").css({ "top": 22 + picCourtHeight * attackLineHome / realCourtHeight + "px" }).children("span").text(attackLineHome);
-                    $(".defend-line.home").css({ "bottom": 22 + picCourtHeight * defendLineHome / realCourtHeight + "px" }).children("span").text(defendLineHome);
-                    $(".attack-line.away").css({ "top": 22 + picCourtHeight * attackLineAway / realCourtHeight + "px" }).children("span").text(attackLineAway);
-                    $(".defend-line.away").css({ "bottom": 22 + picCourtHeight * defendLineAway / realCourtHeight + "px" }).children("span").text(defendLineAway);
-                }, 100)
+
+                getTacticsLineAjax(homeId,0);
+                getTacticsLineAjax(guestId,0);
+                // clearTimeout(timer);
+                // // 显示平均线位置 
+                // var attackLineHome = 38;  //根据后台传来的数据赋值，这里实验先直接赋值
+                // // var defendLineHome = 35;  //根据后台传来的数据赋值，这里实验先直接赋值
+                // var attackLineAway = 33;  //根据后台传来的数据赋值，这里实验先直接赋值
+                // var defendLineAway = 36;  //根据后台传来的数据赋值，这里实验先直接赋值
+                // var realCourtHeight = 100;  //根据后台传来的数据赋值，这里实验先直接赋值  
+                // var picCourtHeight = 507;  //页面上球场中球场区域高度
+                // timer = setTimeout(function () {
+                //     $(".attack-line.home").css({ "top": 22 + picCourtHeight * attackLineHome / realCourtHeight + "px" }).children("span").text(attackLineHome);
+                //     $(".defend-line.home").css({ "bottom": 22 + picCourtHeight * defendLineHome / realCourtHeight + "px" }).children("span").text(defendLineHome);
+                //     $(".attack-line.away").css({ "top": 22 + picCourtHeight * attackLineAway / realCourtHeight + "px" }).children("span").text(attackLineAway);
+                //     $(".defend-line.away").css({ "bottom": 22 + picCourtHeight * defendLineAway / realCourtHeight + "px" }).children("span").text(defendLineAway);
+                // }, 100)
             } else if (dataValue == "first-lineup-position") {
                 $(".court span").removeClass("out");
             }
@@ -181,155 +203,50 @@ $(function () {
 
     })
 
-    // 条件筛选
-    $(".filter-box ul").on("click", "li", function () {
+
+    // 攻防均线筛选
+    $("#average-line ul").on("click", "li", function () {
         $(this).addClass("select").siblings().removeClass("select");
+        var halfStr = $(this).data("value");
+        getTacticsLineAjax(homeId,halfStr);
+        getTacticsLineAjax(guestId,halfStr);
     })
 
-    var courtWidth = $(".court").width();
-    var courtHeight = $(".court").height();
-    //ajax请求球员列表封装
-    function getThePlayersAveragePositionList() {
-        $("#home-team-players-position").html("");
-        $("#away-team-players-position").html("");
-        $.getJSON(
-            "js/playerposition.json",
-            function (result) {
-                var json = eval(result);
-                $.each(json, function (i, item) {
-                    if (item.team == 1005) {
-                        drawPerson("home-team-players-position", item.y, item.x, item.playerNumber, item.playerName, 15, item.isSubstitution, "H");
-                    } else if (item.team == 1030) {
-                        drawPerson("away-team-players-position", item.y, item.x, item.playerNumber, item.playerName, 15, item.isSubstitution, "G");
-                    }
-                });
-            }
-        )
-    }
-    // 画球员
-    function drawPerson(svgId, x, y, number, name, size, isSubstitution, teamType) {
+    // 平均站位筛选
+    $("#average-position ul").on("click","li",function(){
+        $(this).addClass("select").siblings().removeClass("select");
+        var halfStr = $(this).data("value").split(",")[0];
+        var timePhaseStr = $(this).data("value").split(",")[1];
+        var pdfFlg = $(this).data("value").split(",")[2];
+        getThePlayersAveragePositionList(homeId,halfStr,timePhaseStr,pdfFlg);
+        getThePlayersAveragePositionList(guestId,halfStr,timePhaseStr,pdfFlg);
+    })
 
-        if (teamType == "H") {//主队
-            x = parseInt(x) / 1.05;
-            y = courtHeight - parseInt(y) / 1.06;
-            number = parseInt(number);
-            var svg = Snap("#" + svgId);
-            var circle = svg.paper.circle(x, y, 0).attr({ "team": teamType, "sub": teamType + isSubstitution, "name": teamType + number, "id": "s_" + teamType + number, fill: "#439942", stroke: "#439942", strokeWidth: 2 });
-            var text = svg.paper.text(x, y + 5, "").attr({ "text-anchor": "middle", "sub": teamType + isSubstitution, "team": teamType, "name": teamType + number, color: "#439942" });
-            circle.animate({
-                r: size,
-                fill: "#35aae6",	// 蓝色
-                stroke: "white",
-            }, 500);
-            text.animate({
-                color: "white"
-            }, 500, function () {
-                this.node.innerHTML = number;
-            });
-            var arr = [circle, text];
-            //替补
-            if (isSubstitution == 2) {
-                circle.attr({ "stroke-dasharray": "3 3", });
-            }
+    // 数据对比动作类型(actionType)切换
+    $(".actionTypeFilter").on("click","li",function(){
+        $(this).addClass("select").siblings().removeClass("select");
+        dataComparisonIsImportent = $(this).data("value").split(",")[0];
+        dataComparisonActionType = $(this).data("value").split(",")[1];
+        getStaticData(dataComparisonHalf,dataComparisonIsImportent,dataComparisonActionType);
+    })
 
-            circle.attr("fill", "#35aae5");
-            text.attr("fill", "white");
-            for (var i = 0; i < arr.length; i++) {
-                arr[i].mouseover(function () {
-                    highlight(svgId, teamType + number, teamType, 1);
-                    $("#div_title_position1").html(number + " " + name + "<i></i>");
-                    $("#div_title_position1").css("margin-left", x - 10);
-                    $("#div_title_position1").css("margin-top", y - 47);
-                    $("#div_title_position1").css("display", "block");
-                    $("#div_title_position1").css("zIndex", 999);
-                })
-                arr[i].mouseout(function () {
-                    highlight(svgId, teamType + number, teamType, 2);
-                    $("#div_title_position1").css("display", "none");
-                });
-            }
-        } else {//客队
-            x = courtWidth - parseInt(x) / 1.05;
-            y = parseInt(y) / 1.06;
-            number = parseInt(number);
-            var svg = Snap("#" + svgId);
-            var circle = svg.paper.circle(x, y, 0).attr({ "team": teamType, "sub": teamType + isSubstitution, "name": teamType + number, "id": "s_" + teamType + number, fill: "#439942", stroke: "#439942", strokeWidth: 2 });
-            var text = svg.paper.text(x, y + 5, "").attr({ "text-anchor": "middle", "sub": teamType + isSubstitution, "team": teamType, "name": teamType + number, color: "#439942" });
-            circle.animate({
-                r: size,
-                fill: "#4a5266",	// 
-                stroke: "white",
-            }, 500);
-            text.animate({
-                color: "white"
-            }, 500, function () {
-                this.node.innerHTML = number;
-            });
-            var arr = [circle, text];
-            //替补
-            if (isSubstitution == 2) {
-                circle.attr({ "stroke-dasharray": "3 3", });
-            }
-
-            circle.attr("fill", "#4a5266");
-            text.attr("fill", "white");
-            for (var i = 0; i < arr.length; i++) {
-                arr[i].mouseover(function () {
-                    highlight(svgId, teamType + number, teamType, 1);
-                    $("#div_title_position2").html(number + " " + name + "<i></i>");
-                    $("#div_title_position2").css("margin-left", x - 10);
-                    $("#div_title_position2").css("margin-top", y - 47);
-                    $("#div_title_position2").css("display", "block");
-                    $("#div_title_position2").css("zIndex", 999);
-                })
-                arr[i].mouseout(function () {
-                    highlight(svgId, teamType + number, teamType, 2);
-                    $("#div_title_position2").css("display", "none");
-                });
-            }
-        }
-
-
-    }
-    //鼠标移动到球员，高亮显示
-    function highlight(svgId, name, teamType, tag) {
-        var color;
-        if (tag == 1) {
-            color = "#FF5151";
-        } else {
-            if (teamType == "H") {//主队
-                color = "#35aae5";
-            } else {//客队
-                color = "#4a5266";
-            }
-        }
-        var newNode = $("[name='" + name + "']");
-        $("[name='" + name + "']").remove();
-        $("#" + svgId).append(newNode);
-        $("#s_" + name + "").attr({ fill: color });
-    }
+    // 数据对比时间段（half)切换
+    $(".halfFilter").on("click","li",function(){
+        $(this).addClass("select").siblings().removeClass("select");
+        dataComparisonHalf = $(this).data("value");
+        getStaticData(dataComparisonHalf,dataComparisonIsImportent,dataComparisonActionType);
+    })
+    
 // 球员站位、数据对比模块e
 
 
 // 数据项白板s
     
-    var half = 0;
-    var personId = "";
-    var code = "";
-    var passCode = "";
-    var areaBlockedFrom = "";
-    var areaBlockedTo = "";
-    var draftedFrom = ""; //老版本需要字段，新版本不需要，默认为空
-    var draftedTo = ""; //老版本需要字段，新版本不需要，默认为空
-    var timeStart = "";
-    var timeEnd = "";
-    var timeStartHalf = "";
-    var timeEndHalf = "";
-    var isOverTime = "";
+
 
     //动态渲染主客队球员列表
     $.ajax({
-        url: "http://192.168.2.6:8888/dataapi/match/position.html?ak=123456&matchId=2994&half=0",
+        url: "http://192.168.2.6:8888/dataapi/match/position.html?ak=123456&matchId="+matchId+"&half=0",
         type: "GET",
         dataType: "json",
         success: function (result) {
@@ -339,7 +256,7 @@ $(function () {
             var awayPlayerHtmlStr = "";
             var awayPlayerHtmlStrSub = "";
             $.each(result,function(index,item){
-                if(item.team == "1000"){     
+                if(item.team == homeId){     
                     if( item.isSubstitution == "1"){
                         homePlayerHtmlStr += '<li><input type="checkbox" class="check-h check-p" value="'+item.personId+'">'+item.playerNumber+'.&nbsp;&nbsp;'+item.playerName+'</li>';             
                     }else{
@@ -676,7 +593,7 @@ $(function () {
                 }            
             }
         })
-        console.log(personId)
+        // console.log(personId)
         //获取code
         code = "";
         $(".list-menu .lv2nd-list input").each(function(){
@@ -833,7 +750,7 @@ $(function () {
                 type: "GET",
                 dataType: "json",
                 success: function (result) {
-                    console.log(result);
+                    // console.log(result);
                     var json = eval(result);
                     json = $.map(json, function(item){
                         item.x = item.x * 1.05305;
@@ -951,13 +868,40 @@ $(function () {
 
     }
     
+    //点击白板空白处
+    $("#chalk-board").click(function(e){
+        var tagName = e.target.tagName;
+        
+        if(tagName!="line" && tagName!="text" && tagName!="circle" && tagName!="polygon" && tagName!="path" && tagName!="rect" && tagName!="image"){
+            lighten("chalk-board");
+            $("[istrace]").remove();
+            // $("#currentGroupId").val("");
+        }
+        //背景图
+        if(e.target.id=="trace_bg"){
+            // $("#currentGroupId").val("");
+            // $("#actionTime").val("");
+            lighten("chalk-board");
+            $("[istrace]").remove();
+        }
+    });
+
+    // 点击关闭动作回话视频模态框
+    $(".chalk-board-playback-modal .close-modal").on("click",function(){
+        $(".chalk-board-playback-modal video").attr("src","");
+        $(".chalk-board-playback-modal").addClass("hide");
+    })
+
     //进球
     function drawGoal(svgId,half,x,y,x2,number,name,groupNo,eventTimeFull,actionName,teamType,istrace){
         var svg = Snap("#"+svgId);
 
         var goalType = "GOAL";
         
-        if((teamType=="H" && x2<310)||(teamType=="G" && x2>310)){//乌龙球
+        // if((teamType=="H" && x2<310)||(teamType=="G" && x2>310)){//乌龙球
+        //     goalType = "OWN";
+        // }
+        if(actionName == "乌龙球"){//乌龙球
             goalType = "OWN";
         }
         var id = "s_"+half.toString()+x.toString()+y.toString()+number.toString();
@@ -974,11 +918,12 @@ $(function () {
             playMedia(groupNo);
         });
         image.click(function(){
+            console.log(groupNo)
             darken(svgId);
             //画进攻轨迹
             traceLine(groupNo);
-            $("#currentGroupId").val(groupNo);
-            $("#actionTime").val(eventTimeFull);
+            // $("#currentGroupId").val(groupNo);
+            // $("#actionTime").val(eventTimeFull);
         });
         image.mouseover(function() {
             highlight(svgId,half+""+x+""+y+""+number,teamType,1); 
@@ -992,6 +937,86 @@ $(function () {
             $("#div_title_trace").css("display","none");
         });
         
+    }
+
+    function traceLine(groupNo){
+        //先清除已经存在的轨迹线路
+        $("[istrace]").remove();
+        $.ajax({
+            type : "GET",
+            dataType: "json",
+            url : "http://192.168.2.6:8888/dataapi/match/traceLine.html?ak=123456&matchId="+matchId+"&groupNo="+groupNo,
+            success:function(da){
+                console.log(da)
+                traceAnima(da);
+            }
+        });
+    }
+
+    function traceAnima(jsonData){
+        var json = eval(jsonData);
+        json = $.map(json, function(item){
+            item.x = item.x * 1.05305;
+            item.y = item.y * 1.05755;
+            return item;
+        });
+        var i = 0;
+        var j = json.length-1;
+        var m = getMarkerArrow1("chalk-board");
+        var codeType = json[0]["codeType"];
+        var mytime = window.setInterval(function() {
+            //定位球倒序播放
+            if(codeType==5){
+                playPlaceKick(json);
+            }else{
+                playAttacking(json);
+            }
+        }, 1000);
+        
+        function playAttacking(json) {
+            var item = json[i];
+            var teamType = "H";
+            if(item.teamId==guestId){
+                teamType = "G";
+            }
+            
+            if(i!=json.length-1){
+                if(item.code==1){
+                    drawGoal("chalk-board", item.half,item.x, item.y,json[i+1]["x"], item.personNumber,item.personName,item.groupNo,item.eventTimeFull,item.actionName,teamType,"Y")
+                }else{
+                    drawAttack("chalk-board", item.half,item.x, item.y, item.personNumber,item.personName,10,teamType,item.groupNo,item.eventTimeFull,item.code,item.actionName,"Y");
+                }
+                if(i==json.length-2){//把人员变成不一样的，让最后一个射点为实线，
+                    drawLineEnd("chalk-board",m,item.x, item.y,json[i+1]["x"],json[i+1]["y"],item.teamId,json[i+1]["teamId"],"1","2",null,null,"Y");
+                }else{
+                    drawLineEnd("chalk-board",m,item.x, item.y,json[i+1]["x"],json[i+1]["y"],item.teamId,json[i+1]["teamId"],item.personId,json[i+1]["personId"],null,null,"Y");
+                }
+            }
+            i += 1;
+            if (i > json.length-1) {
+                window.clearInterval(mytime);
+            }
+        }
+        
+        function playPlaceKick(json){
+            var item = json[j];
+            var teamType = "H";
+            if(item.teamId==guestteamId){
+                teamType = "G";
+            }
+            if(j!=0){
+                drawAttack("chalk-board", item.half,item.x, item.y, item.personNumber,item.personNameEn,10,teamType,item.groupNo,item.eventTimeFull,item.code,item.actionName,"Y");
+                if(j==1){//把人员变成不一样的，让最后一个射点为实线，
+                    drawLineEnd("chalk-board",m,item.x, item.y,json[j-1]["x"],json[j-1]["y"],item.teamId,json[j-1]["teamId"],"1","2",null,null,"Y");
+                }else{
+                    drawLineEnd("chalk-board",m,item.x, item.y,json[j-1]["x"],json[j-1]["y"],item.teamId,json[j-1]["teamId"],item.personId,json[j-1]["personId"],null,null,"Y");
+                }
+            }
+            j -= 1;
+            if (j <= 0) {
+                window.clearInterval(mytime);
+            }
+        }
     }
 
     //进攻
@@ -1523,17 +1548,19 @@ $(function () {
 
     //页面加载完成绘制传球->传控网络图start1111111111111
     // var homeId = 1000;  //从后台获取，暂时写死
-    passNetworkDrawParper(homeId, "svg_pass_network_home_trace", "H", "");
+    passNetworkDrawParper(1000, "svg_pass_network_home_trace", "H", "");
     // var guestId = 1030;  //从后台获取，暂时写死
-    passNetworkDrawParper(guestId, "svg_pass_network_away_trace", "G", "");
+    passNetworkDrawParper1(1030, "svg_pass_network_away_trace", "G", "");
 
     //按照球场长622宽416计算传球线路和球员的X坐标和Y坐标
     function passNetworkDrawParper(teamId, svg, hg, personId) {
         $("#" + svg).empty();
         // var isOverTime = $("#isOverTime").val();
         var isOverTime = 0;
-        var viewType = $("li.viewType.select").val();
-        var lineType = $("li.lineType.select").val();
+        // var viewType = $("li.viewType.select").val();
+        var viewType = 1;
+        // var lineType = $("li.lineType.select").val();
+        var lineType = 1;
         // var timeType = $("input[name='timeType']:checked").val();
         var timeType = 3;
         // /*var half = 0;
@@ -1552,6 +1579,224 @@ $(function () {
         //     success:function(da){
         $.getJSON(
             "js/getNetWorkTeamPassAjax.json",
+            function (result) {
+                // personPass = eval('(' + result + ')');
+                personPass = result;
+                var list = personPass.teamPassTraceList;
+                var list1 = personPass.matchPositionList;
+                $.each(list, function (i, item) {
+                    var fromNumber = parseInt(item.fromPersonNumber);
+                    var fromRadius = personPass[fromNumber];
+                    var toNumber = parseInt(item.toPersonNumber);
+                    var toRadius = personPass[toNumber];
+                    if (fromRadius == '' || fromRadius == 'undefined') {
+                        fromRadius = 4;
+                    } else {
+                        fromRadius = parseInt(fromRadius / 15) + 4;
+                    }
+                    if (toRadius == '' || toRadius == 'undefined') {
+                        toRadius = 4;
+                    } else {
+                        toRadius = parseInt(toRadius / 15) + 4;
+                    }
+                    if (teamId == 1030 && item.passCount >= lineType) {
+                        personLine = personLine + fromNumber + ",";
+                        personLine = personLine + toNumber + ",";
+                        if (!isNaN(personPass[toNumber])) {
+                            drawLineHorizontal(svg, item.fromPersonX * 0.94, (416 - item.fromPersonY) * 0.94, item.toPersonX * 0.94, (416 - item.toPersonY) * 0.94, item.passCount, fromRadius, toRadius);
+                        }
+                    } else if (teamId == 1000 && item.passCount >= lineType) {
+                        personLine = personLine + fromNumber + ",";
+                        personLine = personLine + toNumber + ",";
+                        if (!isNaN(personPass[toNumber])) {
+                            drawLineHorizontal(svg, (622 - item.fromPersonX) * 0.94, item.fromPersonY * 0.94, (622 - item.toPersonX) * 0.94, item.toPersonY * 0.94, item.passCount, fromRadius, toRadius);
+                        }
+                    }
+                });
+
+                //画完线路之后再画球员
+                $.each(list1, function (i, item) {
+                    var number = parseInt(item.playerNumber);
+                    var radius = item.touchBall;
+                    if (radius == '' || isNaN(radius)) {
+                        radius = 4;
+                    } else {
+                        radius = parseInt(radius / 15) + 4;
+                    }
+                    if (item.team == 1000) {
+                        if (viewType == 1) {
+                            if (item.isSubstitution == 1 || personLine.indexOf("," + number + ",") != -1) {
+                                drawPersonHorizontal(svg, item.y * 0.94, (622 - item.x) * 0.94, item.personId, item.playerName, item.playerName, radius, item.isSubstitution, "H", teamId, personId);
+                            }
+                        }
+                        else {
+                            drawPersonHorizontal(svg, item.y * 0.94, (622 - item.x) * 0.94, item.personId, item.playerName, item.playerName, radius, item.isSubstitution, "H", teamId, personId);
+                        }
+                    } else if (item.team == 1030) {
+                        if (viewType == 1) {
+                            if (item.isSubstitution == 1 || personLine.indexOf("," + number + ",") != -1) {
+                                drawPersonHorizontal(svg, (416 - item.y) * 0.94, item.x * 0.94, item.personId, item.playerName, item.playerName, radius, item.isSubstitution, "G", teamId, personId);
+                            }
+                        }
+                        else {
+                            drawPersonHorizontal(svg, (416 - item.y) * 0.94, item.x * 0.94, item.personId, item.playerName, item.playerName, radius, item.isSubstitution, "G", teamId, personId);
+                        }
+
+                    }
+
+                });
+                //统计时间
+                if (hg == 'H') {
+                    //$("#homeFromTime").html("1-"+personPass.fromTime+"分钟");
+                    if (timeType == '3') {
+                        $("#homeFromTime").html("1-" + personPass.fromTime + "分钟");
+                    }
+
+                    if (timeType == '1') {
+                        $("#homeFromTime").html("1-45分钟");
+                    }
+
+                    if (timeType == '2') {
+                        $("#homeFromTime").html("46-90分钟");
+                    }
+
+                    if (timeType == '0' && 　isOverTime == '2') {
+                        $("#homeFromTime").html("1-120分钟");
+                    }
+
+                    if (timeType == '0' && 　isOverTime != '2') {
+                        $("#homeFromTime").html("1-90分钟");
+                    }
+
+                    if (personId == '') {
+                        $("#homePersonId").val("");
+                        var homePersonId = $("#homePersonId").val();
+                        var guestPersonId = $("#guestPersonId").val();
+                        $("#home_team_title").html("平均站位和传球网络 Positions and Passing Network");
+                        $("#home_person_pass").html("");
+                        $("#homePassLeft").attr("style", "display:block;");
+                        $("#homePassRight").attr("style", "display:block;");
+                        $("#matchPersonHomePass").attr("style", "display:none;");
+                        if (homePersonId == '' && guestPersonId == '') {
+                            $("input:radio[name='lineType']").attr("disabled", false);
+                            $("input:radio[name='viewType']").attr("disabled", false);
+                        }
+                    } else {
+                        var personPassHtml = "";
+                        var matchPersonPassList = personPass.matchPersonPassList;
+                        matchPersonPassList = eval(matchPersonPassList);
+                        var matchPersonPass = personPass.matchPersonPass;
+                        $.each(matchPersonPassList, function (i, item) {
+                            personPassHtml = personPassHtml + "<p>";
+                            personPassHtml = personPassHtml + item.passCount;
+                            personPassHtml = personPassHtml + " " + item.fromPersonNameEn;
+                            personPassHtml = personPassHtml + "—"
+                            personPassHtml = personPassHtml + item.toPersonNameEn;
+                            personPassHtml = personPassHtml + "</p>"
+                        });
+                        $("#matchPersonHomePass").html(personPassHtml);
+                        $("#home_person_pass").html(matchPersonPass.personNameEn + matchPersonPass.succPasses + "/" + matchPersonPass.passes);
+                        $("#matchPersonHomePass").attr("style", "display:block;");
+                        $("#homePassLeft").attr("style", "display:none;");
+                        $("#homePassRight").attr("style", "display:none;");
+                        var newNodec = $("[name='" + personId + "c']");
+                        var newNodet = $("[name='" + personId + "t']");
+                        newNodec.attr("stroke", "#6f0a0a");
+                        newNodec.attr("stroke-width", "2");
+                        newNodet.attr("fill", "#6f0a0a");
+                    }
+
+                }
+                if (hg == 'G') {
+
+                    if (timeType == '3') {
+                        $("#guestFromTime").html("1-" + personPass.fromTime + "分钟");
+                    }
+
+                    if (timeType == '1') {
+                        $("#guestFromTime").html("1-45分钟");
+                    }
+
+                    if (timeType == '2') {
+                        $("#guestFromTime").html("46-90分钟");
+                    }
+
+                    if (timeType == '0' && 　isOverTime == '2') {
+                        $("#guestFromTime").html("1-120分钟");
+                    }
+
+                    if (timeType == '0' && 　isOverTime != '2') {
+                        $("#guestFromTime").html("1-90分钟");
+                    }
+                    //$("#guestFromTime").html("1-"+personPass.fromTime+"分钟");
+                    if (personId == '') {
+                        $("#guestPersonId").val("");
+                        var homePersonId = $("#homePersonId").val();
+                        var guestPersonId = $("#guestPersonId").val();
+                        $("#guest_team_title").html("平均站位和传球网络  Positions and Passing Network");
+                        $("#guest_person_pass").html("");
+                        $("#guestPassRight").attr("style", "display:block;");
+                        $("#guestPassLeft").attr("style", "display:block;");
+                        $("#matchPersonGuestPass").attr("style", "display:none;");
+                        if (homePersonId == '' && guestPersonId == '') {
+                            $("input:radio[name='lineType']").attr("disabled", false);
+                            $("input:radio[name='viewType']").attr("disabled", false);
+                        }
+                    } else {
+                        var personPassHtml = "";
+                        var matchPersonPassList = personPass.matchPersonPassList;
+                        matchPersonPassList = eval(matchPersonPassList);
+                        var matchPersonPass = personPass.matchPersonPass;
+                        $.each(matchPersonPassList, function (i, item) {
+                            personPassHtml = personPassHtml + "<p>";
+                            personPassHtml = personPassHtml + item.passCount;
+                            personPassHtml = personPassHtml + " " + item.fromPersonNameEn;
+                            personPassHtml = personPassHtml + "—"
+                            personPassHtml = personPassHtml + item.toPersonNameEn;
+                            personPassHtml = personPassHtml + "</p>"
+                        });
+                        $("#matchPersonGuestPass").html(personPassHtml);
+                        $("#guest_person_pass").html(matchPersonPass.personNameEn + matchPersonPass.succPasses + "/" + matchPersonPass.passes);
+                        $("#matchPersonGuestPass").attr("style", "display:block;");
+                        $("#guestPassRight").attr("style", "display:none;");
+                        $("#guestPassLeft").attr("style", "display:none;");
+                        var newNodec = $("[name='" + personId + "c']");
+                        var newNodet = $("[name='" + personId + "t']");
+                        newNodec.attr("stroke", "#0a2b77");
+                        newNodec.attr("stroke-width", "2");
+                        newNodet.attr("fill", "#0a2b77");
+                    }
+                }
+            }
+        );
+    }
+    //按照球场长622宽416计算传球线路和球员的X坐标和Y坐标
+    function passNetworkDrawParper1(teamId, svg, hg, personId) {
+        $("#" + svg).empty();
+        // var isOverTime = $("#isOverTime").val();
+        var isOverTime = 0;
+        // var viewType = $("li.viewType.select").val();
+        var viewType = 1;
+        // var lineType = $("li.lineType.select").val();
+        var lineType = 1;
+        // var timeType = $("input[name='timeType']:checked").val();
+        var timeType = 3;
+        // /*var half = 0;
+        // if (isOverTime ==2 ) {
+        //     half = 6;
+        // }*/
+        var personPass;
+        var personLine = ",";
+
+        //画球员之间的传球线路和球员位置
+
+        // $.ajax({
+        //     type : "post",
+        //     data : "matchId="+matchId+"&teamId="+teamId+"&viewType="+viewType+"&personId="+personId+"&half="+half+"&timeType="+timeType+"&isOverTime="+isOverTime,
+        //     url : "${basePath}getNetWorkTeamPassAjax.html",
+        //     success:function(da){
+        $.getJSON(
+            "js/getNetWorkTeamPassAjax1.json",
             function (result) {
                 // personPass = eval('(' + result + ')');
                 personPass = result;
@@ -1842,7 +2087,7 @@ $(function () {
                     $("#" + svgId).append(newNodet);
                     circle.attr("stroke", "#6f0a0a");
                     circle.attr("stroke-width", "2");
-                    text.attr({ "fill": "#6f0a0a", "stroke": "#6f0a0a", "stroke-width": "2" });
+                    text.attr({ "fill": "#6f0a0a"});
                 });
                 circle.mouseout(function () {
                     circle.attr("stroke", colour);
@@ -1886,12 +2131,12 @@ $(function () {
                     $("#" + svgId).append(newNodet);
                     circle.attr("stroke", "#0a2b77");
                     circle.attr("stroke-width", "2");
-                    text.attr({ "fill": "#6f0a0a", "stroke": "#6f0a0a", "stroke-width": "1" });
+                    text.attr({ "fill": "#0a2b77"});
                 });
                 circle.mouseout(function () {
                     circle.attr("stroke", colour);
                     circle.attr("stroke-width", "0");
-                    text.attr({ "fill": "#000000", "stroke-width": "0" });
+                    text.attr({ "fill": "#000000"});
                 });
                 text.mouseover(function () {
                     var newNodec = $("[name='" + personId + "c']");
@@ -1902,12 +2147,12 @@ $(function () {
                     $("#" + svgId).append(newNodet);
                     circle.attr("stroke", "#0a2b77");
                     circle.attr("stroke-width", "2");
-                    text.attr({ "fill": "#6f0a0a", "stroke": "#6f0a0a", "stroke-width": "1" });
+                    text.attr({ "fill": "#0a2b77" });
                 });
                 text.mouseout(function () {
                     circle.attr("stroke", colour);
                     circle.attr("stroke-width", "0");
-                    text.attr({ "fill": "#000000", "stroke-width": "0" });
+                    text.attr({ "fill": "#000000"});
                 });
             }
 
@@ -1956,6 +2201,79 @@ $(function () {
         $("#" + dataValue + "-filter").removeClass("hide").siblings(".filter-box-t").addClass("hide");
         $("#" + dataValue + "-main").removeClass("hide").siblings(".main-right").addClass("hide");
     })
+
+    // // 传球-->传控网络-->主客队数据切换
+    $("#home_or_guest ul").on("click","li",function(){
+        $(this).addClass("type-selected").siblings().removeClass("type-selected");
+        if($(this).hasClass("home")){
+            getPersonPassTop3(homeId);
+            getTeamPassTraceTop3(homeId);
+        }else if($(this).hasClass("guest")){
+            getPersonPassTop3(guestId);
+            getTeamPassTraceTop3(guestId);
+        }
+    })
+
+    // 两队传球统计
+    function getPassesData(teamId){
+        $.ajax({
+            url: "http://192.168.2.6:8888/dataapi/match/getMatchPersonTeamPass.html?ak=123456&matchId="+matchId+"&teamId="+teamId,
+            type: "GET",
+            dataType: "json",
+            success: function (res) {
+                if(teamId == homeId){                  
+                    $(".home-team-count .team-pass-per").width(res.succPasses/res.passes*100+"%");
+                    $(".home-team-count .num").text(res.succPasses+"/"+res.passes+"("+((res.succPasses/res.passes*100).toFixed(2)+"%")+")")
+                }else if(teamId == guestId){
+                    $(".away-team-count .team-pass-per").width(res.succPasses/res.passes*100+"%");
+                    $(".away-team-count .num").text(res.succPasses+"/"+res.passes+"("+((res.succPasses/res.passes*100).toFixed(2)+"%")+")")
+                }   
+            }
+        })
+    }
+
+    // 两队传球最多
+    function getPersonPassTop3(teamId){
+        $.ajax({
+            url: "http://192.168.2.6:8888/dataapi/match/personPassTop3.html?ak=123456&matchId="+matchId+"&teamId="+teamId,
+            type: "GET",
+            dataType: "json",
+            success: function (res) {
+                var html = "";
+                $.each(res,function(i,item){
+                    html += '<tr>'+
+                                '<td><span>'+(i+1)+'</span>'+item.personName+'</td>'+
+                                '<td>'+item.passes+'</td>'+
+                                '<td>'+item.succPasses+'</td>'+
+                                '<td>'+((item.succPasses/item.passes*100).toFixed(2)+'%')+'</td>'+
+                            '</tr>'
+                })
+                $(".count-table.personage tbody").html(html);
+            }
+        })
+    }
+
+    // 两队组合传球最多
+    function getTeamPassTraceTop3(teamId){
+        $.ajax({
+            url: "http://192.168.2.6:8888/dataapi/getTeamPassTraceTop3.html?ak=123456&matchId="+matchId+"&teamId="+teamId,
+            type: "GET",
+            dataType: "json",
+            success: function (res) {
+                console.log(res)
+                var html = "";
+                $.each(res,function(i,item){
+                    html += '<tr>'+
+                                '<td><span>'+(i+1)+'</span>'+(item.fromPersonName+' - '+item.toPersonName)+'</td>'+
+                                '<td style="background-color: #35aae5;pointer-events: none;"></td>'+
+                                '<td></td>'+
+                                '<td>'+item.passCount+'</td>'+
+                            '</tr>'
+                })
+                $(".count-table.group tbody").html(html);
+            }
+        })
+    }
 
     // 画两队连续传球图表
     function drawContinuityPassChart(id) {
@@ -2023,8 +2341,14 @@ $(function () {
 
 // 传球、进攻比例、进攻方式 模块end
 
-
-
+// $.ajax({
+//     url:"http://192.168.2.6:8888/dataapi/match/getMatchPersonTeamPass.html?ak=123456",
+//     type:"GET",
+//     dataType:"json",
+//     success:function(da){
+//         console.log(da)
+//     }
+// })
 
 
 
@@ -2283,7 +2607,7 @@ $(function () {
 
 
 
-    getThePlayersList();
+    // getThePlayersList();
     //ajax请求球员列表封装
     function getThePlayersList() {
         $.getJSON(
@@ -2362,11 +2686,6 @@ $(function () {
     }
 
 
-
-
-
-
-
     //颜色MAP
     var colorMap = new Map();
     //进攻
@@ -2422,27 +2741,828 @@ $(function () {
     colorMap.put("412","#FF1493");
     colorMap.put("66","#CD5C5C");
     
-
-
-    // $.ajax({
-    //     url: "http://192.168.2.6:8888/dataapi/teamPersonList.html?ak=123456&teamId="+1030,
-    //     type: "GET",
-    //     dataType: "json",
-    //     success: function (result) {
-    //         console.log(result);
-            
-            
-    //     },
-    //     error: function (result) {
-    //         console.log(result);
-    //     }
-    // })
     
-    function transTimeToFloat(time){
+    // 把时分秒(25'26'')格式转化为小数格式
+    function transTimeToFloat1(time){
         var tempStrArr = time.replace("'",".").split("''");
         var tempStr = tempStrArr[0];
         return tempStr;
     }
 
+    // 把时分秒(25:26)格式转化为小数格式
+    function transTimeToFloat2(time){
+        return time.replace(":",".")
+    }
+
+    // 时间戳转化为日期
+    function formatDate(now) { 
+        var now = new Date(now); 
+        var year=now.getFullYear(); 
+        var month=now.getMonth()+1 < 10 ? '0'+(now.getMonth()+1) : now.getMonth()+1;
+        var date=now.getDate() < 10 ? '0' + now.getDate() : now.getDate(); 
+        var hour=now.getHours() < 10 ? '0' + now.getHours() : now.getHours();  
+        var minute=now.getMinutes() < 10 ? '0' + now.getMinutes() : now.getMinutes();   
+        return year+"-"+month+"-"+date+" "+hour+":"+minute; 
+    } 
+    
+
+    // 从url地址中获取字段数据
+    function GetRequest() {
+        var url = location.search; //获取url中"?"符后的字串
+        var theRequest = new Object();
+        if (url.indexOf("?") != -1) {
+            var str = url.substr(1);
+            strs = str.split("&");
+            for(var i = 0; i < strs.length; i ++) {
+                theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+            }
+        }
+        return theRequest;
+    }
+
+    // 获取比赛事件列表
+    function getTeamEventList(){
+        $.ajax({
+            url: "http://192.168.2.6:8888/dataapi/match/timeLine.html?ak=123456&matchId="+matchId,
+            type: "GET",
+            dataType: "json",
+            success: function (res) {
+                var homeEventHtml = "";
+                var guestEventHtml = "";
+                var homeEventArr = [];
+                var guestEventArr = [];
+                $.each(res,function(i,item){
+                    if(item.teamId == homeId){
+                        homeEventArr.push(item);
+                        if((item.event).indexOf("SUBS") == -1){
+                            homeEventHtml+='<li>'+
+                                '<i class="'+item.event+'"></i>'+
+                                '<span class="time">'+item.eventTimeFull+'</span>'+
+                                '<span class="line">—</span>'+
+                                '<span class="player">'+item.note+'</span>'+
+                            '</li>'
+                        }
+                        
+                    }else{
+                        guestEventArr.push(item);
+                        if((item.event).indexOf("SUBS") == -1){
+                            guestEventHtml+='<li>'+
+                                '<i class="'+item.event+'"></i>'+
+                                '<span class="time">'+item.eventTimeFull+'</span>'+
+                                '<span class="line">—</span>'+
+                                '<span class="player">'+item.note+'</span>'+
+                            '</li>'
+                        }
+                    }
+                })
+                $(".normal-events.home").html(homeEventHtml);
+                $(".normal-events.guest").html(guestEventHtml);
+                var homeHalf1Arr = [];
+                var homeHalf2Arr = [];
+                var homeHalf3Arr = [];
+                var homeHalf4Arr = [];
+                var guestHalf1Arr = [];
+                var guestHalf2Arr = [];
+                var guestHalf3Arr = [];
+                var guestHalf4Arr = [];
+                $.each(homeEventArr,function(i,item){
+                    if(item.half == 1 ){
+                        homeHalf1Arr.push(item);
+                    }else if(item.half == 2){
+                        homeHalf2Arr.push(item);
+                    }else if(item.half == 3){
+                        homeHalf3Arr.push(item);
+                    }else if(item.half == 4){
+                        homeHalf4Arr.push(item);
+                    }
+                })
+                $.each(guestEventArr,function(i,item){
+                    
+                    if(item.half == 1 ){
+                        guestHalf1Arr.push(item);
+                    }else if(item.half == 2){
+                        guestHalf2Arr.push(item);
+                    }else if(item.half == 3){
+                        guestHalf3Arr.push(item);
+                    }else if(item.half == 4){
+                        guestHalf4Arr.push(item);
+                    }
+                })
+                if(homeHalf1Arr.length != 0 && transTimeToFloat2(homeHalf1Arr[homeHalf1Arr.length -1].eventTime) > matchTimeHalf1){
+                    matchTimeHalf1 = transTimeToFloat2(homeHalf1Arr[homeHalf1Arr.length -1].eventTime);
+                }
+                if(guestHalf1Arr.length != 0 && transTimeToFloat2(guestHalf1Arr[guestHalf1Arr.length -1].eventTime) > matchTimeHalf1){
+                    matchTimeHalf1 = transTimeToFloat2(guestHalf1Arr[guestHalf1Arr.length -1].eventTime);
+                }
+                if(homeHalf2Arr.length != 0 && transTimeToFloat2(homeHalf2Arr[homeHalf2Arr.length -1].eventTime) > matchTimeHalf2){
+                    matchTimeHalf2 = transTimeToFloat2(homeHalf2Arr[homeHalf2Arr.length -1].eventTime);
+                }
+                if(guestHalf2Arr.length != 0 && transTimeToFloat2(guestHalf2Arr[guestHalf2Arr.length -1].eventTime) > matchTimeHalf2){
+                    matchTimeHalf2 = transTimeToFloat2(guestHalf2Arr[guestHalf2Arr.length -1].eventTime);
+                }
+                if(homeHalf3Arr.length != 0 && transTimeToFloat2(homeHalf3Arr[homeHalf3Arr.length -1].eventTime) > matchTimeHalf3){
+                    matchTimeHalf3 = transTimeToFloat2(homeHalf3Arr[homeHalf3Arr.length -1].eventTime);
+                }
+                if(guestHalf3Arr.length != 0 && transTimeToFloat2(guestHalf3Arr[guestHalf3Arr.length -1].eventTime) > matchTimeHalf3){
+                    matchTimeHalf3 = transTimeToFloat2(guestHalf3Arr[guestHalf3Arr.length -1].eventTime);
+                }
+                if(homeHalf4Arr.length != 0 && transTimeToFloat2(homeHalf4Arr[homeHalf4Arr.length -1].eventTime) > matchTimeHalf4){
+                    matchTimeHalf4 = transTimeToFloat2(homeHalf4Arr[homeHalf4Arr.length -1].eventTime);
+                }
+                if(guestHalf4Arr.length != 0 && transTimeToFloat2(guestHalf4Arr[guestHalf4Arr.length -1].eventTime) > matchTimeHalf4){
+                    matchTimeHalf4 = transTimeToFloat2(guestHalf4Arr[guestHalf4Arr.length -1].eventTime);
+                }             
+                var homeHalf1Html = "";
+                $.each(homeHalf1Arr,function(i,item){
+                    homeHalf1Html += '<li class="'+item.event+'" style="left:'+transTimeToFloat2(item.eventTime)/matchTimeHalf1*100+'%;"><span>'+item.note+'-'+item.eventTimeFull+'-'+item.event+'<b></b></span></li>'
+                })
+                $(".home-half1").html(homeHalf1Html);
+                var homeHalf2Html = "";
+                $.each(homeHalf2Arr,function(i,item){
+                    homeHalf2Html += '<li class="'+item.event+'" style="left:'+transTimeToFloat2(item.eventTime)/matchTimeHalf2*100+'%;"><span>'+item.note+'-'+item.eventTimeFull+'-'+item.event+'<b></b></span></li>'
+                })
+                $(".home-half2").html(homeHalf2Html);
+                var homeHalf3Html = "";
+                $.each(homeHalf3Arr,function(i,item){
+                    homeHalf3Html += '<li class="'+item.event+'" style="left:'+transTimeToFloat2(item.eventTime)/matchTimeHalf3*100+'%;"><span>'+item.note+'-'+item.eventTimeFull+'-'+item.event+'<b></b></span></li>'
+                })
+                $(".home-half3").html(homeHalf3Html);
+                var homeHalf4Html = "";
+                $.each(homeHalf4Arr,function(i,item){
+                    homeHalf4Html += '<li class="'+item.event+'" style="left:'+transTimeToFloat2(item.eventTime)/matchTimeHalf4*100+'%;"><span>'+item.note+'-'+item.eventTimeFull+'-'+item.event+'<b></b></span></li>'
+                })
+                $(".home-half4").html(homeHalf4Html);
+                var guestHalf1Html = "";
+                $.each(guestHalf1Arr,function(i,item){
+                    guestHalf1Html += '<li class="'+item.event+'" style="left:'+transTimeToFloat2(item.eventTime)/matchTimeHalf1*100+'%;"><span>'+item.note+'-'+item.eventTimeFull+'-'+item.event+'<b></b></span></li>'
+                })
+                $(".guest-half1").html(guestHalf1Html);
+                var guestHalf2Html = "";
+                $.each(guestHalf2Arr,function(i,item){
+                    guestHalf2Html += '<li class="'+item.event+'" style="left:'+transTimeToFloat2(item.eventTime)/matchTimeHalf2*100+'%;"><span>'+item.note+'-'+item.eventTimeFull+'-'+item.event+'<b></b></span></li>'
+                })
+                $(".guest-half2").html(guestHalf2Html);
+                var guestHalf3Html = "";
+                $.each(guestHalf3Arr,function(i,item){
+                    guestHalf3Html += '<li class="'+item.event+'" style="left:'+transTimeToFloat2(item.eventTime)/matchTimeHalf3*100+'%;"><span>'+item.note+'-'+item.eventTimeFull+'-'+item.event+'<b></b></span></li>'
+                })
+                $(".guest-half3").html(guestHalf3Html);
+                var guestHalf4Html = "";
+                $.each(guestHalf4Arr,function(i,item){
+                    guestHalf4Html += '<li class="'+item.event+'" style="left:'+transTimeToFloat2(item.eventTime)/matchTimeHalf4*100+'%;"><span>'+item.note+'-'+item.eventTimeFull+'-'+item.event+'<b></b></span></li>'
+                })
+                $(".guest-half4").html(guestHalf4Html);
+            },
+            error:function(err){
+            }
+        })   
+    }
+    
+    // 请求首发站位ajax封装
+    function getMatchFormatData(){
+        $.ajax({
+            url: "http://192.168.2.6:8888/dataapi/match/getMatchFormat.html?ak=123456&matchId="+matchId,
+            type: "GET",
+            dataType: "json",
+            success: function (res) {
+                $(".homeFormat").text("主队"+res.homeFormat)
+                $("#homeFormatPos .line1").empty();
+                $("#homeFormatPos .line2").empty();
+                $("#homeFormatPos .line3").empty();
+                $("#homeFormatPos .line4").empty();
+                $("#homeFormatPos .line5").empty();
+    
+                $("#homeFormatPos .line1").append(
+                    '<li class="p1" style="width:100%;" data-score="" data-num=""><span><em></em><b></b></span></li>'
+                )
+                for(var i = 0; i < res.homeFormat.split("-")[0]; i++){
+                    $("#homeFormatPos .line2").append(
+                        '<li class="p'+(i+1)+'" style="width:'+100/res.homeFormat.split("-")[0]+'%;" data-score="" data-num=""><span><em></em><b></b></span></li>'
+                    )
+                }
+                for(var i = 0; i < res.homeFormat.split("-")[1]; i++){
+                    $("#homeFormatPos .line3").append(
+                        '<li class="p'+(i+1)+'" style="width:'+100/res.homeFormat.split("-")[1]+'%;" data-score="" data-num=""><span><em></em><b></b></span></li>'
+                    )
+                }
+                for(var i = 0; i < res.homeFormat.split("-")[2]; i++){
+                    $("#homeFormatPos .line4").append(
+                        '<li class="p'+(i+1)+'" style="width:'+100/res.homeFormat.split("-")[2]+'%;" data-score="" data-num=""><span><em></em><b></b></span></li>'
+                    )
+                }
+                for(var i = 0; i < res.homeFormat.split("-")[3]; i++){
+                    $("#homeFormatPos .line5").append(
+                        '<li class="p'+(i+1)+'" style="width:'+100/res.homeFormat.split("-")[3]+'%;" data-score="" data-num=""><span><em></em><b></b></span></li>'
+                    )
+                }
+                $(".guestFormat").text("客队"+res.guestFormat)
+                $("#guestFormatPos .line1").empty();
+                $("#guestFormatPos .line2").empty();
+                $("#guestFormatPos .line3").empty();
+                $("#guestFormatPos .line4").empty();
+                $("#guestFormatPos .line5").empty();
+    
+                $("#guestFormatPos .line1").append(
+                    '<li class="p1" style="width:100%;" data-score="" data-num=""><span><em></em><b></b></span></li>'
+                )
+                for(var i = 0; i < res.guestFormat.split("-")[0]; i++){
+                    $("#guestFormatPos .line2").append(
+                        '<li class="p'+(i+1)+'" style="width:'+100/res.guestFormat.split("-")[0]+'%;" data-score="" data-num=""><span><em></em><b></b></span></li>'
+                    )
+                }
+                for(var i = 0; i < res.guestFormat.split("-")[1]; i++){
+                    $("#guestFormatPos .line3").append(
+                        '<li class="p'+(i+1)+'" style="width:'+100/res.guestFormat.split("-")[1]+'%;" data-score="" data-num=""><span><em></em><b></b></span></li>'
+                    )
+                }
+                for(var i = 0; i < res.guestFormat.split("-")[2]; i++){
+                    $("#guestFormatPos .line4").append(
+                        '<li class="p'+(i+1)+'" style="width:'+100/res.guestFormat.split("-")[2]+'%;" data-score="" data-num=""><span><em></em><b></b></span></li>'
+                    )
+                }
+                for(var i = 0; i < res.guestFormat.split("-")[3]; i++){
+                    $("#guestFormatPos .line5").append(
+                        '<li class="p'+(i+1)+'" style="width:'+100/res.guestFormat.split("-")[3]+'%;" data-score="" data-num=""><span><em></em><b></b></span></li>'
+                    )
+                }
+    
+                guestMembersAjax();
+        
+                
+            }
+        })
+    }
+    // 获取首发阵容站位ajax封装
+    function guestMembersAjax(){
+        var homeMembersArr = [];
+        var guestMembersArr = [];
+        $.ajax({
+            url: "http://192.168.2.6:8888/dataapi/match/members.html?ak=123456&matchId="+matchId,
+            type: "GET",
+            dataType: "json",
+            success: function (res) {
+                var maxScoreHome = 0;
+                var maxScoreGuest = 0;
+                $.each(res,function(i,item){
+                    
+                    if(item.teamId == homeId && item.personType == 1){
+                        homeMembersArr.push(item);
+                        if(Number(item.totalScore) > maxScoreHome){
+                            maxScoreHome = Number(item.totalScore);
+                        }
+                    }else if(item.teamId == guestId && item.personType == 1){
+                        guestMembersArr.push(item);
+                        if(Number(item.totalScore) > maxScoreGuest){
+                            maxScoreGuest = Number(item.totalScore);
+                        }
+                    }
+                })        
+                $.each(homeMembersArr,function(i,item){
+                    $("#homeFormatPos .line"+item.positionX).children(".p"+item.positionY).attr("data-score",Number(item.totalScore).toFixed(0)).attr("data-num",Number(item.personNum)).children("span").children("em").text(item.personNum).siblings("b").text(item.personNameCn);
+                    if(item.totalScore == maxScoreHome){
+                        $("#homeFormatPos .line"+item.positionX).children(".p"+item.positionY).children("span").addClass("mvp");
+                    }
+                })
+                $.each(guestMembersArr,function(i,item){
+                    $("#guestFormatPos .line"+item.positionX).children(".p"+item.positionY).attr("data-score",Number(item.totalScore).toFixed(0)).attr("data-num",Number(item.personNum)).children("span").children("em").text(item.personNum).siblings("b").text(item.personNameCn);
+                    if(item.totalScore == maxScoreGuest){
+                        $("#guestFormatPos .line"+item.positionX).children(".p"+item.positionY).children("span").addClass("mvp");
+                    }
+                })
+            }
+        })
+    }
+
+    //ajax请求球员平均站位封装
+    function getThePlayersAveragePositionList(teamId,half,timePhase,pdfFlg) {
+        $("#home-team-players-position").html("");
+        $("#away-team-players-position").html("");
+        $.ajax({
+            url: "http://192.168.2.6:8888/dataapi/match/position.html?ak=123456&matchId="+matchId+"&teamId="+teamId+"&half="+half+"&timePhase="+timePhase+"&pdfFlg="+pdfFlg,
+            type: "GET",
+            dataType: "json",
+            success: function (result) {
+                // console.log(result)
+                var json = eval(result);
+                $.each(json, function (i, item) {
+                    if (item.team == homeId) {
+                        drawPerson("home-team-players-position", item.y, item.x, item.playerNumber, item.playerName, 15, item.isSubstitution, "H");
+                    } else if (item.team == guestId) {
+                        drawPerson("away-team-players-position", item.y, item.x, item.playerNumber, item.playerName, 15, item.isSubstitution, "G");
+                    }
+                });
+            }
+        })
+
+    }
+    // 画球员
+    function drawPerson(svgId, x, y, number, name, size, isSubstitution, teamType) {
+
+        if (teamType == "H") {//主队
+            x = parseInt(x) / 1.05;
+            y = courtHeight - parseInt(y) / 1.06;
+            number = parseInt(number);
+            var svg = Snap("#" + svgId);
+            var circle = svg.paper.circle(x, y, 0).attr({ "team": teamType, "sub": teamType + isSubstitution, "name": teamType + number, "id": "s_" + teamType + number, fill: "#439942", stroke: "#439942", strokeWidth: 2 });
+            var text = svg.paper.text(x, y + 5, "").attr({ "text-anchor": "middle", "sub": teamType + isSubstitution, "team": teamType, "name": teamType + number, color: "#439942" });
+            circle.animate({
+                r: size,
+                fill: "#35aae6",	// 蓝色
+                stroke: "white",
+            }, 500);
+            text.animate({
+                color: "white"
+            }, 500, function () {
+                this.node.innerHTML = number;
+            });
+            var arr = [circle, text];
+            //替补
+            if (isSubstitution == 2) {
+                circle.attr({ "stroke-dasharray": "3 3", });
+            }
+
+            circle.attr("fill", "#35aae5");
+            text.attr("fill", "white");
+            for (var i = 0; i < arr.length; i++) {
+                arr[i].mouseover(function () {
+                    highlight(svgId, teamType + number, teamType, 1);
+                    $("#div_title_position1").html(number + " " + name + "<i></i>");
+                    $("#div_title_position1").css("margin-left", x - 10);
+                    $("#div_title_position1").css("margin-top", y - 47);
+                    $("#div_title_position1").css("display", "block");
+                    $("#div_title_position1").css("zIndex", 999);
+                })
+                arr[i].mouseout(function () {
+                    highlight(svgId, teamType + number, teamType, 2);
+                    $("#div_title_position1").css("display", "none");
+                });
+            }
+        } else {//客队
+            x = courtWidth - parseInt(x) / 1.05;
+            y = parseInt(y) / 1.06;
+            number = parseInt(number);
+            var svg = Snap("#" + svgId);
+            var circle = svg.paper.circle(x, y, 0).attr({ "team": teamType, "sub": teamType + isSubstitution, "name": teamType + number, "id": "s_" + teamType + number, fill: "#439942", stroke: "#439942", strokeWidth: 2 });
+            var text = svg.paper.text(x, y + 5, "").attr({ "text-anchor": "middle", "sub": teamType + isSubstitution, "team": teamType, "name": teamType + number, color: "#439942" });
+            circle.animate({
+                r: size,
+                fill: "#4a5266",	// 
+                stroke: "white",
+            }, 500);
+            text.animate({
+                color: "white"
+            }, 500, function () {
+                this.node.innerHTML = number;
+            });
+            var arr = [circle, text];
+            //替补
+            if (isSubstitution == 2) {
+                circle.attr({ "stroke-dasharray": "3 3", });
+            }
+
+            circle.attr("fill", "#4a5266");
+            text.attr("fill", "white");
+            for (var i = 0; i < arr.length; i++) {
+                arr[i].mouseover(function () {
+                    highlight(svgId, teamType + number, teamType, 1);
+                    $("#div_title_position2").html(number + " " + name + "<i></i>");
+                    $("#div_title_position2").css("margin-left", x - 10);
+                    $("#div_title_position2").css("margin-top", y - 47);
+                    $("#div_title_position2").css("display", "block");
+                    $("#div_title_position2").css("zIndex", 999);
+                })
+                arr[i].mouseout(function () {
+                    highlight(svgId, teamType + number, teamType, 2);
+                    $("#div_title_position2").css("display", "none");
+                });
+            }
+        }
+
+
+    }
+    //鼠标移动到球员，高亮显示
+    function highlight(svgId, name, teamType, tag) {
+        var color;
+        if (tag == 1) {
+            color = "#FF5151";
+        } else {
+            if (teamType == "H") {//主队
+                color = "#3C7994";
+            } else {//客队
+                color = "#DCF2FE";
+            }
+        }
+        var newNode = $("[name='" + name + "']");
+        $("[name='" + name + "']").remove();
+        $("#" + svgId).append(newNode);
+        $("#s_" + name + "").attr({ fill: color });
+    }
+
+    // 首发部位-》查看号码
+    function checkoutPlayerNum(){
+        $("#first-lineup-position-main li").each(function(){
+            $(this).children().children("em").text($(this).data("num"))
+        })
+    }
+    // 首发部位-》查看评分
+    function checkoutPlayerScore(){
+        $("#first-lineup-position-main li").each(function(){
+            $(this).children().children("em").text($(this).data("score"))
+        })
+    }
+    
+    
+    // 攻防均线
+    function getTacticsLineAjax(teamId,half){
+        $.ajax({
+            url:"http://192.168.2.6:8888/dataapi/getTacticsLine.html?ak=123456&teamId="+teamId+"&matchId="+matchId+"&half="+half+"&leagueId=7&season=2017",
+            type:"GET",
+            dataType:"json",
+            success:function(res){
+                var realCourtHeight = 100;  //根据后台传来的数据赋值，这里实验先直接赋值  
+                var picCourtHeight = 507;  //页面上球场中球场区域高度
+                var defendLine = res.defendLine / 5.14;
+                if(teamId == homeId){
+                    $(".defend-line.home").css({ "bottom": 22 + picCourtHeight * defendLine / realCourtHeight + "px" }).children("span").text(defendLine.toFixed(1));                    
+                }else if(teamId = guestId){
+                    $(".defend-line.away").css({ "bottom": 22 + picCourtHeight * defendLine / realCourtHeight + "px" }).children("span").text(defendLine.toFixed(1));                
+                }
+            }
+        })
+    }
+
+    // getStaticData(0,"",1);
+    // 获取比赛双方基础数据
+    function getStaticData(half,isImportent,actionType){
+        $.ajax({
+            url:"http://192.168.2.6:8888/dataapi/match/static.html?ak=123456&matchId="+matchId+"&half="+half+"&isImportent="+isImportent,
+            type:"GET",
+            dataType:"json",
+            success:function(res){
+                if(actionType == ''){        
+                    var html = "";
+                    $.each(res,function(i,item){
+                        var widthPercent = item.homeValue >= 1 ? (item.homeValue/(item.guestValue+item.homeValue)*100).toFixed(2)+"%" : item.homeValue*100+"%";
+                        html += '<div class="item">'+
+                                    '<div class="wrapper">'+
+                                            '<p class="data-title">'+item.action+'</p>'+
+                                            '<div class="data-bar clearfix">'+
+                                                '<span class="data-text f-l">'+((item.homeValue >= 1 || item.homeValue == 0) ? item.homeValue : (item.homeValue * 100).toFixed(1) + '%')+'</span>'+
+                                                '<div class="bar" '+((item.homeValue == 0 && item.guestValue == 0)?('style="background-color:#ccc"'):'')+'>'+
+                                                    '<div class="bar-per" style="width:50%"></div>'+
+                                                    '<div class="scale-half"></div>'+
+                                                '</div>'+
+                                                '<span class="data-text f-r">'+((item.guestValue >= 1 || item.guestValue == 0) ? item.guestValue : (item.guestValue * 100).toFixed(1) + '%')+'</span>'+
+                                            '</div>'+
+                                    '</div>'+                                 
+                                '</div>'
+                    })
+                    $(".hedge-figure").html(html);
+                    $(".hedge-figure .item").height(100/res.length+"%");
+                    $.each(res,function(i,item){
+                        var widthPercent = item.homeValue >= 1 ? (item.homeValue/(item.guestValue+item.homeValue)*100).toFixed(2)+"%" : item.homeValue*100+"%";
+                        $(".hedge-figure .item").eq(i).find(".bar-per").width(widthPercent)
+                    })
+                }else{
+                    var actionType1Arr = [];
+                    var actionType2Arr = [];
+                    var actionType3Arr = [];
+                    var actionType4Arr = [];
+                    var actionType5Arr = [];
+                    $.each(res,function(i,item){
+                        if(item.actionType == 1){
+                            actionType1Arr.push(item);
+                        }else if(item.actionType == 2){
+                            actionType2Arr.push(item);
+                        }else if(item.actionType == 3){
+                            actionType3Arr.push(item);
+                        }else if(item.actionType == 4){
+                            actionType4Arr.push(item);
+                        }else if(item.actionType == 5){
+                            actionType5Arr.push(item);
+                        }
+                    })
+                    if(actionType == 1){
+                        var html = "";
+                        $.each(actionType1Arr,function(i,item){
+                            var widthPercent = item.homeValue >= 1 ? (item.homeValue/(item.guestValue+item.homeValue)*100).toFixed(2)+"%" : item.homeValue*100+"%";
+                            html += '<div class="item">'+
+                                        '<div class="wrapper">'+
+                                                '<p class="data-title">'+item.action+'</p>'+
+                                                '<div class="data-bar clearfix">'+
+                                                    '<span class="data-text f-l">'+((item.homeValue >= 1 || item.homeValue == 0) ? item.homeValue : (item.homeValue * 100).toFixed(1) + '%')+'</span>'+
+                                                    '<div class="bar" '+((item.homeValue == 0 && item.guestValue == 0)?('style="background-color:#ccc"'):'')+'>'+
+                                                        '<div class="bar-per" style="width:50%"></div>'+
+                                                        '<div class="scale-half"></div>'+
+                                                    '</div>'+
+                                                    '<span class="data-text f-r">'+((item.guestValue >= 1 || item.guestValue == 0) ? item.guestValue : (item.guestValue * 100).toFixed(1) + '%')+'</span>'+
+                                                '</div>'+
+                                        '</div>'+                                 
+                                    '</div>'
+                        })
+                        $(".hedge-figure").html(html);
+                        $(".hedge-figure .item").height(100/actionType1Arr.length+"%");
+                        $.each(actionType1Arr,function(i,item){
+                            var widthPercent = item.homeValue >= 1 ? (item.homeValue/(item.guestValue+item.homeValue)*100).toFixed(2)+"%" : item.homeValue*100+"%";
+                            $(".hedge-figure .item").eq(i).find(".bar-per").width(widthPercent)
+                        })
+                    }
+                    if(actionType == 2){
+                        var html = "";
+                        $.each(actionType2Arr,function(i,item){
+                            var widthPercent = item.homeValue >= 1 ? (item.homeValue/(item.guestValue+item.homeValue)*100).toFixed(2)+"%" : item.homeValue*100+"%";
+                            html += '<div class="item">'+
+                                        '<div class="wrapper">'+
+                                                '<p class="data-title">'+item.action+'</p>'+
+                                                '<div class="data-bar clearfix">'+
+                                                    '<span class="data-text f-l">'+((item.homeValue >= 1 || item.homeValue == 0) ? item.homeValue : (item.homeValue * 100).toFixed(1) + '%')+'</span>'+
+                                                    '<div class="bar" '+((item.homeValue == 0 && item.guestValue == 0)?('style="background-color:#ccc"'):'')+'>'+
+                                                        '<div class="bar-per" style="width:50%"></div>'+
+                                                        '<div class="scale-half"></div>'+
+                                                    '</div>'+
+                                                    '<span class="data-text f-r">'+((item.guestValue >= 1 || item.guestValue == 0) ? item.guestValue : (item.guestValue * 100).toFixed(1) + '%')+'</span>'+
+                                                '</div>'+
+                                        '</div>'+                                 
+                                    '</div>'
+                        })
+                        $(".hedge-figure").html(html);
+                        $(".hedge-figure .item").height(100/actionType2Arr.length+"%");
+                        $.each(actionType2Arr,function(i,item){
+                            var widthPercent = item.homeValue >= 1 ? (item.homeValue/(item.guestValue+item.homeValue)*100).toFixed(2)+"%" : item.homeValue*100+"%";
+                            $(".hedge-figure .item").eq(i).find(".bar-per").width(widthPercent)
+                        })
+                    }
+                    if(actionType == 3){
+                        var html = "";
+                        $.each(actionType3Arr,function(i,item){
+                            var widthPercent = item.homeValue >= 1 ? (item.homeValue/(item.guestValue+item.homeValue)*100).toFixed(2)+"%" : item.homeValue*100+"%";
+                            html += '<div class="item">'+
+                                        '<div class="wrapper">'+
+                                                '<p class="data-title">'+item.action+'</p>'+
+                                                '<div class="data-bar clearfix">'+
+                                                    '<span class="data-text f-l">'+((item.homeValue >= 1 || item.homeValue == 0) ? item.homeValue : (item.homeValue * 100).toFixed(1) + '%')+'</span>'+
+                                                    '<div class="bar" '+((item.homeValue == 0 && item.guestValue == 0)?('style="background-color:#ccc"'):'')+'>'+
+                                                        '<div class="bar-per" style="width:50%"></div>'+
+                                                        '<div class="scale-half"></div>'+
+                                                    '</div>'+
+                                                    '<span class="data-text f-r">'+((item.guestValue >= 1 || item.guestValue == 0) ? item.guestValue : (item.guestValue * 100).toFixed(1) + '%')+'</span>'+
+                                                '</div>'+
+                                        '</div>'+                                 
+                                    '</div>'
+                        })
+                        $(".hedge-figure").html(html);
+                        $(".hedge-figure .item").height(100/actionType3Arr.length+"%");
+                        $.each(actionType3Arr,function(i,item){
+                            var widthPercent = item.homeValue >= 1 ? (item.homeValue/(item.guestValue+item.homeValue)*100).toFixed(2)+"%" : item.homeValue*100+"%";
+                            $(".hedge-figure .item").eq(i).find(".bar-per").width(widthPercent)
+                        })
+                    }
+                    if(actionType == 4){
+                        var html = "";
+                        $.each(actionType4Arr,function(i,item){
+                            var widthPercent = item.homeValue >= 1 ? (item.homeValue/(item.guestValue+item.homeValue)*100).toFixed(2)+"%" : item.homeValue*100+"%";
+                            html += '<div class="item">'+
+                                        '<div class="wrapper">'+
+                                                '<p class="data-title">'+item.action+'</p>'+
+                                                '<div class="data-bar clearfix">'+
+                                                    '<span class="data-text f-l">'+((item.homeValue >= 1 || item.homeValue == 0) ? item.homeValue : (item.homeValue * 100).toFixed(1) + '%')+'</span>'+
+                                                    '<div class="bar" '+((item.homeValue == 0 && item.guestValue == 0)?('style="background-color:#ccc"'):'')+'>'+
+                                                        '<div class="bar-per" style="width:50%"></div>'+
+                                                        '<div class="scale-half"></div>'+
+                                                    '</div>'+
+                                                    '<span class="data-text f-r">'+((item.guestValue >= 1 || item.guestValue == 0) ? item.guestValue : (item.guestValue * 100).toFixed(1) + '%')+'</span>'+
+                                                '</div>'+
+                                        '</div>'+                                 
+                                    '</div>'
+                        })
+                        $(".hedge-figure").html(html);
+                        $(".hedge-figure .item").height(100/actionType4Arr.length+"%");
+                        $.each(actionType4Arr,function(i,item){
+                            var widthPercent = item.homeValue >= 1 ? (item.homeValue/(item.guestValue+item.homeValue)*100).toFixed(2)+"%" : item.homeValue*100+"%";
+                            $(".hedge-figure .item").eq(i).find(".bar-per").width(widthPercent)
+                        })
+                    }
+                    if(actionType == 5){
+                        var html = "";
+                        $.each(actionType5Arr,function(i,item){
+                            var widthPercent = item.homeValue >= 1 ? (item.homeValue/(item.guestValue+item.homeValue)*100).toFixed(2)+"%" : item.homeValue*100+"%";
+                            html += '<div class="item">'+
+                                        '<div class="wrapper">'+
+                                                '<p class="data-title">'+item.action+'</p>'+
+                                                '<div class="data-bar clearfix">'+
+                                                    '<span class="data-text f-l">'+((item.homeValue >= 1 || item.homeValue == 0) ? item.homeValue : (item.homeValue * 100).toFixed(1) + '%')+'</span>'+
+                                                    '<div class="bar" '+((item.homeValue == 0 && item.guestValue == 0)?('style="background-color:#ccc"'):'')+'>'+
+                                                        '<div class="bar-per" style="width:50%"></div>'+
+                                                        '<div class="scale-half"></div>'+
+                                                    '</div>'+
+                                                    '<span class="data-text f-r">'+((item.guestValue >= 1 || item.guestValue == 0) ? item.guestValue : (item.guestValue * 100).toFixed(1) + '%')+'</span>'+
+                                                '</div>'+
+                                        '</div>'+                                 
+                                    '</div>'
+                        })
+                        $(".hedge-figure").html(html);
+                        $(".hedge-figure .item").height(100/actionType5Arr.length+"%");
+                        $.each(actionType5Arr,function(i,item){
+                            var widthPercent = item.homeValue >= 1 ? (item.homeValue/(item.guestValue+item.homeValue)*100).toFixed(2)+"%" : item.homeValue*100+"%";
+                            $(".hedge-figure .item").eq(i).find(".bar-per").width(widthPercent)
+                        })
+                    }
+                }
+                
+            }
+        })
+    }
+
+    //视频播放
+    function playMedia(groupNo){
+
+        $.ajax({
+            url:"http://192.168.2.6:8888/dataapi/match/media.html?ak=123456&matchId="+matchId+"&groupNo="+groupNo,
+            type:"GET",
+            dataType:"json",
+            success:function(da){
+                console.log(da)
+                $(".chalk-board-playback-modal").removeClass("hide").find("video").attr("src",da.mediaUrl);           
+            }
+        })
+    }
+
+    function abc() {
+        // $.ajax({
+		// 	type : "post",
+		// 	data : "matchId=2994&half=0&timePhase=0&isOverTime=&areaType=2",
+		// 	url : "http://192.168.2.6:8888/sdap/getMatchAttackRateAjax.html",
+		// 	success:function(da){
+                var da = '{"guestBack":766,"guestDownWay":"","guestFront":533,"guestLeft":295,"guestMidWay":"","guestMiddle":479,"guestRight":525,"guestSum":1299,"guestUpWay":"","half":"0","homeBack":824,"homeFront":801,"homeLeft":476,"homeMiddle":661,"homeRight":488,"homeSum":1625,"hostDownWay":"","hostMidWay":"","hostUpWay":"","id":0,"matchId":"2994","possessionPercentageAway":"0.444","possessionPercentageHost":"0.556","timePhase":"0-90"}';
+				if(isNotEmpty(da)){
+					var json = eval( "(" + da + ")" );
+					var widthHome = returnFloat1(json.possessionPercentageHost*100)+"%";
+					var widthAway = returnFloat1(json.possessionPercentageAway*100)+"%";
+					$("#possession_home").css("width",widthHome);
+					$("#possession_guest").css("width",widthAway);
+					
+					$("#possession_home >span").html(widthHome);
+					$("#possession_guest >span").html(widthAway);
+					if(areaType == 0){
+						//TODO: 此方法IE下无效....
+						$("#txt_hostUpWay").html(returnFloat1(json.hostUpWay*100)+"%");
+						$("#txt_hostMidWay").html(returnFloat1(json.hostMidWay*100)+"%");
+						$("#txt_hostDownWay").html(returnFloat1(json.hostDownWay*100)+"%");
+						$("#txt_guestUpWay").html(returnFloat1(json.guestUpWay*100)+"%");
+						$("#txt_guestMidWay").html(returnFloat1(json.guestMidWay*100)+"%");
+						$("#txt_guestDownWay").html(returnFloat1(json.guestDownWay*100)+"%");
+					}
+					
+					if (areaType == 1) {
+						if(homeOrGuest == 0) {
+							$("#bfDiv3").show();
+							$("#bfDiv5").show();
+							$("#bfDiv4").show();
+							$("#bfDiv6").show();
+							$("#bfDiv1").html(returnFloat1((json.homeBack + json.guestFront) / (json.homeSum + json.guestSum) * 100)+"%");
+							$("#bfDiv2").html(returnFloat1((json.homeFront + json.guestBack) / (json.homeSum + json.guestSum) * 100)+"%");
+							
+							$("#bfDiv3").css("height",returnFloat1(json.homeBack / (json.homeSum + json.guestSum) * 100)+"%");
+							$("#bfDiv3 >p").html(returnFloat1(json.homeBack / (json.homeSum + json.guestSum) * 100)+"%");
+							
+							$("#bfDiv4").css("height",returnFloat1(json.guestFront / (json.homeSum + json.guestSum) * 100)+"%");
+							$("#bfDiv4 >p").html(returnFloat1(json.guestFront / (json.homeSum + json.guestSum) * 100)+"%");
+							
+							$("#bfDiv5").css("height",returnFloat1(json.homeFront / (json.homeSum + json.guestSum) * 100)+"%");
+							$("#bfDiv5 >p").html(returnFloat1(json.homeFront / (json.homeSum + json.guestSum) * 100)+"%");
+							
+							$("#bfDiv6").css("height",returnFloat1(json.guestBack / (json.homeSum + json.guestSum) * 100)+"%");
+							$("#bfDiv6 >p").html(returnFloat1(json.guestBack / (json.homeSum + json.guestSum) * 100)+"%");
+						}
+						if (homeOrGuest == 1) {
+							$("#bfDiv1").html(returnFloat1(json.homeBack / json.homeSum * 100)+"%");
+							$("#bfDiv2").html(returnFloat1(json.homeFront / json.homeSum * 100)+"%");
+							$("#bfDiv3").show();
+							$("#bfDiv5").show();
+
+							$("#bfDiv3").css("height",returnFloat1(json.homeBack / json.homeSum  * 100)+"%");
+							$("#bfDiv3 >p").html(returnFloat1(json.homeBack / json.homeSum * 100)+"%");
+
+							$("#bfDiv5").css("height",returnFloat1(json.homeFront / json.homeSum  * 100)+"%");
+							$("#bfDiv5 >p").html(returnFloat1(json.homeFront / json.homeSum * 100)+"%");
+							
+							$("#bfDiv4").hide();
+							$("#bfDiv6").hide();
+						}
+						if(homeOrGuest == 2){
+							$("#bfDiv1").html(returnFloat1(json.guestFront / json.guestSum * 100)+"%");
+							$("#bfDiv2").html(returnFloat1(json.guestBack / json.guestSum * 100)+"%");
+							$("#bfDiv4").show();
+							$("#bfDiv6").show();
+							
+							$("#bfDiv4").css("height",returnFloat1(json.guestFront / json.guestSum  * 100)+"%");
+							$("#bfDiv4 >p").html(returnFloat1(json.guestFront / json.guestSum * 100)+"%");
+
+							$("#bfDiv6").css("height",returnFloat1(json.guestBack / json.guestSum  * 100)+"%");
+							$("#bfDiv6 >p").html(returnFloat1(json.guestBack / json.guestSum * 100)+"%");
+
+							$("#bfDiv3").hide();
+							$("#bfDiv5").hide();
+						} 
+					}
+					if (areaType == 2) {
+						if (homeOrGuest == 0) {
+							$("#lmrDiv4").show();$("#lmrDiv5").show();$("#lmrDiv6").show();$("#lmrDiv7").show();$("#lmrDiv8").show();$("#lmrDiv9").show();
+							$("#lmrDiv1").html(returnFloat1((json.homeLeft + json.guestRight) / (json.homeSum + json.guestSum) * 100)+"%");
+							$("#lmrDiv2").html(returnFloat1((json.homeMiddle + json.guestMiddle) / (json.homeSum + json.guestSum) * 100)+"%");
+							$("#lmrDiv3").html(returnFloat1((json.homeRight + json.guestLeft) / (json.homeSum + json.guestSum) * 100)+"%");
+							
+							$("#lmrDiv4").css("height",returnFloat1(json.homeLeft / (json.homeSum + json.guestSum) * 100)+"%");
+							$("#lmrDiv4 >p").html(returnFloat1(json.homeLeft / (json.homeSum + json.guestSum) * 100)+"%");
+							
+							$("#lmrDiv5").css("height",returnFloat1(json.guestRight / (json.homeSum + json.guestSum) * 100)+"%");
+							$("#lmrDiv5 >p").html(returnFloat1(json.guestRight / (json.homeSum + json.guestSum) * 100)+"%");
+
+							$("#lmrDiv6").css("height",returnFloat1(json.homeMiddle / (json.homeSum + json.guestSum) * 100)+"%");
+							$("#lmrDiv6 >p").html(returnFloat1(json.homeMiddle / (json.homeSum + json.guestSum) * 100)+"%");
+
+							$("#lmrDiv7").css("height",returnFloat1(json.guestMiddle / (json.homeSum + json.guestSum) * 100)+"%");
+							$("#lmrDiv7 >p").html(returnFloat1(json.guestMiddle / (json.homeSum + json.guestSum) * 100)+"%");
+							
+							$("#lmrDiv8").css("height",returnFloat1(json.homeRight / (json.homeSum + json.guestSum) * 100)+"%");
+							$("#lmrDiv8 >p").html(returnFloat1(json.homeRight / (json.homeSum + json.guestSum) * 100)+"%");
+
+							$("#lmrDiv9").css("height",returnFloat1(json.guestLeft / (json.homeSum + json.guestSum) * 100)+"%");
+							$("#lmrDiv9 >p").html(returnFloat1(json.guestLeft / (json.homeSum + json.guestSum) * 100)+"%");
+						}
+						if (homeOrGuest == 1) {
+							$("#lmrDiv5").hide();
+							$("#lmrDiv7").hide();
+							$("#lmrDiv9").hide();
+							$("#lmrDiv4").show();
+							$("#lmrDiv6").show();
+							$("#lmrDiv8").show();
+							
+							$("#lmrDiv1").html(returnFloat1(json.homeLeft / json.homeSum * 100)+"%");
+							$("#lmrDiv2").html(returnFloat1(json.homeMiddle / json.homeSum * 100)+"%");
+							$("#lmrDiv3").html(returnFloat1(json.homeRight / json.homeSum * 100)+"%");
+							
+							$("#lmrDiv4").css("height",returnFloat1(json.homeLeft / json.homeSum * 100)+"%");
+							$("#lmrDiv4 >p").html(returnFloat1(json.homeLeft / json.homeSum * 100)+"%");
+
+							$("#lmrDiv6").css("height",returnFloat1(json.homeMiddle / json.homeSum * 100)+"%");
+							$("#lmrDiv6 >p").html(returnFloat1(json.homeMiddle / json.homeSum * 100)+"%");
+
+							$("#lmrDiv8").css("height",returnFloat1(json.homeRight / json.homeSum * 100)+"%");
+							$("#lmrDiv8 >p").html(returnFloat1(json.homeRight / json.homeSum * 100)+"%");
+						} 
+						if (homeOrGuest == 2) {
+							$("#lmrDiv1").html(returnFloat1(json.guestRight / json.guestSum * 100)+"%");
+							$("#lmrDiv2").html(returnFloat1(json.guestMiddle / json.guestSum * 100)+"%");
+							$("#lmrDiv3").html(returnFloat1(json.guestLeft / json.guestSum * 100)+"%");
+							
+							$("#lmrDiv4").hide();
+							$("#lmrDiv6").hide();
+							$("#lmrDiv8").hide();
+							$("#lmrDiv5").show();
+							$("#lmrDiv7").show();
+							$("#lmrDiv9").show();
+
+							$("#lmrDiv5").css("height",returnFloat1(json.guestRight / json.guestSum * 100)+"%");
+							$("#lmrDiv5 >p").html(returnFloat1(json.guestRight / json.guestSum * 100)+"%");
+
+							$("#lmrDiv7").css("height",returnFloat1(json.guestMiddle / json.guestSum * 100)+"%");
+							$("#lmrDiv7 >p").html(returnFloat1(json.guestMiddle / json.guestSum * 100)+"%");
+
+							$("#lmrDiv9").css("height",returnFloat1(json.guestLeft / json.guestSum * 100)+"%");
+							$("#lmrDiv9 >p").html(returnFloat1(json.guestLeft / json.guestSum * 100)+"%");
+						}
+					}
+				}else{//返回结果为空
+					$("#possession_home").css("width","0%");
+					$("#possession_guest").css("width","0%");
+					$("#possession_home >span").html("");
+					$("#possession_guest >span").html("");
+					//TODO: 此方法IE下无效....
+					$("#txt_hostUpWay").html("");
+					$("#txt_hostMidWay").html("");
+					$("#txt_hostDownWay").html("");
+					$("#txt_guestUpWay").html("");
+					$("#txt_guestMidWay").html("");
+					$("#txt_guestDownWay").html("");
+					$("#bfDiv1").html("");
+					$("#bfDiv2").html("");
+					$("#bfDiv3 >p").html("");
+					$("#bfDiv4 >p").html("");
+					$("#bfDiv5 >p").html("");
+					$("#bfDiv6 >p").html("");
+					$("#lmrDiv1").html("");
+					$("#lmrDiv2").html("");
+					$("#lmrDiv3").html("");
+					$("#lmrDiv4 >p").html("");
+					$("#lmrDiv5 >p").html("");
+					$("#lmrDiv6 >p").html("");
+					$("#lmrDiv7 >p").html("");
+					$("#lmrDiv8 >p").html("");
+					$("#lmrDiv9 >p").html("");
+				}
+		// 	}
+		// });
+    }
 
 })

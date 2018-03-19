@@ -37,7 +37,7 @@ body .main .bx .wrapper .login-system .welcome {
 body .main .bx .wrapper .login-system .welcome > span {
   color: #41afe8;
 }
-body .main .bx .wrapper .login-system .user-info {
+body .main .bx .wrapper .login-system form .user-info {
   width: 470px;
   height: 36px;
   line-height: 36px;
@@ -46,10 +46,10 @@ body .main .bx .wrapper .login-system .user-info {
   border-bottom: 1px solid #c9c9c9;
   color: #c9c9c9;
 }
-body .main .bx .wrapper .login-system .user-info input {
+body .main .bx .wrapper .login-system form .user-info input {
   width: 100%;
 }
-body .main .bx .wrapper .login-system .submit {
+body .main .bx .wrapper .login-system form .submit {
   width: 135px;
   height: 40px;
   border-radius: 20px;
@@ -66,7 +66,7 @@ body .main .bx .wrapper .login-system .error-tips {
   left: 41px;
   bottom: 20px;
 }
-body .main .bx .wrapper img {
+body .main .bx .wrapper > img {
   float: right;
   box-shadow: 2px 7px 34px #4b5266;
 }
